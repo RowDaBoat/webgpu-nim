@@ -8,17 +8,17 @@ import std/os
 import std/strformat
 import std/compilesettings
 
-
 #_________________________________________________
 # Helpers
 #_____________________________
 # TODO: Switch to execShellCmd when 2.0 devel becomes stable
 # TODO: Capture errors and abort on failure
-proc sh (cmd :string; dir :string= "") :void=
+proc sh(cmd: string, dir: string= "") =
   ## Executes the given shell command and writes the output to console.
   ## Same as the nimscript version, but usable at compile time in static blocks.
   ## Runs the command from `dir` when specified.
-  var command :string
+  var command: string
+
   when defined(windows):
     if dir != "":  command = &"cd /d {dir} && {cmd}"
     else:          command = cmd
@@ -28,21 +28,25 @@ proc sh (cmd :string; dir :string= "") :void=
     else:          command = cmd
     echo gorgeEx(&"sh -c \"{$command}\"").output
 #_____________________________
-proc cp *(src, trg :string) :void=
-  ## Copies `src` to `trg`, using the shell's `cp` command.
-  ## Usable at compile time in static blocks.
-  echo &": Copying {src}\n  to {trg}"
-  sh &"cp {src} {trg}"
+proc mkdir(directory: string) =
+  when defined(windows):
+    sh "powershell -Command \"New-Item -ItemType Directory -Force -Path '" & directory & "' | Out-Null\""
+  else:
+    sh &"mkdir -p {directory}"
 #_____________________________
-const thisDir   = currentSourcePath().parentDir()
-const Cdir      = thisDir/"C"
-const wgpuDir   = Cdir/"wgpu-native"
-const headerDir = wgpuDir/"ffi"
-const cacheDir  = compilesettings.querySetting(nimcacheDir)
-const trgDir    = cacheDir/"wgpu"
-const rlsDir    * = trgDir/"release"
-const dbgDir    * = trgDir/"debug"
-
+proc cp(source: string, target: string) =
+  when defined(windows):
+    sh "copy \"" & source & "\" \"" & target & "\""
+  else:
+    sh &"cp {source} {target}"
+#_____________________________
+const thisDir      = currentSourcePath().parentDir()
+const wgpuDir      = thisDir/"C"/"wgpu-native"
+const headerDir    = wgpuDir/"ffi"
+const wgpuBuildDir = compilesettings.querySetting(nimcacheDir)/"wgpu"
+const releaseDir   = wgpuBuildDir/"release"
+const debugDir     = wgpuBuildDir/"debug"
+const nativeLib {.strdefine.} = ""
 
 #_________________________________________________
 # Build wgpu
@@ -54,30 +58,46 @@ const dbgDir    * = trgDir/"debug"
 #   but that's not possible for Rust
 #   So this system calls for the wgpu-native buildsystem instead.
 #_____________________________
+proc fixMacOS(libFile: string, libOutDir: string) =
+  when defined(macosx):
+    cp libFile, libOutDir/"libwgpu_native_static.a"
+#_____________________________
+proc copyWgpuNative(libOutDir: string, libFile: string) =
+  echo ": Using wgpu-native static library at:"
+  echo "  ", nativeLib
+
+  mkdir libOutDir
+  cp nativeLib, libFile
+  echo ": wgpu-native static library copied to:"
+  echo "  ", libFile
+  fixMacOS(libFile, libOutDir)
+#_____________________________
+proc buildWgpuNative(libOutDir: string, libFile: string) =
+  echo ": Building wgpu-native static library..."
+  let releaseFlag = when defined(debug): "" else: "--release"
+  sh &"cargo build --target-dir {wgpuBuildDir} {releaseFlag}", wgpuDir
+  echo ": wgpu-native static library built at:"
+  echo "  ", libFile
+  fixMacOS(libFile, libOutDir)
+#_____________________________
+
 static:
   # Determine the expected output library path for the current build mode/platform
-  when defined(windows):
-    when defined(debug):
-      const libFile = dbgDir/"wgpu_native.lib"
-    else:
-      const libFile = rlsDir/"wgpu_native.lib"
-  else:
-    when defined(debug):
-      const libFile = dbgDir/"libwgpu_native.a"
-    else:
-      const libFile = rlsDir/"libwgpu_native.a"
-  if fileExists(libFile):
-    echo ": wgpu-native already built. Skipping cargo build."
-  else:
-    echo ": Compiling wgpu-native..."
-    when defined(debug):  sh &"cargo build --target-dir {trgDir}", wgpuDir
-    else:                 sh &"cargo build --target-dir {trgDir} --release", wgpuDir
-  # Fix the static linking mess of clang+mac
-  when defined(macosx):
-    const file = "libwgpu_native.a"
-    if fileExists( rlsDir/file ):  cp rlsDir/file, rlsDir/"libwgpu_native_static.a"
-    if fileExists( dbgDir/file ):  cp dbgDir/file, dbgDir/"libwgpu_native_static.a"
+  const libOutDir = when defined(debug): debugDir else: releaseDir
+  const libFileName = when defined(windows): "wgpu_native.lib" else: "libwgpu_native.a"
+  const libFile = libOutDir/libFileName
 
+  if fileExists(libFile):
+    echo ": wgpu-native static library already present at:"
+    echo "  ", libFile
+    echo ": Skipping.\n"
+  elif nativeLib != "" and fileExists(nativeLib):
+    copyWgpuNative(libOutDir, libFile)
+  elif nativeLib != "" and not fileExists(nativeLib):
+    echo ": custom wgpu-native static library does not exist, attempting to build it."
+    buildWgpuNative(libOutDir, libFile)
+  else:
+    buildWgpuNative(libOutDir, libFile)
 
 #_________________________________________________
 # Pass cflag -I to the compiler to include the header folders
@@ -91,12 +111,12 @@ static:
 when defined(windows) and defined(vcc):
   # MSVC: use /link /LIBPATH: to pass library path to linker (not compiler)
   # The /link prefix ensures it goes to the linker, not the compiler
-  when defined(debug):  {.passL: &"/link /LIBPATH:\"{dbgDir}\"".}
-  else:                 {.passL: &"/link /LIBPATH:\"{rlsDir}\"".}
+  when defined(debug):  {.passL: &"/link /LIBPATH:\"{debugDir}\"".}
+  else:                 {.passL: &"/link /LIBPATH:\"{releaseDir}\"".}
 else:
   # Unix-style -L flag for GCC/Clang/MinGW/Zig
-  when defined(debug):  {.passL: &"-L{dbgDir}".}
-  else:                 {.passL: &"-L{rlsDir}".}
+  when defined(debug):  {.passL: &"-L{debugDir}".}
+  else:                 {.passL: &"-L{releaseDir}".}
 
 #_________________________________________________
 # Link to stdc++ for zigcc
