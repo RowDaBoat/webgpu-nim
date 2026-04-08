@@ -40,13 +40,13 @@ proc cp(source: string, target: string) =
   else:
     sh &"cp {source} {target}"
 #_____________________________
-const thisDir        = currentSourcePath().parentDir()
-const wgpuDir        = thisDir/"C"/"wgpu-native"
-const headerDir      = wgpuDir/"ffi"
-const wgpuBuildDir   = compilesettings.querySetting(nimcacheDir)/"wgpu"
-const releaseDir*    = wgpuBuildDir/"release"
-const debugDir*      = wgpuBuildDir/"debug"
-const wgpuNativeLib* {.strdefine.} = ""
+const thisDir      = currentSourcePath().parentDir()
+const wgpuDir      = thisDir/"C"/"wgpu-native"
+const headerDir    = wgpuDir/"ffi"
+const wgpuBuildDir = compilesettings.querySetting(nimcacheDir)/"wgpu"
+const releaseDir   = wgpuBuildDir/"release"
+const debugDir     = wgpuBuildDir/"debug"
+const nativeLib {.strdefine.} = ""
 
 #_________________________________________________
 # Build wgpu
@@ -64,10 +64,10 @@ proc fixMacOS(libFile: string, libOutDir: string) =
 #_____________________________
 proc copyWgpuNative(libOutDir: string, libFile: string) =
   echo ": Using wgpu-native static library at:"
-  echo "  ", wgpuNativeLib
+  echo "  ", nativeLib
 
   mkdir libOutDir
-  cp wgpuNativeLib, libFile
+  cp nativeLib, libFile
   echo ": wgpu-native static library copied to:"
   echo "  ", libFile
   fixMacOS(libFile, libOutDir)
@@ -91,9 +91,9 @@ static:
     echo ": wgpu-native static library already present at:"
     echo "  ", libFile
     echo ": Skipping.\n"
-  elif wgpuNativeLib != "" and fileExists(wgpuNativeLib):
+  elif nativeLib != "" and fileExists(nativeLib):
     copyWgpuNative(libOutDir, libFile)
-  elif wgpuNativeLib != "" and not fileExists(wgpuNativeLib):
+  elif nativeLib != "" and not fileExists(nativeLib):
     echo ": custom wgpu-native static library does not exist, attempting to build it."
     buildWgpuNative(libOutDir, libFile)
   else:
