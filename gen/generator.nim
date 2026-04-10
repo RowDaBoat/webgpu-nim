@@ -45,7 +45,7 @@ importc:
   outputPath currentSourcePath.parentDir/"result.nim"
   path base.wgpuDir
   path base.webgpuDir
-  "wgpu.h"
+  "wgvk.h"
   "webgpu.h"
 
 

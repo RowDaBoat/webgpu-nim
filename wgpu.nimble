@@ -66,12 +66,12 @@ task git, "Internal:  Updates the dependencies submodules.":
 #_____________________________
 # Bindings Generator
 template bindings (file :string) :void= selfExec &"c -r -d:futharkRebuild --verbosity:2 --hints:off --outDir:{binDir} " & file
-taskRequires "gen", "https://github.com/PMunch/futhark#head"
+taskRequires "generate", "https://github.com/PMunch/futhark#head"
 task generate, "Internal:  Generates the wgpu Nim bindings with futhark.":
   bindings "./gen/generator.nim"
   bindings "./gen/generator_raw.nim"
-  # cpFile "./gen/result.nim", "./src/wgpu/api.nim"
-  # cpFile "./gen/result_raw.nim", "./src/wgpu/raw.nim"
+  cpFile "./gen/result.nim", "./src/wgpu/api.nim"
+  cpFile "./gen/result_raw.nim", "./src/wgpu/raw.nim"
 #_____________________________
 # Unit Tests
 task tests, "Internal: Runs all unit tests.":
