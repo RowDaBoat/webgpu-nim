@@ -61,11 +61,20 @@ before install:
 # @section Internal Management
 #_____________________________
 # Git
-task git, "Internal:  Updates the wgpu-native submodule.":
-  withDir "src/wgpu/C/wgpu-native": exec "git pull --recurse-submodules origin trunk"
+task git, "Internal:  Updates the dependencies submodules.":
+  withDir "src/wgpu/C/wgvk": exec "git pull --recurse-submodules origin master"
+#_____________________________
+# Bindings Generator
+template bindings (file :string) :void= selfExec &"c -r -d:futharkRebuild --verbosity:2 --hints:off --outDir:{binDir} " & file
+taskRequires "gen", "https://github.com/PMunch/futhark#head"
+task generate, "Internal:  Generates the wgpu Nim bindings with futhark.":
+  bindings "./gen/generator.nim"
+  bindings "./gen/generator_raw.nim"
+  # cpFile "./gen/result.nim", "./src/wgpu/api.nim"
+  # cpFile "./gen/result_raw.nim", "./src/wgpu/raw.nim"
 #_____________________________
 # Unit Tests
-task tests, "Runs all tests":
+task tests, "Internal: Runs all unit tests.":
   for file in "./tests".walkDirRec.toSeq.reversed:
     if not file.fileExists(): continue
     if not file.splitFile.name.startsWith("t"): continue
