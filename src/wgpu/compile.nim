@@ -21,13 +21,12 @@ when defined(windows):
 elif defined(macosx):
   {.passC: "-DSUPPORT_METAL_SURFACE=1".}
   {.passL: "-framework Cocoa -framework Metal -framework QuartzCore".}
+elif defined(linux) and defined(wayland):
+  {.passC: "-DSUPPORT_WAYLAND_SURFACE=1".}
+  {.passL: "-lwayland-client".}
 elif defined(linux):
-  when defined(wayland):
-    {.passC: "-DSUPPORT_WAYLAND_SURFACE=1".}
-    {.passL: "-lwayland-client".}
-  else:
-    {.passC: "-DSUPPORT_XLIB_SURFACE=1".}
-    {.passL: "-lX11".}
+  {.passC: "-DSUPPORT_XLIB_SURFACE=1".}
+  {.passL: "-lX11".}
 elif defined(android):
   {.passC: "-DSUPPORT_ANDROID_SURFACE=1".}
 #_____________________________
