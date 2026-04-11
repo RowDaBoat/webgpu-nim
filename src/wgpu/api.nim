@@ -1978,9 +1978,9 @@ proc poll*(device: Device; wait: Bool;
     importc: "wgpuDevicePoll".}
 proc createSpirV*(device: Device; descriptor: ptr ShaderModuleDescriptorSpirV): ShaderModule {.
     cdecl, importc: "wgpuDeviceCreateShaderModuleSpirV".}
-proc set*(callback: LogCallback; userdata: pointer): void {.cdecl,
-    importc: "wgpuSetLogCallback".}
-proc set*(level: LogLevel): void {.cdecl, importc: "wgpuSetLogLevel".}
+# proc set*(callback: LogCallback; userdata: pointer): void {.cdecl,
+#     importc: "wgpuSetLogCallback".}
+# proc set*(level: LogLevel): void {.cdecl, importc: "wgpuSetLogLevel".}
 proc getVersion*(): uint32 {.cdecl, importc: "wgpuGetVersion".}
 proc setPushConstants*(encoder: RenderPassEncoder; stages: ShaderStage;
                        offset: uint32; sizeBytes: uint32; data: pointer): void {.
