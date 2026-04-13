@@ -4,16 +4,22 @@
 # @deps std
 from std/os import parentDir, `/`
 # @deps external
-import futhark
+from henka import nil
 # @deps generator
 import ./base
 
 #_____________________________
-# Find the headers, and generate the wrapper
-importc:
-  outputPath currentSourcePath.parentDir/"result_raw.nim"
-  path base.wgpuDir
-  path base.webgpuDir
-  "wgpu.h"
-  "webgpu.h"
+proc rename (
+    kind : henka.LabelKind;
+    name : string
+  ) :henka.RenameResult=
+  result = (name: name, pragmas: @[])
+  if kind == henka.EnumType: result.pragmas = @["pure"]
+
+#_____________________________
+when isMainModule:
+  let ast      = henka.generateAst(@[base.wgpuDir/"wgvk.h"])
+  let bindings = henka.generateBindings(ast, rename)
+  system.writeFile(base.thisDir/"result_raw.nim", bindings)
+#_____________________________
 

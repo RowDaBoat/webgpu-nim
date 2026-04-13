@@ -65,12 +65,14 @@ task git, "Internal:  Updates the dependencies submodules.":
   withDir "src/wgpu/C/wgvk": exec "git pull --recurse-submodules origin master"
 #_____________________________
 # Bindings Generator
-template bindings (file :string) :void= selfExec &"c -r -d:futharkRebuild --verbosity:2 --hints:off --outDir:{binDir} " & file
-taskRequires "generate", "https://github.com/PMunch/futhark#head"
-task generate, "Internal:  Generates the wgpu Nim bindings with futhark.":
+template bindings (file :string) :void=
+  echo "[wgpu] Generating bindings from:  " & file
+  selfExec &"c -r --verbosity:2 --hints:off --outDir:{binDir} " & file
+taskRequires "generate", "https://github.com/RowDaBoat/henka#head"
+task generate, "Internal:  Generates the wgpu Nim bindings.":
   bindings "./gen/generator.nim"
-  bindings "./gen/generator_raw.nim"
   cpFile "./gen/result.nim", "./src/wgpu/api.nim"
+  bindings "./gen/generator_raw.nim"
   cpFile "./gen/result_raw.nim", "./src/wgpu/raw.nim"
 #_____________________________
 # Unit Tests

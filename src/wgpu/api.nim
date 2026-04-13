@@ -1,2024 +1,1872 @@
+type Flags* = uint64_t
+type Bool* = uint32_t
+type Bool32* = uint32_t
+type TextureImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type
-  enum_WGPUAdapterType* {.size: sizeof(cuint).} = enum
-    DiscreteGPU = 1, IntegratedGPU = 2, CPU = 3, Unknown = 4,
-    Force32 = 2147483647
-type
-  enum_WGPUAddressMode* {.size: sizeof(cuint).} = enum
-    Undefined = 0, ClampToEdge = 1, Repeat = 2, MirrorRepeat = 3,
-    Force32 = 2147483647
-type
-  enum_WGPUBackendType* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Null = 1, WebGPU = 2, D3D11 = 3, D3D12 = 4, Metal = 5,
-    Vulkan = 6, OpenGL = 7, OpenGLES = 8, Force32 = 2147483647
-type
-  enum_WGPUBlendFactor* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Zero = 1, One = 2, Src = 3, OneMinusSrc = 4, SrcAlpha = 5,
-    OneMinusSrcAlpha = 6, Dst = 7, OneMinusDst = 8, DstAlpha = 9,
-    OneMinusDstAlpha = 10, SrcAlphaSaturated = 11, Constant = 12,
-    OneMinusConstant = 13, Src1 = 14, OneMinusSrc1 = 15, Src1Alpha = 16,
-    OneMinusSrc1Alpha = 17, Force32 = 2147483647
-type
-  enum_WGPUBlendOperation* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Add = 1, Subtract = 2, ReverseSubtract = 3, Min = 4, Max = 5,
-    Force32 = 2147483647
-type
-  enum_WGPUBufferBindingType* {.size: sizeof(cuint).} = enum
-    BindingNotUsed = 0, Undefined = 1, Uniform = 2, Storage = 3,
-    ReadOnlyStorage = 4, Force32 = 2147483647
-type
-  enum_WGPUBufferMapState* {.size: sizeof(cuint).} = enum
-    Unmapped = 1, Pending = 2, Mapped = 3, Force32 = 2147483647
-type
-  enum_WGPUCallbackMode* {.size: sizeof(cuint).} = enum
-    WaitAnyOnly = 1, AllowProcessEvents = 2, AllowSpontaneous = 3,
-    Force32 = 2147483647
-type
-  enum_WGPUCompareFunction* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Never = 1, Less = 2, Equal = 3, LessEqual = 4, Greater = 5,
-    NotEqual = 6, GreaterEqual = 7, Always = 8, Force32 = 2147483647
-type
-  enum_WGPUCompilationInfoRequestStatus* {.size: sizeof(cuint).} = enum
-    Success = 1, InstanceDropped = 2, Error = 3, Unknown = 4,
-    Force32 = 2147483647
-type
-  enum_WGPUCompilationMessageType* {.size: sizeof(cuint).} = enum
-    Error = 1, Warning = 2, Info = 3, Force32 = 2147483647
-type
-  enum_WGPUCompositeAlphaMode* {.size: sizeof(cuint).} = enum
-    Auto = 0, Opaque = 1, Premultiplied = 2, Unpremultiplied = 3, Inherit = 4,
-    Force32 = 2147483647
-type
-  enum_WGPUCreatePipelineAsyncStatus* {.size: sizeof(cuint).} = enum
-    Success = 1, InstanceDropped = 2, ValidationError = 3, InternalError = 4,
-    Unknown = 5, Force32 = 2147483647
-type
-  enum_WGPUCullMode* {.size: sizeof(cuint).} = enum
-    Undefined = 0, None = 1, Front = 2, Back = 3, Force32 = 2147483647
-type
-  enum_WGPUDeviceLostReason* {.size: sizeof(cuint).} = enum
-    Unknown = 1, Destroyed = 2, InstanceDropped = 3, FailedCreation = 4,
-    Force32 = 2147483647
-type
-  enum_WGPUErrorFilter* {.size: sizeof(cuint).} = enum
-    Validation = 1, OutOfMemory = 2, Internal = 3, Force32 = 2147483647
-type
-  enum_WGPUErrorType* {.size: sizeof(cuint).} = enum
-    NoError = 1, Validation = 2, OutOfMemory = 3, Internal = 4, Unknown = 5,
-    Force32 = 2147483647
-type
-  enum_WGPUFeatureLevel* {.size: sizeof(cuint).} = enum
-    Compatibility = 1, Core = 2, Force32 = 2147483647
-type
-  enum_WGPUFeatureName* {.size: sizeof(cuint).} = enum
-    Undefined = 0, DepthClipControl = 1, Depth32FloatStencil8 = 2,
-    TimestampQuery = 3, TextureCompressionBC = 4,
-    TextureCompressionBCSliced3D = 5, TextureCompressionETC2 = 6,
-    TextureCompressionASTC = 7, TextureCompressionASTCSliced3D = 8,
-    IndirectFirstInstance = 9, ShaderF16 = 10, RG11B10UfloatRenderable = 11,
-    BGRA8UnormStorage = 12, Float32Filterable = 13, Float32Blendable = 14,
-    ClipDistances = 15, DualSourceBlending = 16, Force32 = 2147483647
-type
-  enum_WGPUFilterMode* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Nearest = 1, Linear = 2, Force32 = 2147483647
-type
-  enum_WGPUFrontFace* {.size: sizeof(cuint).} = enum
-    Undefined = 0, CCW = 1, CW = 2, Force32 = 2147483647
-type
-  enum_WGPUIndexFormat* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Uint16 = 1, Uint32 = 2, Force32 = 2147483647
-type
-  enum_WGPULoadOp* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Load = 1, Clear = 2, Force32 = 2147483647
-type
-  enum_WGPUMapAsyncStatus* {.size: sizeof(cuint).} = enum
-    Success = 1, InstanceDropped = 2, Error = 3, Aborted = 4, Unknown = 5,
-    Force32 = 2147483647
-type
-  enum_WGPUMipmapFilterMode* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Nearest = 1, Linear = 2, Force32 = 2147483647
-type
-  enum_WGPUOptionalBool* {.size: sizeof(cuint).} = enum
-    False = 0, True = 1, Undefined = 2, Force32 = 2147483647
-type
-  enum_WGPUPopErrorScopeStatus* {.size: sizeof(cuint).} = enum
-    Success = 1, InstanceDropped = 2, EmptyStack = 3, Force32 = 2147483647
-type
-  enum_WGPUPowerPreference* {.size: sizeof(cuint).} = enum
-    Undefined = 0, LowPower = 1, HighPerformance = 2, Force32 = 2147483647
-type
-  enum_WGPUPresentMode* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Fifo = 1, FifoRelaxed = 2, Immediate = 3, Mailbox = 4,
-    Force32 = 2147483647
-type
-  enum_WGPUPrimitiveTopology* {.size: sizeof(cuint).} = enum
-    Undefined = 0, PointList = 1, LineList = 2, LineStrip = 3, TriangleList = 4,
-    TriangleStrip = 5, Force32 = 2147483647
-type
-  enum_WGPUQueryType* {.size: sizeof(cuint).} = enum
-    Occlusion = 1, Timestamp = 2, Force32 = 2147483647
-type
-  enum_WGPUQueueWorkDoneStatus* {.size: sizeof(cuint).} = enum
-    Success = 1, InstanceDropped = 2, Error = 3, Unknown = 4,
-    Force32 = 2147483647
-type
-  enum_WGPURequestAdapterStatus* {.size: sizeof(cuint).} = enum
-    Success = 1, InstanceDropped = 2, Unavailable = 3, Error = 4, Unknown = 5,
-    Force32 = 2147483647
-type
-  enum_WGPURequestDeviceStatus* {.size: sizeof(cuint).} = enum
-    Success = 1, InstanceDropped = 2, Error = 3, Unknown = 4,
-    Force32 = 2147483647
-type
-  enum_WGPUSType* {.size: sizeof(cuint).} = enum
-    SType_ShaderSourceSPIRV = 1, SType_ShaderSourceWGSL = 2,
-    SType_RenderPassMaxDrawCount = 3, SType_SurfaceSourceMetalLayer = 4,
-    SType_SurfaceSourceWindowsHWND = 5, SType_SurfaceSourceXlibWindow = 6,
-    SType_SurfaceSourceWaylandSurface = 7,
-    SType_SurfaceSourceAndroidNativeWindow = 8,
-    SType_SurfaceSourceXCBWindow = 9, SType_Force32 = 2147483647
-type
-  enum_WGPUSamplerBindingType* {.size: sizeof(cuint).} = enum
-    BindingNotUsed = 0, Undefined = 1, Filtering = 2, NonFiltering = 3,
-    Comparison = 4, Force32 = 2147483647
-type
-  enum_WGPUStatus* {.size: sizeof(cuint).} = enum
-    Success = 1, Error = 2, Force32 = 2147483647
-type
-  enum_WGPUStencilOperation* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Keep = 1, Zero = 2, Replace = 3, Invert = 4,
-    IncrementClamp = 5, DecrementClamp = 6, IncrementWrap = 7,
-    DecrementWrap = 8, Force32 = 2147483647
-type
-  enum_WGPUStorageTextureAccess* {.size: sizeof(cuint).} = enum
-    BindingNotUsed = 0, Undefined = 1, WriteOnly = 2, ReadOnly = 3,
-    ReadWrite = 4, Force32 = 2147483647
-type
-  enum_WGPUStoreOp* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Store = 1, Discard = 2, Force32 = 2147483647
-type
-  enum_WGPUSurfaceGetCurrentTextureStatus* {.size: sizeof(cuint).} = enum
-    SuccessOptimal = 1, SuccessSuboptimal = 2, Timeout = 3, Outdated = 4,
-    Lost = 5, OutOfMemory = 6, DeviceLost = 7, Error = 8, Force32 = 2147483647
-type
-  enum_WGPUTextureAspect* {.size: sizeof(cuint).} = enum
-    Undefined = 0, All = 1, StencilOnly = 2, DepthOnly = 3, Force32 = 2147483647
-type
-  enum_WGPUTextureDimension* {.size: sizeof(cuint).} = enum
-    TextureDimension_Undefined = 0, TextureDimension_1D = 1,
-    TextureDimension_2D = 2, TextureDimension_3D = 3,
-    TextureDimension_Force32 = 2147483647
-type
-  enum_WGPUTextureFormat* {.size: sizeof(cuint).} = enum
-    Undefined = 0, R8Unorm = 1, R8Snorm = 2, R8Uint = 3, R8Sint = 4,
-    R16Uint = 5, R16Sint = 6, R16Float = 7, RG8Unorm = 8, RG8Snorm = 9,
-    RG8Uint = 10, RG8Sint = 11, R32Float = 12, R32Uint = 13, R32Sint = 14,
-    RG16Uint = 15, RG16Sint = 16, RG16Float = 17, RGBA8Unorm = 18,
-    RGBA8UnormSrgb = 19, RGBA8Snorm = 20, RGBA8Uint = 21, RGBA8Sint = 22,
-    BGRA8Unorm = 23, BGRA8UnormSrgb = 24, RGB10A2Uint = 25, RGB10A2Unorm = 26,
-    RG11B10Ufloat = 27, RGB9E5Ufloat = 28, RG32Float = 29, RG32Uint = 30,
-    RG32Sint = 31, RGBA16Uint = 32, RGBA16Sint = 33, RGBA16Float = 34,
-    RGBA32Float = 35, RGBA32Uint = 36, RGBA32Sint = 37, Stencil8 = 38,
-    Depth16Unorm = 39, Depth24Plus = 40, Depth24PlusStencil8 = 41,
-    Depth32Float = 42, Depth32FloatStencil8 = 43, BC1RGBAUnorm = 44,
-    BC1RGBAUnormSrgb = 45, BC2RGBAUnorm = 46, BC2RGBAUnormSrgb = 47,
-    BC3RGBAUnorm = 48, BC3RGBAUnormSrgb = 49, BC4RUnorm = 50, BC4RSnorm = 51,
-    BC5RGUnorm = 52, BC5RGSnorm = 53, BC6HRGBUfloat = 54, BC6HRGBFloat = 55,
-    BC7RGBAUnorm = 56, BC7RGBAUnormSrgb = 57, ETC2RGB8Unorm = 58,
-    ETC2RGB8UnormSrgb = 59, ETC2RGB8A1Unorm = 60, ETC2RGB8A1UnormSrgb = 61,
-    ETC2RGBA8Unorm = 62, ETC2RGBA8UnormSrgb = 63, EACR11Unorm = 64,
-    EACR11Snorm = 65, EACRG11Unorm = 66, EACRG11Snorm = 67, ASTC4x4Unorm = 68,
-    ASTC4x4UnormSrgb = 69, ASTC5x4Unorm = 70, ASTC5x4UnormSrgb = 71,
-    ASTC5x5Unorm = 72, ASTC5x5UnormSrgb = 73, ASTC6x5Unorm = 74,
-    ASTC6x5UnormSrgb = 75, ASTC6x6Unorm = 76, ASTC6x6UnormSrgb = 77,
-    ASTC8x5Unorm = 78, ASTC8x5UnormSrgb = 79, ASTC8x6Unorm = 80,
-    ASTC8x6UnormSrgb = 81, ASTC8x8Unorm = 82, ASTC8x8UnormSrgb = 83,
-    ASTC10x5Unorm = 84, ASTC10x5UnormSrgb = 85, ASTC10x6Unorm = 86,
-    ASTC10x6UnormSrgb = 87, ASTC10x8Unorm = 88, ASTC10x8UnormSrgb = 89,
-    ASTC10x10Unorm = 90, ASTC10x10UnormSrgb = 91, ASTC12x10Unorm = 92,
-    ASTC12x10UnormSrgb = 93, ASTC12x12Unorm = 94, ASTC12x12UnormSrgb = 95,
-    Force32 = 2147483647
-type
-  enum_WGPUTextureSampleType* {.size: sizeof(cuint).} = enum
-    BindingNotUsed = 0, Undefined = 1, Float = 2, UnfilterableFloat = 3,
-    Depth = 4, Sint = 5, Uint = 6, Force32 = 2147483647
-type
-  enum_WGPUTextureViewDimension* {.size: sizeof(cuint).} = enum
-    Undefined = 0, D1D = 1, D2D = 2, D2DArray = 3, Cube = 4, CubeArray = 5,
-    D3D = 6, Force32 = 2147483647
-type
-  enum_WGPUVertexFormat* {.size: sizeof(cuint).} = enum
-    Uint8 = 1, Uint8x2 = 2, Uint8x4 = 3, Sint8 = 4, Sint8x2 = 5, Sint8x4 = 6,
-    Unorm8 = 7, Unorm8x2 = 8, Unorm8x4 = 9, Snorm8 = 10, Snorm8x2 = 11,
-    Snorm8x4 = 12, Uint16 = 13, Uint16x2 = 14, Uint16x4 = 15, Sint16 = 16,
-    Sint16x2 = 17, Sint16x4 = 18, Unorm16 = 19, Unorm16x2 = 20, Unorm16x4 = 21,
-    Snorm16 = 22, Snorm16x2 = 23, Snorm16x4 = 24, Float16 = 25, Float16x2 = 26,
-    Float16x4 = 27, Float32 = 28, Float32x2 = 29, Float32x3 = 30,
-    Float32x4 = 31, Uint32 = 32, Uint32x2 = 33, Uint32x3 = 34, Uint32x4 = 35,
-    Sint32 = 36, Sint32x2 = 37, Sint32x3 = 38, Sint32x4 = 39,
-    Unorm10_10_10_2 = 40, Unorm8x4BGRA = 41, Force32 = 2147483647
-type
-  enum_WGPUVertexStepMode* {.size: sizeof(cuint).} = enum
-    VertexStepMode_VertexBufferNotUsed = 0, VertexStepMode_Undefined = 1,
-    VertexStepMode_Vertex = 2, VertexStepMode_Instance = 3,
-    VertexStepMode_Force32 = 2147483647
-type
-  enum_WGPUWGSLLanguageFeatureName* {.size: sizeof(cuint).} = enum
-    ReadonlyAndReadwriteStorageTextures = 1, Packed4x8IntegerDotProduct = 2,
-    UnrestrictedPointerParameters = 3, PointerCompositeAccess = 4,
-    Force32 = 2147483647
-type
-  enum_WGPUWaitStatus* {.size: sizeof(cuint).} = enum
-    Success = 1, TimedOut = 2, UnsupportedTimeout = 3, UnsupportedCount = 4,
-    UnsupportedMixedSources = 5, Force32 = 2147483647
-type
-  enum_WGPUNativeSType* {.size: sizeof(cuint).} = enum
-    SType_DeviceExtras = 196609, SType_NativeLimits = 196610,
-    SType_PipelineLayoutExtras = 196611,
-    SType_ShaderModuleGLSLDescriptor = 196612, SType_InstanceExtras = 196614,
-    SType_BindGroupEntryExtras = 196615,
-    SType_BindGroupLayoutEntryExtras = 196616,
-    SType_QuerySetDescriptorExtras = 196617,
-    SType_SurfaceConfigurationExtras = 196618, NativeSType_Force32 = 2147483647
-type
-  enum_WGPUNativeFeature* {.size: sizeof(cuint).} = enum
-    PushConstants = 196609, TextureAdapterSpecificFormatFeatures = 196610,
-    MultiDrawIndirect = 196611, MultiDrawIndirectCount = 196612,
-    VertexWritableStorage = 196613, TextureBindingArray = 196614,
-    SampledTextureAndStorageBufferArrayNonUniformIndexing = 196615,
-    PipelineStatisticsQuery = 196616, StorageResourceBindingArray = 196617,
-    PartiallyBoundBindingArray = 196618, TextureFormat16bitNorm = 196619,
-    TextureCompressionAstcHdr = 196620, MappablePrimaryBuffers = 196622,
-    BufferBindingArray = 196623,
-    UniformBufferAndStorageTextureArrayNonUniformIndexing = 196624,
-    SpirvShaderPassthrough = 196631, VertexAttribute64bit = 196633,
-    TextureFormatNv12 = 196634, RayTracingAccelerationStructure = 196635,
-    RayQuery = 196636, ShaderF64 = 196637, ShaderI16 = 196638,
-    ShaderPrimitiveIndex = 196639, ShaderEarlyDepthTest = 196640,
-    Subgroup = 196641, SubgroupVertex = 196642, SubgroupBarrier = 196643,
-    TimestampQueryInsideEncoders = 196644, TimestampQueryInsidePasses = 196645,
-    Force32 = 2147483647
-type
-  enum_WGPULogLevel* {.size: sizeof(cuint).} = enum
-    Off = 0, Error = 1, Warn = 2, Info = 3, Debug = 4, Trace = 5,
-    Force32 = 2147483647
-type
-  enum_WGPUDx12Compiler* {.size: sizeof(cuint).} = enum
-    Undefined = 0, Fxc = 1, Dxc = 2, Force32 = 2147483647
-type
-  enum_WGPUGles3MinorVersion* {.size: sizeof(cuint).} = enum
-    Automatic = 0, Version0 = 1, Version1 = 2, Version2 = 3,
-    Force32 = 2147483647
-type
-  enum_WGPUPipelineStatisticName* {.size: sizeof(cuint).} = enum
-    VertexShaderInvocations = 0, ClipperInvocations = 1,
-    ClipperPrimitivesOut = 2, FragmentShaderInvocations = 3,
-    ComputeShaderInvocations = 4, Force32 = 2147483647
-type
-  enum_WGPUNativeQueryType* {.size: sizeof(cuint).} = enum
-    PipelineStatistics = 196608, Force32 = 2147483647
-type
-  enum_WGPUNativeTextureFormat* {.size: sizeof(cuint).} = enum
-    R16Unorm = 196609, R16Snorm = 196610, Rg16Unorm = 196611,
-    Rg16Snorm = 196612, Rgba16Unorm = 196613, Rgba16Snorm = 196614,
-    NV12 = 196615
-type
-  struct_WGPUQuerySetImpl* = object
-type
-  struct_WGPUInstanceImpl* = object
-type
-  struct_WGPUBindGroupLayoutImpl* = object
-type
-  struct_WGPURenderBundleEncoderImpl* = object
-type
-  struct_WGPUBufferImpl* = object
-type
-  struct_WGPUAdapterImpl* = object
-type
-  struct_WGPUCommandBufferImpl* = object
-type
-  struct_WGPUShaderModuleImpl* = object
-type
-  struct_WGPURenderPipelineImpl* = object
-type
-  struct_WGPUTextureViewImpl* = object
-type
-  struct_WGPURenderBundleImpl* = object
-type
-  struct_WGPUSamplerImpl* = object
-type
-  struct_WGPUDeviceImpl* = object
-type
-  struct_WGPUTextureImpl* = object
-type
-  struct_WGPUComputePassEncoderImpl* = object
-type
-  struct_WGPURenderPassEncoderImpl* = object
-type
-  struct_WGPUComputePipelineImpl* = object
-type
-  struct_WGPUPipelineLayoutImpl* = object
-type
-  UINT64_MAX* = object
-type
-  struct_WGPUQueueImpl* = object
-type
-  struct_WGPUCommandEncoderImpl* = object
-type
-  struct_WGPUSurfaceImpl* = object
-type
-  struct_WGPUBindGroupImpl* = object
-type
-  Flags* = uint64            ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:96:18
-  Bool* = uint32             ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:97:18
-  struct_WGPUStringView* {.pure, inheritable, bycopy.} = object
-    data*: cstring           ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:120:16
-    length*: csize_t
-  StringView* = struct_WGPUStringView ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:123:3
-  Adapter* = ptr struct_WGPUAdapterImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:145:33
-  BindGroup* = ptr struct_WGPUBindGroupImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:146:35
-  BindGroupLayout* = ptr struct_WGPUBindGroupLayoutImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:147:41
-  Buffer* = ptr struct_WGPUBufferImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:148:32
-  CommandBuffer* = ptr struct_WGPUCommandBufferImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:149:39
-  CommandEncoder* = ptr struct_WGPUCommandEncoderImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:150:40
-  ComputePassEncoder* = ptr struct_WGPUComputePassEncoderImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:151:44
-  ComputePipeline* = ptr struct_WGPUComputePipelineImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:152:41
-  Device* = ptr struct_WGPUDeviceImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:153:32
-  Instance* = ptr struct_WGPUInstanceImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:154:34
-  PipelineLayout* = ptr struct_WGPUPipelineLayoutImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:155:40
-  QuerySet* = ptr struct_WGPUQuerySetImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:156:34
-  Queue* = ptr struct_WGPUQueueImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:157:31
-  RenderBundle* = ptr struct_WGPURenderBundleImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:158:38
-  RenderBundleEncoder* = ptr struct_WGPURenderBundleEncoderImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:159:45
-  RenderPassEncoder* = ptr struct_WGPURenderPassEncoderImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:160:43
-  RenderPipeline* = ptr struct_WGPURenderPipelineImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:161:40
-  Sampler* = ptr struct_WGPUSamplerImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:162:33
-  ShaderModule* = ptr struct_WGPUShaderModuleImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:163:38
-  Surface* = ptr struct_WGPUSurfaceImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:167:33
-  Texture* = ptr struct_WGPUTextureImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:168:33
-  TextureView* = ptr struct_WGPUTextureViewImpl ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:169:37
-  AdapterType* = enum_WGPUAdapterType ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:272:3
-  AddressMode* = enum_WGPUAddressMode ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:284:3
-  BackendType* = enum_WGPUBackendType ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:301:3
-  BlendFactor* = enum_WGPUBlendFactor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:327:3
-  BlendOperation* = enum_WGPUBlendOperation ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:341:3
-  BufferBindingType* = enum_WGPUBufferBindingType ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:360:3
-  BufferMapState* = enum_WGPUBufferMapState ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:367:3
-  CallbackMode* = enum_WGPUCallbackMode ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:399:3
-  CompareFunction* = enum_WGPUCompareFunction ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:416:3
-  CompilationInfoRequestStatus* = enum_WGPUCompilationInfoRequestStatus ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:424:3
-  CompilationMessageType* = enum_WGPUCompilationMessageType ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:431:3
-  CompositeAlphaMode* = enum_WGPUCompositeAlphaMode ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:463:3
-  CreatePipelineAsyncStatus* = enum_WGPUCreatePipelineAsyncStatus ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:472:3
-  CullMode* = enum_WGPUCullMode ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:484:3
-  DeviceLostReason* = enum_WGPUDeviceLostReason ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:492:3
-  ErrorFilter* = enum_WGPUErrorFilter ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:499:3
-  ErrorType* = enum_WGPUErrorType ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:508:3
-  FeatureLevel* = enum_WGPUFeatureLevel ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:525:3
-  FeatureName* = enum_WGPUFeatureName ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:546:3
-  FilterMode* = enum_WGPUFilterMode ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:557:3
-  FrontFace* = enum_WGPUFrontFace ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:568:3
-  IndexFormat* = enum_WGPUIndexFormat ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:579:3
-  LoadOp* = enum_WGPULoadOp  ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:590:3
-  MapAsyncStatus* = enum_WGPUMapAsyncStatus ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:599:3
-  MipmapFilterMode* = enum_WGPUMipmapFilterMode ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:610:3
-  OptionalBool* = enum_WGPUOptionalBool ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:617:3
-  PopErrorScopeStatus* = enum_WGPUPopErrorScopeStatus ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:632:3
-  PowerPreference* = enum_WGPUPowerPreference ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:643:3
-  PresentMode* = enum_WGPUPresentMode ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:681:3
-  PrimitiveTopology* = enum_WGPUPrimitiveTopology ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:695:3
-  QueryType* = enum_WGPUQueryType ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:701:3
-  QueueWorkDoneStatus* = enum_WGPUQueueWorkDoneStatus ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:709:3
-  RequestAdapterStatus* = enum_WGPURequestAdapterStatus ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:718:3
-  RequestDeviceStatus* = enum_WGPURequestDeviceStatus ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:726:3
-  SType* = enum_WGPUSType    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:739:3
-  SamplerBindingType* = enum_WGPUSamplerBindingType ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:758:3
-  Status* = enum_WGPUStatus  ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:769:3
-  StencilOperation* = enum_WGPUStencilOperation ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:786:3
-  StorageTextureAccess* = enum_WGPUStorageTextureAccess ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:805:3
-  StoreOp* = enum_WGPUStoreOp ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:816:3
-  SurfaceGetCurrentTextureStatus* = enum_WGPUSurfaceGetCurrentTextureStatus ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:863:3
-  TextureAspect* = enum_WGPUTextureAspect ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:875:3
-  TextureDimension* = enum_WGPUTextureDimension ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:887:3
-  TextureFormat* = enum_WGPUTextureFormat ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:991:3
-  TextureSampleType* = enum_WGPUTextureSampleType ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1012:3
-  TextureViewDimension* = enum_WGPUTextureViewDimension ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1027:3
-  VertexFormat* = enum_WGPUVertexFormat ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1072:3
-  VertexStepMode* = enum_WGPUVertexStepMode ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1089:3
-  WGSLLanguageFeatureName* = enum_WGPUWGSLLanguageFeatureName ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1097:3
-  WaitStatus* = enum_WGPUWaitStatus ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1129:3
-  BufferUsage* = Flags       ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1140:19
-  ColorWriteMask* = Flags    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1153:19
-  MapMode* = Flags           ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1161:19
-  ShaderStage* = Flags       ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1166:19
-  TextureUsage* = Flags      ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1172:19
-  Proc* = proc (): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1182:16
-  BufferMapCallback* = proc (a0: MapAsyncStatus; a1: StringView; a2: pointer;
-                             a3: pointer): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1195:16
-  CompilationInfoCallback* = proc (a0: CompilationInfoRequestStatus;
-                                   a1: ptr struct_WGPUCompilationInfo;
-                                   a2: pointer; a3: pointer): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1200:16
-  struct_WGPUCompilationInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2005:16
-    messageCount*: csize_t
-    messages*: ptr CompilationMessage
-  CreateComputePipelineAsyncCallback* = proc (a0: CreatePipelineAsyncStatus;
-      a1: ComputePipeline; a2: StringView; a3: pointer; a4: pointer): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1205:16
-  CreateRenderPipelineAsyncCallback* = proc (a0: CreatePipelineAsyncStatus;
-      a1: RenderPipeline; a2: StringView; a3: pointer; a4: pointer): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1210:16
-  DeviceLostCallback* = proc (a0: ptr Device; a1: DeviceLostReason;
-                              a2: StringView; a3: pointer; a4: pointer): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1219:16
-  PopErrorScopeCallback* = proc (a0: PopErrorScopeStatus; a1: ErrorType;
-                                 a2: StringView; a3: pointer; a4: pointer): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1233:16
-  QueueWorkDoneCallback* = proc (a0: QueueWorkDoneStatus; a1: pointer;
-                                 a2: pointer): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1234:16
-  RequestAdapterCallback* = proc (a0: RequestAdapterStatus; a1: Adapter;
-                                  a2: StringView; a3: pointer; a4: pointer): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1242:16
-  RequestDeviceCallback* = proc (a0: RequestDeviceStatus; a1: Device;
-                                 a2: StringView; a3: pointer; a4: pointer): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1250:16
-  UncapturedErrorCallback* = proc (a0: ptr Device; a1: ErrorType;
-                                   a2: StringView; a3: pointer; a4: pointer): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1258:16
-  struct_WGPUChainedStruct* {.pure, inheritable, bycopy.} = object
-    next*: ptr struct_WGPUChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1268:16
-    sType*: SType
-  ChainedStruct* = struct_WGPUChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1271:3
-  struct_WGPUChainedStructOut* {.pure, inheritable, bycopy.} = object
-    next*: ptr struct_WGPUChainedStructOut ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1273:16
-    sType*: SType
-  ChainedStructOut* = struct_WGPUChainedStructOut ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1276:3
-  struct_WGPUBufferMapCallbackInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1294:16
-    mode*: CallbackMode
-    callback*: BufferMapCallback
-    userdata1*: pointer
-    userdata2*: pointer
-  BufferMapCallbackInfo* = struct_WGPUBufferMapCallbackInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1300:3
-  struct_WGPUCompilationInfoCallbackInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1302:16
-    mode*: CallbackMode
-    callback*: CompilationInfoCallback
-    userdata1*: pointer
-    userdata2*: pointer
-  CompilationInfoCallbackInfo* = struct_WGPUCompilationInfoCallbackInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1308:3
-  struct_WGPUCreateComputePipelineAsyncCallbackInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1310:16
-    mode*: CallbackMode
-    callback*: CreateComputePipelineAsyncCallback
-    userdata1*: pointer
-    userdata2*: pointer
-  CreateComputePipelineAsyncCallbackInfo* = struct_WGPUCreateComputePipelineAsyncCallbackInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1316:3
-  struct_WGPUCreateRenderPipelineAsyncCallbackInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1318:16
-    mode*: CallbackMode
-    callback*: CreateRenderPipelineAsyncCallback
-    userdata1*: pointer
-    userdata2*: pointer
-  CreateRenderPipelineAsyncCallbackInfo* = struct_WGPUCreateRenderPipelineAsyncCallbackInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1324:3
-  struct_WGPUDeviceLostCallbackInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1326:16
-    mode*: CallbackMode
-    callback*: DeviceLostCallback
-    userdata1*: pointer
-    userdata2*: pointer
-  DeviceLostCallbackInfo* = struct_WGPUDeviceLostCallbackInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1332:3
-  struct_WGPUPopErrorScopeCallbackInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1334:16
-    mode*: CallbackMode
-    callback*: PopErrorScopeCallback
-    userdata1*: pointer
-    userdata2*: pointer
-  PopErrorScopeCallbackInfo* = struct_WGPUPopErrorScopeCallbackInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1340:3
-  struct_WGPUQueueWorkDoneCallbackInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1342:16
-    mode*: CallbackMode
-    callback*: QueueWorkDoneCallback
-    userdata1*: pointer
-    userdata2*: pointer
-  QueueWorkDoneCallbackInfo* = struct_WGPUQueueWorkDoneCallbackInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1348:3
-  struct_WGPURequestAdapterCallbackInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1350:16
-    mode*: CallbackMode
-    callback*: RequestAdapterCallback
-    userdata1*: pointer
-    userdata2*: pointer
-  RequestAdapterCallbackInfo* = struct_WGPURequestAdapterCallbackInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1356:3
-  struct_WGPURequestDeviceCallbackInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1358:16
-    mode*: CallbackMode
-    callback*: RequestDeviceCallback
-    userdata1*: pointer
-    userdata2*: pointer
-  RequestDeviceCallbackInfo* = struct_WGPURequestDeviceCallbackInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1364:3
-  struct_WGPUUncapturedErrorCallbackInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1366:16
-    callback*: UncapturedErrorCallback
-    userdata1*: pointer
-    userdata2*: pointer
-  UncapturedErrorCallbackInfo* = struct_WGPUUncapturedErrorCallbackInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1371:3
-  struct_WGPUAdapterInfo* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStructOut ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1375:16
-    vendor*: StringView
-    architecture*: StringView
-    device*: StringView
-    description*: StringView
-    backendType*: BackendType
-    adapterType*: AdapterType
-    vendorID*: uint32
-    deviceID*: uint32
-  AdapterInfo* = struct_WGPUAdapterInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1397:3
-  struct_WGPUBindGroupEntry* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1399:16
-    binding*: uint32
-    buffer*: Buffer
-    offset*: uint64
-    size*: uint64
-    sampler*: Sampler
-    textureView*: TextureView
-  BindGroupEntry* = struct_WGPUBindGroupEntry ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1407:3
-  struct_WGPUBlendComponent* {.pure, inheritable, bycopy.} = object
-    operation*: BlendOperation ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1409:16
-    srcFactor*: BlendFactor
-    dstFactor*: BlendFactor
-  BlendComponent* = struct_WGPUBlendComponent ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1413:3
-  struct_WGPUBufferBindingLayout* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1415:16
-    type_field*: BufferBindingType
-    hasDynamicOffset*: Bool
-    minBindingSize*: uint64
-  BufferBindingLayout* = struct_WGPUBufferBindingLayout ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1420:3
-  struct_WGPUBufferDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1422:16
-    label*: StringView
-    usage*: BufferUsage
-    size*: uint64
-    mappedAtCreation*: Bool
-  BufferDescriptor* = struct_WGPUBufferDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1431:3
-  struct_WGPUColor* {.pure, inheritable, bycopy.} = object
-    r*: cdouble              ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1433:16
-    g*: cdouble
-    b*: cdouble
-    a*: cdouble
-  Color* = struct_WGPUColor  ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1438:3
-  struct_WGPUCommandBufferDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1440:16
-    label*: StringView
-  CommandBufferDescriptor* = struct_WGPUCommandBufferDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1446:3
-  struct_WGPUCommandEncoderDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1448:16
-    label*: StringView
-  CommandEncoderDescriptor* = struct_WGPUCommandEncoderDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1454:3
-  struct_WGPUCompilationMessage* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1456:16
-    message*: StringView
-    type_field*: CompilationMessageType
-    lineNum*: uint64
-    linePos*: uint64
-    offset*: uint64
-    length*: uint64
-  CompilationMessage* = struct_WGPUCompilationMessage ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1484:3
-  struct_WGPUComputePassTimestampWrites* {.pure, inheritable, bycopy.} = object
-    querySet*: QuerySet      ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1486:16
-    beginningOfPassWriteIndex*: uint32
-    endOfPassWriteIndex*: uint32
-  ComputePassTimestampWrites* = struct_WGPUComputePassTimestampWrites ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1490:3
-  struct_WGPUConstantEntry* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1492:16
-    key*: StringView
-    value*: cdouble
-  ConstantEntry* = struct_WGPUConstantEntry ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1499:3
-  struct_WGPUExtent3D* {.pure, inheritable, bycopy.} = object
-    width*: uint32           ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1501:16
-    height*: uint32
-    depthOrArrayLayers*: uint32
-  Extent3D* = struct_WGPUExtent3D ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1505:3
-  struct_WGPUFuture* {.pure, inheritable, bycopy.} = object
-    id*: uint64              ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1510:16
-  Future* = struct_WGPUFuture ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1515:3
-  struct_WGPUInstanceCapabilities* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStructOut ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1520:16
-    timedWaitAnyEnable*: Bool
-    timedWaitAnyMaxCount*: csize_t
-  InstanceCapabilities* = struct_WGPUInstanceCapabilities ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1531:3
-  struct_WGPULimits* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStructOut ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1533:16
-    maxTextureDimension1D*: uint32
-    maxTextureDimension2D*: uint32
-    maxTextureDimension3D*: uint32
-    maxTextureArrayLayers*: uint32
-    maxBindGroups*: uint32
-    maxBindGroupsPlusVertexBuffers*: uint32
-    maxBindingsPerBindGroup*: uint32
-    maxDynamicUniformBuffersPerPipelineLayout*: uint32
-    maxDynamicStorageBuffersPerPipelineLayout*: uint32
-    maxSampledTexturesPerShaderStage*: uint32
-    maxSamplersPerShaderStage*: uint32
-    maxStorageBuffersPerShaderStage*: uint32
-    maxStorageTexturesPerShaderStage*: uint32
-    maxUniformBuffersPerShaderStage*: uint32
-    maxUniformBufferBindingSize*: uint64
-    maxStorageBufferBindingSize*: uint64
-    minUniformBufferOffsetAlignment*: uint32
-    minStorageBufferOffsetAlignment*: uint32
-    maxVertexBuffers*: uint32
-    maxBufferSize*: uint64
-    maxVertexAttributes*: uint32
-    maxVertexBufferArrayStride*: uint32
-    maxInterStageShaderVariables*: uint32
-    maxColorAttachments*: uint32
-    maxColorAttachmentBytesPerSample*: uint32
-    maxComputeWorkgroupStorageSize*: uint32
-    maxComputeInvocationsPerWorkgroup*: uint32
-    maxComputeWorkgroupSizeX*: uint32
-    maxComputeWorkgroupSizeY*: uint32
-    maxComputeWorkgroupSizeZ*: uint32
-    maxComputeWorkgroupsPerDimension*: uint32
-  Limits* = struct_WGPULimits ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1567:3
-  struct_WGPUMultisampleState* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1569:16
-    count*: uint32
-    mask*: uint32
-    alphaToCoverageEnabled*: Bool
-  MultisampleState* = struct_WGPUMultisampleState ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1574:3
-  struct_WGPUOrigin3D* {.pure, inheritable, bycopy.} = object
-    x*: uint32               ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1576:16
-    y*: uint32
-    z*: uint32
-  Origin3D* = struct_WGPUOrigin3D ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1580:3
-  struct_WGPUPipelineLayoutDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1582:16
-    label*: StringView
-    bindGroupLayoutCount*: csize_t
-    bindGroupLayouts*: ptr BindGroupLayout
-  PipelineLayoutDescriptor* = struct_WGPUPipelineLayoutDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1590:3
-  struct_WGPUPrimitiveState* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1592:16
-    topology*: PrimitiveTopology
-    stripIndexFormat*: IndexFormat
-    frontFace*: FrontFace
-    cullMode*: CullMode
-    unclippedDepth*: Bool
-  PrimitiveState* = struct_WGPUPrimitiveState ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1599:3
-  struct_WGPUQuerySetDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1601:16
-    label*: StringView
-    type_field*: QueryType
-    count*: uint32
-  QuerySetDescriptor* = struct_WGPUQuerySetDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1609:3
-  struct_WGPUQueueDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1611:16
-    label*: StringView
-  QueueDescriptor* = struct_WGPUQueueDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1617:3
-  struct_WGPURenderBundleDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1619:16
-    label*: StringView
-  RenderBundleDescriptor* = struct_WGPURenderBundleDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1625:3
-  struct_WGPURenderBundleEncoderDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1627:16
-    label*: StringView
-    colorFormatCount*: csize_t
-    colorFormats*: ptr TextureFormat
-    depthStencilFormat*: TextureFormat
-    sampleCount*: uint32
-    depthReadOnly*: Bool
-    stencilReadOnly*: Bool
-  RenderBundleEncoderDescriptor* = struct_WGPURenderBundleEncoderDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1639:3
-  struct_WGPURenderPassDepthStencilAttachment* {.pure, inheritable, bycopy.} = object
-    view*: TextureView       ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1641:16
-    depthLoadOp*: LoadOp
-    depthStoreOp*: StoreOp
-    depthClearValue*: cfloat
-    depthReadOnly*: Bool
-    stencilLoadOp*: LoadOp
-    stencilStoreOp*: StoreOp
-    stencilClearValue*: uint32
-    stencilReadOnly*: Bool
-  RenderPassDepthStencilAttachment* = struct_WGPURenderPassDepthStencilAttachment ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1651:3
-  struct_WGPURenderPassMaxDrawCount* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1653:16
-    maxDrawCount*: uint64
-  RenderPassMaxDrawCount* = struct_WGPURenderPassMaxDrawCount ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1656:3
-  struct_WGPURenderPassTimestampWrites* {.pure, inheritable, bycopy.} = object
-    querySet*: QuerySet      ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1658:16
-    beginningOfPassWriteIndex*: uint32
-    endOfPassWriteIndex*: uint32
-  RenderPassTimestampWrites* = struct_WGPURenderPassTimestampWrites ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1662:3
-  struct_WGPURequestAdapterOptions* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1664:16
-    featureLevel*: FeatureLevel
-    powerPreference*: PowerPreference
-    forceFallbackAdapter*: Bool
-    backendType*: BackendType
-    compatibleSurface*: Surface
-  RequestAdapterOptions* = struct_WGPURequestAdapterOptions ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1688:3
-  struct_WGPUSamplerBindingLayout* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1690:16
-    type_field*: SamplerBindingType
-  SamplerBindingLayout* = struct_WGPUSamplerBindingLayout ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1693:3
-  struct_WGPUSamplerDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1695:16
-    label*: StringView
-    addressModeU*: AddressMode
-    addressModeV*: AddressMode
-    addressModeW*: AddressMode
-    magFilter*: FilterMode
-    minFilter*: FilterMode
-    mipmapFilter*: MipmapFilterMode
-    lodMinClamp*: cfloat
-    lodMaxClamp*: cfloat
-    compare*: CompareFunction
-    maxAnisotropy*: uint16
-  SamplerDescriptor* = struct_WGPUSamplerDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1711:3
-  struct_WGPUShaderModuleDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1713:16
-    label*: StringView
-  ShaderModuleDescriptor* = struct_WGPUShaderModuleDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1719:3
-  struct_WGPUShaderSourceSPIRV* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1721:16
-    codeSize*: uint32
-    code*: ptr uint32
-  ShaderSourceSPIRV* = struct_WGPUShaderSourceSPIRV ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1725:3
-  struct_WGPUShaderSourceWGSL* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1727:16
-    code*: StringView
-  ShaderSourceWGSL* = struct_WGPUShaderSourceWGSL ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1733:3
-  struct_WGPUStencilFaceState* {.pure, inheritable, bycopy.} = object
-    compare*: CompareFunction ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1735:16
-    failOp*: StencilOperation
-    depthFailOp*: StencilOperation
-    passOp*: StencilOperation
-  StencilFaceState* = struct_WGPUStencilFaceState ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1740:3
-  struct_WGPUStorageTextureBindingLayout* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1742:16
-    access*: StorageTextureAccess
-    format*: TextureFormat
-    viewDimension*: TextureViewDimension
-  StorageTextureBindingLayout* = struct_WGPUStorageTextureBindingLayout ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1747:3
-  struct_WGPUSupportedFeatures* {.pure, inheritable, bycopy.} = object
-    featureCount*: csize_t   ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1749:16
-    features*: ptr FeatureName
-  SupportedFeatures* = struct_WGPUSupportedFeatures ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1752:3
-  struct_WGPUSupportedWGSLLanguageFeatures* {.pure, inheritable, bycopy.} = object
-    featureCount*: csize_t   ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1754:16
-    features*: ptr WGSLLanguageFeatureName
-  SupportedWGSLLanguageFeatures* = struct_WGPUSupportedWGSLLanguageFeatures ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1757:3
-  struct_WGPUSurfaceCapabilities* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStructOut ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1762:16
-    usages*: TextureUsage
-    formatCount*: csize_t
-    formats*: ptr TextureFormat
-    presentModeCount*: csize_t
-    presentModes*: ptr PresentMode
-    alphaModeCount*: csize_t
-    alphaModes*: ptr CompositeAlphaMode
-  SurfaceCapabilities* = struct_WGPUSurfaceCapabilities ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1786:3
-  struct_WGPUSurfaceConfiguration* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1792:16
-    device*: Device
-    format*: TextureFormat
-    usage*: TextureUsage
-    width*: uint32
-    height*: uint32
-    viewFormatCount*: csize_t
-    viewFormats*: ptr TextureFormat
-    alphaMode*: CompositeAlphaMode
-    presentMode*: PresentMode
-  SurfaceConfiguration* = struct_WGPUSurfaceConfiguration ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1827:3
-  struct_WGPUSurfaceDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1834:16
-    label*: StringView
-  SurfaceDescriptor* = struct_WGPUSurfaceDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1842:3
-  struct_WGPUSurfaceSourceAndroidNativeWindow* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1847:16
-    window*: pointer
-  SurfaceSourceAndroidNativeWindow* = struct_WGPUSurfaceSourceAndroidNativeWindow ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1853:3
-  struct_WGPUSurfaceSourceMetalLayer* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1858:16
-    layer*: pointer
-  SurfaceSourceMetalLayer* = struct_WGPUSurfaceSourceMetalLayer ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1864:3
-  struct_WGPUSurfaceSourceWaylandSurface* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1869:16
-    display*: pointer
-    surface*: pointer
-  SurfaceSourceWaylandSurface* = struct_WGPUSurfaceSourceWaylandSurface ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1879:3
-  struct_WGPUSurfaceSourceWindowsHWND* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1884:16
-    hinstance*: pointer
-    hwnd*: pointer
-  SurfaceSourceWindowsHWND* = struct_WGPUSurfaceSourceWindowsHWND ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1895:3
-  struct_WGPUSurfaceSourceXCBWindow* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1900:16
-    connection*: pointer
-    window*: uint32
-  SurfaceSourceXCBWindow* = struct_WGPUSurfaceSourceXCBWindow ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1910:3
-  struct_WGPUSurfaceSourceXlibWindow* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1915:16
-    display*: pointer
-    window*: uint64
-  SurfaceSourceXlibWindow* = struct_WGPUSurfaceSourceXlibWindow ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1925:3
-  struct_WGPUSurfaceTexture* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStructOut ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1931:16
-    texture*: Texture
-    status*: SurfaceGetCurrentTextureStatus
-  SurfaceTexture* = struct_WGPUSurfaceTexture ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1942:3
-  struct_WGPUTexelCopyBufferLayout* {.pure, inheritable, bycopy.} = object
-    offset*: uint64          ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1944:16
-    bytesPerRow*: uint32
-    rowsPerImage*: uint32
-  TexelCopyBufferLayout* = struct_WGPUTexelCopyBufferLayout ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1948:3
-  struct_WGPUTextureBindingLayout* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1950:16
-    sampleType*: TextureSampleType
-    viewDimension*: TextureViewDimension
-    multisampled*: Bool
-  TextureBindingLayout* = struct_WGPUTextureBindingLayout ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1955:3
-  struct_WGPUTextureViewDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1957:16
-    label*: StringView
-    format*: TextureFormat
-    dimension*: TextureViewDimension
-    baseMipLevel*: uint32
-    mipLevelCount*: uint32
-    baseArrayLayer*: uint32
-    arrayLayerCount*: uint32
-    aspect*: TextureAspect
-    usage*: TextureUsage
-  TextureViewDescriptor* = struct_WGPUTextureViewDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1971:3
-  struct_WGPUVertexAttribute* {.pure, inheritable, bycopy.} = object
-    format*: VertexFormat    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1973:16
-    offset*: uint64
-    shaderLocation*: uint32
-  VertexAttribute* = struct_WGPUVertexAttribute ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1977:3
-  struct_WGPUBindGroupDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1979:16
-    label*: StringView
-    layout*: BindGroupLayout
-    entryCount*: csize_t
-    entries*: ptr BindGroupEntry
-  BindGroupDescriptor* = struct_WGPUBindGroupDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1988:3
-  struct_WGPUBindGroupLayoutEntry* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1990:16
-    binding*: uint32
-    visibility*: ShaderStage
-    buffer*: BufferBindingLayout
-    sampler*: SamplerBindingLayout
-    texture*: TextureBindingLayout
-    storageTexture*: StorageTextureBindingLayout
-  BindGroupLayoutEntry* = struct_WGPUBindGroupLayoutEntry ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:1998:3
-  struct_WGPUBlendState* {.pure, inheritable, bycopy.} = object
-    color*: BlendComponent   ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2000:16
-    alpha*: BlendComponent
-  BlendState* = struct_WGPUBlendState ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2003:3
-  CompilationInfo* = struct_WGPUCompilationInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2009:3
-  struct_WGPUComputePassDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2011:16
-    label*: StringView
-    timestampWrites*: ptr ComputePassTimestampWrites
-  ComputePassDescriptor* = struct_WGPUComputePassDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2018:3
-  struct_WGPUDepthStencilState* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2020:16
-    format*: TextureFormat
-    depthWriteEnabled*: OptionalBool
-    depthCompare*: CompareFunction
-    stencilFront*: StencilFaceState
-    stencilBack*: StencilFaceState
-    stencilReadMask*: uint32
-    stencilWriteMask*: uint32
-    depthBias*: int32
-    depthBiasSlopeScale*: cfloat
-    depthBiasClamp*: cfloat
-  DepthStencilState* = struct_WGPUDepthStencilState ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2032:3
-  struct_WGPUDeviceDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2034:16
-    label*: StringView
-    requiredFeatureCount*: csize_t
-    requiredFeatures*: ptr FeatureName
-    requiredLimits*: ptr Limits
-    defaultQueue*: QueueDescriptor
-    deviceLostCallbackInfo*: DeviceLostCallbackInfo
-    uncapturedErrorCallbackInfo*: UncapturedErrorCallbackInfo
-  DeviceDescriptor* = struct_WGPUDeviceDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2046:3
-  struct_WGPUFutureWaitInfo* {.pure, inheritable, bycopy.} = object
-    future*: Future          ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2051:16
-    completed*: Bool
-  FutureWaitInfo* = struct_WGPUFutureWaitInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2060:3
-  struct_WGPUInstanceDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2062:16
-    features*: InstanceCapabilities
-  InstanceDescriptor* = struct_WGPUInstanceDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2068:3
-  struct_WGPUProgrammableStageDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2070:16
-    module*: ShaderModule
-    entryPoint*: StringView
-    constantCount*: csize_t
-    constants*: ptr ConstantEntry
-  ProgrammableStageDescriptor* = struct_WGPUProgrammableStageDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2079:3
-  struct_WGPURenderPassColorAttachment* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2081:16
-    view*: TextureView
-    depthSlice*: uint32
-    resolveTarget*: TextureView
-    loadOp*: LoadOp
-    storeOp*: StoreOp
-    clearValue*: Color
-  RenderPassColorAttachment* = struct_WGPURenderPassColorAttachment ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2089:3
-  struct_WGPUTexelCopyBufferInfo* {.pure, inheritable, bycopy.} = object
-    layout*: TexelCopyBufferLayout ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2091:16
-    buffer*: Buffer
-  TexelCopyBufferInfo* = struct_WGPUTexelCopyBufferInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2094:3
-  struct_WGPUTexelCopyTextureInfo* {.pure, inheritable, bycopy.} = object
-    texture*: Texture        ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2096:16
-    mipLevel*: uint32
-    origin*: Origin3D
-    aspect*: TextureAspect
-  TexelCopyTextureInfo* = struct_WGPUTexelCopyTextureInfo ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2101:3
-  struct_WGPUTextureDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2103:16
-    label*: StringView
-    usage*: TextureUsage
-    dimension*: TextureDimension
-    size*: Extent3D
-    format*: TextureFormat
-    mipLevelCount*: uint32
-    sampleCount*: uint32
-    viewFormatCount*: csize_t
-    viewFormats*: ptr TextureFormat
-  TextureDescriptor* = struct_WGPUTextureDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2117:3
-  struct_WGPUVertexBufferLayout* {.pure, inheritable, bycopy.} = object
-    stepMode*: VertexStepMode ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2119:16
-    arrayStride*: uint64
-    attributeCount*: csize_t
-    attributes*: ptr VertexAttribute
-  VertexBufferLayout* = struct_WGPUVertexBufferLayout ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2129:3
-  struct_WGPUBindGroupLayoutDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2131:16
-    label*: StringView
-    entryCount*: csize_t
-    entries*: ptr BindGroupLayoutEntry
-  BindGroupLayoutDescriptor* = struct_WGPUBindGroupLayoutDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2139:3
-  struct_WGPUColorTargetState* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2141:16
-    format*: TextureFormat
-    blend*: ptr BlendState
-    writeMask*: ColorWriteMask
-  ColorTargetState* = struct_WGPUColorTargetState ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2151:3
-  struct_WGPUComputePipelineDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2153:16
-    label*: StringView
-    layout*: PipelineLayout
-    compute*: ProgrammableStageDescriptor
-  ComputePipelineDescriptor* = struct_WGPUComputePipelineDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2161:3
-  struct_WGPURenderPassDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2163:16
-    label*: StringView
-    colorAttachmentCount*: csize_t
-    colorAttachments*: ptr RenderPassColorAttachment
-    depthStencilAttachment*: ptr RenderPassDepthStencilAttachment
-    occlusionQuerySet*: QuerySet
-    timestampWrites*: ptr RenderPassTimestampWrites
-  RenderPassDescriptor* = struct_WGPURenderPassDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2174:3
-  struct_WGPUVertexState* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2176:16
-    module*: ShaderModule
-    entryPoint*: StringView
-    constantCount*: csize_t
-    constants*: ptr ConstantEntry
-    bufferCount*: csize_t
-    buffers*: ptr VertexBufferLayout
-  VertexState* = struct_WGPUVertexState ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2187:3
-  struct_WGPUFragmentState* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2189:16
-    module*: ShaderModule
-    entryPoint*: StringView
-    constantCount*: csize_t
-    constants*: ptr ConstantEntry
-    targetCount*: csize_t
-    targets*: ptr ColorTargetState
-  FragmentState* = struct_WGPUFragmentState ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2200:3
-  struct_WGPURenderPipelineDescriptor* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2202:16
-    label*: StringView
-    layout*: PipelineLayout
-    vertex*: VertexState
-    primitive*: PrimitiveState
-    depthStencil*: ptr DepthStencilState
-    multisample*: MultisampleState
-    fragment*: ptr FragmentState
-  RenderPipelineDescriptor* = struct_WGPURenderPipelineDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2214:3
-  ProcCreateInstance* = proc (a0: ptr InstanceDescriptor): Instance {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2228:24
-  ProcGetInstanceCapabilities* = proc (a0: ptr InstanceCapabilities): Status {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2233:22
-  ProcGetProcAddress* = proc (a0: StringView): Proc {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2238:20
-  ProcAdapterGetFeatures* = proc (a0: Adapter; a1: ptr SupportedFeatures): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2245:16
-  ProcAdapterGetInfo* = proc (a0: Adapter; a1: ptr AdapterInfo): Status {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2250:22
-  ProcAdapterGetLimits* = proc (a0: Adapter; a1: ptr Limits): Status {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2255:22
-  ProcAdapterHasFeature* = proc (a0: Adapter; a1: FeatureName): Bool {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2260:20
-  ProcAdapterRequestDevice* = proc (a0: Adapter; a1: ptr DeviceDescriptor;
-                                    a2: RequestDeviceCallbackInfo): Future {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2265:22
-  ProcAdapterAddRef* = proc (a0: Adapter): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2270:16
-  ProcAdapterRelease* = proc (a0: Adapter): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2275:16
-  ProcAdapterInfoFreeMembers* = proc (a0: AdapterInfo): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2282:16
-  ProcBindGroupSetLabel* = proc (a0: BindGroup; a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2289:16
-  ProcBindGroupAddRef* = proc (a0: BindGroup): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2294:16
-  ProcBindGroupRelease* = proc (a0: BindGroup): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2299:16
-  ProcBindGroupLayoutSetLabel* = proc (a0: BindGroupLayout; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2306:16
-  ProcBindGroupLayoutAddRef* = proc (a0: BindGroupLayout): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2311:16
-  ProcBindGroupLayoutRelease* = proc (a0: BindGroupLayout): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2316:16
-  ProcBufferDestroy* = proc (a0: Buffer): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2323:16
-  ProcBufferGetConstMappedRange* = proc (a0: Buffer; a1: csize_t; a2: csize_t): pointer {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2328:24
-  ProcBufferGetMapState* = proc (a0: Buffer): BufferMapState {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2333:30
-  ProcBufferGetMappedRange* = proc (a0: Buffer; a1: csize_t; a2: csize_t): pointer {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2338:18
-  ProcBufferGetSize* = proc (a0: Buffer): uint64 {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2343:20
-  ProcBufferGetUsage* = proc (a0: Buffer): BufferUsage {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2348:27
-  ProcBufferMapAsync* = proc (a0: Buffer; a1: MapMode; a2: csize_t; a3: csize_t;
-                              a4: BufferMapCallbackInfo): Future {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2353:22
-  ProcBufferSetLabel* = proc (a0: Buffer; a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2358:16
-  ProcBufferUnmap* = proc (a0: Buffer): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2363:16
-  ProcBufferAddRef* = proc (a0: Buffer): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2368:16
-  ProcBufferRelease* = proc (a0: Buffer): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2373:16
-  ProcCommandBufferSetLabel* = proc (a0: CommandBuffer; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2380:16
-  ProcCommandBufferAddRef* = proc (a0: CommandBuffer): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2385:16
-  ProcCommandBufferRelease* = proc (a0: CommandBuffer): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2390:16
-  ProcCommandEncoderBeginComputePass* = proc (a0: CommandEncoder;
-      a1: ptr ComputePassDescriptor): ComputePassEncoder {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2397:34
-  ProcCommandEncoderBeginRenderPass* = proc (a0: CommandEncoder;
-      a1: ptr RenderPassDescriptor): RenderPassEncoder {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2402:33
-  ProcCommandEncoderClearBuffer* = proc (a0: CommandEncoder; a1: Buffer;
-      a2: uint64; a3: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2407:16
-  ProcCommandEncoderCopyBufferToBuffer* = proc (a0: CommandEncoder; a1: Buffer;
-      a2: uint64; a3: Buffer; a4: uint64; a5: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2412:16
-  ProcCommandEncoderCopyBufferToTexture* = proc (a0: CommandEncoder;
-      a1: ptr TexelCopyBufferInfo; a2: ptr TexelCopyTextureInfo;
-      a3: ptr Extent3D): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2417:16
-  ProcCommandEncoderCopyTextureToBuffer* = proc (a0: CommandEncoder;
-      a1: ptr TexelCopyTextureInfo; a2: ptr TexelCopyBufferInfo;
-      a3: ptr Extent3D): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2422:16
-  ProcCommandEncoderCopyTextureToTexture* = proc (a0: CommandEncoder;
-      a1: ptr TexelCopyTextureInfo; a2: ptr TexelCopyTextureInfo;
-      a3: ptr Extent3D): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2427:16
-  ProcCommandEncoderFinish* = proc (a0: CommandEncoder;
-                                    a1: ptr CommandBufferDescriptor): CommandBuffer {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2432:29
-  ProcCommandEncoderInsertDebugMarker* = proc (a0: CommandEncoder;
-      a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2437:16
-  ProcCommandEncoderPopDebugGroup* = proc (a0: CommandEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2442:16
-  ProcCommandEncoderPushDebugGroup* = proc (a0: CommandEncoder; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2447:16
-  ProcCommandEncoderResolveQuerySet* = proc (a0: CommandEncoder; a1: QuerySet;
-      a2: uint32; a3: uint32; a4: Buffer; a5: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2452:16
-  ProcCommandEncoderSetLabel* = proc (a0: CommandEncoder; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2457:16
-  ProcCommandEncoderWriteTimestamp* = proc (a0: CommandEncoder; a1: QuerySet;
-      a2: uint32): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2462:16
-  ProcCommandEncoderAddRef* = proc (a0: CommandEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2467:16
-  ProcCommandEncoderRelease* = proc (a0: CommandEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2472:16
-  ProcComputePassEncoderDispatchWorkgroups* = proc (a0: ComputePassEncoder;
-      a1: uint32; a2: uint32; a3: uint32): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2479:16
-  ProcComputePassEncoderDispatchWorkgroupsIndirect* = proc (
-      a0: ComputePassEncoder; a1: Buffer; a2: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2484:16
-  ProcComputePassEncoderEnd* = proc (a0: ComputePassEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2489:16
-  ProcComputePassEncoderInsertDebugMarker* = proc (a0: ComputePassEncoder;
-      a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2494:16
-  ProcComputePassEncoderPopDebugGroup* = proc (a0: ComputePassEncoder): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2499:16
-  ProcComputePassEncoderPushDebugGroup* = proc (a0: ComputePassEncoder;
-      a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2504:16
-  ProcComputePassEncoderSetBindGroup* = proc (a0: ComputePassEncoder;
-      a1: uint32; a2: BindGroup; a3: csize_t; a4: ptr uint32): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2509:16
-  ProcComputePassEncoderSetLabel* = proc (a0: ComputePassEncoder; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2514:16
-  ProcComputePassEncoderSetPipeline* = proc (a0: ComputePassEncoder;
-      a1: ComputePipeline): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2519:16
-  ProcComputePassEncoderAddRef* = proc (a0: ComputePassEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2524:16
-  ProcComputePassEncoderRelease* = proc (a0: ComputePassEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2529:16
-  ProcComputePipelineGetBindGroupLayout* = proc (a0: ComputePipeline; a1: uint32): BindGroupLayout {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2536:31
-  ProcComputePipelineSetLabel* = proc (a0: ComputePipeline; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2541:16
-  ProcComputePipelineAddRef* = proc (a0: ComputePipeline): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2546:16
-  ProcComputePipelineRelease* = proc (a0: ComputePipeline): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2551:16
-  ProcDeviceCreateBindGroup* = proc (a0: Device; a1: ptr BindGroupDescriptor): BindGroup {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2558:25
-  ProcDeviceCreateBindGroupLayout* = proc (a0: Device;
-      a1: ptr BindGroupLayoutDescriptor): BindGroupLayout {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2563:31
-  ProcDeviceCreateBuffer* = proc (a0: Device; a1: ptr BufferDescriptor): Buffer {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2568:22
-  ProcDeviceCreateCommandEncoder* = proc (a0: Device;
-      a1: ptr CommandEncoderDescriptor): CommandEncoder {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2573:30
-  ProcDeviceCreateComputePipeline* = proc (a0: Device;
-      a1: ptr ComputePipelineDescriptor): ComputePipeline {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2578:31
-  ProcDeviceCreateComputePipelineAsync* = proc (a0: Device;
-      a1: ptr ComputePipelineDescriptor;
-      a2: CreateComputePipelineAsyncCallbackInfo): Future {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2583:22
-  ProcDeviceCreatePipelineLayout* = proc (a0: Device;
-      a1: ptr PipelineLayoutDescriptor): PipelineLayout {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2588:30
-  ProcDeviceCreateQuerySet* = proc (a0: Device; a1: ptr QuerySetDescriptor): QuerySet {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2593:24
-  ProcDeviceCreateRenderBundleEncoder* = proc (a0: Device;
-      a1: ptr RenderBundleEncoderDescriptor): RenderBundleEncoder {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2598:35
-  ProcDeviceCreateRenderPipeline* = proc (a0: Device;
-      a1: ptr RenderPipelineDescriptor): RenderPipeline {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2603:30
-  ProcDeviceCreateRenderPipelineAsync* = proc (a0: Device;
-      a1: ptr RenderPipelineDescriptor;
-      a2: CreateRenderPipelineAsyncCallbackInfo): Future {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2608:22
-  ProcDeviceCreateSampler* = proc (a0: Device; a1: ptr SamplerDescriptor): Sampler {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2613:23
-  ProcDeviceCreateShaderModule* = proc (a0: Device;
-                                        a1: ptr ShaderModuleDescriptor): ShaderModule {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2618:28
-  ProcDeviceCreateTexture* = proc (a0: Device; a1: ptr TextureDescriptor): Texture {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2623:23
-  ProcDeviceDestroy* = proc (a0: Device): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2628:16
-  ProcDeviceGetAdapterInfo* = proc (a0: Device): AdapterInfo {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2633:27
-  ProcDeviceGetFeatures* = proc (a0: Device; a1: ptr SupportedFeatures): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2638:16
-  ProcDeviceGetLimits* = proc (a0: Device; a1: ptr Limits): Status {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2643:22
-  ProcDeviceGetLostFuture* = proc (a0: Device): Future {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2648:22
-  ProcDeviceGetQueue* = proc (a0: Device): Queue {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2653:21
-  ProcDeviceHasFeature* = proc (a0: Device; a1: FeatureName): Bool {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2658:20
-  ProcDevicePopErrorScope* = proc (a0: Device; a1: PopErrorScopeCallbackInfo): Future {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2663:22
-  ProcDevicePushErrorScope* = proc (a0: Device; a1: ErrorFilter): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2668:16
-  ProcDeviceSetLabel* = proc (a0: Device; a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2673:16
-  ProcDeviceAddRef* = proc (a0: Device): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2678:16
-  ProcDeviceRelease* = proc (a0: Device): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2683:16
-  ProcInstanceCreateSurface* = proc (a0: Instance; a1: ptr SurfaceDescriptor): Surface {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2690:23
-  ProcInstanceGetWGSLLanguageFeatures* = proc (a0: Instance;
-      a1: ptr SupportedWGSLLanguageFeatures): Status {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2695:22
-  ProcInstanceHasWGSLLanguageFeature* = proc (a0: Instance;
-      a1: WGSLLanguageFeatureName): Bool {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2700:20
-  ProcInstanceProcessEvents* = proc (a0: Instance): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2705:16
-  ProcInstanceRequestAdapter* = proc (a0: Instance;
-                                      a1: ptr RequestAdapterOptions;
-                                      a2: RequestAdapterCallbackInfo): Future {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2710:22
-  ProcInstanceWaitAny* = proc (a0: Instance; a1: csize_t;
-                               a2: ptr FutureWaitInfo; a3: uint64): WaitStatus {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2715:26
-  ProcInstanceAddRef* = proc (a0: Instance): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2720:16
-  ProcInstanceRelease* = proc (a0: Instance): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2725:16
-  ProcPipelineLayoutSetLabel* = proc (a0: PipelineLayout; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2732:16
-  ProcPipelineLayoutAddRef* = proc (a0: PipelineLayout): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2737:16
-  ProcPipelineLayoutRelease* = proc (a0: PipelineLayout): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2742:16
-  ProcQuerySetDestroy* = proc (a0: QuerySet): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2749:16
-  ProcQuerySetGetCount* = proc (a0: QuerySet): uint32 {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2754:20
-  ProcQuerySetGetType* = proc (a0: QuerySet): QueryType {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2759:25
-  ProcQuerySetSetLabel* = proc (a0: QuerySet; a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2764:16
-  ProcQuerySetAddRef* = proc (a0: QuerySet): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2769:16
-  ProcQuerySetRelease* = proc (a0: QuerySet): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2774:16
-  ProcQueueOnSubmittedWorkDone* = proc (a0: Queue; a1: QueueWorkDoneCallbackInfo): Future {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2781:22
-  ProcQueueSetLabel* = proc (a0: Queue; a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2786:16
-  ProcQueueSubmit* = proc (a0: Queue; a1: csize_t; a2: ptr CommandBuffer): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2791:16
-  ProcQueueWriteBuffer* = proc (a0: Queue; a1: Buffer; a2: uint64; a3: pointer;
-                                a4: csize_t): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2796:16
-  ProcQueueWriteTexture* = proc (a0: Queue; a1: ptr TexelCopyTextureInfo;
-                                 a2: pointer; a3: csize_t;
-                                 a4: ptr TexelCopyBufferLayout; a5: ptr Extent3D): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2801:16
-  ProcQueueAddRef* = proc (a0: Queue): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2806:16
-  ProcQueueRelease* = proc (a0: Queue): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2811:16
-  ProcRenderBundleSetLabel* = proc (a0: RenderBundle; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2818:16
-  ProcRenderBundleAddRef* = proc (a0: RenderBundle): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2823:16
-  ProcRenderBundleRelease* = proc (a0: RenderBundle): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2828:16
-  ProcRenderBundleEncoderDraw* = proc (a0: RenderBundleEncoder; a1: uint32;
-                                       a2: uint32; a3: uint32; a4: uint32): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2835:16
-  ProcRenderBundleEncoderDrawIndexed* = proc (a0: RenderBundleEncoder;
-      a1: uint32; a2: uint32; a3: uint32; a4: int32; a5: uint32): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2840:16
-  ProcRenderBundleEncoderDrawIndexedIndirect* = proc (a0: RenderBundleEncoder;
-      a1: Buffer; a2: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2845:16
-  ProcRenderBundleEncoderDrawIndirect* = proc (a0: RenderBundleEncoder;
-      a1: Buffer; a2: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2850:16
-  ProcRenderBundleEncoderFinish* = proc (a0: RenderBundleEncoder;
-      a1: ptr RenderBundleDescriptor): RenderBundle {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2855:28
-  ProcRenderBundleEncoderInsertDebugMarker* = proc (a0: RenderBundleEncoder;
-      a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2860:16
-  ProcRenderBundleEncoderPopDebugGroup* = proc (a0: RenderBundleEncoder): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2865:16
-  ProcRenderBundleEncoderPushDebugGroup* = proc (a0: RenderBundleEncoder;
-      a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2870:16
-  ProcRenderBundleEncoderSetBindGroup* = proc (a0: RenderBundleEncoder;
-      a1: uint32; a2: BindGroup; a3: csize_t; a4: ptr uint32): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2875:16
-  ProcRenderBundleEncoderSetIndexBuffer* = proc (a0: RenderBundleEncoder;
-      a1: Buffer; a2: IndexFormat; a3: uint64; a4: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2880:16
-  ProcRenderBundleEncoderSetLabel* = proc (a0: RenderBundleEncoder;
-      a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2885:16
-  ProcRenderBundleEncoderSetPipeline* = proc (a0: RenderBundleEncoder;
-      a1: RenderPipeline): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2890:16
-  ProcRenderBundleEncoderSetVertexBuffer* = proc (a0: RenderBundleEncoder;
-      a1: uint32; a2: Buffer; a3: uint64; a4: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2895:16
-  ProcRenderBundleEncoderAddRef* = proc (a0: RenderBundleEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2900:16
-  ProcRenderBundleEncoderRelease* = proc (a0: RenderBundleEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2905:16
-  ProcRenderPassEncoderBeginOcclusionQuery* = proc (a0: RenderPassEncoder;
-      a1: uint32): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2912:16
-  ProcRenderPassEncoderDraw* = proc (a0: RenderPassEncoder; a1: uint32;
-                                     a2: uint32; a3: uint32; a4: uint32): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2917:16
-  ProcRenderPassEncoderDrawIndexed* = proc (a0: RenderPassEncoder; a1: uint32;
-      a2: uint32; a3: uint32; a4: int32; a5: uint32): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2922:16
-  ProcRenderPassEncoderDrawIndexedIndirect* = proc (a0: RenderPassEncoder;
-      a1: Buffer; a2: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2927:16
-  ProcRenderPassEncoderDrawIndirect* = proc (a0: RenderPassEncoder; a1: Buffer;
-      a2: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2932:16
-  ProcRenderPassEncoderEnd* = proc (a0: RenderPassEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2937:16
-  ProcRenderPassEncoderEndOcclusionQuery* = proc (a0: RenderPassEncoder): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2942:16
-  ProcRenderPassEncoderExecuteBundles* = proc (a0: RenderPassEncoder;
-      a1: csize_t; a2: ptr RenderBundle): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2947:16
-  ProcRenderPassEncoderInsertDebugMarker* = proc (a0: RenderPassEncoder;
-      a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2952:16
-  ProcRenderPassEncoderPopDebugGroup* = proc (a0: RenderPassEncoder): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2957:16
-  ProcRenderPassEncoderPushDebugGroup* = proc (a0: RenderPassEncoder;
-      a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2962:16
-  ProcRenderPassEncoderSetBindGroup* = proc (a0: RenderPassEncoder; a1: uint32;
-      a2: BindGroup; a3: csize_t; a4: ptr uint32): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2967:16
-  ProcRenderPassEncoderSetBlendConstant* = proc (a0: RenderPassEncoder;
-      a1: ptr Color): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2972:16
-  ProcRenderPassEncoderSetIndexBuffer* = proc (a0: RenderPassEncoder;
-      a1: Buffer; a2: IndexFormat; a3: uint64; a4: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2977:16
-  ProcRenderPassEncoderSetLabel* = proc (a0: RenderPassEncoder; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2982:16
-  ProcRenderPassEncoderSetPipeline* = proc (a0: RenderPassEncoder;
-      a1: RenderPipeline): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2987:16
-  ProcRenderPassEncoderSetScissorRect* = proc (a0: RenderPassEncoder;
-      a1: uint32; a2: uint32; a3: uint32; a4: uint32): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2992:16
-  ProcRenderPassEncoderSetStencilReference* = proc (a0: RenderPassEncoder;
-      a1: uint32): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:2997:16
-  ProcRenderPassEncoderSetVertexBuffer* = proc (a0: RenderPassEncoder;
-      a1: uint32; a2: Buffer; a3: uint64; a4: uint64): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3002:16
-  ProcRenderPassEncoderSetViewport* = proc (a0: RenderPassEncoder; a1: cfloat;
-      a2: cfloat; a3: cfloat; a4: cfloat; a5: cfloat; a6: cfloat): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3007:16
-  ProcRenderPassEncoderAddRef* = proc (a0: RenderPassEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3012:16
-  ProcRenderPassEncoderRelease* = proc (a0: RenderPassEncoder): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3017:16
-  ProcRenderPipelineGetBindGroupLayout* = proc (a0: RenderPipeline; a1: uint32): BindGroupLayout {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3024:31
-  ProcRenderPipelineSetLabel* = proc (a0: RenderPipeline; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3029:16
-  ProcRenderPipelineAddRef* = proc (a0: RenderPipeline): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3034:16
-  ProcRenderPipelineRelease* = proc (a0: RenderPipeline): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3039:16
-  ProcSamplerSetLabel* = proc (a0: Sampler; a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3046:16
-  ProcSamplerAddRef* = proc (a0: Sampler): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3051:16
-  ProcSamplerRelease* = proc (a0: Sampler): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3056:16
-  ProcShaderModuleGetCompilationInfo* = proc (a0: ShaderModule;
-      a1: CompilationInfoCallbackInfo): Future {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3063:22
-  ProcShaderModuleSetLabel* = proc (a0: ShaderModule; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3068:16
-  ProcShaderModuleAddRef* = proc (a0: ShaderModule): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3073:16
-  ProcShaderModuleRelease* = proc (a0: ShaderModule): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3078:16
-  ProcSupportedFeaturesFreeMembers* = proc (a0: SupportedFeatures): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3085:16
-  ProcSupportedWGSLLanguageFeaturesFreeMembers* = proc (
-      a0: SupportedWGSLLanguageFeatures): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3092:16
-  ProcSurfaceConfigure* = proc (a0: Surface; a1: ptr SurfaceConfiguration): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3099:16
-  ProcSurfaceGetCapabilities* = proc (a0: Surface; a1: Adapter;
-                                      a2: ptr SurfaceCapabilities): Status {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3104:22
-  ProcSurfaceGetCurrentTexture* = proc (a0: Surface; a1: ptr SurfaceTexture): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3109:16
-  ProcSurfacePresent* = proc (a0: Surface): Status {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3114:22
-  ProcSurfaceSetLabel* = proc (a0: Surface; a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3119:16
-  ProcSurfaceUnconfigure* = proc (a0: Surface): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3124:16
-  ProcSurfaceAddRef* = proc (a0: Surface): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3129:16
-  ProcSurfaceRelease* = proc (a0: Surface): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3134:16
-  ProcSurfaceCapabilitiesFreeMembers* = proc (a0: SurfaceCapabilities): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3141:16
-  ProcTextureCreateView* = proc (a0: Texture; a1: ptr TextureViewDescriptor): TextureView {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3148:27
-  ProcTextureDestroy* = proc (a0: Texture): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3153:16
-  ProcTextureGetDepthOrArrayLayers* = proc (a0: Texture): uint32 {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3158:20
-  ProcTextureGetDimension* = proc (a0: Texture): TextureDimension {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3163:32
-  ProcTextureGetFormat* = proc (a0: Texture): TextureFormat {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3168:29
-  ProcTextureGetHeight* = proc (a0: Texture): uint32 {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3173:20
-  ProcTextureGetMipLevelCount* = proc (a0: Texture): uint32 {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3178:20
-  ProcTextureGetSampleCount* = proc (a0: Texture): uint32 {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3183:20
-  ProcTextureGetUsage* = proc (a0: Texture): TextureUsage {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3188:28
-  ProcTextureGetWidth* = proc (a0: Texture): uint32 {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3193:20
-  ProcTextureSetLabel* = proc (a0: Texture; a1: StringView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3198:16
-  ProcTextureAddRef* = proc (a0: Texture): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3203:16
-  ProcTextureRelease* = proc (a0: Texture): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3208:16
-  ProcTextureViewSetLabel* = proc (a0: TextureView; a1: StringView): void {.
-      cdecl.}                ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3215:16
-  ProcTextureViewAddRef* = proc (a0: TextureView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3220:16
-  ProcTextureViewRelease* = proc (a0: TextureView): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:3225:16
-  NativeSType* = enum_WGPUNativeSType ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:18:3
-  NativeFeature* = enum_WGPUNativeFeature ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:59:3
-  LogLevel* = enum_WGPULogLevel ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:69:3
-  InstanceBackend* = Flags   ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:71:19
-  InstanceFlag* = Flags      ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:85:19
-  Dx12Compiler* = enum_WGPUDx12Compiler ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:97:3
-  Gles3MinorVersion* = enum_WGPUGles3MinorVersion ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:105:3
-  PipelineStatisticName* = enum_WGPUPipelineStatisticName ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:114:3
-  NativeQueryType* = enum_WGPUNativeQueryType ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:119:3
-  struct_WGPUInstanceExtras* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:121:16
-    backends*: InstanceBackend
-    flags*: InstanceFlag
-    dx12ShaderCompiler*: Dx12Compiler
-    gles3MinorVersion*: Gles3MinorVersion
-    dxilPath*: StringView
-    dxcPath*: StringView
-  InstanceExtras* = struct_WGPUInstanceExtras ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:129:3
-  struct_WGPUDeviceExtras* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:131:16
-    tracePath*: StringView
-  DeviceExtras* = struct_WGPUDeviceExtras ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:134:3
-  struct_WGPUNativeLimits* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStructOut ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:136:16
-    maxPushConstantSize*: uint32
-    maxNonSamplerBindings*: uint32
-  NativeLimits* = struct_WGPUNativeLimits ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:141:3
-  struct_WGPUPushConstantRange* {.pure, inheritable, bycopy.} = object
-    stages*: ShaderStage     ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:143:16
-    start*: uint32
-    end_field*: uint32
-  PushConstantRange* = struct_WGPUPushConstantRange ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:147:3
-  struct_WGPUPipelineLayoutExtras* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:149:16
-    pushConstantRangeCount*: csize_t
-    pushConstantRanges*: ptr PushConstantRange
-  PipelineLayoutExtras* = struct_WGPUPipelineLayoutExtras ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:153:3
-  SubmissionIndex* = uint64  ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:155:18
-  struct_WGPUShaderDefine* {.pure, inheritable, bycopy.} = object
-    name*: StringView        ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:157:16
-    value*: StringView
-  ShaderDefine* = struct_WGPUShaderDefine ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:160:3
-  struct_WGPUShaderModuleGLSLDescriptor* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:162:16
-    stage*: ShaderStage
-    code*: StringView
-    defineCount*: uint32
-    defines*: ptr ShaderDefine
-  ShaderModuleGLSLDescriptor* = struct_WGPUShaderModuleGLSLDescriptor ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:168:3
-  struct_WGPUShaderModuleDescriptorSpirV* {.pure, inheritable, bycopy.} = object
-    label*: StringView       ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:170:16
-    sourceSize*: uint32
-    source*: ptr uint32
-  ShaderModuleDescriptorSpirV* = struct_WGPUShaderModuleDescriptorSpirV ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:174:3
-  struct_WGPURegistryReport* {.pure, inheritable, bycopy.} = object
-    numAllocated*: csize_t   ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:176:16
-    numKeptFromUser*: csize_t
-    numReleasedFromUser*: csize_t
-    elementSize*: csize_t
-  RegistryReport* = struct_WGPURegistryReport ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:181:3
-  struct_WGPUHubReport* {.pure, inheritable, bycopy.} = object
-    adapters*: RegistryReport ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:183:16
-    devices*: RegistryReport
-    queues*: RegistryReport
-    pipelineLayouts*: RegistryReport
-    shaderModules*: RegistryReport
-    bindGroupLayouts*: RegistryReport
-    bindGroups*: RegistryReport
-    commandBuffers*: RegistryReport
-    renderBundles*: RegistryReport
-    renderPipelines*: RegistryReport
-    computePipelines*: RegistryReport
-    pipelineCaches*: RegistryReport
-    querySets*: RegistryReport
-    buffers*: RegistryReport
-    textures*: RegistryReport
-    textureViews*: RegistryReport
-    samplers*: RegistryReport
-  HubReport* = struct_WGPUHubReport ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:201:3
-  struct_WGPUGlobalReport* {.pure, inheritable, bycopy.} = object
-    surfaces*: RegistryReport ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:203:16
-    hub*: HubReport
-  GlobalReport* = struct_WGPUGlobalReport ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:206:3
-  struct_WGPUInstanceEnumerateAdapterOptions* {.pure, inheritable, bycopy.} = object
-    nextInChain*: ptr ChainedStruct ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:208:16
-    backends*: InstanceBackend
-  InstanceEnumerateAdapterOptions* = struct_WGPUInstanceEnumerateAdapterOptions ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:211:3
-  struct_WGPUBindGroupEntryExtras* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:213:16
-    buffers*: ptr Buffer
-    bufferCount*: csize_t
-    samplers*: ptr Sampler
-    samplerCount*: csize_t
-    textureViews*: ptr TextureView
-    textureViewCount*: csize_t
-  BindGroupEntryExtras* = struct_WGPUBindGroupEntryExtras ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:221:3
-  struct_WGPUBindGroupLayoutEntryExtras* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:223:16
-    count*: uint32
-  BindGroupLayoutEntryExtras* = struct_WGPUBindGroupLayoutEntryExtras ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:226:3
-  struct_WGPUQuerySetDescriptorExtras* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:228:16
-    pipelineStatistics*: ptr PipelineStatisticName
-    pipelineStatisticCount*: csize_t
-  QuerySetDescriptorExtras* = struct_WGPUQuerySetDescriptorExtras ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:232:3
-  struct_WGPUSurfaceConfigurationExtras* {.pure, inheritable, bycopy.} = object
-    chain*: ChainedStruct    ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:234:16
-    desiredMaximumFrameLatency*: uint32
-  SurfaceConfigurationExtras* = struct_WGPUSurfaceConfigurationExtras ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:237:3
-  LogCallback* = proc (a0: LogLevel; a1: StringView; a2: pointer): void {.cdecl.} ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:239:16
-  NativeTextureFormat* = enum_WGPUNativeTextureFormat ## Generated based on ./src/wgpu/C/wgpu-native/ffi/wgpu.h:251:3
-when cast[cuint](4294967295'i64) is static:
-  const
-    UINT32_MAX* = cast[cuint](4294967295'i64) ## Generated based on /usr/include/stdint.h:118:10
-else:
-  let UINT32_MAX* = cast[cuint](4294967295'i64) ## Generated based on /usr/include/stdint.h:118:10
-when UINT32_MAX is typedesc:
-  type
-    internal_COPY_STRIDE_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:79:9
-else:
-  when UINT32_MAX is static:
-    const
-      internal_COPY_STRIDE_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:79:9
-  else:
-    let internal_COPY_STRIDE_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:79:9
-when UINT32_MAX is typedesc:
-  type
-    internal_DEPTH_SLICE_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:80:9
-else:
-  when UINT32_MAX is static:
-    const
-      internal_DEPTH_SLICE_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:80:9
-  else:
-    let internal_DEPTH_SLICE_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:80:9
-when UINT32_MAX is typedesc:
-  type
-    internal_LIMIT_U32_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:81:9
-else:
-  when UINT32_MAX is static:
-    const
-      internal_LIMIT_U32_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:81:9
-  else:
-    let internal_LIMIT_U32_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:81:9
-when UINT64_MAX is typedesc:
-  type
-    internal_LIMIT_U64_UNDEFINED* = UINT64_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:82:9
-else:
-  when UINT64_MAX is static:
-    const
-      internal_LIMIT_U64_UNDEFINED* = UINT64_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:82:9
-  else:
-    let internal_LIMIT_U64_UNDEFINED* = UINT64_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:82:9
-when UINT32_MAX is typedesc:
-  type
-    internal_MIP_LEVEL_COUNT_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:83:9
-else:
-  when UINT32_MAX is static:
-    const
-      internal_MIP_LEVEL_COUNT_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:83:9
-  else:
-    let internal_MIP_LEVEL_COUNT_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:83:9
-when UINT32_MAX is typedesc:
-  type
-    internal_QUERY_SET_INDEX_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:84:9
-else:
-  when UINT32_MAX is static:
-    const
-      internal_QUERY_SET_INDEX_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:84:9
-  else:
-    let internal_QUERY_SET_INDEX_UNDEFINED* = UINT32_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:84:9
-when cast[culong](18446744073709551615'u) is static:
-  const
-    SIZE_MAX* = cast[culong](18446744073709551615'u) ## Generated based on /usr/include/stdint.h:216:11
-else:
-  let SIZE_MAX* = cast[culong](18446744073709551615'u) ## Generated based on /usr/include/stdint.h:216:11
-when UINT64_MAX is typedesc:
-  type
-    internal_WHOLE_SIZE* = UINT64_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:86:9
-else:
-  when UINT64_MAX is static:
-    const
-      internal_WHOLE_SIZE* = UINT64_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:86:9
-  else:
-    let internal_WHOLE_SIZE* = UINT64_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:86:9
-when SIZE_MAX is typedesc:
-  type
-    internal_STRLEN* = SIZE_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:129:9
-else:
-  when SIZE_MAX is static:
-    const
-      internal_STRLEN* = SIZE_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:129:9
-  else:
-    let internal_STRLEN* = SIZE_MAX ## Generated based on ./src/wgpu/C/wgpu-native/ffi/webgpu-headers/webgpu.h:129:9
-var BufferUsage_None*: BufferUsage
-var BufferUsage_MapRead*: BufferUsage
-var BufferUsage_MapWrite*: BufferUsage
-var BufferUsage_CopySrc*: BufferUsage
-var BufferUsage_CopyDst*: BufferUsage
-var BufferUsage_Index*: BufferUsage
-var BufferUsage_Vertex*: BufferUsage
-var BufferUsage_Uniform*: BufferUsage
-var BufferUsage_Storage*: BufferUsage
-var BufferUsage_Indirect*: BufferUsage
-var BufferUsage_QueryResolve*: BufferUsage
-var ColorWriteMask_None*: ColorWriteMask
-var ColorWriteMask_Red*: ColorWriteMask
-var ColorWriteMask_Green*: ColorWriteMask
-var ColorWriteMask_Blue*: ColorWriteMask
-var ColorWriteMask_Alpha*: ColorWriteMask
-var ColorWriteMask_All*: ColorWriteMask
-var MapMode_None*: MapMode
-var MapMode_Read*: MapMode
-var MapMode_Write*: MapMode
-var ShaderStage_None*: ShaderStage
-var ShaderStage_Vertex*: ShaderStage
-var ShaderStage_Fragment*: ShaderStage
-var ShaderStage_Compute*: ShaderStage
-var TextureUsage_None*: TextureUsage
-var TextureUsage_CopySrc*: TextureUsage
-var TextureUsage_CopyDst*: TextureUsage
-var TextureUsage_TextureBinding*: TextureUsage
-var TextureUsage_StorageBinding*: TextureUsage
-var TextureUsage_RenderAttachment*: TextureUsage
-proc create*(descriptor: ptr InstanceDescriptor): Instance {.cdecl,
-    importc: "wgpuCreateInstance".}
-proc get*(capabilities: ptr InstanceCapabilities): Status {.cdecl,
-    importc: "wgpuGetInstanceCapabilities".}
-proc getProcAddress*(procName: StringView): Proc {.cdecl,
-    importc: "wgpuGetProcAddress".}
-proc get*(adapter: Adapter; features: ptr SupportedFeatures): void {.cdecl,
-    importc: "wgpuAdapterGetFeatures".}
-proc get*(adapter: Adapter; info: ptr AdapterInfo): Status {.cdecl,
-    importc: "wgpuAdapterGetInfo".}
-proc get*(adapter: Adapter; limits: ptr Limits): Status {.cdecl,
-    importc: "wgpuAdapterGetLimits".}
-proc has*(adapter: Adapter; feature: FeatureName): Bool {.cdecl,
-    importc: "wgpuAdapterHasFeature".}
-proc request*(adapter: Adapter; descriptor: ptr DeviceDescriptor;
-              callbackInfo: RequestDeviceCallbackInfo): Future {.cdecl,
-    importc: "wgpuAdapterRequestDevice".}
-proc addRef*(adapter: Adapter): void {.cdecl, importc: "wgpuAdapterAddRef".}
-proc release*(adapter: Adapter): void {.cdecl, importc: "wgpuAdapterRelease".}
-proc freeMembers*(adapterInfo: AdapterInfo): void {.cdecl,
-    importc: "wgpuAdapterInfoFreeMembers".}
-proc setLabel*(bindGroup: BindGroup; label: StringView): void {.cdecl,
-    importc: "wgpuBindGroupSetLabel".}
-proc addRef*(bindGroup: BindGroup): void {.cdecl, importc: "wgpuBindGroupAddRef".}
-proc release*(bindGroup: BindGroup): void {.cdecl,
-    importc: "wgpuBindGroupRelease".}
-proc layoutSetLabel*(bindGroupLayout: BindGroupLayout; label: StringView): void {.
-    cdecl, importc: "wgpuBindGroupLayoutSetLabel".}
-proc addRef*(bindGroupLayout: BindGroupLayout): void {.cdecl,
-    importc: "wgpuBindGroupLayoutAddRef".}
-proc release*(bindGroupLayout: BindGroupLayout): void {.cdecl,
-    importc: "wgpuBindGroupLayoutRelease".}
-proc destroy*(buffer: Buffer): void {.cdecl, importc: "wgpuBufferDestroy".}
-proc getConstMappedRange*(buffer: Buffer; offset: csize_t; size: csize_t): pointer {.
-    cdecl, importc: "wgpuBufferGetConstMappedRange".}
-proc getMapState*(buffer: Buffer): BufferMapState {.cdecl,
-    importc: "wgpuBufferGetMapState".}
-proc getMappedRange*(buffer: Buffer; offset: csize_t; size: csize_t): pointer {.
-    cdecl, importc: "wgpuBufferGetMappedRange".}
-proc getSize*(buffer: Buffer): uint64 {.cdecl, importc: "wgpuBufferGetSize".}
-proc getUsage*(buffer: Buffer): BufferUsage {.cdecl,
-    importc: "wgpuBufferGetUsage".}
-proc mapAsync*(buffer: Buffer; mode: MapMode; offset: csize_t; size: csize_t;
-               callbackInfo: BufferMapCallbackInfo): Future {.cdecl,
-    importc: "wgpuBufferMapAsync".}
-proc setLabel*(buffer: Buffer; label: StringView): void {.cdecl,
-    importc: "wgpuBufferSetLabel".}
-proc unmap*(buffer: Buffer): void {.cdecl, importc: "wgpuBufferUnmap".}
-proc addRef*(buffer: Buffer): void {.cdecl, importc: "wgpuBufferAddRef".}
-proc release*(buffer: Buffer): void {.cdecl, importc: "wgpuBufferRelease".}
-proc setLabel*(commandBuffer: CommandBuffer; label: StringView): void {.cdecl,
-    importc: "wgpuCommandBufferSetLabel".}
-proc addRef*(commandBuffer: CommandBuffer): void {.cdecl,
-    importc: "wgpuCommandBufferAddRef".}
-proc release*(commandBuffer: CommandBuffer): void {.cdecl,
-    importc: "wgpuCommandBufferRelease".}
-proc begin*(commandEncoder: CommandEncoder;
-            descriptor: ptr ComputePassDescriptor): ComputePassEncoder {.cdecl,
-    importc: "wgpuCommandEncoderBeginComputePass".}
-proc begin*(commandEncoder: CommandEncoder; descriptor: ptr RenderPassDescriptor): RenderPassEncoder {.
-    cdecl, importc: "wgpuCommandEncoderBeginRenderPass".}
-proc clear*(commandEncoder: CommandEncoder; buffer: Buffer; offset: uint64;
-            size: uint64): void {.cdecl,
-                                  importc: "wgpuCommandEncoderClearBuffer".}
-proc copy*(commandEncoder: CommandEncoder; source: Buffer; sourceOffset: uint64;
-           destination: Buffer; destinationOffset: uint64; size: uint64): void {.
-    cdecl, importc: "wgpuCommandEncoderCopyBufferToBuffer".}
-proc copy*(commandEncoder: CommandEncoder; source: ptr TexelCopyBufferInfo;
-           destination: ptr TexelCopyTextureInfo; copySize: ptr Extent3D): void {.
-    cdecl, importc: "wgpuCommandEncoderCopyBufferToTexture".}
-proc copy*(commandEncoder: CommandEncoder; source: ptr TexelCopyTextureInfo;
-           destination: ptr TexelCopyBufferInfo; copySize: ptr Extent3D): void {.
-    cdecl, importc: "wgpuCommandEncoderCopyTextureToBuffer".}
-proc copy*(commandEncoder: CommandEncoder; source: ptr TexelCopyTextureInfo;
-           destination: ptr TexelCopyTextureInfo; copySize: ptr Extent3D): void {.
-    cdecl, importc: "wgpuCommandEncoderCopyTextureToTexture".}
-proc finish*(commandEncoder: CommandEncoder;
-             descriptor: ptr CommandBufferDescriptor): CommandBuffer {.cdecl,
-    importc: "wgpuCommandEncoderFinish".}
-proc insertDebugMarker*(commandEncoder: CommandEncoder; markerLabel: StringView): void {.
-    cdecl, importc: "wgpuCommandEncoderInsertDebugMarker".}
-proc popDebugGroup*(commandEncoder: CommandEncoder): void {.cdecl,
-    importc: "wgpuCommandEncoderPopDebugGroup".}
-proc pushDebugGroup*(commandEncoder: CommandEncoder; groupLabel: StringView): void {.
-    cdecl, importc: "wgpuCommandEncoderPushDebugGroup".}
-proc resolve*(commandEncoder: CommandEncoder; querySet: QuerySet;
-              firstQuery: uint32; queryCount: uint32; destination: Buffer;
-              destinationOffset: uint64): void {.cdecl,
-    importc: "wgpuCommandEncoderResolveQuerySet".}
-proc setLabel*(commandEncoder: CommandEncoder; label: StringView): void {.cdecl,
-    importc: "wgpuCommandEncoderSetLabel".}
-proc writeTimestamp*(commandEncoder: CommandEncoder; querySet: QuerySet;
-                     queryIndex: uint32): void {.cdecl,
-    importc: "wgpuCommandEncoderWriteTimestamp".}
-proc addRef*(commandEncoder: CommandEncoder): void {.cdecl,
-    importc: "wgpuCommandEncoderAddRef".}
-proc release*(commandEncoder: CommandEncoder): void {.cdecl,
-    importc: "wgpuCommandEncoderRelease".}
-proc dispatchWorkgroups*(computePassEncoder: ComputePassEncoder;
-                         workgroupCountX: uint32; workgroupCountY: uint32;
-                         workgroupCountZ: uint32): void {.cdecl,
-    importc: "wgpuComputePassEncoderDispatchWorkgroups".}
-proc dispatchWorkgroupsIndirect*(computePassEncoder: ComputePassEncoder;
-                                 indirectBuffer: Buffer; indirectOffset: uint64): void {.
-    cdecl, importc: "wgpuComputePassEncoderDispatchWorkgroupsIndirect".}
-proc End*(computePassEncoder: ComputePassEncoder): void {.cdecl,
-    importc: "wgpuComputePassEncoderEnd".}
-proc insertDebugMarker*(computePassEncoder: ComputePassEncoder;
-                        markerLabel: StringView): void {.cdecl,
-    importc: "wgpuComputePassEncoderInsertDebugMarker".}
-proc popDebugGroup*(computePassEncoder: ComputePassEncoder): void {.cdecl,
-    importc: "wgpuComputePassEncoderPopDebugGroup".}
-proc pushDebugGroup*(computePassEncoder: ComputePassEncoder;
-                     groupLabel: StringView): void {.cdecl,
-    importc: "wgpuComputePassEncoderPushDebugGroup".}
-proc set*(computePassEncoder: ComputePassEncoder; groupIndex: uint32;
-          group: BindGroup; dynamicOffsetCount: csize_t;
-          dynamicOffsets: ptr uint32): void {.cdecl,
-    importc: "wgpuComputePassEncoderSetBindGroup".}
-proc setLabel*(computePassEncoder: ComputePassEncoder; label: StringView): void {.
-    cdecl, importc: "wgpuComputePassEncoderSetLabel".}
-proc set*(computePassEncoder: ComputePassEncoder; pipeline: ComputePipeline): void {.
-    cdecl, importc: "wgpuComputePassEncoderSetPipeline".}
-proc addRef*(computePassEncoder: ComputePassEncoder): void {.cdecl,
-    importc: "wgpuComputePassEncoderAddRef".}
-proc release*(computePassEncoder: ComputePassEncoder): void {.cdecl,
-    importc: "wgpuComputePassEncoderRelease".}
-proc getBindGroupLayout*(computePipeline: ComputePipeline; groupIndex: uint32): BindGroupLayout {.
-    cdecl, importc: "wgpuComputePipelineGetBindGroupLayout".}
-proc setLabel*(computePipeline: ComputePipeline; label: StringView): void {.
-    cdecl, importc: "wgpuComputePipelineSetLabel".}
-proc addRef*(computePipeline: ComputePipeline): void {.cdecl,
-    importc: "wgpuComputePipelineAddRef".}
-proc release*(computePipeline: ComputePipeline): void {.cdecl,
-    importc: "wgpuComputePipelineRelease".}
-proc create*(device: Device; descriptor: ptr BindGroupDescriptor): BindGroup {.
-    cdecl, importc: "wgpuDeviceCreateBindGroup".}
-proc createLayout*(device: Device; descriptor: ptr BindGroupLayoutDescriptor): BindGroupLayout {.
-    cdecl, importc: "wgpuDeviceCreateBindGroupLayout".}
-proc create*(device: Device; descriptor: ptr BufferDescriptor): Buffer {.cdecl,
-    importc: "wgpuDeviceCreateBuffer".}
-proc create*(device: Device; descriptor: ptr CommandEncoderDescriptor): CommandEncoder {.
-    cdecl, importc: "wgpuDeviceCreateCommandEncoder".}
-proc create*(device: Device; descriptor: ptr ComputePipelineDescriptor): ComputePipeline {.
-    cdecl, importc: "wgpuDeviceCreateComputePipeline".}
-proc createAsync*(device: Device; descriptor: ptr ComputePipelineDescriptor;
-                  callbackInfo: CreateComputePipelineAsyncCallbackInfo): Future {.
-    cdecl, importc: "wgpuDeviceCreateComputePipelineAsync".}
-proc create*(device: Device; descriptor: ptr PipelineLayoutDescriptor): PipelineLayout {.
-    cdecl, importc: "wgpuDeviceCreatePipelineLayout".}
-proc create*(device: Device; descriptor: ptr QuerySetDescriptor): QuerySet {.
-    cdecl, importc: "wgpuDeviceCreateQuerySet".}
-proc create*(device: Device; descriptor: ptr RenderBundleEncoderDescriptor): RenderBundleEncoder {.
-    cdecl, importc: "wgpuDeviceCreateRenderBundleEncoder".}
-proc create*(device: Device; descriptor: ptr RenderPipelineDescriptor): RenderPipeline {.
-    cdecl, importc: "wgpuDeviceCreateRenderPipeline".}
-proc createAsync*(device: Device; descriptor: ptr RenderPipelineDescriptor;
-                  callbackInfo: CreateRenderPipelineAsyncCallbackInfo): Future {.
-    cdecl, importc: "wgpuDeviceCreateRenderPipelineAsync".}
-proc create*(device: Device; descriptor: ptr SamplerDescriptor): Sampler {.
-    cdecl, importc: "wgpuDeviceCreateSampler".}
-proc create*(device: Device; descriptor: ptr ShaderModuleDescriptor): ShaderModule {.
-    cdecl, importc: "wgpuDeviceCreateShaderModule".}
-proc create*(device: Device; descriptor: ptr TextureDescriptor): Texture {.
-    cdecl, importc: "wgpuDeviceCreateTexture".}
-proc destroy*(device: Device): void {.cdecl, importc: "wgpuDeviceDestroy".}
-proc getAdapterInfo*(device: Device): AdapterInfo {.cdecl,
-    importc: "wgpuDeviceGetAdapterInfo".}
-proc get*(device: Device; features: ptr SupportedFeatures): void {.cdecl,
-    importc: "wgpuDeviceGetFeatures".}
-proc get*(device: Device; limits: ptr Limits): Status {.cdecl,
-    importc: "wgpuDeviceGetLimits".}
-proc getLostFuture*(device: Device): Future {.cdecl,
-    importc: "wgpuDeviceGetLostFuture".}
-proc getQueue*(device: Device): Queue {.cdecl, importc: "wgpuDeviceGetQueue".}
-proc has*(device: Device; feature: FeatureName): Bool {.cdecl,
-    importc: "wgpuDeviceHasFeature".}
-proc popErrorScope*(device: Device; callbackInfo: PopErrorScopeCallbackInfo): Future {.
-    cdecl, importc: "wgpuDevicePopErrorScope".}
-proc pushErrorScope*(device: Device; filter: ErrorFilter): void {.cdecl,
-    importc: "wgpuDevicePushErrorScope".}
-proc setLabel*(device: Device; label: StringView): void {.cdecl,
-    importc: "wgpuDeviceSetLabel".}
-proc addRef*(device: Device): void {.cdecl, importc: "wgpuDeviceAddRef".}
-proc release*(device: Device): void {.cdecl, importc: "wgpuDeviceRelease".}
-proc create*(instance: Instance; descriptor: ptr SurfaceDescriptor): Surface {.
-    cdecl, importc: "wgpuInstanceCreateSurface".}
-proc get*(instance: Instance; features: ptr SupportedWGSLLanguageFeatures): Status {.
-    cdecl, importc: "wgpuInstanceGetWGSLLanguageFeatures".}
-proc has*(instance: Instance; feature: WGSLLanguageFeatureName): Bool {.cdecl,
-    importc: "wgpuInstanceHasWGSLLanguageFeature".}
-proc processEvents*(instance: Instance): void {.cdecl,
-    importc: "wgpuInstanceProcessEvents".}
-proc request*(instance: Instance; options: ptr RequestAdapterOptions;
-              callbackInfo: RequestAdapterCallbackInfo): Future {.cdecl,
-    importc: "wgpuInstanceRequestAdapter".}
-proc wait*(instance: Instance; futureCount: csize_t;
-           futures: ptr FutureWaitInfo; timeoutNS: uint64): WaitStatus {.cdecl,
-    importc: "wgpuInstanceWaitAny".}
-proc addRef*(instance: Instance): void {.cdecl, importc: "wgpuInstanceAddRef".}
-proc release*(instance: Instance): void {.cdecl, importc: "wgpuInstanceRelease".}
-proc setLabel*(pipelineLayout: PipelineLayout; label: StringView): void {.cdecl,
-    importc: "wgpuPipelineLayoutSetLabel".}
-proc addRef*(pipelineLayout: PipelineLayout): void {.cdecl,
-    importc: "wgpuPipelineLayoutAddRef".}
-proc release*(pipelineLayout: PipelineLayout): void {.cdecl,
-    importc: "wgpuPipelineLayoutRelease".}
-proc destroy*(querySet: QuerySet): void {.cdecl, importc: "wgpuQuerySetDestroy".}
-proc getCount*(querySet: QuerySet): uint32 {.cdecl,
-    importc: "wgpuQuerySetGetCount".}
-proc getType*(querySet: QuerySet): QueryType {.cdecl,
-    importc: "wgpuQuerySetGetType".}
-proc setLabel*(querySet: QuerySet; label: StringView): void {.cdecl,
-    importc: "wgpuQuerySetSetLabel".}
-proc addRef*(querySet: QuerySet): void {.cdecl, importc: "wgpuQuerySetAddRef".}
-proc release*(querySet: QuerySet): void {.cdecl, importc: "wgpuQuerySetRelease".}
-proc onSubmittedWorkDone*(queue: Queue; callbackInfo: QueueWorkDoneCallbackInfo): Future {.
-    cdecl, importc: "wgpuQueueOnSubmittedWorkDone".}
-proc setLabel*(queue: Queue; label: StringView): void {.cdecl,
-    importc: "wgpuQueueSetLabel".}
-proc submit*(queue: Queue; commandCount: csize_t; commands: ptr CommandBuffer): void {.
-    cdecl, importc: "wgpuQueueSubmit".}
-proc write*(queue: Queue; buffer: Buffer; bufferOffset: uint64; data: pointer;
-            size: csize_t): void {.cdecl, importc: "wgpuQueueWriteBuffer".}
-proc write*(queue: Queue; destination: ptr TexelCopyTextureInfo; data: pointer;
-            dataSize: csize_t; dataLayout: ptr TexelCopyBufferLayout;
-            writeSize: ptr Extent3D): void {.cdecl,
-    importc: "wgpuQueueWriteTexture".}
-proc addRef*(queue: Queue): void {.cdecl, importc: "wgpuQueueAddRef".}
-proc release*(queue: Queue): void {.cdecl, importc: "wgpuQueueRelease".}
-proc setLabel*(renderBundle: RenderBundle; label: StringView): void {.cdecl,
-    importc: "wgpuRenderBundleSetLabel".}
-proc addRef*(renderBundle: RenderBundle): void {.cdecl,
-    importc: "wgpuRenderBundleAddRef".}
-proc release*(renderBundle: RenderBundle): void {.cdecl,
-    importc: "wgpuRenderBundleRelease".}
-proc draw*(renderBundleEncoder: RenderBundleEncoder; vertexCount: uint32;
-           instanceCount: uint32; firstVertex: uint32; firstInstance: uint32): void {.
-    cdecl, importc: "wgpuRenderBundleEncoderDraw".}
-proc drawIndexed*(renderBundleEncoder: RenderBundleEncoder; indexCount: uint32;
-                  instanceCount: uint32; firstIndex: uint32; baseVertex: int32;
-                  firstInstance: uint32): void {.cdecl,
-    importc: "wgpuRenderBundleEncoderDrawIndexed".}
-proc drawIndexedIndirect*(renderBundleEncoder: RenderBundleEncoder;
-                          indirectBuffer: Buffer; indirectOffset: uint64): void {.
-    cdecl, importc: "wgpuRenderBundleEncoderDrawIndexedIndirect".}
-proc drawIndirect*(renderBundleEncoder: RenderBundleEncoder;
-                   indirectBuffer: Buffer; indirectOffset: uint64): void {.
-    cdecl, importc: "wgpuRenderBundleEncoderDrawIndirect".}
-proc finish*(renderBundleEncoder: RenderBundleEncoder;
-             descriptor: ptr RenderBundleDescriptor): RenderBundle {.cdecl,
-    importc: "wgpuRenderBundleEncoderFinish".}
-proc insertDebugMarker*(renderBundleEncoder: RenderBundleEncoder;
-                        markerLabel: StringView): void {.cdecl,
-    importc: "wgpuRenderBundleEncoderInsertDebugMarker".}
-proc popDebugGroup*(renderBundleEncoder: RenderBundleEncoder): void {.cdecl,
-    importc: "wgpuRenderBundleEncoderPopDebugGroup".}
-proc pushDebugGroup*(renderBundleEncoder: RenderBundleEncoder;
-                     groupLabel: StringView): void {.cdecl,
-    importc: "wgpuRenderBundleEncoderPushDebugGroup".}
-proc set*(renderBundleEncoder: RenderBundleEncoder; groupIndex: uint32;
-          group: BindGroup; dynamicOffsetCount: csize_t;
-          dynamicOffsets: ptr uint32): void {.cdecl,
-    importc: "wgpuRenderBundleEncoderSetBindGroup".}
-proc setIndexBuffer*(renderBundleEncoder: RenderBundleEncoder; buffer: Buffer;
-                     format: IndexFormat; offset: uint64; size: uint64): void {.
-    cdecl, importc: "wgpuRenderBundleEncoderSetIndexBuffer".}
-proc setLabel*(renderBundleEncoder: RenderBundleEncoder; label: StringView): void {.
-    cdecl, importc: "wgpuRenderBundleEncoderSetLabel".}
-proc set*(renderBundleEncoder: RenderBundleEncoder; pipeline: RenderPipeline): void {.
-    cdecl, importc: "wgpuRenderBundleEncoderSetPipeline".}
-proc setVertexBuffer*(renderBundleEncoder: RenderBundleEncoder; slot: uint32;
-                      buffer: Buffer; offset: uint64; size: uint64): void {.
-    cdecl, importc: "wgpuRenderBundleEncoderSetVertexBuffer".}
-proc addRef*(renderBundleEncoder: RenderBundleEncoder): void {.cdecl,
-    importc: "wgpuRenderBundleEncoderAddRef".}
-proc release*(renderBundleEncoder: RenderBundleEncoder): void {.cdecl,
-    importc: "wgpuRenderBundleEncoderRelease".}
-proc beginOcclusionQuery*(renderPassEncoder: RenderPassEncoder;
-                          queryIndex: uint32): void {.cdecl,
-    importc: "wgpuRenderPassEncoderBeginOcclusionQuery".}
-proc draw*(renderPassEncoder: RenderPassEncoder; vertexCount: uint32;
-           instanceCount: uint32; firstVertex: uint32; firstInstance: uint32): void {.
-    cdecl, importc: "wgpuRenderPassEncoderDraw".}
-proc drawIndexed*(renderPassEncoder: RenderPassEncoder; indexCount: uint32;
-                  instanceCount: uint32; firstIndex: uint32; baseVertex: int32;
-                  firstInstance: uint32): void {.cdecl,
-    importc: "wgpuRenderPassEncoderDrawIndexed".}
-proc drawIndexedIndirect*(renderPassEncoder: RenderPassEncoder;
-                          indirectBuffer: Buffer; indirectOffset: uint64): void {.
-    cdecl, importc: "wgpuRenderPassEncoderDrawIndexedIndirect".}
-proc drawIndirect*(renderPassEncoder: RenderPassEncoder; indirectBuffer: Buffer;
-                   indirectOffset: uint64): void {.cdecl,
-    importc: "wgpuRenderPassEncoderDrawIndirect".}
-proc End*(renderPassEncoder: RenderPassEncoder): void {.cdecl,
-    importc: "wgpuRenderPassEncoderEnd".}
-proc EndOcclusionQuery*(renderPassEncoder: RenderPassEncoder): void {.cdecl,
-    importc: "wgpuRenderPassEncoderEndOcclusionQuery".}
-proc execute*(renderPassEncoder: RenderPassEncoder; bundleCount: csize_t;
-              bundles: ptr RenderBundle): void {.cdecl,
-    importc: "wgpuRenderPassEncoderExecuteBundles".}
-proc insertDebugMarker*(renderPassEncoder: RenderPassEncoder;
-                        markerLabel: StringView): void {.cdecl,
-    importc: "wgpuRenderPassEncoderInsertDebugMarker".}
-proc popDebugGroup*(renderPassEncoder: RenderPassEncoder): void {.cdecl,
-    importc: "wgpuRenderPassEncoderPopDebugGroup".}
-proc pushDebugGroup*(renderPassEncoder: RenderPassEncoder;
-                     groupLabel: StringView): void {.cdecl,
-    importc: "wgpuRenderPassEncoderPushDebugGroup".}
-proc set*(renderPassEncoder: RenderPassEncoder; groupIndex: uint32;
-          group: BindGroup; dynamicOffsetCount: csize_t;
-          dynamicOffsets: ptr uint32): void {.cdecl,
-    importc: "wgpuRenderPassEncoderSetBindGroup".}
-proc setBlendConstant*(renderPassEncoder: RenderPassEncoder; color: ptr Color): void {.
-    cdecl, importc: "wgpuRenderPassEncoderSetBlendConstant".}
-proc setIndexBuffer*(renderPassEncoder: RenderPassEncoder; buffer: Buffer;
-                     format: IndexFormat; offset: uint64; size: uint64): void {.
-    cdecl, importc: "wgpuRenderPassEncoderSetIndexBuffer".}
-proc setLabel*(renderPassEncoder: RenderPassEncoder; label: StringView): void {.
-    cdecl, importc: "wgpuRenderPassEncoderSetLabel".}
-proc set*(renderPassEncoder: RenderPassEncoder; pipeline: RenderPipeline): void {.
-    cdecl, importc: "wgpuRenderPassEncoderSetPipeline".}
-proc setScissorRect*(renderPassEncoder: RenderPassEncoder; x: uint32; y: uint32;
-                     width: uint32; height: uint32): void {.cdecl,
-    importc: "wgpuRenderPassEncoderSetScissorRect".}
-proc setStencilReference*(renderPassEncoder: RenderPassEncoder;
-                          reference: uint32): void {.cdecl,
-    importc: "wgpuRenderPassEncoderSetStencilReference".}
-proc setVertexBuffer*(renderPassEncoder: RenderPassEncoder; slot: uint32;
-                      buffer: Buffer; offset: uint64; size: uint64): void {.
-    cdecl, importc: "wgpuRenderPassEncoderSetVertexBuffer".}
-proc setViewport*(renderPassEncoder: RenderPassEncoder; x: cfloat; y: cfloat;
-                  width: cfloat; height: cfloat; minDepth: cfloat;
-                  maxDepth: cfloat): void {.cdecl,
-    importc: "wgpuRenderPassEncoderSetViewport".}
-proc addRef*(renderPassEncoder: RenderPassEncoder): void {.cdecl,
-    importc: "wgpuRenderPassEncoderAddRef".}
-proc release*(renderPassEncoder: RenderPassEncoder): void {.cdecl,
-    importc: "wgpuRenderPassEncoderRelease".}
-proc getBindGroupLayout*(renderPipeline: RenderPipeline; groupIndex: uint32): BindGroupLayout {.
-    cdecl, importc: "wgpuRenderPipelineGetBindGroupLayout".}
-proc setLabel*(renderPipeline: RenderPipeline; label: StringView): void {.cdecl,
-    importc: "wgpuRenderPipelineSetLabel".}
-proc addRef*(renderPipeline: RenderPipeline): void {.cdecl,
-    importc: "wgpuRenderPipelineAddRef".}
-proc release*(renderPipeline: RenderPipeline): void {.cdecl,
-    importc: "wgpuRenderPipelineRelease".}
-proc setLabel*(sampler: Sampler; label: StringView): void {.cdecl,
-    importc: "wgpuSamplerSetLabel".}
-proc addRef*(sampler: Sampler): void {.cdecl, importc: "wgpuSamplerAddRef".}
-proc release*(sampler: Sampler): void {.cdecl, importc: "wgpuSamplerRelease".}
-proc getCompilationInfo*(shaderModule: ShaderModule;
-                         callbackInfo: CompilationInfoCallbackInfo): Future {.
-    cdecl, importc: "wgpuShaderModuleGetCompilationInfo".}
-proc setLabel*(shaderModule: ShaderModule; label: StringView): void {.cdecl,
-    importc: "wgpuShaderModuleSetLabel".}
-proc addRef*(shaderModule: ShaderModule): void {.cdecl,
-    importc: "wgpuShaderModuleAddRef".}
-proc release*(shaderModule: ShaderModule): void {.cdecl,
-    importc: "wgpuShaderModuleRelease".}
-proc freeMembers*(supportedFeatures: SupportedFeatures): void {.cdecl,
-    importc: "wgpuSupportedFeaturesFreeMembers".}
-proc freeMembers*(supportedWGSLLanguageFeatures: SupportedWGSLLanguageFeatures): void {.
-    cdecl, importc: "wgpuSupportedWGSLLanguageFeaturesFreeMembers".}
-proc configure*(surface: Surface; config: ptr SurfaceConfiguration): void {.
-    cdecl, importc: "wgpuSurfaceConfigure".}
-proc get*(surface: Surface; adapter: Adapter;
-          capabilities: ptr SurfaceCapabilities): Status {.cdecl,
-    importc: "wgpuSurfaceGetCapabilities".}
-proc getCurrentTexture*(surface: Surface; surfaceTexture: ptr SurfaceTexture): void {.
-    cdecl, importc: "wgpuSurfaceGetCurrentTexture".}
-proc present*(surface: Surface): Status {.cdecl, importc: "wgpuSurfacePresent".}
-proc setLabel*(surface: Surface; label: StringView): void {.cdecl,
-    importc: "wgpuSurfaceSetLabel".}
-proc unconfigure*(surface: Surface): void {.cdecl,
-    importc: "wgpuSurfaceUnconfigure".}
-proc addRef*(surface: Surface): void {.cdecl, importc: "wgpuSurfaceAddRef".}
-proc release*(surface: Surface): void {.cdecl, importc: "wgpuSurfaceRelease".}
-proc freeMembers*(surfaceCapabilities: SurfaceCapabilities): void {.cdecl,
-    importc: "wgpuSurfaceCapabilitiesFreeMembers".}
-proc create*(texture: Texture; descriptor: ptr TextureViewDescriptor): TextureView {.
-    cdecl, importc: "wgpuTextureCreateView".}
-proc destroy*(texture: Texture): void {.cdecl, importc: "wgpuTextureDestroy".}
-proc getDepthOrArrayLayers*(texture: Texture): uint32 {.cdecl,
-    importc: "wgpuTextureGetDepthOrArrayLayers".}
-proc getDimension*(texture: Texture): TextureDimension {.cdecl,
-    importc: "wgpuTextureGetDimension".}
-proc getFormat*(texture: Texture): TextureFormat {.cdecl,
-    importc: "wgpuTextureGetFormat".}
-proc getHeight*(texture: Texture): uint32 {.cdecl,
-    importc: "wgpuTextureGetHeight".}
-proc getMipLevelCount*(texture: Texture): uint32 {.cdecl,
-    importc: "wgpuTextureGetMipLevelCount".}
-proc getSampleCount*(texture: Texture): uint32 {.cdecl,
-    importc: "wgpuTextureGetSampleCount".}
-proc getUsage*(texture: Texture): TextureUsage {.cdecl,
-    importc: "wgpuTextureGetUsage".}
-proc getWidth*(texture: Texture): uint32 {.cdecl, importc: "wgpuTextureGetWidth".}
-proc setLabel*(texture: Texture; label: StringView): void {.cdecl,
-    importc: "wgpuTextureSetLabel".}
-proc addRef*(texture: Texture): void {.cdecl, importc: "wgpuTextureAddRef".}
-proc release*(texture: Texture): void {.cdecl, importc: "wgpuTextureRelease".}
-proc setLabel*(textureView: TextureView; label: StringView): void {.cdecl,
-    importc: "wgpuTextureViewSetLabel".}
-proc addRef*(textureView: TextureView): void {.cdecl,
-    importc: "wgpuTextureViewAddRef".}
-proc release*(textureView: TextureView): void {.cdecl,
-    importc: "wgpuTextureViewRelease".}
-var InstanceBackend_All*: InstanceBackend
-var InstanceBackend_Vulkan*: InstanceBackend
-var InstanceBackend_GL*: InstanceBackend
-var InstanceBackend_Metal*: InstanceBackend
-var InstanceBackend_DX12*: InstanceBackend
-var InstanceBackend_DX11*: InstanceBackend
-var InstanceBackend_BrowserWebGPU*: InstanceBackend
-var InstanceBackend_Primary*: InstanceBackend
-var InstanceBackend_Secondary*: InstanceBackend
-var InstanceBackend_Force32*: InstanceBackend
-var InstanceFlag_Default*: InstanceFlag
-var InstanceFlag_Debug*: InstanceFlag
-var InstanceFlag_Validation*: InstanceFlag
-var InstanceFlag_DiscardHalLabels*: InstanceFlag
-var InstanceFlag_Force32*: InstanceFlag
-proc generate*(instance: Instance; report: ptr GlobalReport): void {.cdecl,
-    importc: "wgpuGenerateReport".}
-proc enumerate*(instance: Instance;
-                options: ptr InstanceEnumerateAdapterOptions;
-                adapters: ptr Adapter): csize_t {.cdecl,
-    importc: "wgpuInstanceEnumerateAdapters".}
-proc submitForIndex*(queue: Queue; commandCount: csize_t;
-                     commands: ptr CommandBuffer): SubmissionIndex {.cdecl,
-    importc: "wgpuQueueSubmitForIndex".}
-proc poll*(device: Device; wait: Bool;
-           wrappedSubmissionIndex: ptr SubmissionIndex): Bool {.cdecl,
-    importc: "wgpuDevicePoll".}
-proc createSpirV*(device: Device; descriptor: ptr ShaderModuleDescriptorSpirV): ShaderModule {.
-    cdecl, importc: "wgpuDeviceCreateShaderModuleSpirV".}
-# proc set*(callback: LogCallback; userdata: pointer): void {.cdecl,
-#     importc: "wgpuSetLogCallback".}
-# proc set*(level: LogLevel): void {.cdecl, importc: "wgpuSetLogLevel".}
-proc getVersion*(): uint32 {.cdecl, importc: "wgpuGetVersion".}
-proc setPushConstants*(encoder: RenderPassEncoder; stages: ShaderStage;
-                       offset: uint32; sizeBytes: uint32; data: pointer): void {.
-    cdecl, importc: "wgpuRenderPassEncoderSetPushConstants".}
-proc setPushConstants*(encoder: ComputePassEncoder; offset: uint32;
-                       sizeBytes: uint32; data: pointer): void {.cdecl,
-    importc: "wgpuComputePassEncoderSetPushConstants".}
-proc setPushConstants*(encoder: RenderBundleEncoder; stages: ShaderStage;
-                       offset: uint32; sizeBytes: uint32; data: pointer): void {.
-    cdecl, importc: "wgpuRenderBundleEncoderSetPushConstants".}
-proc multiDrawIndirect*(encoder: RenderPassEncoder; buffer: Buffer;
-                        offset: uint64; count: uint32): void {.cdecl,
-    importc: "wgpuRenderPassEncoderMultiDrawIndirect".}
-proc multiDrawIndexedIndirect*(encoder: RenderPassEncoder; buffer: Buffer;
-                               offset: uint64; count: uint32): void {.cdecl,
-    importc: "wgpuRenderPassEncoderMultiDrawIndexedIndirect".}
-proc multiDrawIndirectCount*(encoder: RenderPassEncoder; buffer: Buffer;
-                             offset: uint64; count_buffer: Buffer;
-                             count_buffer_offset: uint64; max_count: uint32): void {.
-    cdecl, importc: "wgpuRenderPassEncoderMultiDrawIndirectCount".}
-proc multiDrawIndexedIndirectCount*(encoder: RenderPassEncoder; buffer: Buffer;
-                                    offset: uint64; count_buffer: Buffer;
-                                    count_buffer_offset: uint64;
-                                    max_count: uint32): void {.cdecl,
-    importc: "wgpuRenderPassEncoderMultiDrawIndexedIndirectCount".}
-proc beginPipelineStatisticsQuery*(computePassEncoder: ComputePassEncoder;
-                                   querySet: QuerySet; queryIndex: uint32): void {.
-    cdecl, importc: "wgpuComputePassEncoderBeginPipelineStatisticsQuery".}
-proc EndPipelineStatisticsQuery*(computePassEncoder: ComputePassEncoder): void {.
-    cdecl, importc: "wgpuComputePassEncoderEndPipelineStatisticsQuery".}
-proc beginPipelineStatisticsQuery*(renderPassEncoder: RenderPassEncoder;
-                                   querySet: QuerySet; queryIndex: uint32): void {.
-    cdecl, importc: "wgpuRenderPassEncoderBeginPipelineStatisticsQuery".}
-proc EndPipelineStatisticsQuery*(renderPassEncoder: RenderPassEncoder): void {.
-    cdecl, importc: "wgpuRenderPassEncoderEndPipelineStatisticsQuery".}
-proc writeTimestamp*(computePassEncoder: ComputePassEncoder; querySet: QuerySet;
-                     queryIndex: uint32): void {.cdecl,
-    importc: "wgpuComputePassEncoderWriteTimestamp".}
-proc writeTimestamp*(renderPassEncoder: RenderPassEncoder; querySet: QuerySet;
-                     queryIndex: uint32): void {.cdecl,
-    importc: "wgpuRenderPassEncoderWriteTimestamp".}
+type TextureViewImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type BufferImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type BindGroupImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type BindGroupLayoutImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type PipelineLayoutImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type BufferImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type FutureImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type RenderPassEncoderImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type ComputePassEncoderImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type RenderBundleImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type RenderBundleEncoderImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type CommandEncoderImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type CommandBufferImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type TextureImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type TextureViewImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type QueueImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type QuerySetImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type InstanceImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type AdapterImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type DeviceImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type SurfaceImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type ShaderModuleImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type RenderPipelineImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type ComputePipelineImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type TopLevelAccelerationStructureImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type BottomLevelAccelerationStructureImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type RaytracingPipelineImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type RaytracingPassEncoderImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type Surface* = ptr WGPUSurfaceImpl
+type BindGroupLayout* = ptr WGPUBindGroupLayoutImpl
+type PipelineLayout* = ptr WGPUPipelineLayoutImpl
+type BindGroup* = ptr WGPUBindGroupImpl
+type Buffer* = ptr WGPUBufferImpl
+type Queue* = ptr WGPUQueueImpl
+type QuerySet* = ptr WGPUQuerySetImpl
+type Instance* = ptr WGPUInstanceImpl
+type Adapter* = ptr WGPUAdapterImpl
+type Device* = ptr WGPUDeviceImpl
+type RenderPassEncoder* = ptr WGPURenderPassEncoderImpl
+type ComputePassEncoder* = ptr WGPUComputePassEncoderImpl
+type RenderBundle* = ptr WGPURenderBundleImpl
+type RenderBundleEncoder* = ptr WGPURenderBundleEncoderImpl
+type CommandBuffer* = ptr WGPUCommandBufferImpl
+type CommandEncoder* = ptr WGPUCommandEncoderImpl
+type Texture* = ptr WGPUTextureImpl
+type TextureView* = ptr WGPUTextureViewImpl
+type SamplerImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type Sampler* = ptr WGPUSamplerImpl
+type FenceImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type Fence* = ptr WGPUFenceImpl
+type RenderPipeline* = ptr WGPURenderPipelineImpl
+type ShaderModule* = ptr WGPUShaderModuleImpl
+type ComputePipeline* = ptr WGPUComputePipelineImpl
+type RayTracingAccelerationContainerImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type RayTracingAccelerationContainer* = ptr WGPURayTracingAccelerationContainerImpl
+type RayTracingShaderBindingTableImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type RayTracingShaderBindingTable* = ptr WGPURayTracingShaderBindingTableImpl
+type RaytracingPipeline* = ptr WGPURaytracingPipelineImpl
+type RaytracingPassEncoder* = ptr WGPURaytracingPassEncoderImpl
+type ShaderStageEnum* {.size: sizeof(cint), pure.} = enum
+  ShaderStageEnum_Vertex,
+  ShaderStageEnum_Fragment,
+  ShaderStageEnum_Compute,
+  ShaderStageEnum_TessControl,
+  ShaderStageEnum_TessEvaluation,
+  ShaderStageEnum_Geometry,
+  ShaderStageEnum_RayGen,
+  ShaderStageEnum_RayGenNV = 6,
+  ShaderStageEnum_Intersect,
+  ShaderStageEnum_IntersectNV = 7,
+  ShaderStageEnum_AnyHit,
+  ShaderStageEnum_AnyHitNV = 8,
+  ShaderStageEnum_ClosestHit,
+  ShaderStageEnum_ClosestHitNV = 9,
+  ShaderStageEnum_Miss,
+  ShaderStageEnum_MissNV = 10,
+  ShaderStageEnum_Callable,
+  ShaderStageEnum_CallableNV = 11,
+  ShaderStageEnum_Task,
+  ShaderStageEnum_TaskNV = 12,
+  ShaderStageEnum_Mesh,
+  ShaderStageEnum_MeshNV = 13,
+  ShaderStageEnum_EnumCount,
+  ShaderStageEnum_Force32 = 2147483647
+
+type ShaderStage* = WGPUFlags
+const ShaderStage_None*: WGPUShaderStage = 0
+const ShaderStage_Vertex*: WGPUShaderStage = 1
+const ShaderStage_TessControl*: WGPUShaderStage = 1
+const ShaderStage_TessEvaluation*: WGPUShaderStage = 1
+const ShaderStage_Geometry*: WGPUShaderStage = 1
+const ShaderStage_Fragment*: WGPUShaderStage = 1
+const ShaderStage_Compute*: WGPUShaderStage = 1
+const ShaderStage_RayGen*: WGPUShaderStage = 1
+const ShaderStage_RayGenNV*: WGPUShaderStage = 1
+const ShaderStage_Intersect*: WGPUShaderStage = 1
+const ShaderStage_IntersectNV*: WGPUShaderStage = 1
+const ShaderStage_AnyHit*: WGPUShaderStage = 1
+const ShaderStage_AnyHitNV*: WGPUShaderStage = 1
+const ShaderStage_ClosestHit*: WGPUShaderStage = 1
+const ShaderStage_ClosestHitNV*: WGPUShaderStage = 1
+const ShaderStage_Miss*: WGPUShaderStage = 1
+const ShaderStage_MissNV*: WGPUShaderStage = 1
+const ShaderStage_Callable*: WGPUShaderStage = 1
+const ShaderStage_CallableNV*: WGPUShaderStage = 1
+const ShaderStage_Task*: WGPUShaderStage = 1
+const ShaderStage_TaskNV*: WGPUShaderStage = 1
+const ShaderStage_Mesh*: WGPUShaderStage = 1
+const ShaderStage_MeshNV*: WGPUShaderStage = 1
+const ShaderStage_EnumCount*: WGPUShaderStage = 1
+type TextureUsage* = WGPUFlags
+const TextureUsage_None*: WGPUTextureUsage = 0
+const TextureUsage_CopySrc*: WGPUTextureUsage = 1
+const TextureUsage_CopyDst*: WGPUTextureUsage = 2
+const TextureUsage_TextureBinding*: WGPUTextureUsage = 4
+const TextureUsage_StorageBinding*: WGPUTextureUsage = 8
+const TextureUsage_RenderAttachment*: WGPUTextureUsage = 16
+const TextureUsage_TransientAttachment*: WGPUTextureUsage = 4096
+const TextureUsage_StorageAttachment*: WGPUTextureUsage = 8192
+type BufferUsage* = WGPUFlags
+const BufferUsage_None*: WGPUBufferUsage = 0
+const BufferUsage_MapRead*: WGPUBufferUsage = 1
+const BufferUsage_MapWrite*: WGPUBufferUsage = 2
+const BufferUsage_CopySrc*: WGPUBufferUsage = 4
+const BufferUsage_CopyDst*: WGPUBufferUsage = 8
+const BufferUsage_Index*: WGPUBufferUsage = 16
+const BufferUsage_Vertex*: WGPUBufferUsage = 32
+const BufferUsage_Uniform*: WGPUBufferUsage = 64
+const BufferUsage_Storage*: WGPUBufferUsage = 128
+const BufferUsage_Indirect*: WGPUBufferUsage = 256
+const BufferUsage_QueryResolve*: WGPUBufferUsage = 512
+const BufferUsage_ShaderDeviceAddress*: WGPUBufferUsage = 268435456
+const BufferUsage_AccelerationStructureInput*: WGPUBufferUsage = 536870912
+const BufferUsage_AccelerationStructureStorage*: WGPUBufferUsage = 1073741824
+const BufferUsage_ShaderBindingTable*: WGPUBufferUsage = 2147483648
+const BufferUsage_Raytracing*: WGPUBufferUsage = 4026531968
+type ColorWriteMask* = WGPUFlags
+const ColorWriteMask_None*: WGPUColorWriteMask = 0
+const ColorWriteMask_Red*: WGPUColorWriteMask = 1
+const ColorWriteMask_Green*: WGPUColorWriteMask = 2
+const ColorWriteMask_Blue*: WGPUColorWriteMask = 4
+const ColorWriteMask_Alpha*: WGPUColorWriteMask = 8
+const ColorWriteMask_All*: WGPUColorWriteMask = 15
+type Status* {.size: sizeof(cint), pure.} = enum
+  Success = 1,
+  Error = 2,
+  Force32 = 2147483647
+
+type WaitStatus* {.size: sizeof(cint), pure.} = enum
+  Success = 1,
+  TimedOut = 2,
+  Error = 3,
+  Force32 = 2147483647
+
+type PresentMode* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Fifo = 1,
+  FifoRelaxed = 2,
+  Immediate = 3,
+  Mailbox = 4
+
+type TextureAspect* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  All = 1,
+  StencilOnly = 2,
+  DepthOnly = 3,
+  Plane0Only = 327680,
+  Plane1Only = 327681,
+  Plane2Only = 327682,
+  Force32 = 2147483647
+
+type PrimitiveTopology* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  PointList = 1,
+  LineList = 2,
+  LineStrip = 3,
+  TriangleList = 4,
+  TriangleStrip = 5,
+  Force32 = 2147483647
+
+type SType* {.size: sizeof(cint), pure.} = enum
+  SType_ShaderSourceSPIRV = 1,
+  SType_ShaderSourceWGSL = 2,
+  SType_SurfaceSourceMetalLayer = 4,
+  SType_SurfaceSourceWindowsHWND = 5,
+  SType_SurfaceSourceXlibWindow = 6,
+  SType_SurfaceSourceWaylandSurface = 7,
+  SType_SurfaceSourceAndroidNativeWindow = 8,
+  SType_SurfaceSourceXCBWindow = 9,
+  SType_SurfaceColorManagement = 10,
+  SType_EmscriptenSurfaceSourceCanvasHTMLSelector = 262144,
+  SType_TextureComponentSwizzleDescriptor = 327751,
+  SType_InstanceLayerSelection = 268435457,
+  SType_BufferAllocatorSelector = 268435458,
+  SType_ShaderSourceGLSL = 268435459,
+  SType_PrimitiveLineWidthInfo = 268435460,
+  SType_SurfaceSourceDrmPlane = 268435461,
+  SType_ExtrasLimits = 268435462,
+  SType_BindGroupLayoutEntryRayTracing = 268435463,
+  SType_BindGroupEntryRayTracing = 268435464
+
+type CallbackMode* {.size: sizeof(cint), pure.} = enum
+  WaitAnyOnly = 1,
+  AllowProcessEvents = 2,
+  AllowSpontaneous = 3,
+  Force32 = 2147483647
+
+type StringView* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  data*: cstring
+  length*: size_t
+
+type TexelCopyBufferLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  offset*: uint64_t
+  bytesPerRow*: uint32_t
+  rowsPerImage*: uint32_t
+
+type CompareFunction* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Never = 1,
+  Less = 2,
+  Equal = 3,
+  LessEqual = 4,
+  Greater = 5,
+  NotEqual = 6,
+  GreaterEqual = 7,
+  Always = 8,
+  Force32 = 2147483647
+
+type MapMode* = WGPUFlags
+const MapMode_None*: WGPUMapMode = 0
+const MapMode_Read*: WGPUMapMode = 1
+const MapMode_Write*: WGPUMapMode = 2
+type TextureDimension* {.size: sizeof(cint), pure.} = enum
+  TextureDimension_Undefined = 0,
+  TextureDimension_1D = 1,
+  TextureDimension_2D = 2,
+  TextureDimension_3D = 3,
+  TextureDimension_Force32 = 2147483647
+
+type TextureViewDimension* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  D1D = 1,
+  D2D = 2,
+  D2DArray = 3,
+  Cube = 4,
+  CubeArray = 5,
+  D3D = 6,
+  Force32 = 2147483647
+
+type OptionalBool* {.size: sizeof(cint), pure.} = enum
+  False = 0,
+  True = 1,
+  Undefined = 2,
+  Force32 = 2147483647
+
+type CullMode* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  None = 1,
+  Front = 2,
+  Back = 3,
+  Force32 = 2147483647
+
+type LoadOp* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Load = 1,
+  Clear = 2,
+  ExpandResolveTexture = 327683,
+  Force32 = 2147483647
+
+type StoreOp* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Store = 1,
+  Discard = 2,
+  Force32 = 2147483647
+
+type FrontFace* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  CCW = 1,
+  CW = 2,
+  Force32 = 2147483647
+
+type PolygonMode* {.size: sizeof(cint), pure.} = enum
+  PolygonMode_Undefined = 0,
+  PolygonMode_Fill = 1,
+  PolygonMode_Line = 2,
+  PolygonMode_Point = 3,
+  PolygonMode_Force32 = 2147483647
+
+type VertexStepMode* {.size: sizeof(cint), pure.} = enum
+  VertexStepMode_Undefined = 0,
+  VertexStepMode_Vertex = 1,
+  VertexStepMode_Instance = 2,
+  VertexStepMode_Force32 = 2147483647
+
+type IndexFormat* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Uint16 = 1,
+  Uint32 = 2,
+  Force32 = 2147483647
+
+type RequestAdapterStatus* {.size: sizeof(cint), pure.} = enum
+  Success = 1,
+  CallbackCancelled = 2,
+  Unavailable = 3,
+  Error = 4,
+  Force32 = 2147483647
+
+type RequestDeviceStatus* {.size: sizeof(cint), pure.} = enum
+  Success = 1,
+  CallbackCancelled = 2,
+  Error = 3,
+  Force32 = 2147483647
+
+type BufferBindingType* {.size: sizeof(cint), pure.} = enum
+  BindingNotUsed = 0,
+  Undefined = 1,
+  Uniform = 2,
+  Storage = 3,
+  ReadOnlyStorage = 4,
+  Force32 = 2147483647
+
+type SamplerBindingType* {.size: sizeof(cint), pure.} = enum
+  BindingNotUsed = 0,
+  Undefined = 1,
+  Filtering = 2,
+  NonFiltering = 3,
+  Comparison = 4,
+  Force32 = 2147483647
+
+type StorageTextureAccess* {.size: sizeof(cint), pure.} = enum
+  BindingNotUsed = 0,
+  Undefined = 1,
+  WriteOnly = 2,
+  ReadOnly = 3,
+  ReadWrite = 4,
+  Force32 = 2147483647
+
+type TextureFormat* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  R8Unorm = 1,
+  R8Snorm = 2,
+  R8Uint = 3,
+  R8Sint = 4,
+  R16Unorm = 5,
+  R16Snorm = 6,
+  R16Uint = 7,
+  R16Sint = 8,
+  R16Float = 9,
+  RG8Unorm = 10,
+  RG8Snorm = 11,
+  RG8Uint = 12,
+  RG8Sint = 13,
+  R32Float = 14,
+  R32Uint = 15,
+  R32Sint = 16,
+  RG16Unorm = 17,
+  RG16Snorm = 18,
+  RG16Uint = 19,
+  RG16Sint = 20,
+  RG16Float = 21,
+  RGBA8Unorm = 22,
+  RGBA8UnormSrgb = 23,
+  RGBA8Snorm = 24,
+  RGBA8Uint = 25,
+  RGBA8Sint = 26,
+  BGRA8Unorm = 27,
+  BGRA8UnormSrgb = 28,
+  RGB10A2Uint = 29,
+  RGB10A2Unorm = 30,
+  RG11B10Ufloat = 31,
+  RGB9E5Ufloat = 32,
+  RG32Float = 33,
+  RG32Uint = 34,
+  RG32Sint = 35,
+  RGBA16Unorm = 36,
+  RGBA16Snorm = 37,
+  RGBA16Uint = 38,
+  RGBA16Sint = 39,
+  RGBA16Float = 40,
+  RGBA32Float = 41,
+  RGBA32Uint = 42,
+  RGBA32Sint = 43,
+  Stencil8 = 44,
+  Depth16Unorm = 45,
+  Depth24Plus = 46,
+  Depth24PlusStencil8 = 47,
+  Depth32Float = 48,
+  Depth32FloatStencil8 = 49,
+  BC1RGBAUnorm = 50,
+  BC1RGBAUnormSrgb = 51,
+  BC2RGBAUnorm = 52,
+  BC2RGBAUnormSrgb = 53,
+  BC3RGBAUnorm = 54,
+  BC3RGBAUnormSrgb = 55,
+  BC4RUnorm = 56,
+  BC4RSnorm = 57,
+  BC5RGUnorm = 58,
+  BC5RGSnorm = 59,
+  BC6HRGBUfloat = 60,
+  BC6HRGBFloat = 61,
+  BC7RGBAUnorm = 62,
+  BC7RGBAUnormSrgb = 63,
+  ETC2RGB8Unorm = 64,
+  ETC2RGB8UnormSrgb = 65,
+  ETC2RGB8A1Unorm = 66,
+  ETC2RGB8A1UnormSrgb = 67,
+  ETC2RGBA8Unorm = 68,
+  ETC2RGBA8UnormSrgb = 69,
+  EACR11Unorm = 70,
+  EACR11Snorm = 71,
+  EACRG11Unorm = 72,
+  EACRG11Snorm = 73,
+  ASTC4x4Unorm = 74,
+  ASTC4x4UnormSrgb = 75,
+  ASTC5x4Unorm = 76,
+  ASTC5x4UnormSrgb = 77,
+  ASTC5x5Unorm = 78,
+  ASTC5x5UnormSrgb = 79,
+  ASTC6x5Unorm = 80,
+  ASTC6x5UnormSrgb = 81,
+  ASTC6x6Unorm = 82,
+  ASTC6x6UnormSrgb = 83,
+  ASTC8x5Unorm = 84,
+  ASTC8x5UnormSrgb = 85,
+  ASTC8x6Unorm = 86,
+  ASTC8x6UnormSrgb = 87,
+  ASTC8x8Unorm = 88,
+  ASTC8x8UnormSrgb = 89,
+  ASTC10x5Unorm = 90,
+  ASTC10x5UnormSrgb = 91,
+  ASTC10x6Unorm = 92,
+  ASTC10x6UnormSrgb = 93,
+  ASTC10x8Unorm = 94,
+  ASTC10x8UnormSrgb = 95,
+  ASTC10x10Unorm = 96,
+  ASTC10x10UnormSrgb = 97,
+  ASTC12x10Unorm = 98,
+  ASTC12x10UnormSrgb = 99,
+  ASTC12x12Unorm = 100,
+  ASTC12x12UnormSrgb = 101,
+  R8BG8Biplanar420Unorm = 327686,
+  R10X6BG10X6Biplanar420Unorm = 327687,
+  R8BG8A8Triplanar420Unorm = 327688,
+  R8BG8Biplanar422Unorm = 327689,
+  R8BG8Biplanar444Unorm = 327690,
+  R10X6BG10X6Biplanar422Unorm = 327691,
+  R10X6BG10X6Biplanar444Unorm = 327692,
+  External = 327693,
+  Force32 = 2147483647
+
+type TextureSampleType* {.size: sizeof(cint), pure.} = enum
+  BindingNotUsed = 0,
+  Undefined = 1,
+  Float = 2,
+  UnfilterableFloat = 3,
+  Depth = 4,
+  Sint = 5,
+  Uint = 6,
+  Force32 = 2147483647
+
+type FilterMode* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Nearest = 1,
+  Linear = 2,
+  Force32 = 2147483647
+
+type MipmapFilterMode* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Nearest = 1,
+  Linear = 2,
+  Force32 = 2147483647
+
+type AddressMode* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  ClampToEdge = 1,
+  Repeat = 2,
+  MirrorRepeat = 3,
+  Force32 = 2147483647
+
+type BackendType* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Null = 1,
+  WebGPU = 2,
+  D3D11 = 3,
+  D3D12 = 4,
+  Metal = 5,
+  Vulkan = 6,
+  OpenGL = 7,
+  OpenGLES = 8,
+  Force32 = 2147483647
+
+type AdapterType* {.size: sizeof(cint), pure.} = enum
+  DiscreteGPU = 1,
+  IntegratedGPU = 2,
+  CPU = 3,
+  Unknown = 4,
+  Force32 = 2147483647
+
+type PowerPreference* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  LowPower = 1,
+  HighPerformance = 2,
+  Force32 = 2147483647
+
+type FeatureLevel* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Compatibility = 1,
+  Core = 2,
+  Force32 = 2147483647
+
+type ErrorFilter* {.size: sizeof(cint), pure.} = enum
+  Validation = 1,
+  OutOfMemory = 2,
+  Internal = 3,
+  Force32 = 2147483647
+
+type BufferMapState* {.size: sizeof(cint), pure.} = enum
+  Unmapped = 1,
+  Pending = 2,
+  Mapped = 3,
+  Force32 = 2147483647
+
+type CompilationInfoRequestStatus* {.size: sizeof(cint), pure.} = enum
+  Success = 1,
+  CallbackCancelled = 2,
+  Force32 = 2147483647
+
+type CompilationMessageType* {.size: sizeof(cint), pure.} = enum
+  Error = 1,
+  Warning = 2,
+  Info = 3,
+  Force32 = 2147483647
+
+type CreatePipelineAsyncStatus* {.size: sizeof(cint), pure.} = enum
+  Success = 1,
+  CallbackCancelled = 2,
+  ValidationError = 3,
+  InternalError = 4,
+  Force32 = 2147483647
+
+type PopErrorScopeStatus* {.size: sizeof(cint), pure.} = enum
+  Success = 1,
+  CallbackCancelled = 2,
+  Error = 3,
+  Force32 = 2147483647
+
+type PredefinedColorSpace* {.size: sizeof(cint), pure.} = enum
+  PredefinedColorSpace_SRGB = 1,
+  PredefinedColorSpace_DisplayP3 = 2,
+  PredefinedColorSpace_Force32 = 2147483647
+
+type QueryType* {.size: sizeof(cint), pure.} = enum
+  Occlusion = 1,
+  Timestamp = 2,
+  Force32 = 2147483647
+
+type QueueWorkDoneStatus* {.size: sizeof(cint), pure.} = enum
+  Success = 1,
+  CallbackCancelled = 2,
+  Error = 3,
+  Force32 = 2147483647
+
+type SubgroupMatrixComponentType* {.size: sizeof(cint), pure.} = enum
+  SubgroupMatrixComponentType_F32 = 1,
+  SubgroupMatrixComponentType_F16 = 2,
+  SubgroupMatrixComponentType_U32 = 3,
+  SubgroupMatrixComponentType_I32 = 4,
+  SubgroupMatrixComponentType_Force32 = 2147483647
+
+type ToneMappingMode* {.size: sizeof(cint), pure.} = enum
+  ToneMappingMode_Standard = 1,
+  ToneMappingMode_Extended = 2,
+  ToneMappingMode_Force32 = 2147483647
+
+type WGSLLanguageFeatureName* {.size: sizeof(cint), pure.} = enum
+  ReadonlyAndReadwriteStorageTextures = 1,
+  Packed4x8IntegerDotProduct = 2,
+  UnrestrictedPointerParameters = 3,
+  PointerCompositeAccess = 4,
+  SizedBindingArray = 5,
+  Force32 = 2147483647
+
+type ErrorType* {.size: sizeof(cint), pure.} = enum
+  NoError = 1,
+  Validation = 2,
+  OutOfMemory = 3,
+  Internal = 4,
+  Unknown = 5,
+  Force32 = 2147483647
+
+type DeviceLostReason* {.size: sizeof(cint), pure.} = enum
+  Unknown = 1,
+  Destroyed = 2,
+  CallbackCancelled = 3,
+  FailedCreation = 4,
+  Force32 = 2147483647
+
+type VertexFormat* {.size: sizeof(cint), pure.} = enum
+  Uint8 = 1,
+  Uint8x2 = 2,
+  Uint8x4 = 3,
+  Sint8 = 4,
+  Sint8x2 = 5,
+  Sint8x4 = 6,
+  Unorm8 = 7,
+  Unorm8x2 = 8,
+  Unorm8x4 = 9,
+  Snorm8 = 10,
+  Snorm8x2 = 11,
+  Snorm8x4 = 12,
+  Uint16 = 13,
+  Uint16x2 = 14,
+  Uint16x4 = 15,
+  Sint16 = 16,
+  Sint16x2 = 17,
+  Sint16x4 = 18,
+  Unorm16 = 19,
+  Unorm16x2 = 20,
+  Unorm16x4 = 21,
+  Snorm16 = 22,
+  Snorm16x2 = 23,
+  Snorm16x4 = 24,
+  Float16 = 25,
+  Float16x2 = 26,
+  Float16x4 = 27,
+  Float32 = 28,
+  Float32x2 = 29,
+  Float32x3 = 30,
+  Float32x4 = 31,
+  Uint32 = 32,
+  Uint32x2 = 33,
+  Uint32x3 = 34,
+  Uint32x4 = 35,
+  Sint32 = 36,
+  Sint32x2 = 37,
+  Sint32x3 = 38,
+  Sint32x4 = 39,
+  Unorm10_10_10_2 = 40,
+  Unorm8x4BGRA = 41,
+  Force32 = 2147483647
+
+type SurfaceGetCurrentTextureStatus* {.size: sizeof(cint), pure.} = enum
+  SuccessOptimal = 1,
+  SuccessSuboptimal = 2,
+  Timeout = 3,
+  Outdated = 4,
+  Lost = 5,
+  Error = 6,
+  Force32 = 2147483647
+
+type InstanceFeatureName* {.size: sizeof(cint), pure.} = enum
+  InstanceFeatureName_TimedWaitAny = 1,
+  InstanceFeatureName_ShaderSourceSPIRV = 2,
+  InstanceFeatureName_MultipleDevicesPerAdapter = 3,
+  InstanceFeatureName_Force32 = 2147483647
+
+type FeatureName* {.size: sizeof(cint), pure.} = enum
+  DepthClipControl = 1,
+  Depth32FloatStencil8 = 2,
+  TimestampQuery = 3,
+  TextureCompressionBC = 4,
+  TextureCompressionBCSliced3D = 5,
+  TextureCompressionETC2 = 6,
+  TextureCompressionASTC = 7,
+  TextureCompressionASTCSliced3D = 8,
+  IndirectFirstInstance = 9,
+  ShaderF16 = 10,
+  RG11B10UfloatRenderable = 11,
+  BGRA8UnormStorage = 12,
+  Float32Filterable = 13,
+  Float32Blendable = 14,
+  ClipDistances = 15,
+  DualSourceBlending = 16,
+  Subgroups = 17,
+  CoreFeaturesAndLimits = 18,
+  TextureFormatNV12 = 19,
+  TextureFormatP010 = 20,
+  PolygonModeLine = 21,
+  PolygonModePoint = 22,
+  Force32 = 2147483647
+
+type MapAsyncStatus* {.size: sizeof(cint), pure.} = enum
+  Success = 1,
+  CallbackCancelled = 2,
+  Error = 3,
+  Aborted = 4,
+  Force32 = 2147483647
+
+type CompositeAlphaMode* {.size: sizeof(cint), pure.} = enum
+  Auto = 0,
+  Opaque = 1,
+  Premultiplied = 2,
+  Unpremultiplied = 3,
+  Inherit = 4,
+  Force32 = 2147483647
+
+type ComponentSwizzle* {.size: sizeof(cint), pure.} = enum
+  ComponentSwizzle_Undefined = 0,
+  ComponentSwizzle_Zero = 1,
+  ComponentSwizzle_One = 2,
+  ComponentSwizzle_R = 3,
+  ComponentSwizzle_G = 4,
+  ComponentSwizzle_B = 5,
+  ComponentSwizzle_A = 6,
+  ComponentSwizzle_Force32 = 2147483647
+
+type RayTracingAccelerationGeometryType* {.size: sizeof(cint), pure.} = enum
+  RayTracingAccelerationGeometryType_Triangles = 1,
+  RayTracingAccelerationGeometryType_AABBs = 2,
+  RayTracingAccelerationGeometryType_Force32 = 2147483647
+
+type RayTracingAccelerationContainerLevel* {.size: sizeof(cint), pure.} = enum
+  RayTracingAccelerationContainerLevel_Bottom = 1,
+  RayTracingAccelerationContainerLevel_Top = 2,
+  RayTracingAccelerationContainerLevel_Force32 = 2147483647
+
+type RayTracingShaderBindingTableGroupType* {.size: sizeof(cint), pure.} = enum
+  RayTracingShaderBindingTableGroupType_General = 1,
+  RayTracingShaderBindingTableGroupType_TrianglesHitGroup = 2,
+  RayTracingShaderBindingTableGroupType_ProceduralHitGroup = 3,
+  RayTracingShaderBindingTableGroupType_Force32 = 2147483647
+
+type RayTracingAccelerationGeometryUsage* = WGPUFlags
+const RayTracingAccelerationGeometryUsage_Opaque*: WGPURayTracingAccelerationGeometryUsage = 1
+const RayTracingAccelerationGeometryUsage_AllowAnyHit*: WGPURayTracingAccelerationGeometryUsage = 2
+type RayTracingAccelerationInstanceUsage* = WGPUFlags
+const RayTracingAccelerationInstanceUsage_TriangleCullDisable*: WGPURayTracingAccelerationInstanceUsage = 1
+const RayTracingAccelerationInstanceUsage_TriangleFrontCounterclockwise*: WGPURayTracingAccelerationInstanceUsage = 2
+const RayTracingAccelerationInstanceUsage_ForceOpaque*: WGPURayTracingAccelerationInstanceUsage = 4
+const RayTracingAccelerationInstanceUsage_ForceNoOpaque*: WGPURayTracingAccelerationInstanceUsage = 8
+type RayTracingAccelerationContainerUsage* = WGPUFlags
+const RayTracingAccelerationContainerUsage_AllowUpdate*: WGPURayTracingAccelerationContainerUsage = 1
+const RayTracingAccelerationContainerUsage_PreferFastTrace*: WGPURayTracingAccelerationContainerUsage = 2
+const RayTracingAccelerationContainerUsage_PreferFastBuild*: WGPURayTracingAccelerationContainerUsage = 4
+const RayTracingAccelerationContainerUsage_LowMemory*: WGPURayTracingAccelerationContainerUsage = 8
+type ChainedStruct* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  next*: ptr ChainedStruct
+  sType*: WGPUSType
+
+type CompilationInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+
+type CompilationInfoCallback* = proc(a0: WGPUCompilationInfoRequestStatus, a1: ptr WGPUCompilationInfo, a2: pointer, a3: pointer) {.cdecl.}
+type CreateComputePipelineAsyncCallback* = proc(a0: WGPUCreatePipelineAsyncStatus, a1: WGPUComputePipeline, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
+type CreateRenderPipelineAsyncCallback* = proc(a0: WGPUCreatePipelineAsyncStatus, a1: WGPURenderPipeline, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
+type PopErrorScopeCallback* = proc(a0: WGPUPopErrorScopeStatus, a1: WGPUErrorType, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
+type QueueWorkDoneCallback* = proc(a0: WGPUQueueWorkDoneStatus, a1: pointer, a2: pointer) {.cdecl.}
+type CompilationInfoCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  mode*: WGPUCallbackMode
+  callback*: WGPUCompilationInfoCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type CreateComputePipelineAsyncCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  mode*: WGPUCallbackMode
+  callback*: WGPUCreateComputePipelineAsyncCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type CreateRenderPipelineAsyncCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  mode*: WGPUCallbackMode
+  callback*: WGPUCreateRenderPipelineAsyncCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type PopErrorScopeCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  mode*: WGPUCallbackMode
+  callback*: WGPUPopErrorScopeCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type QueueWorkDoneCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  mode*: WGPUCallbackMode
+  callback*: WGPUQueueWorkDoneCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type AdapterPropertiesSubgroups* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  subgroupMinSize*: uint32_t
+  subgroupMaxSize*: uint32_t
+
+type BindGroupLayoutEntryArraySize* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  arraySize*: uint32_t
+
+type CompilationMessage* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  message*: WGPUStringView
+  type*: WGPUCompilationMessageType
+  lineNum*: uint64_t
+  linePos*: uint64_t
+  offset*: uint64_t
+  length*: uint64_t
+
+type PassTimestampWrites* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  querySet*: WGPUQuerySet
+  beginningOfPassWriteIndex*: uint32_t
+  endOfPassWriteIndex*: uint32_t
+
+type QuerySetDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  type*: WGPUQueryType
+  count*: uint32_t
+
+type RenderPassMaxDrawCount* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  maxDrawCount*: uint64_t
+
+type RequestAdapterWebXROptions* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  xrCompatible*: WGPUBool
+
+type SupportedFeatures* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  featureCount*: size_t
+  features*: ptr WGPUFeatureName
+
+type SupportedWGSLLanguageFeatures* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  featureCount*: size_t
+  features*: ptr WGPUWGSLLanguageFeatureName
+
+type SurfaceColorManagement* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  colorSpace*: WGPUPredefinedColorSpace
+  toneMappingMode*: WGPUToneMappingMode
+
+type TextureBindingViewDimensionDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  textureBindingViewDimension*: WGPUTextureViewDimension
+
+type CompilationInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  messageCount*: size_t
+  messages*: ptr WGPUCompilationMessage
+
+type ComputePassDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  timestampWrites*: ptr WGPUPassTimestampWrites
+
+type RayTracingPassDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  shaderBindingTable*: WGPURayTracingShaderBindingTable
+  maxRecursionDepth*: uint32_t
+  maxPayloadSize*: uint32_t
+
+type TexelCopyBufferInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  layout*: WGPUTexelCopyBufferLayout
+  buffer*: WGPUBuffer
+
+type Origin3D* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  x*: uint32_t
+  y*: uint32_t
+  z*: uint32_t
+
+type Future* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  id*: uint64_t
+
+type Extent3D* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  width*: uint32_t
+  height*: uint32_t
+  depthOrArrayLayers*: uint32_t
+
+type TexelCopyTextureInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  texture*: WGPUTexture
+  mipLevel*: uint32_t
+  origin*: WGPUOrigin3D
+  aspect*: WGPUTextureAspect
+
+type SurfaceSourceMetalLayer* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  layer*: pointer
+
+type SurfaceSourceWindowsHWND* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  hinstance*: pointer
+  hwnd*: pointer
+
+type SurfaceSourceXlibWindow* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  display*: pointer
+  window*: uint64_t
+
+type SurfaceSourceXCBWindow* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  connection*: pointer
+  window*: uint32_t
+
+type SurfaceSourceWaylandSurface* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  display*: pointer
+  surface*: pointer
+
+type SurfaceSourceAndroidNativeWindow* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  window*: pointer
+
+type EmscriptenSurfaceSourceCanvasHTMLSelector* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  selector*: WGPUStringView
+
+type DrmModeSelectType* {.size: sizeof(cint), pure.} = enum
+  DrmModeSelect_Default = 0,
+  DrmModeSelect_ByIndex,
+  DrmModeSelect_ByGeometry
+
+type DrmModeByGeometry* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  width*: uint32_t
+  height*: uint32_t
+  refreshMilliHz*: uint32_t
+
+type DrmModeSelect* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  type*: WGPUDrmModeSelectType
+  *: DrmModeSelect::(anonymous at /ssd/dev/gd/other/playground/wgvk/wgpu/src/wgpu/C/wgvk/include/wgvk.h:1123:5)
+
+type SurfaceSourceDrmPlane* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  adapter*: WGPUAdapter
+  drmFd*: int32_t
+  connectorId*: uint32_t
+  crtcId*: uint32_t
+  planeId*: uint32_t
+  modeSelect*: WGPUDrmModeSelect
+  acquireExclusive*: WGPUBool
+
+type SurfaceDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+
+type AdapterInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  vendor*: WGPUStringView
+  architecture*: WGPUStringView
+  device*: WGPUStringView
+  description*: WGPUStringView
+  backendType*: WGPUBackendType
+  adapterType*: WGPUAdapterType
+  vendorID*: uint32_t
+  deviceID*: uint32_t
+  subgroupMinSize*: uint32_t
+  subgroupMaxSize*: uint32_t
+
+type RequestAdapterOptions* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  featureLevel*: WGPUFeatureLevel
+  powerPreference*: WGPUPowerPreference
+  forceFallbackAdapter*: WGPUBool
+  backendType*: WGPUBackendType
+  compatibleSurface*: WGPUSurface
+
+type InstanceCapabilities* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  timedWaitAnyEnable*: WGPUBool
+  timedWaitAnyMaxCount*: size_t
+
+type InstanceLimits* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  timedWaitAnyMaxCount*: size_t
+
+type InstanceLayerSelection* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  instanceLayers*: ptr char *const
+  instanceLayerCount*: uint32_t
+
+type InstanceDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  requiredFeatureCount*: size_t
+  requiredFeatures*: ptr WGPUInstanceFeatureName
+  requiredLimits*: ptr WGPUInstanceLimits
+
+type BindGroupEntry* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  binding*: uint32_t
+  buffer*: WGPUBuffer
+  offset*: uint64_t
+  size*: uint64_t
+  sampler*: WGPUSampler
+  textureView*: WGPUTextureView
+
+type BindGroupEntryRayTracing* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  accelerationStructure*: WGPURayTracingAccelerationContainer
+
+type TextureBindingLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  sampleType*: WGPUTextureSampleType
+  viewDimension*: WGPUTextureViewDimension
+  multisampled*: WGPUBool
+
+type SamplerBindingLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  type*: WGPUSamplerBindingType
+
+type StorageTextureBindingLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  access*: WGPUStorageTextureAccess
+  format*: WGPUTextureFormat
+  viewDimension*: WGPUTextureViewDimension
+
+type BufferBindingLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  type*: WGPUBufferBindingType
+  hasDynamicOffset*: WGPUBool
+  minBindingSize*: uint64_t
+
+type BindGroupLayoutEntry* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  binding*: uint32_t
+  visibility*: WGPUShaderStage
+  bindingArraySize*: uint32_t
+  buffer*: WGPUBufferBindingLayout
+  sampler*: WGPUSamplerBindingLayout
+  texture*: WGPUTextureBindingLayout
+  storageTexture*: WGPUStorageTextureBindingLayout
+
+type BindGroupLayoutEntryRayTracing* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  accelerationStructure*: WGPUBool
+
+type SamplerDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  addressModeU*: WGPUAddressMode
+  addressModeV*: WGPUAddressMode
+  addressModeW*: WGPUAddressMode
+  magFilter*: WGPUFilterMode
+  minFilter*: WGPUFilterMode
+  mipmapFilter*: WGPUMipmapFilterMode
+  lodMinClamp*: cfloat
+  lodMaxClamp*: cfloat
+  compare*: WGPUCompareFunction
+  maxAnisotropy*: uint16_t
+
+type FutureWaitInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  future*: WGPUFuture
+  completed*: WGPUBool32
+
+type ExtrasLimits* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  maxStorageBuffersInVertexStage*: uint32_t
+  maxStorageTexturesInVertexStage*: uint32_t
+  maxStorageBuffersInFragmentStage*: uint32_t
+  maxStorageTexturesInFragmentStage*: uint32_t
+
+type Limits* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  maxTextureDimension1D*: uint32_t
+  maxTextureDimension2D*: uint32_t
+  maxTextureDimension3D*: uint32_t
+  maxTextureArrayLayers*: uint32_t
+  maxBindGroups*: uint32_t
+  maxBindGroupsPlusVertexBuffers*: uint32_t
+  maxBindingsPerBindGroup*: uint32_t
+  maxDynamicUniformBuffersPerPipelineLayout*: uint32_t
+  maxDynamicStorageBuffersPerPipelineLayout*: uint32_t
+  maxSampledTexturesPerShaderStage*: uint32_t
+  maxSamplersPerShaderStage*: uint32_t
+  maxStorageBuffersPerShaderStage*: uint32_t
+  maxStorageTexturesPerShaderStage*: uint32_t
+  maxUniformBuffersPerShaderStage*: uint32_t
+  maxUniformBufferBindingSize*: uint64_t
+  maxStorageBufferBindingSize*: uint64_t
+  minUniformBufferOffsetAlignment*: uint32_t
+  minStorageBufferOffsetAlignment*: uint32_t
+  maxVertexBuffers*: uint32_t
+  maxBufferSize*: uint64_t
+  maxVertexAttributes*: uint32_t
+  maxVertexBufferArrayStride*: uint32_t
+  maxInterStageShaderVariables*: uint32_t
+  maxColorAttachments*: uint32_t
+  maxColorAttachmentBytesPerSample*: uint32_t
+  maxComputeWorkgroupStorageSize*: uint32_t
+  maxComputeInvocationsPerWorkgroup*: uint32_t
+  maxComputeWorkgroupSizeX*: uint32_t
+  maxComputeWorkgroupSizeY*: uint32_t
+  maxComputeWorkgroupSizeZ*: uint32_t
+  maxComputeWorkgroupsPerDimension*: uint32_t
+  maxImmediateSize*: uint32_t
+
+type QueueDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+
+type Proc* = proc() {.cdecl.}
+type DeviceLostCallback* = proc(a0: ptr WGPUDevice, a1: WGPUDeviceLostReason, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
+type UncapturedErrorCallback* = proc(a0: ptr WGPUDevice, a1: WGPUErrorType, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
+type DeviceLostCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  mode*: cint
+  callback*: WGPUDeviceLostCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type UncapturedErrorCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  callback*: WGPUUncapturedErrorCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type DeviceDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  requiredFeatureCount*: size_t
+  requiredFeatures*: ptr WGPUFeatureName
+  requiredLimits*: ptr WGPULimits
+  defaultQueue*: WGPUQueueDescriptor
+  deviceLostCallbackInfo*: WGPUDeviceLostCallbackInfo
+  uncapturedErrorCallbackInfo*: WGPUUncapturedErrorCallbackInfo
+
+type Color* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  r*: cdouble
+  g*: cdouble
+  b*: cdouble
+  a*: cdouble
+
+type RenderPassColorAttachment* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  view*: WGPUTextureView
+  depthSlice*: uint32_t
+  resolveTarget*: WGPUTextureView
+  loadOp*: WGPULoadOp
+  storeOp*: WGPUStoreOp
+  clearValue*: WGPUColor
+
+type RenderPassDepthStencilAttachment* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  view*: WGPUTextureView
+  depthLoadOp*: WGPULoadOp
+  depthStoreOp*: WGPUStoreOp
+  depthClearValue*: cfloat
+  depthReadOnly*: uint32_t
+  stencilLoadOp*: WGPULoadOp
+  stencilStoreOp*: WGPUStoreOp
+  stencilClearValue*: uint32_t
+  stencilReadOnly*: uint32_t
+
+type RenderPassDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  colorAttachmentCount*: size_t
+  colorAttachments*: ptr WGPURenderPassColorAttachment
+  depthStencilAttachment*: ptr WGPURenderPassDepthStencilAttachment
+  occlusionQuerySet*: WGPUQuerySet
+  timestampWrites*: ptr WGPUPassTimestampWrites
+
+type RenderBundleDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+
+type RenderBundleEncoderDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  colorFormatCount*: size_t
+  colorFormats*: ptr WGPUTextureFormat
+  depthStencilFormat*: WGPUTextureFormat
+  sampleCount*: uint32_t
+  depthReadOnly*: WGPUBool
+  stencilReadOnly*: WGPUBool
+
+type CommandEncoderDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+
+type TextureDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  usage*: WGPUTextureUsage
+  dimension*: WGPUTextureDimension
+  size*: WGPUExtent3D
+  format*: WGPUTextureFormat
+  mipLevelCount*: uint32_t
+  sampleCount*: uint32_t
+  viewFormatCount*: size_t
+  viewFormats*: ptr WGPUTextureFormat
+
+type TextureViewDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  format*: WGPUTextureFormat
+  dimension*: WGPUTextureViewDimension
+  baseMipLevel*: uint32_t
+  mipLevelCount*: uint32_t
+  baseArrayLayer*: uint32_t
+  arrayLayerCount*: uint32_t
+  aspect*: WGPUTextureAspect
+  usage*: WGPUTextureUsage
+
+type TextureComponentSwizzle* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  r*: WGPUComponentSwizzle
+  g*: WGPUComponentSwizzle
+  b*: WGPUComponentSwizzle
+  a*: WGPUComponentSwizzle
+
+type TextureComponentSwizzleDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  swizzle*: WGPUTextureComponentSwizzle
+
+type BufferAllocatorSelector* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  forceBuiltin*: WGPUBool
+
+type BufferDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  usage*: WGPUBufferUsage
+  size*: uint64_t
+  mappedAtCreation*: WGPUBool
+
+type BufferMapCallback* = proc(a0: WGPUMapAsyncStatus, a1: WGPUStringView, a2: pointer, a3: pointer) {.cdecl.}
+type BufferMapCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  mode*: WGPUCallbackMode
+  callback*: WGPUBufferMapCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type BindGroupDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  layout*: WGPUBindGroupLayout
+  entryCount*: size_t
+  entries*: ptr WGPUBindGroupEntry
+
+type BindGroupLayoutDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  entryCount*: size_t
+  entries*: ptr WGPUBindGroupLayoutEntry
+
+type PipelineLayoutDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  bindGroupLayoutCount*: size_t
+  bindGroupLayouts*: ptr WGPUBindGroupLayout
+  immediateDataRangeByteSize*: uint32_t
+
+type SurfaceTexture* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  texture*: WGPUTexture
+  status*: WGPUSurfaceGetCurrentTextureStatus
+
+type SurfaceCapabilities* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  usages*: WGPUTextureUsage
+  formatCount*: size_t
+  formats*: ptr WGPUTextureFormat
+  presentModeCount*: size_t
+  presentModes*: ptr WGPUPresentMode
+  alphaModeCount*: size_t
+  alphaModes*: ptr WGPUCompositeAlphaMode
+
+type ConstantEntry* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  key*: WGPUStringView
+  value*: cdouble
+
+type VertexAttribute* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  format*: WGPUVertexFormat
+  offset*: uint64_t
+  shaderLocation*: uint32_t
+
+type VertexBufferLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  stepMode*: WGPUVertexStepMode
+  arrayStride*: uint64_t
+  attributeCount*: size_t
+  attributes*: ptr WGPUVertexAttribute
+
+type VertexState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  module*: WGPUShaderModule
+  entryPoint*: WGPUStringView
+  constantCount*: size_t
+  constants*: ptr WGPUConstantEntry
+  bufferCount*: size_t
+  buffers*: ptr WGPUVertexBufferLayout
+
+type BlendOperation* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Add = 1,
+  Subtract = 2,
+  ReverseSubtract = 3,
+  Min = 4,
+  Max = 5,
+  Force32 = 2147483647
+
+type BlendFactor* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Zero = 1,
+  One = 2,
+  Src = 3,
+  OneMinusSrc = 4,
+  SrcAlpha = 5,
+  OneMinusSrcAlpha = 6,
+  Dst = 7,
+  OneMinusDst = 8,
+  DstAlpha = 9,
+  OneMinusDstAlpha = 10,
+  SrcAlphaSaturated = 11,
+  Constant = 12,
+  OneMinusConstant = 13,
+  Src1 = 14,
+  OneMinusSrc1 = 15,
+  Src1Alpha = 16,
+  OneMinusSrc1Alpha = 17,
+  Force32 = 2147483647
+
+type BlendComponent* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  operation*: WGPUBlendOperation
+  srcFactor*: WGPUBlendFactor
+  dstFactor*: WGPUBlendFactor
+
+type BlendState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  color*: WGPUBlendComponent
+  alpha*: WGPUBlendComponent
+
+type ShaderSourceSPIRV* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  codeSize*: uint32_t
+  code*: ptr uint32_t
+
+type ShaderSourceWGSL* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  code*: WGPUStringView
+
+type ShaderSourceGLSL* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  stage*: WGPUShaderStage
+  code*: WGPUStringView
+
+type ShaderModuleDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+
+type ColorTargetState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  format*: WGPUTextureFormat
+  blend*: ptr WGPUBlendState
+  writeMask*: WGPUColorWriteMask
+
+type FragmentState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  module*: WGPUShaderModule
+  entryPoint*: WGPUStringView
+  constantCount*: size_t
+  constants*: ptr WGPUConstantEntry
+  targetCount*: size_t
+  targets*: ptr WGPUColorTargetState
+
+type CommandBufferDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+
+type PrimitiveLineWidthInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  chain*: WGPUChainedStruct
+  lineWidth*: uint32_t
+
+type PrimitiveState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  topology*: WGPUPrimitiveTopology
+  stripIndexFormat*: WGPUIndexFormat
+  frontFace*: WGPUFrontFace
+  cullMode*: WGPUCullMode
+  unclippedDepth*: WGPUBool32
+
+type StencilOperation* {.size: sizeof(cint), pure.} = enum
+  Undefined = 0,
+  Keep = 1,
+  Zero = 2,
+  Replace = 3,
+  Invert = 4,
+  IncrementClamp = 5,
+  DecrementClamp = 6,
+  IncrementWrap = 7,
+  DecrementWrap = 8,
+  Force32 = 2147483647
+
+type StencilFaceState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  compare*: WGPUCompareFunction
+  failOp*: WGPUStencilOperation
+  depthFailOp*: WGPUStencilOperation
+  passOp*: WGPUStencilOperation
+
+type DepthStencilState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  format*: WGPUTextureFormat
+  depthWriteEnabled*: WGPUBool32
+  depthCompare*: WGPUCompareFunction
+  stencilFront*: WGPUStencilFaceState
+  stencilBack*: WGPUStencilFaceState
+  stencilReadMask*: uint32_t
+  stencilWriteMask*: uint32_t
+  depthBias*: int32_t
+  depthBiasSlopeScale*: cfloat
+  depthBiasClamp*: cfloat
+
+type BufferBindingInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  type*: WGPUBufferBindingType
+  minBindingSize*: uint64_t
+
+type SamplerBindingInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  type*: WGPUSamplerBindingType
+
+type TextureBindingInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  sampleType*: WGPUTextureSampleType
+  viewDimension*: WGPUTextureViewDimension
+
+type StorageTextureBindingInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  access*: WGPUStorageTextureAccess
+  format*: WGPUTextureFormat
+  viewDimension*: WGPUTextureViewDimension
+
+type GlobalReflectionInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  name*: WGPUStringView
+  bindGroup*: uint32_t
+  binding*: uint32_t
+  visibility*: WGPUShaderStage
+  buffer*: WGPUBufferBindingInfo
+  sampler*: WGPUSamplerBindingInfo
+  texture*: WGPUTextureBindingInfo
+  storageTexture*: WGPUStorageTextureBindingInfo
+
+type ReflectionComponentType* {.size: sizeof(cint), pure.} = enum
+  ReflectionComponentType_Invalid,
+  ReflectionComponentType_Sint32,
+  ReflectionComponentType_Uint32,
+  ReflectionComponentType_Float32,
+  ReflectionComponentType_Float16
+
+type ReflectionCompositionType* {.size: sizeof(cint), pure.} = enum
+  ReflectionCompositionType_Invalid,
+  ReflectionCompositionType_Scalar,
+  ReflectionCompositionType_Vec2,
+  ReflectionCompositionType_Vec3,
+  ReflectionCompositionType_Vec4
+
+type ReflectionAttribute* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  location*: uint32_t
+  componentType*: WGPUReflectionComponentType
+  compositionType*: WGPUReflectionCompositionType
+
+type AttributeReflectionInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  attributeCount*: uint32_t
+  attributes*: ptr WGPUReflectionAttribute
+
+type ReflectionInfoRequestStatus* {.size: sizeof(cint), pure.} = enum
+  ReflectionInfoRequestStatus_Unused = 0,
+  ReflectionInfoRequestStatus_Success = 1,
+  ReflectionInfoRequestStatus_CallbackCancelled = 2,
+  ReflectionInfoRequestStatus_Force32 = 2147483647
+
+type ReflectionInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  globalCount*: uint32_t
+  globals*: ptr WGPUGlobalReflectionInfo
+  inputAttributes*: ptr WGPUAttributeReflectionInfo
+  outputAttributes*: ptr WGPUAttributeReflectionInfo
+
+type ReflectionInfoCallback* = proc(a0: WGPUReflectionInfoRequestStatus, a1: ptr WGPUReflectionInfo, a2: pointer, a3: pointer) {.cdecl.}
+type ReflectionInfoCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  mode*: WGPUCallbackMode
+  callback*: WGPUReflectionInfoCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type MultisampleState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  count*: uint32_t
+  mask*: uint32_t
+  alphaToCoverageEnabled*: WGPUBool32
+
+type ComputeState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  module*: WGPUShaderModule
+  entryPoint*: WGPUStringView
+  constantCount*: size_t
+  constants*: ptr WGPUConstantEntry
+
+type RenderPipelineDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  layout*: WGPUPipelineLayout
+  vertex*: WGPUVertexState
+  primitive*: WGPUPrimitiveState
+  depthStencil*: ptr WGPUDepthStencilState
+  multisample*: WGPUMultisampleState
+  fragment*: ptr WGPUFragmentState
+
+type ComputePipelineDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  label*: WGPUStringView
+  layout*: WGPUPipelineLayout
+  compute*: WGPUComputeState
+
+type SurfaceConfiguration* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  device*: WGPUDevice
+  format*: WGPUTextureFormat
+  usage*: WGPUTextureUsage
+  width*: uint32_t
+  height*: uint32_t
+  viewFormatCount*: size_t
+  viewFormats*: ptr WGPUTextureFormat
+  alphaMode*: WGPUCompositeAlphaMode
+  presentMode*: WGPUPresentMode
+
+type RequestAdapterCallback* = proc(a0: WGPURequestAdapterStatus, a1: WGPUAdapter, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
+type RequestDeviceCallback* = proc(a0: WGPURequestDeviceStatus, a1: WGPUDevice, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
+type RequestAdapterCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  mode*: WGPUCallbackMode
+  callback*: WGPURequestAdapterCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type RequestDeviceCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  nextInChain*: ptr WGPUChainedStruct
+  mode*: WGPUCallbackMode
+  callback*: WGPURequestDeviceCallback
+  userdata1*: pointer
+  userdata2*: pointer
+
+type Transform3DDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  x*: cfloat
+  y*: cfloat
+  z*: cfloat
+
+type RayTracingAccelerationInstanceTransformDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  translation*: WGPUTransform3DDescriptor
+  rotation*: WGPUTransform3DDescriptor
+  scale*: WGPUTransform3DDescriptor
+
+type RayTracingAccelerationGeometryVertexDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  buffer*: WGPUBuffer
+  format*: WGPUVertexFormat
+  stride*: uint32_t
+  offset*: uint32_t
+  count*: uint32_t
+
+type RayTracingAccelerationGeometryIndexDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  buffer*: WGPUBuffer
+  format*: WGPUIndexFormat
+  offset*: uint32_t
+  count*: uint32_t
+
+type RayTracingAccelerationGeometryAABBDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  buffer*: WGPUBuffer
+  stride*: uint32_t
+  offset*: uint32_t
+  count*: uint32_t
+
+type RayTracingAccelerationGeometryDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  usage*: WGPURayTracingAccelerationGeometryUsage
+  type*: WGPURayTracingAccelerationGeometryType
+  vertex*: WGPURayTracingAccelerationGeometryVertexDescriptor
+  index*: WGPURayTracingAccelerationGeometryIndexDescriptor
+  aabb*: WGPURayTracingAccelerationGeometryAABBDescriptor
+
+type TransformMatrix* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  matrix*: float[3][4]
+
+type RayTracingAccelerationInstanceDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  usage*: WGPURayTracingAccelerationInstanceUsage
+  mask*: uint8_t
+  instanceId*: uint32_t
+  instanceOffset*: uint32_t
+  transformMatrix*: WGPUTransformMatrix
+  geometryContainer*: WGPURayTracingAccelerationContainer
+
+type RayTracingAccelerationContainerDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  usage*: WGPURayTracingAccelerationContainerUsage
+  level*: WGPURayTracingAccelerationContainerLevel
+  geometryCount*: uint32_t
+  instanceCount*: uint32_t
+  geometries*: ptr WGPURayTracingAccelerationGeometryDescriptor
+  instances*: ptr WGPURayTracingAccelerationInstanceDescriptor
+
+type RayTracingStateDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  shaderBindingTable*: WGPURayTracingShaderBindingTable
+  maxRecursionDepth*: uint32_t
+  maxPayloadSize*: uint32_t
+
+type RayTracingPipelineDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  layout*: WGPUPipelineLayout
+  rayTracingState*: WGPURayTracingStateDescriptor
+
+type RayTracingShaderBindingTableStageDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  stage*: WGPUShaderStage
+  module*: WGPUShaderModule
+
+type RayTracingShaderBindingTableGroupDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  type*: WGPURayTracingShaderBindingTableGroupType
+  generalIndex*: uint32_t
+  closestHitIndex*: uint32_t
+  anyHitIndex*: uint32_t
+  intersectionIndex*: uint32_t
+
+type RayTracingShaderBindingTableDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+  stageCount*: uint32_t
+  stages*: ptr WGPURayTracingShaderBindingTableStageDescriptor
+  groupCount*: uint32_t
+  groups*: ptr WGPURayTracingShaderBindingTableGroupDescriptor
+
+proc create*(descriptor: ptr WGPUInstanceDescriptor): WGPUInstance {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wait*(instance: WGPUInstance, futureCount: size_t, futures: ptr WGPUFutureWaitInfo, timeoutNS: uint64_t): WGPUWaitStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc request*(instance: WGPUInstance, options: ptr WGPURequestAdapterOptions, callbackInfo: WGPURequestAdapterCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(instance: WGPUInstance, descriptor: ptr WGPUSurfaceDescriptor): WGPUSurface {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getAdapterInfo*(device: WGPUDevice, adapterInfo: ptr WGPUAdapterInfo): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(adapter: WGPUAdapter, limits: ptr WGPULimits): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc request*(adapter: WGPUAdapter, options: ptr WGPUDeviceDescriptor, callbackInfo: WGPURequestDeviceCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getQueue*(device: WGPUDevice): WGPUQueue {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(wgpuSurface: WGPUSurface, adapter: WGPUAdapter, capabilities: ptr WGPUSurfaceCapabilities): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc configure*(surface: WGPUSurface, config: ptr WGPUSurfaceConfiguration) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(surface: WGPUSurface) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPUTextureDescriptor): WGPUTexture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(texture: WGPUTexture, descriptor: ptr WGPUTextureViewDescriptor): WGPUTextureView {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getDepthOrArrayLayers*(texture: WGPUTexture): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getDimension*(texture: WGPUTexture): WGPUTextureDimension {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getFormat*(texture: WGPUTexture): WGPUTextureFormat {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getHeight*(texture: WGPUTexture): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getMipLevelCount*(texture: WGPUTexture): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getSampleCount*(texture: WGPUTexture): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getUsage*(texture: WGPUTexture): WGPUTextureUsage {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getWidth*(texture: WGPUTexture): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPUSamplerDescriptor): WGPUSampler {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, desc: ptr WGPUBufferDescriptor): WGPUBuffer {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc write*(cSelf: WGPUQueue, buffer: WGPUBuffer, bufferOffset: uint64_t, data: pointer, size: size_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuBufferMap*(buffer: WGPUBuffer, mapmode: WGPUMapMode, offset: size_t, size: size_t, data: ptr pointer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc unmap*(buffer: WGPUBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc mapAsync*(buffer: WGPUBuffer, mode: WGPUMapMode, offset: size_t, size: size_t, callbackInfo: WGPUBufferMapCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getSize*(buffer: WGPUBuffer): uint64_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc write*(queue: WGPUQueue, destination: ptr WGPUTexelCopyTextureInfo, data: pointer, dataSize: size_t, dataLayout: ptr WGPUTexelCopyBufferLayout, writeSize: ptr WGPUExtent3D) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuDeviceCreateFence*(device: WGPUDevice): WGPUFence {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuFenceWait*(fence: WGPUFence, timeoutNS: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuFencesWait*(fences: ptr WGPUFence, fenceCount: uint32_t, timeoutNS: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuFenceAttachCallback*(fence: WGPUFence, callback: proc(a0: pointer) {.cdecl.}, userdata: pointer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuFenceAddRef*(fence: WGPUFence) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuFenceRelease*(fence: WGPUFence) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc createLayout*(device: WGPUDevice, bindGroupLayoutDescriptor: ptr WGPUBindGroupLayoutDescriptor): WGPUBindGroupLayout {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPUShaderModuleDescriptor): WGPUShaderModule {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, pldesc: ptr WGPUPipelineLayoutDescriptor): WGPUPipelineLayout {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPURenderPipelineDescriptor): WGPURenderPipeline {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPUComputePipelineDescriptor): WGPUComputePipeline {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuShaderModuleGetReflectionInfo*(shaderModule: WGPUShaderModule, callbackInfo: WGPUReflectionInfoCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, bgdesc: ptr WGPUBindGroupDescriptor): WGPUBindGroup {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuWriteBindGroup*(device: WGPUDevice, : WGPUBindGroup, bgdesc: ptr WGPUBindGroupDescriptor) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, cdesc: ptr WGPUCommandEncoderDescriptor): WGPUCommandEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc finish*(commandEncoder: WGPUCommandEncoder, descriptor: ptr WGPUCommandBufferDescriptor): WGPUCommandBuffer {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuDeviceTick*(device: WGPUDevice) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc submit*(queue: WGPUQueue, commandCount: size_t, buffers: ptr WGPUCommandBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuQueueWaitIdle*(queue: WGPUQueue) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc copy*(commandEncoder: WGPUCommandEncoder, source: WGPUBuffer, sourceOffset: uint64_t, destination: WGPUBuffer, destinationOffset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc copy*(commandEncoder: WGPUCommandEncoder, source: ptr WGPUTexelCopyBufferInfo, destination: ptr WGPUTexelCopyTextureInfo, copySize: ptr WGPUExtent3D) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc copy*(commandEncoder: WGPUCommandEncoder, source: ptr WGPUTexelCopyTextureInfo, destination: ptr WGPUTexelCopyBufferInfo, copySize: ptr WGPUExtent3D) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc copy*(commandEncoder: WGPUCommandEncoder, source: ptr WGPUTexelCopyTextureInfo, destination: ptr WGPUTexelCopyTextureInfo, copySize: ptr WGPUExtent3D) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc draw*(rpenc: WGPURenderPassEncoder, vertices: uint32_t, instances: uint32_t, firstvertex: uint32_t, firstinstance: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndexed*(rpenc: WGPURenderPassEncoder, indices: uint32_t, instances: uint32_t, firstindex: uint32_t, basevertex: int32_t, firstinstance: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(rpenc: WGPURenderPassEncoder, groupIndex: uint32_t, group: WGPUBindGroup, dynamicOffsetCount: size_t, dynamicOffsets: ptr uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(rpenc: WGPURenderPassEncoder, renderPipeline: WGPURenderPipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc End*(rrpenc: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(rpenc: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(rpenc: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setIndexBuffer*(renderPassEncoder: WGPURenderPassEncoder, buffer: WGPUBuffer, format: WGPUIndexFormat, offset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setVertexBuffer*(rpe: WGPURenderPassEncoder, binding: uint32_t, buffer: WGPUBuffer, offset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndexedIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setBlendConstant*(renderPassEncoder: WGPURenderPassEncoder, color: ptr WGPUColor) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setViewport*(renderPassEncoder: WGPURenderPassEncoder, x: cfloat, y: cfloat, width: cfloat, height: cfloat, minDepth: cfloat, maxDepth: cfloat) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setScissorRect*(renderPassEncoder: WGPURenderPassEncoder, x: uint32_t, y: uint32_t, width: uint32_t, height: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(cpe: WGPUComputePassEncoder, computePipeline: WGPUComputePipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(cpe: WGPUComputePassEncoder, groupIndex: uint32_t, group: WGPUBindGroup, dynamicOffsetCount: size_t, dynamicOffsets: ptr uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuRaytracingPassEncoderSetPipeline*(cpe: WGPURaytracingPassEncoder, raytracingPipeline: WGPURaytracingPipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuRaytracingPassEncoderSetBindGroup*(cpe: WGPURaytracingPassEncoder, groupIndex: uint32_t, bindGroup: WGPUBindGroup, dynamicOffsetCount: uint32_t, dynamicOffsets: ptr uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuRaytracingPassEncoderTraceRays*(cpe: WGPURaytracingPassEncoder, rayGenerationOffset: uint32_t, rayHitOffset: uint32_t, rayMissOffset: uint32_t, width: uint32_t, height: uint32_t, depth: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc dispatchWorkgroups*(cpe: WGPUComputePassEncoder, x: uint32_t, y: uint32_t, z: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(cpenc: WGPUComputePassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getCurrentTexture*(surface: WGPUSurface, surfaceTexture: ptr WGPUSurfaceTexture) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc present*(surface: WGPUSurface): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuCommandEncoderBeginRaytracingPass*(enc: WGPUCommandEncoder, rtDesc: ptr WGPURayTracingPassDescriptor): WGPURaytracingPassEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuRaytracingPassEncoderEnd*(commandEncoder: WGPURaytracingPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc begin*(enc: WGPUCommandEncoder, cpdesc: ptr WGPUComputePassDescriptor): WGPUComputePassEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc End*(commandEncoder: WGPUComputePassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc begin*(enc: WGPUCommandEncoder, rpdesc: ptr WGPURenderPassDescriptor): WGPURenderPassEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuCommandEncoderBuildRayTracingAccelerationContainer*(encoder: WGPUCommandEncoder, container: WGPURayTracingAccelerationContainer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuCommandEncoderCopyRayTracingAccelerationContainer*(encoder: WGPUCommandEncoder, source: WGPURayTracingAccelerationContainer, dest: WGPURayTracingAccelerationContainer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuCommandEncoderUpdateRayTracingAccelerationContainer*(encoder: WGPUCommandEncoder, container: WGPURayTracingAccelerationContainer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPURenderBundleEncoderDescriptor): WGPURenderBundleEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc finish*(renderBundleEncoder: WGPURenderBundleEncoder, descriptor: ptr WGPURenderBundleDescriptor): WGPURenderBundle {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc draw*(renderBundleEncoder: WGPURenderBundleEncoder, vertexCount: uint32_t, instanceCount: uint32_t, firstVertex: uint32_t, firstInstance: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndexed*(renderBundleEncoder: WGPURenderBundleEncoder, indexCount: uint32_t, instanceCount: uint32_t, firstIndex: uint32_t, baseVertex: int32_t, firstInstance: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndexedIndirect*(renderBundleEncoder: WGPURenderBundleEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndirect*(renderBundleEncoder: WGPURenderBundleEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(renderBundleEncoder: WGPURenderBundleEncoder, groupIndex: uint32_t, group: WGPUBindGroup, dynamicOffsetCount: size_t, dynamicOffsets: ptr uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setIndexBuffer*(renderBundleEncoder: WGPURenderBundleEncoder, buffer: WGPUBuffer, format: WGPUIndexFormat, offset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(renderBundleEncoder: WGPURenderBundleEncoder, pipeline: WGPURenderPipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setVertexBuffer*(renderBundleEncoder: WGPURenderBundleEncoder, slot: uint32_t, buffer: WGPUBuffer, offset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(renderBundleEncoder: WGPURenderBundleEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(renderBundleEncoder: WGPURenderBundleEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc execute*(renderPassEncoder: WGPURenderPassEncoder, bundleCount: size_t, bundles: ptr WGPURenderBundle) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc freeMembers*(value: WGPUAdapterInfo) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(capabilities: ptr WGPUInstanceCapabilities): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getProcAddress*(procName: WGPUStringView): WGPUProc {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc freeMembers*(value: WGPUSupportedFeatures) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc freeMembers*(value: WGPUSupportedWGSLLanguageFeatures) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc freeMembers*(value: WGPUSurfaceCapabilities) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(adapter: WGPUAdapter, features: ptr WGPUSupportedFeatures) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(adapter: WGPUAdapter, info: ptr WGPUAdapterInfo): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc has*(adapter: WGPUAdapter, feature: WGPUFeatureName): WGPUBool {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(bindGroup: WGPUBindGroup, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc layoutSetLabel*(bindGroupLayout: WGPUBindGroupLayout, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc destroy*(buffer: WGPUBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getConstMappedRange*(buffer: WGPUBuffer, offset: size_t, size: size_t): pointer {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getMappedRange*(buffer: WGPUBuffer, offset: size_t, size: size_t): pointer {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getMapState*(buffer: WGPUBuffer): WGPUBufferMapState {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getUsage*(buffer: WGPUBuffer): WGPUBufferUsage {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuBufferReadMappedRange*(buffer: WGPUBuffer, offset: size_t, data: pointer, size: size_t): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(buffer: WGPUBuffer, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuBufferWriteMappedRange*(buffer: WGPUBuffer, offset: size_t, data: pointer, size: size_t): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(commandBuffer: WGPUCommandBuffer, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(commandBuffer: WGPUCommandBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc clear*(commandEncoder: WGPUCommandEncoder, buffer: WGPUBuffer, offset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc insertDebugMarker*(commandEncoder: WGPUCommandEncoder, markerLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc popDebugGroup*(commandEncoder: WGPUCommandEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc pushDebugGroup*(commandEncoder: WGPUCommandEncoder, groupLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc resolve*(commandEncoder: WGPUCommandEncoder, querySet: WGPUQuerySet, firstQuery: uint32_t, queryCount: uint32_t, destination: WGPUBuffer, destinationOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(commandEncoder: WGPUCommandEncoder, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc writeTimestamp*(commandEncoder: WGPUCommandEncoder, querySet: WGPUQuerySet, queryIndex: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(commandEncoder: WGPUCommandEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc dispatchWorkgroupsIndirect*(computePassEncoder: WGPUComputePassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc insertDebugMarker*(computePassEncoder: WGPUComputePassEncoder, markerLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc popDebugGroup*(computePassEncoder: WGPUComputePassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc pushDebugGroup*(computePassEncoder: WGPUComputePassEncoder, groupLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(computePassEncoder: WGPUComputePassEncoder, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(computePassEncoder: WGPUComputePassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getBindGroupLayout*(computePipeline: WGPUComputePipeline, groupIndex: uint32_t): WGPUBindGroupLayout {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(computePipeline: WGPUComputePipeline, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(computePipeline: WGPUComputePipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc createAsync*(device: WGPUDevice, descriptor: ptr WGPUComputePipelineDescriptor, callbackInfo: WGPUCreateComputePipelineAsyncCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPUQuerySetDescriptor): WGPUQuerySet {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc createAsync*(device: WGPUDevice, descriptor: ptr WGPURenderPipelineDescriptor, callbackInfo: WGPUCreateRenderPipelineAsyncCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc destroy*(device: WGPUDevice) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(device: WGPUDevice, features: ptr WGPUSupportedFeatures) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(device: WGPUDevice, limits: ptr WGPULimits): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getLostFuture*(device: WGPUDevice): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc has*(device: WGPUDevice, feature: WGPUFeatureName): WGPUBool {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc popErrorScope*(device: WGPUDevice, callbackInfo: WGPUPopErrorScopeCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc pushErrorScope*(device: WGPUDevice, filter: WGPUErrorFilter) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(device: WGPUDevice, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(instance: WGPUInstance, features: ptr WGPUSupportedWGSLLanguageFeatures) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc has*(instance: WGPUInstance, feature: WGPUWGSLLanguageFeatureName): WGPUBool {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc processEvents*(instance: WGPUInstance) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(pipelineLayout: WGPUPipelineLayout, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc destroy*(querySet: WGPUQuerySet) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getCount*(querySet: WGPUQuerySet): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getType*(querySet: WGPUQuerySet): WGPUQueryType {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(querySet: WGPUQuerySet, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(querySet: WGPUQuerySet) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(querySet: WGPUQuerySet) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc onSubmittedWorkDone*(queue: WGPUQueue, callbackInfo: WGPUQueueWorkDoneCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(queue: WGPUQueue, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(renderBundle: WGPURenderBundle, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(renderBundle: WGPURenderBundle) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(renderBundle: WGPURenderBundle) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc insertDebugMarker*(renderBundleEncoder: WGPURenderBundleEncoder, markerLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc popDebugGroup*(renderBundleEncoder: WGPURenderBundleEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc pushDebugGroup*(renderBundleEncoder: WGPURenderBundleEncoder, groupLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(renderBundleEncoder: WGPURenderBundleEncoder, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc beginOcclusionQuery*(renderPassEncoder: WGPURenderPassEncoder, queryIndex: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc EndOcclusionQuery*(renderPassEncoder: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc insertDebugMarker*(renderPassEncoder: WGPURenderPassEncoder, markerLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc multiDrawIndexedIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t, maxDrawCount: uint32_t, drawCountBuffer: WGPUBuffer, drawCountBufferOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc multiDrawIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t, maxDrawCount: uint32_t, drawCountBuffer: WGPUBuffer, drawCountBufferOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc popDebugGroup*(renderPassEncoder: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc pushDebugGroup*(renderPassEncoder: WGPURenderPassEncoder, groupLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(renderPassEncoder: WGPURenderPassEncoder, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setStencilReference*(renderPassEncoder: WGPURenderPassEncoder, reference: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getBindGroupLayout*(renderPipeline: WGPURenderPipeline, groupIndex: uint32_t): WGPUBindGroupLayout {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(renderPipeline: WGPURenderPipeline, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(renderPipeline: WGPURenderPipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(sampler: WGPUSampler, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getCompilationInfo*(shaderModule: WGPUShaderModule, callbackInfo: WGPUCompilationInfoCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(shaderModule: WGPUShaderModule, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(surface: WGPUSurface, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc unconfigure*(surface: WGPUSurface) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(surface: WGPUSurface) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc destroy*(texture: WGPUTexture) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(texture: WGPUTexture, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(textureView: WGPUTextureView, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuDeviceCreateRayTracingShaderBindingTable*(device: WGPUDevice, descriptor: ptr WGPURayTracingShaderBindingTableDescriptor): WGPURayTracingShaderBindingTable {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuDeviceCreateRayTracingAccelerationContainer*(device: WGPUDevice, descriptor: ptr WGPURayTracingAccelerationContainerDescriptor): WGPURayTracingAccelerationContainer {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuDeviceCreateRayTracingPipeline*(device: WGPUDevice, descriptor: ptr WGPURayTracingPipelineDescriptor): WGPURaytracingPipeline {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(instance: WGPUInstance) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(adapter: WGPUAdapter) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(device: WGPUDevice) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(device: WGPUQueue) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuRaytracingPassEncoderRelease*(rtenc: WGPURaytracingPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(texture: WGPUTexture) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(textureView: WGPUTextureView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(texture: WGPUSampler) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(buffer: WGPUBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(bindGroup: WGPUBindGroup) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(module: WGPUShaderModule) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(bindGroupLayout: WGPUBindGroupLayout) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(pipelineLayout: WGPUPipelineLayout) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(commandBuffer: WGPUCommandEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(commandBuffer: WGPUCommandBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(instance: WGPUInstance) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(adapter: WGPUAdapter) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(device: WGPUDevice) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(device: WGPUQueue) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(rpenc: WGPUComputePassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(pipeline: WGPUComputePipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(pipeline: WGPURenderPipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(buffer: WGPUBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(commandBuffer: WGPUBindGroup) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(commandBuffer: WGPUBindGroupLayout) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(bglayout: WGPUBindGroupLayout) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(layout: WGPUPipelineLayout) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(texture: WGPUTexture) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(view: WGPUTextureView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(sampler: WGPUSampler) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(module: WGPUShaderModule) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuResetCommandBuffer*(commandEncoder: WGPUCommandBuffer): WGPUCommandEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wgpuCommandEncoderTraceRays*(encoder: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
