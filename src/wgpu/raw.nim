@@ -94,7 +94,7 @@ type WGPURayTracingShaderBindingTableImpl* {.importc, bycopy, header: "src/wgpu/
 type WGPURayTracingShaderBindingTable* = ptr WGPURayTracingShaderBindingTableImpl
 type WGPURaytracingPipeline* = ptr WGPURaytracingPipelineImpl
 type WGPURaytracingPassEncoder* = ptr WGPURaytracingPassEncoderImpl
-type WGPUShaderStageEnum* {.size: sizeof(cint), pure.} = enum
+type WGPUShaderStageEnum* {.size: sizeof(cint).} = enum
   WGPUShaderStageEnum_Vertex,
   WGPUShaderStageEnum_Fragment,
   WGPUShaderStageEnum_Compute,
@@ -178,25 +178,25 @@ const WGPUColorWriteMask_Green*: WGPUColorWriteMask = 2
 const WGPUColorWriteMask_Blue*: WGPUColorWriteMask = 4
 const WGPUColorWriteMask_Alpha*: WGPUColorWriteMask = 8
 const WGPUColorWriteMask_All*: WGPUColorWriteMask = 15
-type WGPUStatus* {.size: sizeof(cint), pure.} = enum
+type WGPUStatus* {.size: sizeof(cint).} = enum
   WGPUStatus_Success = 1,
   WGPUStatus_Error = 2,
   WGPUStatus_Force32 = 2147483647
 
-type WGPUWaitStatus* {.size: sizeof(cint), pure.} = enum
+type WGPUWaitStatus* {.size: sizeof(cint).} = enum
   WGPUWaitStatus_Success = 1,
   WGPUWaitStatus_TimedOut = 2,
   WGPUWaitStatus_Error = 3,
   WGPUWaitStatus_Force32 = 2147483647
 
-type WGPUPresentMode* {.size: sizeof(cint), pure.} = enum
+type WGPUPresentMode* {.size: sizeof(cint).} = enum
   WGPUPresentMode_Undefined = 0,
   WGPUPresentMode_Fifo = 1,
   WGPUPresentMode_FifoRelaxed = 2,
   WGPUPresentMode_Immediate = 3,
   WGPUPresentMode_Mailbox = 4
 
-type WGPUTextureAspect* {.size: sizeof(cint), pure.} = enum
+type WGPUTextureAspect* {.size: sizeof(cint).} = enum
   WGPUTextureAspect_Undefined = 0,
   WGPUTextureAspect_All = 1,
   WGPUTextureAspect_StencilOnly = 2,
@@ -206,7 +206,7 @@ type WGPUTextureAspect* {.size: sizeof(cint), pure.} = enum
   WGPUTextureAspect_Plane2Only = 327682,
   WGPUTextureAspect_Force32 = 2147483647
 
-type WGPUPrimitiveTopology* {.size: sizeof(cint), pure.} = enum
+type WGPUPrimitiveTopology* {.size: sizeof(cint).} = enum
   WGPUPrimitiveTopology_Undefined = 0,
   WGPUPrimitiveTopology_PointList = 1,
   WGPUPrimitiveTopology_LineList = 2,
@@ -215,7 +215,7 @@ type WGPUPrimitiveTopology* {.size: sizeof(cint), pure.} = enum
   WGPUPrimitiveTopology_TriangleStrip = 5,
   WGPUPrimitiveTopology_Force32 = 2147483647
 
-type WGPUSType* {.size: sizeof(cint), pure.} = enum
+type WGPUSType* {.size: sizeof(cint).} = enum
   WGPUSType_ShaderSourceSPIRV = 1,
   WGPUSType_ShaderSourceWGSL = 2,
   WGPUSType_SurfaceSourceMetalLayer = 4,
@@ -236,7 +236,7 @@ type WGPUSType* {.size: sizeof(cint), pure.} = enum
   WGPUSType_BindGroupLayoutEntryRayTracing = 268435463,
   WGPUSType_BindGroupEntryRayTracing = 268435464
 
-type WGPUCallbackMode* {.size: sizeof(cint), pure.} = enum
+type WGPUCallbackMode* {.size: sizeof(cint).} = enum
   WGPUCallbackMode_WaitAnyOnly = 1,
   WGPUCallbackMode_AllowProcessEvents = 2,
   WGPUCallbackMode_AllowSpontaneous = 3,
@@ -251,7 +251,7 @@ type WGPUTexelCopyBufferLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/incl
   bytesPerRow*: uint32_t
   rowsPerImage*: uint32_t
 
-type WGPUCompareFunction* {.size: sizeof(cint), pure.} = enum
+type WGPUCompareFunction* {.size: sizeof(cint).} = enum
   WGPUCompareFunction_Undefined = 0,
   WGPUCompareFunction_Never = 1,
   WGPUCompareFunction_Less = 2,
@@ -267,14 +267,14 @@ type WGPUMapMode* = WGPUFlags
 const WGPUMapMode_None*: WGPUMapMode = 0
 const WGPUMapMode_Read*: WGPUMapMode = 1
 const WGPUMapMode_Write*: WGPUMapMode = 2
-type WGPUTextureDimension* {.size: sizeof(cint), pure.} = enum
+type WGPUTextureDimension* {.size: sizeof(cint).} = enum
   WGPUTextureDimension_Undefined = 0,
   WGPUTextureDimension_1D = 1,
   WGPUTextureDimension_2D = 2,
   WGPUTextureDimension_3D = 3,
   WGPUTextureDimension_Force32 = 2147483647
 
-type WGPUTextureViewDimension* {.size: sizeof(cint), pure.} = enum
+type WGPUTextureViewDimension* {.size: sizeof(cint).} = enum
   WGPUTextureViewDimension_Undefined = 0,
   WGPUTextureViewDimension_1D = 1,
   WGPUTextureViewDimension_2D = 2,
@@ -284,71 +284,71 @@ type WGPUTextureViewDimension* {.size: sizeof(cint), pure.} = enum
   WGPUTextureViewDimension_3D = 6,
   WGPUTextureViewDimension_Force32 = 2147483647
 
-type WGPUOptionalBool* {.size: sizeof(cint), pure.} = enum
+type WGPUOptionalBool* {.size: sizeof(cint).} = enum
   WGPUOptionalBool_False = 0,
   WGPUOptionalBool_True = 1,
   WGPUOptionalBool_Undefined = 2,
   WGPUOptionalBool_Force32 = 2147483647
 
-type WGPUCullMode* {.size: sizeof(cint), pure.} = enum
+type WGPUCullMode* {.size: sizeof(cint).} = enum
   WGPUCullMode_Undefined = 0,
   WGPUCullMode_None = 1,
   WGPUCullMode_Front = 2,
   WGPUCullMode_Back = 3,
   WGPUCullMode_Force32 = 2147483647
 
-type WGPULoadOp* {.size: sizeof(cint), pure.} = enum
+type WGPULoadOp* {.size: sizeof(cint).} = enum
   WGPULoadOp_Undefined = 0,
   WGPULoadOp_Load = 1,
   WGPULoadOp_Clear = 2,
   WGPULoadOp_ExpandResolveTexture = 327683,
   WGPULoadOp_Force32 = 2147483647
 
-type WGPUStoreOp* {.size: sizeof(cint), pure.} = enum
+type WGPUStoreOp* {.size: sizeof(cint).} = enum
   WGPUStoreOp_Undefined = 0,
   WGPUStoreOp_Store = 1,
   WGPUStoreOp_Discard = 2,
   WGPUStoreOp_Force32 = 2147483647
 
-type WGPUFrontFace* {.size: sizeof(cint), pure.} = enum
+type WGPUFrontFace* {.size: sizeof(cint).} = enum
   WGPUFrontFace_Undefined = 0,
   WGPUFrontFace_CCW = 1,
   WGPUFrontFace_CW = 2,
   WGPUFrontFace_Force32 = 2147483647
 
-type WGPUPolygonMode* {.size: sizeof(cint), pure.} = enum
+type WGPUPolygonMode* {.size: sizeof(cint).} = enum
   WGPUPolygonMode_Undefined = 0,
   WGPUPolygonMode_Fill = 1,
   WGPUPolygonMode_Line = 2,
   WGPUPolygonMode_Point = 3,
   WGPUPolygonMode_Force32 = 2147483647
 
-type WGPUVertexStepMode* {.size: sizeof(cint), pure.} = enum
+type WGPUVertexStepMode* {.size: sizeof(cint).} = enum
   WGPUVertexStepMode_Undefined = 0,
   WGPUVertexStepMode_Vertex = 1,
   WGPUVertexStepMode_Instance = 2,
   WGPUVertexStepMode_Force32 = 2147483647
 
-type WGPUIndexFormat* {.size: sizeof(cint), pure.} = enum
+type WGPUIndexFormat* {.size: sizeof(cint).} = enum
   WGPUIndexFormat_Undefined = 0,
   WGPUIndexFormat_Uint16 = 1,
   WGPUIndexFormat_Uint32 = 2,
   WGPUIndexFormat_Force32 = 2147483647
 
-type WGPURequestAdapterStatus* {.size: sizeof(cint), pure.} = enum
+type WGPURequestAdapterStatus* {.size: sizeof(cint).} = enum
   WGPURequestAdapterStatus_Success = 1,
   WGPURequestAdapterStatus_CallbackCancelled = 2,
   WGPURequestAdapterStatus_Unavailable = 3,
   WGPURequestAdapterStatus_Error = 4,
   WGPURequestAdapterStatus_Force32 = 2147483647
 
-type WGPURequestDeviceStatus* {.size: sizeof(cint), pure.} = enum
+type WGPURequestDeviceStatus* {.size: sizeof(cint).} = enum
   WGPURequestDeviceStatus_Success = 1,
   WGPURequestDeviceStatus_CallbackCancelled = 2,
   WGPURequestDeviceStatus_Error = 3,
   WGPURequestDeviceStatus_Force32 = 2147483647
 
-type WGPUBufferBindingType* {.size: sizeof(cint), pure.} = enum
+type WGPUBufferBindingType* {.size: sizeof(cint).} = enum
   WGPUBufferBindingType_BindingNotUsed = 0,
   WGPUBufferBindingType_Undefined = 1,
   WGPUBufferBindingType_Uniform = 2,
@@ -356,7 +356,7 @@ type WGPUBufferBindingType* {.size: sizeof(cint), pure.} = enum
   WGPUBufferBindingType_ReadOnlyStorage = 4,
   WGPUBufferBindingType_Force32 = 2147483647
 
-type WGPUSamplerBindingType* {.size: sizeof(cint), pure.} = enum
+type WGPUSamplerBindingType* {.size: sizeof(cint).} = enum
   WGPUSamplerBindingType_BindingNotUsed = 0,
   WGPUSamplerBindingType_Undefined = 1,
   WGPUSamplerBindingType_Filtering = 2,
@@ -364,7 +364,7 @@ type WGPUSamplerBindingType* {.size: sizeof(cint), pure.} = enum
   WGPUSamplerBindingType_Comparison = 4,
   WGPUSamplerBindingType_Force32 = 2147483647
 
-type WGPUStorageTextureAccess* {.size: sizeof(cint), pure.} = enum
+type WGPUStorageTextureAccess* {.size: sizeof(cint).} = enum
   WGPUStorageTextureAccess_BindingNotUsed = 0,
   WGPUStorageTextureAccess_Undefined = 1,
   WGPUStorageTextureAccess_WriteOnly = 2,
@@ -372,7 +372,7 @@ type WGPUStorageTextureAccess* {.size: sizeof(cint), pure.} = enum
   WGPUStorageTextureAccess_ReadWrite = 4,
   WGPUStorageTextureAccess_Force32 = 2147483647
 
-type WGPUTextureFormat* {.size: sizeof(cint), pure.} = enum
+type WGPUTextureFormat* {.size: sizeof(cint).} = enum
   WGPUTextureFormat_Undefined = 0,
   WGPUTextureFormat_R8Unorm = 1,
   WGPUTextureFormat_R8Snorm = 2,
@@ -485,7 +485,7 @@ type WGPUTextureFormat* {.size: sizeof(cint), pure.} = enum
   WGPUTextureFormat_External = 327693,
   WGPUTextureFormat_Force32 = 2147483647
 
-type WGPUTextureSampleType* {.size: sizeof(cint), pure.} = enum
+type WGPUTextureSampleType* {.size: sizeof(cint).} = enum
   WGPUTextureSampleType_BindingNotUsed = 0,
   WGPUTextureSampleType_Undefined = 1,
   WGPUTextureSampleType_Float = 2,
@@ -495,26 +495,26 @@ type WGPUTextureSampleType* {.size: sizeof(cint), pure.} = enum
   WGPUTextureSampleType_Uint = 6,
   WGPUTextureSampleType_Force32 = 2147483647
 
-type WGPUFilterMode* {.size: sizeof(cint), pure.} = enum
+type WGPUFilterMode* {.size: sizeof(cint).} = enum
   WGPUFilterMode_Undefined = 0,
   WGPUFilterMode_Nearest = 1,
   WGPUFilterMode_Linear = 2,
   WGPUFilterMode_Force32 = 2147483647
 
-type WGPUMipmapFilterMode* {.size: sizeof(cint), pure.} = enum
+type WGPUMipmapFilterMode* {.size: sizeof(cint).} = enum
   WGPUMipmapFilterMode_Undefined = 0,
   WGPUMipmapFilterMode_Nearest = 1,
   WGPUMipmapFilterMode_Linear = 2,
   WGPUMipmapFilterMode_Force32 = 2147483647
 
-type WGPUAddressMode* {.size: sizeof(cint), pure.} = enum
+type WGPUAddressMode* {.size: sizeof(cint).} = enum
   WGPUAddressMode_Undefined = 0,
   WGPUAddressMode_ClampToEdge = 1,
   WGPUAddressMode_Repeat = 2,
   WGPUAddressMode_MirrorRepeat = 3,
   WGPUAddressMode_Force32 = 2147483647
 
-type WGPUBackendType* {.size: sizeof(cint), pure.} = enum
+type WGPUBackendType* {.size: sizeof(cint).} = enum
   WGPUBackendType_Undefined = 0,
   WGPUBackendType_Null = 1,
   WGPUBackendType_WebGPU = 2,
@@ -526,90 +526,90 @@ type WGPUBackendType* {.size: sizeof(cint), pure.} = enum
   WGPUBackendType_OpenGLES = 8,
   WGPUBackendType_Force32 = 2147483647
 
-type WGPUAdapterType* {.size: sizeof(cint), pure.} = enum
+type WGPUAdapterType* {.size: sizeof(cint).} = enum
   WGPUAdapterType_DiscreteGPU = 1,
   WGPUAdapterType_IntegratedGPU = 2,
   WGPUAdapterType_CPU = 3,
   WGPUAdapterType_Unknown = 4,
   WGPUAdapterType_Force32 = 2147483647
 
-type WGPUPowerPreference* {.size: sizeof(cint), pure.} = enum
+type WGPUPowerPreference* {.size: sizeof(cint).} = enum
   WGPUPowerPreference_Undefined = 0,
   WGPUPowerPreference_LowPower = 1,
   WGPUPowerPreference_HighPerformance = 2,
   WGPUPowerPreference_Force32 = 2147483647
 
-type WGPUFeatureLevel* {.size: sizeof(cint), pure.} = enum
+type WGPUFeatureLevel* {.size: sizeof(cint).} = enum
   WGPUFeatureLevel_Undefined = 0,
   WGPUFeatureLevel_Compatibility = 1,
   WGPUFeatureLevel_Core = 2,
   WGPUFeatureLevel_Force32 = 2147483647
 
-type WGPUErrorFilter* {.size: sizeof(cint), pure.} = enum
+type WGPUErrorFilter* {.size: sizeof(cint).} = enum
   WGPUErrorFilter_Validation = 1,
   WGPUErrorFilter_OutOfMemory = 2,
   WGPUErrorFilter_Internal = 3,
   WGPUErrorFilter_Force32 = 2147483647
 
-type WGPUBufferMapState* {.size: sizeof(cint), pure.} = enum
+type WGPUBufferMapState* {.size: sizeof(cint).} = enum
   WGPUBufferMapState_Unmapped = 1,
   WGPUBufferMapState_Pending = 2,
   WGPUBufferMapState_Mapped = 3,
   WGPUBufferMapState_Force32 = 2147483647
 
-type WGPUCompilationInfoRequestStatus* {.size: sizeof(cint), pure.} = enum
+type WGPUCompilationInfoRequestStatus* {.size: sizeof(cint).} = enum
   WGPUCompilationInfoRequestStatus_Success = 1,
   WGPUCompilationInfoRequestStatus_CallbackCancelled = 2,
   WGPUCompilationInfoRequestStatus_Force32 = 2147483647
 
-type WGPUCompilationMessageType* {.size: sizeof(cint), pure.} = enum
+type WGPUCompilationMessageType* {.size: sizeof(cint).} = enum
   WGPUCompilationMessageType_Error = 1,
   WGPUCompilationMessageType_Warning = 2,
   WGPUCompilationMessageType_Info = 3,
   WGPUCompilationMessageType_Force32 = 2147483647
 
-type WGPUCreatePipelineAsyncStatus* {.size: sizeof(cint), pure.} = enum
+type WGPUCreatePipelineAsyncStatus* {.size: sizeof(cint).} = enum
   WGPUCreatePipelineAsyncStatus_Success = 1,
   WGPUCreatePipelineAsyncStatus_CallbackCancelled = 2,
   WGPUCreatePipelineAsyncStatus_ValidationError = 3,
   WGPUCreatePipelineAsyncStatus_InternalError = 4,
   WGPUCreatePipelineAsyncStatus_Force32 = 2147483647
 
-type WGPUPopErrorScopeStatus* {.size: sizeof(cint), pure.} = enum
+type WGPUPopErrorScopeStatus* {.size: sizeof(cint).} = enum
   WGPUPopErrorScopeStatus_Success = 1,
   WGPUPopErrorScopeStatus_CallbackCancelled = 2,
   WGPUPopErrorScopeStatus_Error = 3,
   WGPUPopErrorScopeStatus_Force32 = 2147483647
 
-type WGPUPredefinedColorSpace* {.size: sizeof(cint), pure.} = enum
+type WGPUPredefinedColorSpace* {.size: sizeof(cint).} = enum
   WGPUPredefinedColorSpace_SRGB = 1,
   WGPUPredefinedColorSpace_DisplayP3 = 2,
   WGPUPredefinedColorSpace_Force32 = 2147483647
 
-type WGPUQueryType* {.size: sizeof(cint), pure.} = enum
+type WGPUQueryType* {.size: sizeof(cint).} = enum
   WGPUQueryType_Occlusion = 1,
   WGPUQueryType_Timestamp = 2,
   WGPUQueryType_Force32 = 2147483647
 
-type WGPUQueueWorkDoneStatus* {.size: sizeof(cint), pure.} = enum
+type WGPUQueueWorkDoneStatus* {.size: sizeof(cint).} = enum
   WGPUQueueWorkDoneStatus_Success = 1,
   WGPUQueueWorkDoneStatus_CallbackCancelled = 2,
   WGPUQueueWorkDoneStatus_Error = 3,
   WGPUQueueWorkDoneStatus_Force32 = 2147483647
 
-type WGPUSubgroupMatrixComponentType* {.size: sizeof(cint), pure.} = enum
+type WGPUSubgroupMatrixComponentType* {.size: sizeof(cint).} = enum
   WGPUSubgroupMatrixComponentType_F32 = 1,
   WGPUSubgroupMatrixComponentType_F16 = 2,
   WGPUSubgroupMatrixComponentType_U32 = 3,
   WGPUSubgroupMatrixComponentType_I32 = 4,
   WGPUSubgroupMatrixComponentType_Force32 = 2147483647
 
-type WGPUToneMappingMode* {.size: sizeof(cint), pure.} = enum
+type WGPUToneMappingMode* {.size: sizeof(cint).} = enum
   WGPUToneMappingMode_Standard = 1,
   WGPUToneMappingMode_Extended = 2,
   WGPUToneMappingMode_Force32 = 2147483647
 
-type WGPUWGSLLanguageFeatureName* {.size: sizeof(cint), pure.} = enum
+type WGPUWGSLLanguageFeatureName* {.size: sizeof(cint).} = enum
   WGPUWGSLLanguageFeatureName_ReadonlyAndReadwriteStorageTextures = 1,
   WGPUWGSLLanguageFeatureName_Packed4x8IntegerDotProduct = 2,
   WGPUWGSLLanguageFeatureName_UnrestrictedPointerParameters = 3,
@@ -617,7 +617,7 @@ type WGPUWGSLLanguageFeatureName* {.size: sizeof(cint), pure.} = enum
   WGPUWGSLLanguageFeatureName_SizedBindingArray = 5,
   WGPUWGSLLanguageFeatureName_Force32 = 2147483647
 
-type WGPUErrorType* {.size: sizeof(cint), pure.} = enum
+type WGPUErrorType* {.size: sizeof(cint).} = enum
   WGPUErrorType_NoError = 1,
   WGPUErrorType_Validation = 2,
   WGPUErrorType_OutOfMemory = 3,
@@ -625,14 +625,14 @@ type WGPUErrorType* {.size: sizeof(cint), pure.} = enum
   WGPUErrorType_Unknown = 5,
   WGPUErrorType_Force32 = 2147483647
 
-type WGPUDeviceLostReason* {.size: sizeof(cint), pure.} = enum
+type WGPUDeviceLostReason* {.size: sizeof(cint).} = enum
   WGPUDeviceLostReason_Unknown = 1,
   WGPUDeviceLostReason_Destroyed = 2,
   WGPUDeviceLostReason_CallbackCancelled = 3,
   WGPUDeviceLostReason_FailedCreation = 4,
   WGPUDeviceLostReason_Force32 = 2147483647
 
-type WGPUVertexFormat* {.size: sizeof(cint), pure.} = enum
+type WGPUVertexFormat* {.size: sizeof(cint).} = enum
   WGPUVertexFormat_Uint8 = 1,
   WGPUVertexFormat_Uint8x2 = 2,
   WGPUVertexFormat_Uint8x4 = 3,
@@ -676,7 +676,7 @@ type WGPUVertexFormat* {.size: sizeof(cint), pure.} = enum
   WGPUVertexFormat_Unorm8x4BGRA = 41,
   WGPUVertexFormat_Force32 = 2147483647
 
-type WGPUSurfaceGetCurrentTextureStatus* {.size: sizeof(cint), pure.} = enum
+type WGPUSurfaceGetCurrentTextureStatus* {.size: sizeof(cint).} = enum
   WGPUSurfaceGetCurrentTextureStatus_SuccessOptimal = 1,
   WGPUSurfaceGetCurrentTextureStatus_SuccessSuboptimal = 2,
   WGPUSurfaceGetCurrentTextureStatus_Timeout = 3,
@@ -685,13 +685,13 @@ type WGPUSurfaceGetCurrentTextureStatus* {.size: sizeof(cint), pure.} = enum
   WGPUSurfaceGetCurrentTextureStatus_Error = 6,
   WGPUSurfaceGetCurrentTextureStatus_Force32 = 2147483647
 
-type WGPUInstanceFeatureName* {.size: sizeof(cint), pure.} = enum
+type WGPUInstanceFeatureName* {.size: sizeof(cint).} = enum
   WGPUInstanceFeatureName_TimedWaitAny = 1,
   WGPUInstanceFeatureName_ShaderSourceSPIRV = 2,
   WGPUInstanceFeatureName_MultipleDevicesPerAdapter = 3,
   WGPUInstanceFeatureName_Force32 = 2147483647
 
-type WGPUFeatureName* {.size: sizeof(cint), pure.} = enum
+type WGPUFeatureName* {.size: sizeof(cint).} = enum
   WGPUFeatureName_DepthClipControl = 1,
   WGPUFeatureName_Depth32FloatStencil8 = 2,
   WGPUFeatureName_TimestampQuery = 3,
@@ -716,14 +716,14 @@ type WGPUFeatureName* {.size: sizeof(cint), pure.} = enum
   WGPUFeatureName_PolygonModePoint = 22,
   WGPUFeatureName_Force32 = 2147483647
 
-type WGPUMapAsyncStatus* {.size: sizeof(cint), pure.} = enum
+type WGPUMapAsyncStatus* {.size: sizeof(cint).} = enum
   WGPUMapAsyncStatus_Success = 1,
   WGPUMapAsyncStatus_CallbackCancelled = 2,
   WGPUMapAsyncStatus_Error = 3,
   WGPUMapAsyncStatus_Aborted = 4,
   WGPUMapAsyncStatus_Force32 = 2147483647
 
-type WGPUCompositeAlphaMode* {.size: sizeof(cint), pure.} = enum
+type WGPUCompositeAlphaMode* {.size: sizeof(cint).} = enum
   WGPUCompositeAlphaMode_Auto = 0,
   WGPUCompositeAlphaMode_Opaque = 1,
   WGPUCompositeAlphaMode_Premultiplied = 2,
@@ -731,7 +731,7 @@ type WGPUCompositeAlphaMode* {.size: sizeof(cint), pure.} = enum
   WGPUCompositeAlphaMode_Inherit = 4,
   WGPUCompositeAlphaMode_Force32 = 2147483647
 
-type WGPUComponentSwizzle* {.size: sizeof(cint), pure.} = enum
+type WGPUComponentSwizzle* {.size: sizeof(cint).} = enum
   WGPUComponentSwizzle_Undefined = 0,
   WGPUComponentSwizzle_Zero = 1,
   WGPUComponentSwizzle_One = 2,
@@ -741,17 +741,17 @@ type WGPUComponentSwizzle* {.size: sizeof(cint), pure.} = enum
   WGPUComponentSwizzle_A = 6,
   WGPUComponentSwizzle_Force32 = 2147483647
 
-type WGPURayTracingAccelerationGeometryType* {.size: sizeof(cint), pure.} = enum
+type WGPURayTracingAccelerationGeometryType* {.size: sizeof(cint).} = enum
   WGPURayTracingAccelerationGeometryType_Triangles = 1,
   WGPURayTracingAccelerationGeometryType_AABBs = 2,
   WGPURayTracingAccelerationGeometryType_Force32 = 2147483647
 
-type WGPURayTracingAccelerationContainerLevel* {.size: sizeof(cint), pure.} = enum
+type WGPURayTracingAccelerationContainerLevel* {.size: sizeof(cint).} = enum
   WGPURayTracingAccelerationContainerLevel_Bottom = 1,
   WGPURayTracingAccelerationContainerLevel_Top = 2,
   WGPURayTracingAccelerationContainerLevel_Force32 = 2147483647
 
-type WGPURayTracingShaderBindingTableGroupType* {.size: sizeof(cint), pure.} = enum
+type WGPURayTracingShaderBindingTableGroupType* {.size: sizeof(cint).} = enum
   WGPURayTracingShaderBindingTableGroupType_General = 1,
   WGPURayTracingShaderBindingTableGroupType_TrianglesHitGroup = 2,
   WGPURayTracingShaderBindingTableGroupType_ProceduralHitGroup = 3,
@@ -941,7 +941,7 @@ type WGPUEmscriptenSurfaceSourceCanvasHTMLSelector* {.importc, bycopy, header: "
   chain*: WGPUChainedStruct
   selector*: WGPUStringView
 
-type WGPUDrmModeSelectType* {.size: sizeof(cint), pure.} = enum
+type WGPUDrmModeSelectType* {.size: sizeof(cint).} = enum
   WGPUDrmModeSelect_Default = 0,
   WGPUDrmModeSelect_ByIndex,
   WGPUDrmModeSelect_ByGeometry
@@ -1318,7 +1318,7 @@ type WGPUVertexState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h
   bufferCount*: size_t
   buffers*: ptr WGPUVertexBufferLayout
 
-type WGPUBlendOperation* {.size: sizeof(cint), pure.} = enum
+type WGPUBlendOperation* {.size: sizeof(cint).} = enum
   WGPUBlendOperation_Undefined = 0,
   WGPUBlendOperation_Add = 1,
   WGPUBlendOperation_Subtract = 2,
@@ -1327,7 +1327,7 @@ type WGPUBlendOperation* {.size: sizeof(cint), pure.} = enum
   WGPUBlendOperation_Max = 5,
   WGPUBlendOperation_Force32 = 2147483647
 
-type WGPUBlendFactor* {.size: sizeof(cint), pure.} = enum
+type WGPUBlendFactor* {.size: sizeof(cint).} = enum
   WGPUBlendFactor_Undefined = 0,
   WGPUBlendFactor_Zero = 1,
   WGPUBlendFactor_One = 2,
@@ -1406,7 +1406,7 @@ type WGPUPrimitiveState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgv
   cullMode*: WGPUCullMode
   unclippedDepth*: WGPUBool32
 
-type WGPUStencilOperation* {.size: sizeof(cint), pure.} = enum
+type WGPUStencilOperation* {.size: sizeof(cint).} = enum
   WGPUStencilOperation_Undefined = 0,
   WGPUStencilOperation_Keep = 1,
   WGPUStencilOperation_Zero = 2,
@@ -1467,14 +1467,14 @@ type WGPUGlobalReflectionInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/inclu
   texture*: WGPUTextureBindingInfo
   storageTexture*: WGPUStorageTextureBindingInfo
 
-type WGPUReflectionComponentType* {.size: sizeof(cint), pure.} = enum
+type WGPUReflectionComponentType* {.size: sizeof(cint).} = enum
   WGPUReflectionComponentType_Invalid,
   WGPUReflectionComponentType_Sint32,
   WGPUReflectionComponentType_Uint32,
   WGPUReflectionComponentType_Float32,
   WGPUReflectionComponentType_Float16
 
-type WGPUReflectionCompositionType* {.size: sizeof(cint), pure.} = enum
+type WGPUReflectionCompositionType* {.size: sizeof(cint).} = enum
   WGPUReflectionCompositionType_Invalid,
   WGPUReflectionCompositionType_Scalar,
   WGPUReflectionCompositionType_Vec2,
@@ -1490,7 +1490,7 @@ type WGPUAttributeReflectionInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/in
   attributeCount*: uint32_t
   attributes*: ptr WGPUReflectionAttribute
 
-type WGPUReflectionInfoRequestStatus* {.size: sizeof(cint), pure.} = enum
+type WGPUReflectionInfoRequestStatus* {.size: sizeof(cint).} = enum
   WGPUReflectionInfoRequestStatus_Unused = 0,
   WGPUReflectionInfoRequestStatus_Success = 1,
   WGPUReflectionInfoRequestStatus_CallbackCancelled = 2,

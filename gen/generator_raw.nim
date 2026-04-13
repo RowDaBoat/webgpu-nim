@@ -14,7 +14,6 @@ proc rename (
     name : string
   ) :henka.RenameResult=
   result = (name: name, pragmas: @[])
-  if kind == henka.EnumType: result.pragmas = @["pure"]
 
 #_____________________________
 when isMainModule:
