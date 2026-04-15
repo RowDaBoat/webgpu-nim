@@ -34,6 +34,7 @@ proc rename (
       if entry == "_t": result.name[0] = result.name[0].toUpperAscii()
       result.name = result.name[0..^entry.len+1]
       if result.name in cfg.addT: result.name = result.name&"T"
+  if result.name in ["type"]: result.name = "`" & result.name & "`"
 
 
 #_____________________________

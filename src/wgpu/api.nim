@@ -828,7 +828,7 @@ type BindGroupLayoutEntryArraySize* {.importc: "WGPUBindGroupLayoutEntryArraySiz
 type CompilationMessage* {.importc: "WGPUCompilationMessage", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   message*: WGPUStringView
-  type*: WGPUCompilationMessageType
+  `type`*: WGPUCompilationMessageType
   lineNum*: uint64_t
   linePos*: uint64_t
   offset*: uint64_t
@@ -843,7 +843,7 @@ type PassTimestampWrites* {.importc: "WGPUPassTimestampWrites", bycopy, header: 
 type QuerySetDescriptor* {.importc: "WGPUQuerySetDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
-  type*: WGPUQueryType
+  `type`*: WGPUQueryType
   count*: uint32_t
 
 type RenderPassMaxDrawCount* {.importc: "WGPURenderPassMaxDrawCount", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
@@ -952,7 +952,7 @@ type DrmModeByGeometry* {.importc: "WGPUDrmModeByGeometry", bycopy, header: "src
   refreshMilliHz*: uint32_t
 
 type DrmModeSelect* {.importc: "WGPUDrmModeSelect", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
-  type*: WGPUDrmModeSelectType
+  `type`*: WGPUDrmModeSelectType
   *: DrmModeSelect::(anonymous at /ssd/dev/gd/other/playground/wgvk/wgpu/src/wgpu/C/wgvk/include/wgvk.h:1123:5)
 
 type SurfaceSourceDrmPlane* {.importc: "WGPUSurfaceSourceDrmPlane", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
@@ -1031,7 +1031,7 @@ type TextureBindingLayout* {.importc: "WGPUTextureBindingLayout", bycopy, header
 
 type SamplerBindingLayout* {.importc: "WGPUSamplerBindingLayout", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
-  type*: WGPUSamplerBindingType
+  `type`*: WGPUSamplerBindingType
 
 type StorageTextureBindingLayout* {.importc: "WGPUStorageTextureBindingLayout", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
@@ -1041,7 +1041,7 @@ type StorageTextureBindingLayout* {.importc: "WGPUStorageTextureBindingLayout", 
 
 type BufferBindingLayout* {.importc: "WGPUBufferBindingLayout", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
-  type*: WGPUBufferBindingType
+  `type`*: WGPUBufferBindingType
   hasDynamicOffset*: WGPUBool
   minBindingSize*: uint64_t
 
@@ -1439,12 +1439,12 @@ type DepthStencilState* {.importc: "WGPUDepthStencilState", bycopy, header: "src
 
 type BufferBindingInfo* {.importc: "WGPUBufferBindingInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
-  type*: WGPUBufferBindingType
+  `type`*: WGPUBufferBindingType
   minBindingSize*: uint64_t
 
 type SamplerBindingInfo* {.importc: "WGPUSamplerBindingInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
-  type*: WGPUSamplerBindingType
+  `type`*: WGPUSamplerBindingType
 
 type TextureBindingInfo* {.importc: "WGPUTextureBindingInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
@@ -1599,7 +1599,7 @@ type RayTracingAccelerationGeometryAABBDescriptor* {.importc: "WGPURayTracingAcc
 
 type RayTracingAccelerationGeometryDescriptor* {.importc: "WGPURayTracingAccelerationGeometryDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   usage*: WGPURayTracingAccelerationGeometryUsage
-  type*: WGPURayTracingAccelerationGeometryType
+  `type`*: WGPURayTracingAccelerationGeometryType
   vertex*: WGPURayTracingAccelerationGeometryVertexDescriptor
   index*: WGPURayTracingAccelerationGeometryIndexDescriptor
   aabb*: WGPURayTracingAccelerationGeometryAABBDescriptor
@@ -1637,7 +1637,7 @@ type RayTracingShaderBindingTableStageDescriptor* {.importc: "WGPURayTracingShad
   module*: WGPUShaderModule
 
 type RayTracingShaderBindingTableGroupDescriptor* {.importc: "WGPURayTracingShaderBindingTableGroupDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
-  type*: WGPURayTracingShaderBindingTableGroupType
+  `type`*: WGPURayTracingShaderBindingTableGroupType
   generalIndex*: uint32_t
   closestHitIndex*: uint32_t
   anyHitIndex*: uint32_t
