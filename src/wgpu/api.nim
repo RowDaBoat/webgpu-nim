@@ -1,63 +1,63 @@
 type Flags* = uint64_t
 type Bool* = uint32_t
 type Bool32* = uint32_t
-type TextureImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureImpl* {.importc: "WGPUTextureImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type TextureViewImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureViewImpl* {.importc: "WGPUTextureViewImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type BufferImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BufferImpl* {.importc: "WGPUBufferImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type BindGroupImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BindGroupImpl* {.importc: "WGPUBindGroupImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type BindGroupLayoutImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BindGroupLayoutImpl* {.importc: "WGPUBindGroupLayoutImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type PipelineLayoutImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type PipelineLayoutImpl* {.importc: "WGPUPipelineLayoutImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type BufferImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BufferImpl* {.importc: "WGPUBufferImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type FutureImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type FutureImpl* {.importc: "WGPUFutureImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type RenderPassEncoderImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderPassEncoderImpl* {.importc: "WGPURenderPassEncoderImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type ComputePassEncoderImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ComputePassEncoderImpl* {.importc: "WGPUComputePassEncoderImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type RenderBundleImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderBundleImpl* {.importc: "WGPURenderBundleImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type RenderBundleEncoderImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderBundleEncoderImpl* {.importc: "WGPURenderBundleEncoderImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type CommandEncoderImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type CommandEncoderImpl* {.importc: "WGPUCommandEncoderImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type CommandBufferImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type CommandBufferImpl* {.importc: "WGPUCommandBufferImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type TextureImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureImpl* {.importc: "WGPUTextureImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type TextureViewImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureViewImpl* {.importc: "WGPUTextureViewImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type QueueImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type QueueImpl* {.importc: "WGPUQueueImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type QuerySetImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type QuerySetImpl* {.importc: "WGPUQuerySetImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type InstanceImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type InstanceImpl* {.importc: "WGPUInstanceImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type AdapterImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type AdapterImpl* {.importc: "WGPUAdapterImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type DeviceImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type DeviceImpl* {.importc: "WGPUDeviceImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type SurfaceImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceImpl* {.importc: "WGPUSurfaceImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type ShaderModuleImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ShaderModuleImpl* {.importc: "WGPUShaderModuleImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type RenderPipelineImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderPipelineImpl* {.importc: "WGPURenderPipelineImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type ComputePipelineImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ComputePipelineImpl* {.importc: "WGPUComputePipelineImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type TopLevelAccelerationStructureImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TopLevelAccelerationStructureImpl* {.importc: "WGPUTopLevelAccelerationStructureImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type BottomLevelAccelerationStructureImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BottomLevelAccelerationStructureImpl* {.importc: "WGPUBottomLevelAccelerationStructureImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type RaytracingPipelineImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RaytracingPipelineImpl* {.importc: "WGPURaytracingPipelineImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
-type RaytracingPassEncoderImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RaytracingPassEncoderImpl* {.importc: "WGPURaytracingPassEncoderImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
 type Surface* = ptr WGPUSurfaceImpl
 type BindGroupLayout* = ptr WGPUBindGroupLayoutImpl
@@ -77,19 +77,19 @@ type CommandBuffer* = ptr WGPUCommandBufferImpl
 type CommandEncoder* = ptr WGPUCommandEncoderImpl
 type Texture* = ptr WGPUTextureImpl
 type TextureView* = ptr WGPUTextureViewImpl
-type SamplerImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SamplerImpl* {.importc: "WGPUSamplerImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
 type Sampler* = ptr WGPUSamplerImpl
-type FenceImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type FenceImpl* {.importc: "WGPUFenceImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
 type Fence* = ptr WGPUFenceImpl
 type RenderPipeline* = ptr WGPURenderPipelineImpl
 type ShaderModule* = ptr WGPUShaderModuleImpl
 type ComputePipeline* = ptr WGPUComputePipelineImpl
-type RayTracingAccelerationContainerImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingAccelerationContainerImpl* {.importc: "WGPURayTracingAccelerationContainerImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
 type RayTracingAccelerationContainer* = ptr WGPURayTracingAccelerationContainerImpl
-type RayTracingShaderBindingTableImpl* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingShaderBindingTableImpl* {.importc: "WGPURayTracingShaderBindingTableImpl", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
 type RayTracingShaderBindingTable* = ptr WGPURayTracingShaderBindingTableImpl
 type RaytracingPipeline* = ptr WGPURaytracingPipelineImpl
@@ -242,11 +242,11 @@ type CallbackMode* {.size: sizeof(cint), pure.} = enum
   AllowSpontaneous = 3,
   Force32 = 2147483647
 
-type StringView* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type StringView* {.importc: "WGPUStringView", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   data*: cstring
   length*: size_t
 
-type TexelCopyBufferLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TexelCopyBufferLayout* {.importc: "WGPUTexelCopyBufferLayout", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   offset*: uint64_t
   bytesPerRow*: uint32_t
   rowsPerImage*: uint32_t
@@ -770,62 +770,62 @@ const RayTracingAccelerationContainerUsage_AllowUpdate*: WGPURayTracingAccelerat
 const RayTracingAccelerationContainerUsage_PreferFastTrace*: WGPURayTracingAccelerationContainerUsage = 2
 const RayTracingAccelerationContainerUsage_PreferFastBuild*: WGPURayTracingAccelerationContainerUsage = 4
 const RayTracingAccelerationContainerUsage_LowMemory*: WGPURayTracingAccelerationContainerUsage = 8
-type ChainedStruct* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ChainedStruct* {.importc: "WGPUChainedStruct", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   next*: ptr ChainedStruct
   sType*: WGPUSType
 
-type CompilationInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type CompilationInfo* {.importc: "WGPUCompilationInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
 
 type CompilationInfoCallback* = proc(a0: WGPUCompilationInfoRequestStatus, a1: ptr WGPUCompilationInfo, a2: pointer, a3: pointer) {.cdecl.}
 type CreateComputePipelineAsyncCallback* = proc(a0: WGPUCreatePipelineAsyncStatus, a1: WGPUComputePipeline, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
 type CreateRenderPipelineAsyncCallback* = proc(a0: WGPUCreatePipelineAsyncStatus, a1: WGPURenderPipeline, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
 type PopErrorScopeCallback* = proc(a0: WGPUPopErrorScopeStatus, a1: WGPUErrorType, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
 type QueueWorkDoneCallback* = proc(a0: WGPUQueueWorkDoneStatus, a1: pointer, a2: pointer) {.cdecl.}
-type CompilationInfoCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type CompilationInfoCallbackInfo* {.importc: "WGPUCompilationInfoCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   mode*: WGPUCallbackMode
   callback*: WGPUCompilationInfoCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type CreateComputePipelineAsyncCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type CreateComputePipelineAsyncCallbackInfo* {.importc: "WGPUCreateComputePipelineAsyncCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   mode*: WGPUCallbackMode
   callback*: WGPUCreateComputePipelineAsyncCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type CreateRenderPipelineAsyncCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type CreateRenderPipelineAsyncCallbackInfo* {.importc: "WGPUCreateRenderPipelineAsyncCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   mode*: WGPUCallbackMode
   callback*: WGPUCreateRenderPipelineAsyncCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type PopErrorScopeCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type PopErrorScopeCallbackInfo* {.importc: "WGPUPopErrorScopeCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   mode*: WGPUCallbackMode
   callback*: WGPUPopErrorScopeCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type QueueWorkDoneCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type QueueWorkDoneCallbackInfo* {.importc: "WGPUQueueWorkDoneCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   mode*: WGPUCallbackMode
   callback*: WGPUQueueWorkDoneCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type AdapterPropertiesSubgroups* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type AdapterPropertiesSubgroups* {.importc: "WGPUAdapterPropertiesSubgroups", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   subgroupMinSize*: uint32_t
   subgroupMaxSize*: uint32_t
 
-type BindGroupLayoutEntryArraySize* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BindGroupLayoutEntryArraySize* {.importc: "WGPUBindGroupLayoutEntryArraySize", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   arraySize*: uint32_t
 
-type CompilationMessage* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type CompilationMessage* {.importc: "WGPUCompilationMessage", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   message*: WGPUStringView
   type*: WGPUCompilationMessageType
@@ -834,110 +834,110 @@ type CompilationMessage* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgv
   offset*: uint64_t
   length*: uint64_t
 
-type PassTimestampWrites* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type PassTimestampWrites* {.importc: "WGPUPassTimestampWrites", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   querySet*: WGPUQuerySet
   beginningOfPassWriteIndex*: uint32_t
   endOfPassWriteIndex*: uint32_t
 
-type QuerySetDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type QuerySetDescriptor* {.importc: "WGPUQuerySetDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   type*: WGPUQueryType
   count*: uint32_t
 
-type RenderPassMaxDrawCount* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderPassMaxDrawCount* {.importc: "WGPURenderPassMaxDrawCount", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   maxDrawCount*: uint64_t
 
-type RequestAdapterWebXROptions* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RequestAdapterWebXROptions* {.importc: "WGPURequestAdapterWebXROptions", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   xrCompatible*: WGPUBool
 
-type SupportedFeatures* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SupportedFeatures* {.importc: "WGPUSupportedFeatures", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   featureCount*: size_t
   features*: ptr WGPUFeatureName
 
-type SupportedWGSLLanguageFeatures* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SupportedWGSLLanguageFeatures* {.importc: "WGPUSupportedWGSLLanguageFeatures", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   featureCount*: size_t
   features*: ptr WGPUWGSLLanguageFeatureName
 
-type SurfaceColorManagement* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceColorManagement* {.importc: "WGPUSurfaceColorManagement", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   colorSpace*: WGPUPredefinedColorSpace
   toneMappingMode*: WGPUToneMappingMode
 
-type TextureBindingViewDimensionDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureBindingViewDimensionDescriptor* {.importc: "WGPUTextureBindingViewDimensionDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   textureBindingViewDimension*: WGPUTextureViewDimension
 
-type CompilationInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type CompilationInfo* {.importc: "WGPUCompilationInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   messageCount*: size_t
   messages*: ptr WGPUCompilationMessage
 
-type ComputePassDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ComputePassDescriptor* {.importc: "WGPUComputePassDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   timestampWrites*: ptr WGPUPassTimestampWrites
 
-type RayTracingPassDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingPassDescriptor* {.importc: "WGPURayTracingPassDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   shaderBindingTable*: WGPURayTracingShaderBindingTable
   maxRecursionDepth*: uint32_t
   maxPayloadSize*: uint32_t
 
-type TexelCopyBufferInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TexelCopyBufferInfo* {.importc: "WGPUTexelCopyBufferInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   layout*: WGPUTexelCopyBufferLayout
   buffer*: WGPUBuffer
 
-type Origin3D* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type Origin3D* {.importc: "WGPUOrigin3D", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   x*: uint32_t
   y*: uint32_t
   z*: uint32_t
 
-type Future* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type Future* {.importc: "WGPUFuture", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   id*: uint64_t
 
-type Extent3D* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type Extent3D* {.importc: "WGPUExtent3D", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   width*: uint32_t
   height*: uint32_t
   depthOrArrayLayers*: uint32_t
 
-type TexelCopyTextureInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TexelCopyTextureInfo* {.importc: "WGPUTexelCopyTextureInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   texture*: WGPUTexture
   mipLevel*: uint32_t
   origin*: WGPUOrigin3D
   aspect*: WGPUTextureAspect
 
-type SurfaceSourceMetalLayer* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceSourceMetalLayer* {.importc: "WGPUSurfaceSourceMetalLayer", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   layer*: pointer
 
-type SurfaceSourceWindowsHWND* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceSourceWindowsHWND* {.importc: "WGPUSurfaceSourceWindowsHWND", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   hinstance*: pointer
   hwnd*: pointer
 
-type SurfaceSourceXlibWindow* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceSourceXlibWindow* {.importc: "WGPUSurfaceSourceXlibWindow", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   display*: pointer
   window*: uint64_t
 
-type SurfaceSourceXCBWindow* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceSourceXCBWindow* {.importc: "WGPUSurfaceSourceXCBWindow", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   connection*: pointer
   window*: uint32_t
 
-type SurfaceSourceWaylandSurface* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceSourceWaylandSurface* {.importc: "WGPUSurfaceSourceWaylandSurface", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   display*: pointer
   surface*: pointer
 
-type SurfaceSourceAndroidNativeWindow* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceSourceAndroidNativeWindow* {.importc: "WGPUSurfaceSourceAndroidNativeWindow", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   window*: pointer
 
-type EmscriptenSurfaceSourceCanvasHTMLSelector* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type EmscriptenSurfaceSourceCanvasHTMLSelector* {.importc: "WGPUEmscriptenSurfaceSourceCanvasHTMLSelector", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   selector*: WGPUStringView
 
@@ -946,16 +946,16 @@ type DrmModeSelectType* {.size: sizeof(cint), pure.} = enum
   DrmModeSelect_ByIndex,
   DrmModeSelect_ByGeometry
 
-type DrmModeByGeometry* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type DrmModeByGeometry* {.importc: "WGPUDrmModeByGeometry", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   width*: uint32_t
   height*: uint32_t
   refreshMilliHz*: uint32_t
 
-type DrmModeSelect* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type DrmModeSelect* {.importc: "WGPUDrmModeSelect", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   type*: WGPUDrmModeSelectType
   *: DrmModeSelect::(anonymous at /ssd/dev/gd/other/playground/wgvk/wgpu/src/wgpu/C/wgvk/include/wgvk.h:1123:5)
 
-type SurfaceSourceDrmPlane* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceSourceDrmPlane* {.importc: "WGPUSurfaceSourceDrmPlane", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   adapter*: WGPUAdapter
   drmFd*: int32_t
@@ -965,11 +965,11 @@ type SurfaceSourceDrmPlane* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/
   modeSelect*: WGPUDrmModeSelect
   acquireExclusive*: WGPUBool
 
-type SurfaceDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceDescriptor* {.importc: "WGPUSurfaceDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
 
-type AdapterInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type AdapterInfo* {.importc: "WGPUAdapterInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   vendor*: WGPUStringView
   architecture*: WGPUStringView
@@ -982,7 +982,7 @@ type AdapterInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} 
   subgroupMinSize*: uint32_t
   subgroupMaxSize*: uint32_t
 
-type RequestAdapterOptions* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RequestAdapterOptions* {.importc: "WGPURequestAdapterOptions", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   featureLevel*: WGPUFeatureLevel
   powerPreference*: WGPUPowerPreference
@@ -990,27 +990,27 @@ type RequestAdapterOptions* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/
   backendType*: WGPUBackendType
   compatibleSurface*: WGPUSurface
 
-type InstanceCapabilities* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type InstanceCapabilities* {.importc: "WGPUInstanceCapabilities", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   timedWaitAnyEnable*: WGPUBool
   timedWaitAnyMaxCount*: size_t
 
-type InstanceLimits* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type InstanceLimits* {.importc: "WGPUInstanceLimits", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   timedWaitAnyMaxCount*: size_t
 
-type InstanceLayerSelection* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type InstanceLayerSelection* {.importc: "WGPUInstanceLayerSelection", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   instanceLayers*: ptr char *const
   instanceLayerCount*: uint32_t
 
-type InstanceDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type InstanceDescriptor* {.importc: "WGPUInstanceDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   requiredFeatureCount*: size_t
   requiredFeatures*: ptr WGPUInstanceFeatureName
   requiredLimits*: ptr WGPUInstanceLimits
 
-type BindGroupEntry* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BindGroupEntry* {.importc: "WGPUBindGroupEntry", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   binding*: uint32_t
   buffer*: WGPUBuffer
@@ -1019,33 +1019,33 @@ type BindGroupEntry* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h"
   sampler*: WGPUSampler
   textureView*: WGPUTextureView
 
-type BindGroupEntryRayTracing* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BindGroupEntryRayTracing* {.importc: "WGPUBindGroupEntryRayTracing", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   accelerationStructure*: WGPURayTracingAccelerationContainer
 
-type TextureBindingLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureBindingLayout* {.importc: "WGPUTextureBindingLayout", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   sampleType*: WGPUTextureSampleType
   viewDimension*: WGPUTextureViewDimension
   multisampled*: WGPUBool
 
-type SamplerBindingLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SamplerBindingLayout* {.importc: "WGPUSamplerBindingLayout", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   type*: WGPUSamplerBindingType
 
-type StorageTextureBindingLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type StorageTextureBindingLayout* {.importc: "WGPUStorageTextureBindingLayout", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   access*: WGPUStorageTextureAccess
   format*: WGPUTextureFormat
   viewDimension*: WGPUTextureViewDimension
 
-type BufferBindingLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BufferBindingLayout* {.importc: "WGPUBufferBindingLayout", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   type*: WGPUBufferBindingType
   hasDynamicOffset*: WGPUBool
   minBindingSize*: uint64_t
 
-type BindGroupLayoutEntry* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BindGroupLayoutEntry* {.importc: "WGPUBindGroupLayoutEntry", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   binding*: uint32_t
   visibility*: WGPUShaderStage
@@ -1055,11 +1055,11 @@ type BindGroupLayoutEntry* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/w
   texture*: WGPUTextureBindingLayout
   storageTexture*: WGPUStorageTextureBindingLayout
 
-type BindGroupLayoutEntryRayTracing* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BindGroupLayoutEntryRayTracing* {.importc: "WGPUBindGroupLayoutEntryRayTracing", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   accelerationStructure*: WGPUBool
 
-type SamplerDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SamplerDescriptor* {.importc: "WGPUSamplerDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   addressModeU*: WGPUAddressMode
@@ -1073,18 +1073,18 @@ type SamplerDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk
   compare*: WGPUCompareFunction
   maxAnisotropy*: uint16_t
 
-type FutureWaitInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type FutureWaitInfo* {.importc: "WGPUFutureWaitInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   future*: WGPUFuture
   completed*: WGPUBool32
 
-type ExtrasLimits* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ExtrasLimits* {.importc: "WGPUExtrasLimits", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   maxStorageBuffersInVertexStage*: uint32_t
   maxStorageTexturesInVertexStage*: uint32_t
   maxStorageBuffersInFragmentStage*: uint32_t
   maxStorageTexturesInFragmentStage*: uint32_t
 
-type Limits* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type Limits* {.importc: "WGPULimits", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   maxTextureDimension1D*: uint32_t
   maxTextureDimension2D*: uint32_t
@@ -1119,27 +1119,27 @@ type Limits* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = obj
   maxComputeWorkgroupsPerDimension*: uint32_t
   maxImmediateSize*: uint32_t
 
-type QueueDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type QueueDescriptor* {.importc: "WGPUQueueDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
 
 type Proc* = proc() {.cdecl.}
 type DeviceLostCallback* = proc(a0: ptr WGPUDevice, a1: WGPUDeviceLostReason, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
 type UncapturedErrorCallback* = proc(a0: ptr WGPUDevice, a1: WGPUErrorType, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
-type DeviceLostCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type DeviceLostCallbackInfo* {.importc: "WGPUDeviceLostCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   mode*: cint
   callback*: WGPUDeviceLostCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type UncapturedErrorCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type UncapturedErrorCallbackInfo* {.importc: "WGPUUncapturedErrorCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   callback*: WGPUUncapturedErrorCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type DeviceDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type DeviceDescriptor* {.importc: "WGPUDeviceDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   requiredFeatureCount*: size_t
@@ -1149,13 +1149,13 @@ type DeviceDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.
   deviceLostCallbackInfo*: WGPUDeviceLostCallbackInfo
   uncapturedErrorCallbackInfo*: WGPUUncapturedErrorCallbackInfo
 
-type Color* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type Color* {.importc: "WGPUColor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   r*: cdouble
   g*: cdouble
   b*: cdouble
   a*: cdouble
 
-type RenderPassColorAttachment* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderPassColorAttachment* {.importc: "WGPURenderPassColorAttachment", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   view*: WGPUTextureView
   depthSlice*: uint32_t
@@ -1164,7 +1164,7 @@ type RenderPassColorAttachment* {.importc, bycopy, header: "src/wgpu/C/wgvk/incl
   storeOp*: WGPUStoreOp
   clearValue*: WGPUColor
 
-type RenderPassDepthStencilAttachment* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderPassDepthStencilAttachment* {.importc: "WGPURenderPassDepthStencilAttachment", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   view*: WGPUTextureView
   depthLoadOp*: WGPULoadOp
@@ -1176,7 +1176,7 @@ type RenderPassDepthStencilAttachment* {.importc, bycopy, header: "src/wgpu/C/wg
   stencilClearValue*: uint32_t
   stencilReadOnly*: uint32_t
 
-type RenderPassDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderPassDescriptor* {.importc: "WGPURenderPassDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   colorAttachmentCount*: size_t
@@ -1185,11 +1185,11 @@ type RenderPassDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/w
   occlusionQuerySet*: WGPUQuerySet
   timestampWrites*: ptr WGPUPassTimestampWrites
 
-type RenderBundleDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderBundleDescriptor* {.importc: "WGPURenderBundleDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
 
-type RenderBundleEncoderDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderBundleEncoderDescriptor* {.importc: "WGPURenderBundleEncoderDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   colorFormatCount*: size_t
@@ -1199,11 +1199,11 @@ type RenderBundleEncoderDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/
   depthReadOnly*: WGPUBool
   stencilReadOnly*: WGPUBool
 
-type CommandEncoderDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type CommandEncoderDescriptor* {.importc: "WGPUCommandEncoderDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
 
-type TextureDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureDescriptor* {.importc: "WGPUTextureDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   usage*: WGPUTextureUsage
@@ -1215,7 +1215,7 @@ type TextureDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk
   viewFormatCount*: size_t
   viewFormats*: ptr WGPUTextureFormat
 
-type TextureViewDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureViewDescriptor* {.importc: "WGPUTextureViewDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   format*: WGPUTextureFormat
@@ -1227,21 +1227,21 @@ type TextureViewDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/
   aspect*: WGPUTextureAspect
   usage*: WGPUTextureUsage
 
-type TextureComponentSwizzle* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureComponentSwizzle* {.importc: "WGPUTextureComponentSwizzle", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   r*: WGPUComponentSwizzle
   g*: WGPUComponentSwizzle
   b*: WGPUComponentSwizzle
   a*: WGPUComponentSwizzle
 
-type TextureComponentSwizzleDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureComponentSwizzleDescriptor* {.importc: "WGPUTextureComponentSwizzleDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   swizzle*: WGPUTextureComponentSwizzle
 
-type BufferAllocatorSelector* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BufferAllocatorSelector* {.importc: "WGPUBufferAllocatorSelector", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   forceBuiltin*: WGPUBool
 
-type BufferDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BufferDescriptor* {.importc: "WGPUBufferDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   usage*: WGPUBufferUsage
@@ -1249,39 +1249,39 @@ type BufferDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.
   mappedAtCreation*: WGPUBool
 
 type BufferMapCallback* = proc(a0: WGPUMapAsyncStatus, a1: WGPUStringView, a2: pointer, a3: pointer) {.cdecl.}
-type BufferMapCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BufferMapCallbackInfo* {.importc: "WGPUBufferMapCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   mode*: WGPUCallbackMode
   callback*: WGPUBufferMapCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type BindGroupDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BindGroupDescriptor* {.importc: "WGPUBindGroupDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   layout*: WGPUBindGroupLayout
   entryCount*: size_t
   entries*: ptr WGPUBindGroupEntry
 
-type BindGroupLayoutDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BindGroupLayoutDescriptor* {.importc: "WGPUBindGroupLayoutDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   entryCount*: size_t
   entries*: ptr WGPUBindGroupLayoutEntry
 
-type PipelineLayoutDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type PipelineLayoutDescriptor* {.importc: "WGPUPipelineLayoutDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   bindGroupLayoutCount*: size_t
   bindGroupLayouts*: ptr WGPUBindGroupLayout
   immediateDataRangeByteSize*: uint32_t
 
-type SurfaceTexture* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceTexture* {.importc: "WGPUSurfaceTexture", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   texture*: WGPUTexture
   status*: WGPUSurfaceGetCurrentTextureStatus
 
-type SurfaceCapabilities* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceCapabilities* {.importc: "WGPUSurfaceCapabilities", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   usages*: WGPUTextureUsage
   formatCount*: size_t
@@ -1291,25 +1291,25 @@ type SurfaceCapabilities* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wg
   alphaModeCount*: size_t
   alphaModes*: ptr WGPUCompositeAlphaMode
 
-type ConstantEntry* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ConstantEntry* {.importc: "WGPUConstantEntry", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   key*: WGPUStringView
   value*: cdouble
 
-type VertexAttribute* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type VertexAttribute* {.importc: "WGPUVertexAttribute", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   format*: WGPUVertexFormat
   offset*: uint64_t
   shaderLocation*: uint32_t
 
-type VertexBufferLayout* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type VertexBufferLayout* {.importc: "WGPUVertexBufferLayout", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   stepMode*: WGPUVertexStepMode
   arrayStride*: uint64_t
   attributeCount*: size_t
   attributes*: ptr WGPUVertexAttribute
 
-type VertexState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type VertexState* {.importc: "WGPUVertexState", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   module*: WGPUShaderModule
   entryPoint*: WGPUStringView
@@ -1348,40 +1348,40 @@ type BlendFactor* {.size: sizeof(cint), pure.} = enum
   OneMinusSrc1Alpha = 17,
   Force32 = 2147483647
 
-type BlendComponent* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BlendComponent* {.importc: "WGPUBlendComponent", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   operation*: WGPUBlendOperation
   srcFactor*: WGPUBlendFactor
   dstFactor*: WGPUBlendFactor
 
-type BlendState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BlendState* {.importc: "WGPUBlendState", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   color*: WGPUBlendComponent
   alpha*: WGPUBlendComponent
 
-type ShaderSourceSPIRV* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ShaderSourceSPIRV* {.importc: "WGPUShaderSourceSPIRV", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   codeSize*: uint32_t
   code*: ptr uint32_t
 
-type ShaderSourceWGSL* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ShaderSourceWGSL* {.importc: "WGPUShaderSourceWGSL", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   code*: WGPUStringView
 
-type ShaderSourceGLSL* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ShaderSourceGLSL* {.importc: "WGPUShaderSourceGLSL", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   stage*: WGPUShaderStage
   code*: WGPUStringView
 
-type ShaderModuleDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ShaderModuleDescriptor* {.importc: "WGPUShaderModuleDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
 
-type ColorTargetState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ColorTargetState* {.importc: "WGPUColorTargetState", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   format*: WGPUTextureFormat
   blend*: ptr WGPUBlendState
   writeMask*: WGPUColorWriteMask
 
-type FragmentState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type FragmentState* {.importc: "WGPUFragmentState", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   module*: WGPUShaderModule
   entryPoint*: WGPUStringView
@@ -1390,15 +1390,15 @@ type FragmentState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".
   targetCount*: size_t
   targets*: ptr WGPUColorTargetState
 
-type CommandBufferDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type CommandBufferDescriptor* {.importc: "WGPUCommandBufferDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
 
-type PrimitiveLineWidthInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type PrimitiveLineWidthInfo* {.importc: "WGPUPrimitiveLineWidthInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   chain*: WGPUChainedStruct
   lineWidth*: uint32_t
 
-type PrimitiveState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type PrimitiveState* {.importc: "WGPUPrimitiveState", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   topology*: WGPUPrimitiveTopology
   stripIndexFormat*: WGPUIndexFormat
@@ -1418,13 +1418,13 @@ type StencilOperation* {.size: sizeof(cint), pure.} = enum
   DecrementWrap = 8,
   Force32 = 2147483647
 
-type StencilFaceState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type StencilFaceState* {.importc: "WGPUStencilFaceState", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   compare*: WGPUCompareFunction
   failOp*: WGPUStencilOperation
   depthFailOp*: WGPUStencilOperation
   passOp*: WGPUStencilOperation
 
-type DepthStencilState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type DepthStencilState* {.importc: "WGPUDepthStencilState", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   format*: WGPUTextureFormat
   depthWriteEnabled*: WGPUBool32
@@ -1437,27 +1437,27 @@ type DepthStencilState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk
   depthBiasSlopeScale*: cfloat
   depthBiasClamp*: cfloat
 
-type BufferBindingInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type BufferBindingInfo* {.importc: "WGPUBufferBindingInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   type*: WGPUBufferBindingType
   minBindingSize*: uint64_t
 
-type SamplerBindingInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SamplerBindingInfo* {.importc: "WGPUSamplerBindingInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   type*: WGPUSamplerBindingType
 
-type TextureBindingInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TextureBindingInfo* {.importc: "WGPUTextureBindingInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   sampleType*: WGPUTextureSampleType
   viewDimension*: WGPUTextureViewDimension
 
-type StorageTextureBindingInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type StorageTextureBindingInfo* {.importc: "WGPUStorageTextureBindingInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   access*: WGPUStorageTextureAccess
   format*: WGPUTextureFormat
   viewDimension*: WGPUTextureViewDimension
 
-type GlobalReflectionInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type GlobalReflectionInfo* {.importc: "WGPUGlobalReflectionInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   name*: WGPUStringView
   bindGroup*: uint32_t
   binding*: uint32_t
@@ -1481,12 +1481,12 @@ type ReflectionCompositionType* {.size: sizeof(cint), pure.} = enum
   ReflectionCompositionType_Vec3,
   ReflectionCompositionType_Vec4
 
-type ReflectionAttribute* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ReflectionAttribute* {.importc: "WGPUReflectionAttribute", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   location*: uint32_t
   componentType*: WGPUReflectionComponentType
   compositionType*: WGPUReflectionCompositionType
 
-type AttributeReflectionInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type AttributeReflectionInfo* {.importc: "WGPUAttributeReflectionInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   attributeCount*: uint32_t
   attributes*: ptr WGPUReflectionAttribute
 
@@ -1496,7 +1496,7 @@ type ReflectionInfoRequestStatus* {.size: sizeof(cint), pure.} = enum
   ReflectionInfoRequestStatus_CallbackCancelled = 2,
   ReflectionInfoRequestStatus_Force32 = 2147483647
 
-type ReflectionInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ReflectionInfo* {.importc: "WGPUReflectionInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   globalCount*: uint32_t
   globals*: ptr WGPUGlobalReflectionInfo
@@ -1504,27 +1504,27 @@ type ReflectionInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h"
   outputAttributes*: ptr WGPUAttributeReflectionInfo
 
 type ReflectionInfoCallback* = proc(a0: WGPUReflectionInfoRequestStatus, a1: ptr WGPUReflectionInfo, a2: pointer, a3: pointer) {.cdecl.}
-type ReflectionInfoCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ReflectionInfoCallbackInfo* {.importc: "WGPUReflectionInfoCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   mode*: WGPUCallbackMode
   callback*: WGPUReflectionInfoCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type MultisampleState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type MultisampleState* {.importc: "WGPUMultisampleState", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   count*: uint32_t
   mask*: uint32_t
   alphaToCoverageEnabled*: WGPUBool32
 
-type ComputeState* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ComputeState* {.importc: "WGPUComputeState", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   module*: WGPUShaderModule
   entryPoint*: WGPUStringView
   constantCount*: size_t
   constants*: ptr WGPUConstantEntry
 
-type RenderPipelineDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RenderPipelineDescriptor* {.importc: "WGPURenderPipelineDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   layout*: WGPUPipelineLayout
@@ -1534,13 +1534,13 @@ type RenderPipelineDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/inclu
   multisample*: WGPUMultisampleState
   fragment*: ptr WGPUFragmentState
 
-type ComputePipelineDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type ComputePipelineDescriptor* {.importc: "WGPUComputePipelineDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   label*: WGPUStringView
   layout*: WGPUPipelineLayout
   compute*: WGPUComputeState
 
-type SurfaceConfiguration* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type SurfaceConfiguration* {.importc: "WGPUSurfaceConfiguration", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   device*: WGPUDevice
   format*: WGPUTextureFormat
@@ -1554,60 +1554,60 @@ type SurfaceConfiguration* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/w
 
 type RequestAdapterCallback* = proc(a0: WGPURequestAdapterStatus, a1: WGPUAdapter, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
 type RequestDeviceCallback* = proc(a0: WGPURequestDeviceStatus, a1: WGPUDevice, a2: WGPUStringView, a3: pointer, a4: pointer) {.cdecl.}
-type RequestAdapterCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RequestAdapterCallbackInfo* {.importc: "WGPURequestAdapterCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   mode*: WGPUCallbackMode
   callback*: WGPURequestAdapterCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type RequestDeviceCallbackInfo* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RequestDeviceCallbackInfo* {.importc: "WGPURequestDeviceCallbackInfo", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   nextInChain*: ptr WGPUChainedStruct
   mode*: WGPUCallbackMode
   callback*: WGPURequestDeviceCallback
   userdata1*: pointer
   userdata2*: pointer
 
-type Transform3DDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type Transform3DDescriptor* {.importc: "WGPUTransform3DDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   x*: cfloat
   y*: cfloat
   z*: cfloat
 
-type RayTracingAccelerationInstanceTransformDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingAccelerationInstanceTransformDescriptor* {.importc: "WGPURayTracingAccelerationInstanceTransformDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   translation*: WGPUTransform3DDescriptor
   rotation*: WGPUTransform3DDescriptor
   scale*: WGPUTransform3DDescriptor
 
-type RayTracingAccelerationGeometryVertexDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingAccelerationGeometryVertexDescriptor* {.importc: "WGPURayTracingAccelerationGeometryVertexDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   buffer*: WGPUBuffer
   format*: WGPUVertexFormat
   stride*: uint32_t
   offset*: uint32_t
   count*: uint32_t
 
-type RayTracingAccelerationGeometryIndexDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingAccelerationGeometryIndexDescriptor* {.importc: "WGPURayTracingAccelerationGeometryIndexDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   buffer*: WGPUBuffer
   format*: WGPUIndexFormat
   offset*: uint32_t
   count*: uint32_t
 
-type RayTracingAccelerationGeometryAABBDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingAccelerationGeometryAABBDescriptor* {.importc: "WGPURayTracingAccelerationGeometryAABBDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   buffer*: WGPUBuffer
   stride*: uint32_t
   offset*: uint32_t
   count*: uint32_t
 
-type RayTracingAccelerationGeometryDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingAccelerationGeometryDescriptor* {.importc: "WGPURayTracingAccelerationGeometryDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   usage*: WGPURayTracingAccelerationGeometryUsage
   type*: WGPURayTracingAccelerationGeometryType
   vertex*: WGPURayTracingAccelerationGeometryVertexDescriptor
   index*: WGPURayTracingAccelerationGeometryIndexDescriptor
   aabb*: WGPURayTracingAccelerationGeometryAABBDescriptor
 
-type TransformMatrix* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type TransformMatrix* {.importc: "WGPUTransformMatrix", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   matrix*: float[3][4]
 
-type RayTracingAccelerationInstanceDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingAccelerationInstanceDescriptor* {.importc: "WGPURayTracingAccelerationInstanceDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   usage*: WGPURayTracingAccelerationInstanceUsage
   mask*: uint8_t
   instanceId*: uint32_t
@@ -1615,7 +1615,7 @@ type RayTracingAccelerationInstanceDescriptor* {.importc, bycopy, header: "src/w
   transformMatrix*: WGPUTransformMatrix
   geometryContainer*: WGPURayTracingAccelerationContainer
 
-type RayTracingAccelerationContainerDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingAccelerationContainerDescriptor* {.importc: "WGPURayTracingAccelerationContainerDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   usage*: WGPURayTracingAccelerationContainerUsage
   level*: WGPURayTracingAccelerationContainerLevel
   geometryCount*: uint32_t
@@ -1623,250 +1623,250 @@ type RayTracingAccelerationContainerDescriptor* {.importc, bycopy, header: "src/
   geometries*: ptr WGPURayTracingAccelerationGeometryDescriptor
   instances*: ptr WGPURayTracingAccelerationInstanceDescriptor
 
-type RayTracingStateDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingStateDescriptor* {.importc: "WGPURayTracingStateDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   shaderBindingTable*: WGPURayTracingShaderBindingTable
   maxRecursionDepth*: uint32_t
   maxPayloadSize*: uint32_t
 
-type RayTracingPipelineDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingPipelineDescriptor* {.importc: "WGPURayTracingPipelineDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   layout*: WGPUPipelineLayout
   rayTracingState*: WGPURayTracingStateDescriptor
 
-type RayTracingShaderBindingTableStageDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingShaderBindingTableStageDescriptor* {.importc: "WGPURayTracingShaderBindingTableStageDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   stage*: WGPUShaderStage
   module*: WGPUShaderModule
 
-type RayTracingShaderBindingTableGroupDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingShaderBindingTableGroupDescriptor* {.importc: "WGPURayTracingShaderBindingTableGroupDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   type*: WGPURayTracingShaderBindingTableGroupType
   generalIndex*: uint32_t
   closestHitIndex*: uint32_t
   anyHitIndex*: uint32_t
   intersectionIndex*: uint32_t
 
-type RayTracingShaderBindingTableDescriptor* {.importc, bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
+type RayTracingShaderBindingTableDescriptor* {.importc: "WGPURayTracingShaderBindingTableDescriptor", bycopy, header: "src/wgpu/C/wgvk/include/wgvk.h".} = object
   stageCount*: uint32_t
   stages*: ptr WGPURayTracingShaderBindingTableStageDescriptor
   groupCount*: uint32_t
   groups*: ptr WGPURayTracingShaderBindingTableGroupDescriptor
 
-proc create*(descriptor: ptr WGPUInstanceDescriptor): WGPUInstance {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc wait*(instance: WGPUInstance, futureCount: size_t, futures: ptr WGPUFutureWaitInfo, timeoutNS: uint64_t): WGPUWaitStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc request*(instance: WGPUInstance, options: ptr WGPURequestAdapterOptions, callbackInfo: WGPURequestAdapterCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(instance: WGPUInstance, descriptor: ptr WGPUSurfaceDescriptor): WGPUSurface {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getAdapterInfo*(device: WGPUDevice, adapterInfo: ptr WGPUAdapterInfo): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc get*(adapter: WGPUAdapter, limits: ptr WGPULimits): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc request*(adapter: WGPUAdapter, options: ptr WGPUDeviceDescriptor, callbackInfo: WGPURequestDeviceCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getQueue*(device: WGPUDevice): WGPUQueue {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc get*(wgpuSurface: WGPUSurface, adapter: WGPUAdapter, capabilities: ptr WGPUSurfaceCapabilities): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc configure*(surface: WGPUSurface, config: ptr WGPUSurfaceConfiguration) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(surface: WGPUSurface) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, descriptor: ptr WGPUTextureDescriptor): WGPUTexture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(texture: WGPUTexture, descriptor: ptr WGPUTextureViewDescriptor): WGPUTextureView {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getDepthOrArrayLayers*(texture: WGPUTexture): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getDimension*(texture: WGPUTexture): WGPUTextureDimension {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getFormat*(texture: WGPUTexture): WGPUTextureFormat {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getHeight*(texture: WGPUTexture): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getMipLevelCount*(texture: WGPUTexture): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getSampleCount*(texture: WGPUTexture): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getUsage*(texture: WGPUTexture): WGPUTextureUsage {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getWidth*(texture: WGPUTexture): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, descriptor: ptr WGPUSamplerDescriptor): WGPUSampler {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, desc: ptr WGPUBufferDescriptor): WGPUBuffer {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc write*(cSelf: WGPUQueue, buffer: WGPUBuffer, bufferOffset: uint64_t, data: pointer, size: size_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(descriptor: ptr WGPUInstanceDescriptor): WGPUInstance {.importc: "wgpuCreateInstance", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc wait*(instance: WGPUInstance, futureCount: size_t, futures: ptr WGPUFutureWaitInfo, timeoutNS: uint64_t): WGPUWaitStatus {.importc: "wgpuInstanceWaitAny", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc request*(instance: WGPUInstance, options: ptr WGPURequestAdapterOptions, callbackInfo: WGPURequestAdapterCallbackInfo): WGPUFuture {.importc: "wgpuInstanceRequestAdapter", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(instance: WGPUInstance, descriptor: ptr WGPUSurfaceDescriptor): WGPUSurface {.importc: "wgpuInstanceCreateSurface", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getAdapterInfo*(device: WGPUDevice, adapterInfo: ptr WGPUAdapterInfo): WGPUStatus {.importc: "wgpuDeviceGetAdapterInfo", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(adapter: WGPUAdapter, limits: ptr WGPULimits): WGPUStatus {.importc: "wgpuAdapterGetLimits", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc request*(adapter: WGPUAdapter, options: ptr WGPUDeviceDescriptor, callbackInfo: WGPURequestDeviceCallbackInfo): WGPUFuture {.importc: "wgpuAdapterRequestDevice", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getQueue*(device: WGPUDevice): WGPUQueue {.importc: "wgpuDeviceGetQueue", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(wgpuSurface: WGPUSurface, adapter: WGPUAdapter, capabilities: ptr WGPUSurfaceCapabilities): WGPUStatus {.importc: "wgpuSurfaceGetCapabilities", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc configure*(surface: WGPUSurface, config: ptr WGPUSurfaceConfiguration) {.importc: "wgpuSurfaceConfigure", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(surface: WGPUSurface) {.importc: "wgpuSurfaceRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPUTextureDescriptor): WGPUTexture {.importc: "wgpuDeviceCreateTexture", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(texture: WGPUTexture, descriptor: ptr WGPUTextureViewDescriptor): WGPUTextureView {.importc: "wgpuTextureCreateView", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getDepthOrArrayLayers*(texture: WGPUTexture): uint32_t {.importc: "wgpuTextureGetDepthOrArrayLayers", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getDimension*(texture: WGPUTexture): WGPUTextureDimension {.importc: "wgpuTextureGetDimension", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getFormat*(texture: WGPUTexture): WGPUTextureFormat {.importc: "wgpuTextureGetFormat", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getHeight*(texture: WGPUTexture): uint32_t {.importc: "wgpuTextureGetHeight", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getMipLevelCount*(texture: WGPUTexture): uint32_t {.importc: "wgpuTextureGetMipLevelCount", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getSampleCount*(texture: WGPUTexture): uint32_t {.importc: "wgpuTextureGetSampleCount", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getUsage*(texture: WGPUTexture): WGPUTextureUsage {.importc: "wgpuTextureGetUsage", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getWidth*(texture: WGPUTexture): uint32_t {.importc: "wgpuTextureGetWidth", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPUSamplerDescriptor): WGPUSampler {.importc: "wgpuDeviceCreateSampler", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, desc: ptr WGPUBufferDescriptor): WGPUBuffer {.importc: "wgpuDeviceCreateBuffer", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc write*(cSelf: WGPUQueue, buffer: WGPUBuffer, bufferOffset: uint64_t, data: pointer, size: size_t) {.importc: "wgpuQueueWriteBuffer", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuBufferMap*(buffer: WGPUBuffer, mapmode: WGPUMapMode, offset: size_t, size: size_t, data: ptr pointer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc unmap*(buffer: WGPUBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc mapAsync*(buffer: WGPUBuffer, mode: WGPUMapMode, offset: size_t, size: size_t, callbackInfo: WGPUBufferMapCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getSize*(buffer: WGPUBuffer): uint64_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc write*(queue: WGPUQueue, destination: ptr WGPUTexelCopyTextureInfo, data: pointer, dataSize: size_t, dataLayout: ptr WGPUTexelCopyBufferLayout, writeSize: ptr WGPUExtent3D) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc unmap*(buffer: WGPUBuffer) {.importc: "wgpuBufferUnmap", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc mapAsync*(buffer: WGPUBuffer, mode: WGPUMapMode, offset: size_t, size: size_t, callbackInfo: WGPUBufferMapCallbackInfo): WGPUFuture {.importc: "wgpuBufferMapAsync", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getSize*(buffer: WGPUBuffer): uint64_t {.importc: "wgpuBufferGetSize", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc write*(queue: WGPUQueue, destination: ptr WGPUTexelCopyTextureInfo, data: pointer, dataSize: size_t, dataLayout: ptr WGPUTexelCopyBufferLayout, writeSize: ptr WGPUExtent3D) {.importc: "wgpuQueueWriteTexture", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuDeviceCreateFence*(device: WGPUDevice): WGPUFence {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuFenceWait*(fence: WGPUFence, timeoutNS: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuFencesWait*(fences: ptr WGPUFence, fenceCount: uint32_t, timeoutNS: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuFenceAttachCallback*(fence: WGPUFence, callback: proc(a0: pointer) {.cdecl.}, userdata: pointer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuFenceAddRef*(fence: WGPUFence) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuFenceRelease*(fence: WGPUFence) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc createLayout*(device: WGPUDevice, bindGroupLayoutDescriptor: ptr WGPUBindGroupLayoutDescriptor): WGPUBindGroupLayout {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, descriptor: ptr WGPUShaderModuleDescriptor): WGPUShaderModule {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, pldesc: ptr WGPUPipelineLayoutDescriptor): WGPUPipelineLayout {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, descriptor: ptr WGPURenderPipelineDescriptor): WGPURenderPipeline {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, descriptor: ptr WGPUComputePipelineDescriptor): WGPUComputePipeline {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc createLayout*(device: WGPUDevice, bindGroupLayoutDescriptor: ptr WGPUBindGroupLayoutDescriptor): WGPUBindGroupLayout {.importc: "wgpuDeviceCreateBindGroupLayout", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPUShaderModuleDescriptor): WGPUShaderModule {.importc: "wgpuDeviceCreateShaderModule", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, pldesc: ptr WGPUPipelineLayoutDescriptor): WGPUPipelineLayout {.importc: "wgpuDeviceCreatePipelineLayout", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPURenderPipelineDescriptor): WGPURenderPipeline {.importc: "wgpuDeviceCreateRenderPipeline", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPUComputePipelineDescriptor): WGPUComputePipeline {.importc: "wgpuDeviceCreateComputePipeline", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuShaderModuleGetReflectionInfo*(shaderModule: WGPUShaderModule, callbackInfo: WGPUReflectionInfoCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, bgdesc: ptr WGPUBindGroupDescriptor): WGPUBindGroup {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, bgdesc: ptr WGPUBindGroupDescriptor): WGPUBindGroup {.importc: "wgpuDeviceCreateBindGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuWriteBindGroup*(device: WGPUDevice, : WGPUBindGroup, bgdesc: ptr WGPUBindGroupDescriptor) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, cdesc: ptr WGPUCommandEncoderDescriptor): WGPUCommandEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc finish*(commandEncoder: WGPUCommandEncoder, descriptor: ptr WGPUCommandBufferDescriptor): WGPUCommandBuffer {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, cdesc: ptr WGPUCommandEncoderDescriptor): WGPUCommandEncoder {.importc: "wgpuDeviceCreateCommandEncoder", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc finish*(commandEncoder: WGPUCommandEncoder, descriptor: ptr WGPUCommandBufferDescriptor): WGPUCommandBuffer {.importc: "wgpuCommandEncoderFinish", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuDeviceTick*(device: WGPUDevice) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc submit*(queue: WGPUQueue, commandCount: size_t, buffers: ptr WGPUCommandBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc submit*(queue: WGPUQueue, commandCount: size_t, buffers: ptr WGPUCommandBuffer) {.importc: "wgpuQueueSubmit", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuQueueWaitIdle*(queue: WGPUQueue) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc copy*(commandEncoder: WGPUCommandEncoder, source: WGPUBuffer, sourceOffset: uint64_t, destination: WGPUBuffer, destinationOffset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc copy*(commandEncoder: WGPUCommandEncoder, source: ptr WGPUTexelCopyBufferInfo, destination: ptr WGPUTexelCopyTextureInfo, copySize: ptr WGPUExtent3D) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc copy*(commandEncoder: WGPUCommandEncoder, source: ptr WGPUTexelCopyTextureInfo, destination: ptr WGPUTexelCopyBufferInfo, copySize: ptr WGPUExtent3D) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc copy*(commandEncoder: WGPUCommandEncoder, source: ptr WGPUTexelCopyTextureInfo, destination: ptr WGPUTexelCopyTextureInfo, copySize: ptr WGPUExtent3D) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc draw*(rpenc: WGPURenderPassEncoder, vertices: uint32_t, instances: uint32_t, firstvertex: uint32_t, firstinstance: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc drawIndexed*(rpenc: WGPURenderPassEncoder, indices: uint32_t, instances: uint32_t, firstindex: uint32_t, basevertex: int32_t, firstinstance: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc set*(rpenc: WGPURenderPassEncoder, groupIndex: uint32_t, group: WGPUBindGroup, dynamicOffsetCount: size_t, dynamicOffsets: ptr uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc set*(rpenc: WGPURenderPassEncoder, renderPipeline: WGPURenderPipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc End*(rrpenc: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(rpenc: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(rpenc: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setIndexBuffer*(renderPassEncoder: WGPURenderPassEncoder, buffer: WGPUBuffer, format: WGPUIndexFormat, offset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setVertexBuffer*(rpe: WGPURenderPassEncoder, binding: uint32_t, buffer: WGPUBuffer, offset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc drawIndexedIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc drawIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setBlendConstant*(renderPassEncoder: WGPURenderPassEncoder, color: ptr WGPUColor) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setViewport*(renderPassEncoder: WGPURenderPassEncoder, x: cfloat, y: cfloat, width: cfloat, height: cfloat, minDepth: cfloat, maxDepth: cfloat) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setScissorRect*(renderPassEncoder: WGPURenderPassEncoder, x: uint32_t, y: uint32_t, width: uint32_t, height: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc set*(cpe: WGPUComputePassEncoder, computePipeline: WGPUComputePipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc set*(cpe: WGPUComputePassEncoder, groupIndex: uint32_t, group: WGPUBindGroup, dynamicOffsetCount: size_t, dynamicOffsets: ptr uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc copy*(commandEncoder: WGPUCommandEncoder, source: WGPUBuffer, sourceOffset: uint64_t, destination: WGPUBuffer, destinationOffset: uint64_t, size: uint64_t) {.importc: "wgpuCommandEncoderCopyBufferToBuffer", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc copy*(commandEncoder: WGPUCommandEncoder, source: ptr WGPUTexelCopyBufferInfo, destination: ptr WGPUTexelCopyTextureInfo, copySize: ptr WGPUExtent3D) {.importc: "wgpuCommandEncoderCopyBufferToTexture", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc copy*(commandEncoder: WGPUCommandEncoder, source: ptr WGPUTexelCopyTextureInfo, destination: ptr WGPUTexelCopyBufferInfo, copySize: ptr WGPUExtent3D) {.importc: "wgpuCommandEncoderCopyTextureToBuffer", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc copy*(commandEncoder: WGPUCommandEncoder, source: ptr WGPUTexelCopyTextureInfo, destination: ptr WGPUTexelCopyTextureInfo, copySize: ptr WGPUExtent3D) {.importc: "wgpuCommandEncoderCopyTextureToTexture", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc draw*(rpenc: WGPURenderPassEncoder, vertices: uint32_t, instances: uint32_t, firstvertex: uint32_t, firstinstance: uint32_t) {.importc: "wgpuRenderPassEncoderDraw", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndexed*(rpenc: WGPURenderPassEncoder, indices: uint32_t, instances: uint32_t, firstindex: uint32_t, basevertex: int32_t, firstinstance: uint32_t) {.importc: "wgpuRenderPassEncoderDrawIndexed", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(rpenc: WGPURenderPassEncoder, groupIndex: uint32_t, group: WGPUBindGroup, dynamicOffsetCount: size_t, dynamicOffsets: ptr uint32_t) {.importc: "wgpuRenderPassEncoderSetBindGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(rpenc: WGPURenderPassEncoder, renderPipeline: WGPURenderPipeline) {.importc: "wgpuRenderPassEncoderSetPipeline", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc End*(rrpenc: WGPURenderPassEncoder) {.importc: "wgpuRenderPassEncoderEnd", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(rpenc: WGPURenderPassEncoder) {.importc: "wgpuRenderPassEncoderRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(rpenc: WGPURenderPassEncoder) {.importc: "wgpuRenderPassEncoderAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setIndexBuffer*(renderPassEncoder: WGPURenderPassEncoder, buffer: WGPUBuffer, format: WGPUIndexFormat, offset: uint64_t, size: uint64_t) {.importc: "wgpuRenderPassEncoderSetIndexBuffer", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setVertexBuffer*(rpe: WGPURenderPassEncoder, binding: uint32_t, buffer: WGPUBuffer, offset: uint64_t, size: uint64_t) {.importc: "wgpuRenderPassEncoderSetVertexBuffer", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndexedIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc: "wgpuRenderPassEncoderDrawIndexedIndirect", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc: "wgpuRenderPassEncoderDrawIndirect", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setBlendConstant*(renderPassEncoder: WGPURenderPassEncoder, color: ptr WGPUColor) {.importc: "wgpuRenderPassEncoderSetBlendConstant", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setViewport*(renderPassEncoder: WGPURenderPassEncoder, x: cfloat, y: cfloat, width: cfloat, height: cfloat, minDepth: cfloat, maxDepth: cfloat) {.importc: "wgpuRenderPassEncoderSetViewport", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setScissorRect*(renderPassEncoder: WGPURenderPassEncoder, x: uint32_t, y: uint32_t, width: uint32_t, height: uint32_t) {.importc: "wgpuRenderPassEncoderSetScissorRect", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(cpe: WGPUComputePassEncoder, computePipeline: WGPUComputePipeline) {.importc: "wgpuComputePassEncoderSetPipeline", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(cpe: WGPUComputePassEncoder, groupIndex: uint32_t, group: WGPUBindGroup, dynamicOffsetCount: size_t, dynamicOffsets: ptr uint32_t) {.importc: "wgpuComputePassEncoderSetBindGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuRaytracingPassEncoderSetPipeline*(cpe: WGPURaytracingPassEncoder, raytracingPipeline: WGPURaytracingPipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuRaytracingPassEncoderSetBindGroup*(cpe: WGPURaytracingPassEncoder, groupIndex: uint32_t, bindGroup: WGPUBindGroup, dynamicOffsetCount: uint32_t, dynamicOffsets: ptr uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuRaytracingPassEncoderTraceRays*(cpe: WGPURaytracingPassEncoder, rayGenerationOffset: uint32_t, rayHitOffset: uint32_t, rayMissOffset: uint32_t, width: uint32_t, height: uint32_t, depth: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc dispatchWorkgroups*(cpe: WGPUComputePassEncoder, x: uint32_t, y: uint32_t, z: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(cpenc: WGPUComputePassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getCurrentTexture*(surface: WGPUSurface, surfaceTexture: ptr WGPUSurfaceTexture) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc present*(surface: WGPUSurface): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc dispatchWorkgroups*(cpe: WGPUComputePassEncoder, x: uint32_t, y: uint32_t, z: uint32_t) {.importc: "wgpuComputePassEncoderDispatchWorkgroups", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(cpenc: WGPUComputePassEncoder) {.importc: "wgpuComputePassEncoderRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getCurrentTexture*(surface: WGPUSurface, surfaceTexture: ptr WGPUSurfaceTexture) {.importc: "wgpuSurfaceGetCurrentTexture", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc present*(surface: WGPUSurface): WGPUStatus {.importc: "wgpuSurfacePresent", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuCommandEncoderBeginRaytracingPass*(enc: WGPUCommandEncoder, rtDesc: ptr WGPURayTracingPassDescriptor): WGPURaytracingPassEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuRaytracingPassEncoderEnd*(commandEncoder: WGPURaytracingPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc begin*(enc: WGPUCommandEncoder, cpdesc: ptr WGPUComputePassDescriptor): WGPUComputePassEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc End*(commandEncoder: WGPUComputePassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc begin*(enc: WGPUCommandEncoder, rpdesc: ptr WGPURenderPassDescriptor): WGPURenderPassEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc begin*(enc: WGPUCommandEncoder, cpdesc: ptr WGPUComputePassDescriptor): WGPUComputePassEncoder {.importc: "wgpuCommandEncoderBeginComputePass", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc End*(commandEncoder: WGPUComputePassEncoder) {.importc: "wgpuComputePassEncoderEnd", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc begin*(enc: WGPUCommandEncoder, rpdesc: ptr WGPURenderPassDescriptor): WGPURenderPassEncoder {.importc: "wgpuCommandEncoderBeginRenderPass", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuCommandEncoderBuildRayTracingAccelerationContainer*(encoder: WGPUCommandEncoder, container: WGPURayTracingAccelerationContainer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuCommandEncoderCopyRayTracingAccelerationContainer*(encoder: WGPUCommandEncoder, source: WGPURayTracingAccelerationContainer, dest: WGPURayTracingAccelerationContainer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuCommandEncoderUpdateRayTracingAccelerationContainer*(encoder: WGPUCommandEncoder, container: WGPURayTracingAccelerationContainer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, descriptor: ptr WGPURenderBundleEncoderDescriptor): WGPURenderBundleEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc finish*(renderBundleEncoder: WGPURenderBundleEncoder, descriptor: ptr WGPURenderBundleDescriptor): WGPURenderBundle {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc draw*(renderBundleEncoder: WGPURenderBundleEncoder, vertexCount: uint32_t, instanceCount: uint32_t, firstVertex: uint32_t, firstInstance: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc drawIndexed*(renderBundleEncoder: WGPURenderBundleEncoder, indexCount: uint32_t, instanceCount: uint32_t, firstIndex: uint32_t, baseVertex: int32_t, firstInstance: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc drawIndexedIndirect*(renderBundleEncoder: WGPURenderBundleEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc drawIndirect*(renderBundleEncoder: WGPURenderBundleEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc set*(renderBundleEncoder: WGPURenderBundleEncoder, groupIndex: uint32_t, group: WGPUBindGroup, dynamicOffsetCount: size_t, dynamicOffsets: ptr uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setIndexBuffer*(renderBundleEncoder: WGPURenderBundleEncoder, buffer: WGPUBuffer, format: WGPUIndexFormat, offset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc set*(renderBundleEncoder: WGPURenderBundleEncoder, pipeline: WGPURenderPipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setVertexBuffer*(renderBundleEncoder: WGPURenderBundleEncoder, slot: uint32_t, buffer: WGPUBuffer, offset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(renderBundleEncoder: WGPURenderBundleEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(renderBundleEncoder: WGPURenderBundleEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc execute*(renderPassEncoder: WGPURenderPassEncoder, bundleCount: size_t, bundles: ptr WGPURenderBundle) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc freeMembers*(value: WGPUAdapterInfo) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc get*(capabilities: ptr WGPUInstanceCapabilities): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getProcAddress*(procName: WGPUStringView): WGPUProc {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc freeMembers*(value: WGPUSupportedFeatures) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc freeMembers*(value: WGPUSupportedWGSLLanguageFeatures) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc freeMembers*(value: WGPUSurfaceCapabilities) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc get*(adapter: WGPUAdapter, features: ptr WGPUSupportedFeatures) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc get*(adapter: WGPUAdapter, info: ptr WGPUAdapterInfo): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc has*(adapter: WGPUAdapter, feature: WGPUFeatureName): WGPUBool {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(bindGroup: WGPUBindGroup, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc layoutSetLabel*(bindGroupLayout: WGPUBindGroupLayout, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc destroy*(buffer: WGPUBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getConstMappedRange*(buffer: WGPUBuffer, offset: size_t, size: size_t): pointer {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getMappedRange*(buffer: WGPUBuffer, offset: size_t, size: size_t): pointer {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getMapState*(buffer: WGPUBuffer): WGPUBufferMapState {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getUsage*(buffer: WGPUBuffer): WGPUBufferUsage {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPURenderBundleEncoderDescriptor): WGPURenderBundleEncoder {.importc: "wgpuDeviceCreateRenderBundleEncoder", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc finish*(renderBundleEncoder: WGPURenderBundleEncoder, descriptor: ptr WGPURenderBundleDescriptor): WGPURenderBundle {.importc: "wgpuRenderBundleEncoderFinish", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc draw*(renderBundleEncoder: WGPURenderBundleEncoder, vertexCount: uint32_t, instanceCount: uint32_t, firstVertex: uint32_t, firstInstance: uint32_t) {.importc: "wgpuRenderBundleEncoderDraw", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndexed*(renderBundleEncoder: WGPURenderBundleEncoder, indexCount: uint32_t, instanceCount: uint32_t, firstIndex: uint32_t, baseVertex: int32_t, firstInstance: uint32_t) {.importc: "wgpuRenderBundleEncoderDrawIndexed", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndexedIndirect*(renderBundleEncoder: WGPURenderBundleEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc: "wgpuRenderBundleEncoderDrawIndexedIndirect", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc drawIndirect*(renderBundleEncoder: WGPURenderBundleEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc: "wgpuRenderBundleEncoderDrawIndirect", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(renderBundleEncoder: WGPURenderBundleEncoder, groupIndex: uint32_t, group: WGPUBindGroup, dynamicOffsetCount: size_t, dynamicOffsets: ptr uint32_t) {.importc: "wgpuRenderBundleEncoderSetBindGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setIndexBuffer*(renderBundleEncoder: WGPURenderBundleEncoder, buffer: WGPUBuffer, format: WGPUIndexFormat, offset: uint64_t, size: uint64_t) {.importc: "wgpuRenderBundleEncoderSetIndexBuffer", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc set*(renderBundleEncoder: WGPURenderBundleEncoder, pipeline: WGPURenderPipeline) {.importc: "wgpuRenderBundleEncoderSetPipeline", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setVertexBuffer*(renderBundleEncoder: WGPURenderBundleEncoder, slot: uint32_t, buffer: WGPUBuffer, offset: uint64_t, size: uint64_t) {.importc: "wgpuRenderBundleEncoderSetVertexBuffer", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(renderBundleEncoder: WGPURenderBundleEncoder) {.importc: "wgpuRenderBundleEncoderAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(renderBundleEncoder: WGPURenderBundleEncoder) {.importc: "wgpuRenderBundleEncoderRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc execute*(renderPassEncoder: WGPURenderPassEncoder, bundleCount: size_t, bundles: ptr WGPURenderBundle) {.importc: "wgpuRenderPassEncoderExecuteBundles", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc freeMembers*(value: WGPUAdapterInfo) {.importc: "wgpuAdapterInfoFreeMembers", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(capabilities: ptr WGPUInstanceCapabilities): WGPUStatus {.importc: "wgpuGetInstanceCapabilities", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getProcAddress*(procName: WGPUStringView): WGPUProc {.importc: "wgpuGetProcAddress", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc freeMembers*(value: WGPUSupportedFeatures) {.importc: "wgpuSupportedFeaturesFreeMembers", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc freeMembers*(value: WGPUSupportedWGSLLanguageFeatures) {.importc: "wgpuSupportedWGSLLanguageFeaturesFreeMembers", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc freeMembers*(value: WGPUSurfaceCapabilities) {.importc: "wgpuSurfaceCapabilitiesFreeMembers", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(adapter: WGPUAdapter, features: ptr WGPUSupportedFeatures) {.importc: "wgpuAdapterGetFeatures", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(adapter: WGPUAdapter, info: ptr WGPUAdapterInfo): WGPUStatus {.importc: "wgpuAdapterGetInfo", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc has*(adapter: WGPUAdapter, feature: WGPUFeatureName): WGPUBool {.importc: "wgpuAdapterHasFeature", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(bindGroup: WGPUBindGroup, label: WGPUStringView) {.importc: "wgpuBindGroupSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc layoutSetLabel*(bindGroupLayout: WGPUBindGroupLayout, label: WGPUStringView) {.importc: "wgpuBindGroupLayoutSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc destroy*(buffer: WGPUBuffer) {.importc: "wgpuBufferDestroy", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getConstMappedRange*(buffer: WGPUBuffer, offset: size_t, size: size_t): pointer {.importc: "wgpuBufferGetConstMappedRange", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getMappedRange*(buffer: WGPUBuffer, offset: size_t, size: size_t): pointer {.importc: "wgpuBufferGetMappedRange", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getMapState*(buffer: WGPUBuffer): WGPUBufferMapState {.importc: "wgpuBufferGetMapState", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getUsage*(buffer: WGPUBuffer): WGPUBufferUsage {.importc: "wgpuBufferGetUsage", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuBufferReadMappedRange*(buffer: WGPUBuffer, offset: size_t, data: pointer, size: size_t): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(buffer: WGPUBuffer, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(buffer: WGPUBuffer, label: WGPUStringView) {.importc: "wgpuBufferSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuBufferWriteMappedRange*(buffer: WGPUBuffer, offset: size_t, data: pointer, size: size_t): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(commandBuffer: WGPUCommandBuffer, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(commandBuffer: WGPUCommandBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc clear*(commandEncoder: WGPUCommandEncoder, buffer: WGPUBuffer, offset: uint64_t, size: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc insertDebugMarker*(commandEncoder: WGPUCommandEncoder, markerLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc popDebugGroup*(commandEncoder: WGPUCommandEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc pushDebugGroup*(commandEncoder: WGPUCommandEncoder, groupLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc resolve*(commandEncoder: WGPUCommandEncoder, querySet: WGPUQuerySet, firstQuery: uint32_t, queryCount: uint32_t, destination: WGPUBuffer, destinationOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(commandEncoder: WGPUCommandEncoder, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc writeTimestamp*(commandEncoder: WGPUCommandEncoder, querySet: WGPUQuerySet, queryIndex: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(commandEncoder: WGPUCommandEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc dispatchWorkgroupsIndirect*(computePassEncoder: WGPUComputePassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc insertDebugMarker*(computePassEncoder: WGPUComputePassEncoder, markerLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc popDebugGroup*(computePassEncoder: WGPUComputePassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc pushDebugGroup*(computePassEncoder: WGPUComputePassEncoder, groupLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(computePassEncoder: WGPUComputePassEncoder, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(computePassEncoder: WGPUComputePassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getBindGroupLayout*(computePipeline: WGPUComputePipeline, groupIndex: uint32_t): WGPUBindGroupLayout {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(computePipeline: WGPUComputePipeline, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(computePipeline: WGPUComputePipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc createAsync*(device: WGPUDevice, descriptor: ptr WGPUComputePipelineDescriptor, callbackInfo: WGPUCreateComputePipelineAsyncCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc create*(device: WGPUDevice, descriptor: ptr WGPUQuerySetDescriptor): WGPUQuerySet {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc createAsync*(device: WGPUDevice, descriptor: ptr WGPURenderPipelineDescriptor, callbackInfo: WGPUCreateRenderPipelineAsyncCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc destroy*(device: WGPUDevice) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc get*(device: WGPUDevice, features: ptr WGPUSupportedFeatures) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc get*(device: WGPUDevice, limits: ptr WGPULimits): WGPUStatus {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getLostFuture*(device: WGPUDevice): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc has*(device: WGPUDevice, feature: WGPUFeatureName): WGPUBool {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc popErrorScope*(device: WGPUDevice, callbackInfo: WGPUPopErrorScopeCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc pushErrorScope*(device: WGPUDevice, filter: WGPUErrorFilter) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(device: WGPUDevice, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc get*(instance: WGPUInstance, features: ptr WGPUSupportedWGSLLanguageFeatures) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc has*(instance: WGPUInstance, feature: WGPUWGSLLanguageFeatureName): WGPUBool {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc processEvents*(instance: WGPUInstance) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(pipelineLayout: WGPUPipelineLayout, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc destroy*(querySet: WGPUQuerySet) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getCount*(querySet: WGPUQuerySet): uint32_t {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getType*(querySet: WGPUQuerySet): WGPUQueryType {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(querySet: WGPUQuerySet, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(querySet: WGPUQuerySet) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(querySet: WGPUQuerySet) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc onSubmittedWorkDone*(queue: WGPUQueue, callbackInfo: WGPUQueueWorkDoneCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(queue: WGPUQueue, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(renderBundle: WGPURenderBundle, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(renderBundle: WGPURenderBundle) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(renderBundle: WGPURenderBundle) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc insertDebugMarker*(renderBundleEncoder: WGPURenderBundleEncoder, markerLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc popDebugGroup*(renderBundleEncoder: WGPURenderBundleEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc pushDebugGroup*(renderBundleEncoder: WGPURenderBundleEncoder, groupLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(renderBundleEncoder: WGPURenderBundleEncoder, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc beginOcclusionQuery*(renderPassEncoder: WGPURenderPassEncoder, queryIndex: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc EndOcclusionQuery*(renderPassEncoder: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc insertDebugMarker*(renderPassEncoder: WGPURenderPassEncoder, markerLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc multiDrawIndexedIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t, maxDrawCount: uint32_t, drawCountBuffer: WGPUBuffer, drawCountBufferOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc multiDrawIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t, maxDrawCount: uint32_t, drawCountBuffer: WGPUBuffer, drawCountBufferOffset: uint64_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc popDebugGroup*(renderPassEncoder: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc pushDebugGroup*(renderPassEncoder: WGPURenderPassEncoder, groupLabel: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(renderPassEncoder: WGPURenderPassEncoder, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setStencilReference*(renderPassEncoder: WGPURenderPassEncoder, reference: uint32_t) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getBindGroupLayout*(renderPipeline: WGPURenderPipeline, groupIndex: uint32_t): WGPUBindGroupLayout {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(renderPipeline: WGPURenderPipeline, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(renderPipeline: WGPURenderPipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(sampler: WGPUSampler, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc getCompilationInfo*(shaderModule: WGPUShaderModule, callbackInfo: WGPUCompilationInfoCallbackInfo): WGPUFuture {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(shaderModule: WGPUShaderModule, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(surface: WGPUSurface, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc unconfigure*(surface: WGPUSurface) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(surface: WGPUSurface) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc destroy*(texture: WGPUTexture) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(texture: WGPUTexture, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc setLabel*(textureView: WGPUTextureView, label: WGPUStringView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(commandBuffer: WGPUCommandBuffer, label: WGPUStringView) {.importc: "wgpuCommandBufferSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(commandBuffer: WGPUCommandBuffer) {.importc: "wgpuCommandBufferAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc clear*(commandEncoder: WGPUCommandEncoder, buffer: WGPUBuffer, offset: uint64_t, size: uint64_t) {.importc: "wgpuCommandEncoderClearBuffer", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc insertDebugMarker*(commandEncoder: WGPUCommandEncoder, markerLabel: WGPUStringView) {.importc: "wgpuCommandEncoderInsertDebugMarker", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc popDebugGroup*(commandEncoder: WGPUCommandEncoder) {.importc: "wgpuCommandEncoderPopDebugGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc pushDebugGroup*(commandEncoder: WGPUCommandEncoder, groupLabel: WGPUStringView) {.importc: "wgpuCommandEncoderPushDebugGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc resolve*(commandEncoder: WGPUCommandEncoder, querySet: WGPUQuerySet, firstQuery: uint32_t, queryCount: uint32_t, destination: WGPUBuffer, destinationOffset: uint64_t) {.importc: "wgpuCommandEncoderResolveQuerySet", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(commandEncoder: WGPUCommandEncoder, label: WGPUStringView) {.importc: "wgpuCommandEncoderSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc writeTimestamp*(commandEncoder: WGPUCommandEncoder, querySet: WGPUQuerySet, queryIndex: uint32_t) {.importc: "wgpuCommandEncoderWriteTimestamp", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(commandEncoder: WGPUCommandEncoder) {.importc: "wgpuCommandEncoderAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc dispatchWorkgroupsIndirect*(computePassEncoder: WGPUComputePassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t) {.importc: "wgpuComputePassEncoderDispatchWorkgroupsIndirect", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc insertDebugMarker*(computePassEncoder: WGPUComputePassEncoder, markerLabel: WGPUStringView) {.importc: "wgpuComputePassEncoderInsertDebugMarker", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc popDebugGroup*(computePassEncoder: WGPUComputePassEncoder) {.importc: "wgpuComputePassEncoderPopDebugGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc pushDebugGroup*(computePassEncoder: WGPUComputePassEncoder, groupLabel: WGPUStringView) {.importc: "wgpuComputePassEncoderPushDebugGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(computePassEncoder: WGPUComputePassEncoder, label: WGPUStringView) {.importc: "wgpuComputePassEncoderSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(computePassEncoder: WGPUComputePassEncoder) {.importc: "wgpuComputePassEncoderAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getBindGroupLayout*(computePipeline: WGPUComputePipeline, groupIndex: uint32_t): WGPUBindGroupLayout {.importc: "wgpuComputePipelineGetBindGroupLayout", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(computePipeline: WGPUComputePipeline, label: WGPUStringView) {.importc: "wgpuComputePipelineSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(computePipeline: WGPUComputePipeline) {.importc: "wgpuComputePipelineAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc createAsync*(device: WGPUDevice, descriptor: ptr WGPUComputePipelineDescriptor, callbackInfo: WGPUCreateComputePipelineAsyncCallbackInfo): WGPUFuture {.importc: "wgpuDeviceCreateComputePipelineAsync", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc create*(device: WGPUDevice, descriptor: ptr WGPUQuerySetDescriptor): WGPUQuerySet {.importc: "wgpuDeviceCreateQuerySet", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc createAsync*(device: WGPUDevice, descriptor: ptr WGPURenderPipelineDescriptor, callbackInfo: WGPUCreateRenderPipelineAsyncCallbackInfo): WGPUFuture {.importc: "wgpuDeviceCreateRenderPipelineAsync", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc destroy*(device: WGPUDevice) {.importc: "wgpuDeviceDestroy", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(device: WGPUDevice, features: ptr WGPUSupportedFeatures) {.importc: "wgpuDeviceGetFeatures", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(device: WGPUDevice, limits: ptr WGPULimits): WGPUStatus {.importc: "wgpuDeviceGetLimits", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getLostFuture*(device: WGPUDevice): WGPUFuture {.importc: "wgpuDeviceGetLostFuture", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc has*(device: WGPUDevice, feature: WGPUFeatureName): WGPUBool {.importc: "wgpuDeviceHasFeature", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc popErrorScope*(device: WGPUDevice, callbackInfo: WGPUPopErrorScopeCallbackInfo): WGPUFuture {.importc: "wgpuDevicePopErrorScope", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc pushErrorScope*(device: WGPUDevice, filter: WGPUErrorFilter) {.importc: "wgpuDevicePushErrorScope", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(device: WGPUDevice, label: WGPUStringView) {.importc: "wgpuDeviceSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc get*(instance: WGPUInstance, features: ptr WGPUSupportedWGSLLanguageFeatures) {.importc: "wgpuInstanceGetWGSLLanguageFeatures", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc has*(instance: WGPUInstance, feature: WGPUWGSLLanguageFeatureName): WGPUBool {.importc: "wgpuInstanceHasWGSLLanguageFeature", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc processEvents*(instance: WGPUInstance) {.importc: "wgpuInstanceProcessEvents", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(pipelineLayout: WGPUPipelineLayout, label: WGPUStringView) {.importc: "wgpuPipelineLayoutSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc destroy*(querySet: WGPUQuerySet) {.importc: "wgpuQuerySetDestroy", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getCount*(querySet: WGPUQuerySet): uint32_t {.importc: "wgpuQuerySetGetCount", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getType*(querySet: WGPUQuerySet): WGPUQueryType {.importc: "wgpuQuerySetGetType", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(querySet: WGPUQuerySet, label: WGPUStringView) {.importc: "wgpuQuerySetSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(querySet: WGPUQuerySet) {.importc: "wgpuQuerySetAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(querySet: WGPUQuerySet) {.importc: "wgpuQuerySetRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc onSubmittedWorkDone*(queue: WGPUQueue, callbackInfo: WGPUQueueWorkDoneCallbackInfo): WGPUFuture {.importc: "wgpuQueueOnSubmittedWorkDone", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(queue: WGPUQueue, label: WGPUStringView) {.importc: "wgpuQueueSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(renderBundle: WGPURenderBundle, label: WGPUStringView) {.importc: "wgpuRenderBundleSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(renderBundle: WGPURenderBundle) {.importc: "wgpuRenderBundleAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(renderBundle: WGPURenderBundle) {.importc: "wgpuRenderBundleRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc insertDebugMarker*(renderBundleEncoder: WGPURenderBundleEncoder, markerLabel: WGPUStringView) {.importc: "wgpuRenderBundleEncoderInsertDebugMarker", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc popDebugGroup*(renderBundleEncoder: WGPURenderBundleEncoder) {.importc: "wgpuRenderBundleEncoderPopDebugGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc pushDebugGroup*(renderBundleEncoder: WGPURenderBundleEncoder, groupLabel: WGPUStringView) {.importc: "wgpuRenderBundleEncoderPushDebugGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(renderBundleEncoder: WGPURenderBundleEncoder, label: WGPUStringView) {.importc: "wgpuRenderBundleEncoderSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc beginOcclusionQuery*(renderPassEncoder: WGPURenderPassEncoder, queryIndex: uint32_t) {.importc: "wgpuRenderPassEncoderBeginOcclusionQuery", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc EndOcclusionQuery*(renderPassEncoder: WGPURenderPassEncoder) {.importc: "wgpuRenderPassEncoderEndOcclusionQuery", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc insertDebugMarker*(renderPassEncoder: WGPURenderPassEncoder, markerLabel: WGPUStringView) {.importc: "wgpuRenderPassEncoderInsertDebugMarker", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc multiDrawIndexedIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t, maxDrawCount: uint32_t, drawCountBuffer: WGPUBuffer, drawCountBufferOffset: uint64_t) {.importc: "wgpuRenderPassEncoderMultiDrawIndexedIndirect", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc multiDrawIndirect*(renderPassEncoder: WGPURenderPassEncoder, indirectBuffer: WGPUBuffer, indirectOffset: uint64_t, maxDrawCount: uint32_t, drawCountBuffer: WGPUBuffer, drawCountBufferOffset: uint64_t) {.importc: "wgpuRenderPassEncoderMultiDrawIndirect", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc popDebugGroup*(renderPassEncoder: WGPURenderPassEncoder) {.importc: "wgpuRenderPassEncoderPopDebugGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc pushDebugGroup*(renderPassEncoder: WGPURenderPassEncoder, groupLabel: WGPUStringView) {.importc: "wgpuRenderPassEncoderPushDebugGroup", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(renderPassEncoder: WGPURenderPassEncoder, label: WGPUStringView) {.importc: "wgpuRenderPassEncoderSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setStencilReference*(renderPassEncoder: WGPURenderPassEncoder, reference: uint32_t) {.importc: "wgpuRenderPassEncoderSetStencilReference", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getBindGroupLayout*(renderPipeline: WGPURenderPipeline, groupIndex: uint32_t): WGPUBindGroupLayout {.importc: "wgpuRenderPipelineGetBindGroupLayout", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(renderPipeline: WGPURenderPipeline, label: WGPUStringView) {.importc: "wgpuRenderPipelineSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(renderPipeline: WGPURenderPipeline) {.importc: "wgpuRenderPipelineAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(sampler: WGPUSampler, label: WGPUStringView) {.importc: "wgpuSamplerSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc getCompilationInfo*(shaderModule: WGPUShaderModule, callbackInfo: WGPUCompilationInfoCallbackInfo): WGPUFuture {.importc: "wgpuShaderModuleGetCompilationInfo", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(shaderModule: WGPUShaderModule, label: WGPUStringView) {.importc: "wgpuShaderModuleSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(surface: WGPUSurface, label: WGPUStringView) {.importc: "wgpuSurfaceSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc unconfigure*(surface: WGPUSurface) {.importc: "wgpuSurfaceUnconfigure", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(surface: WGPUSurface) {.importc: "wgpuSurfaceAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc destroy*(texture: WGPUTexture) {.importc: "wgpuTextureDestroy", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(texture: WGPUTexture, label: WGPUStringView) {.importc: "wgpuTextureSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc setLabel*(textureView: WGPUTextureView, label: WGPUStringView) {.importc: "wgpuTextureViewSetLabel", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuDeviceCreateRayTracingShaderBindingTable*(device: WGPUDevice, descriptor: ptr WGPURayTracingShaderBindingTableDescriptor): WGPURayTracingShaderBindingTable {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuDeviceCreateRayTracingAccelerationContainer*(device: WGPUDevice, descriptor: ptr WGPURayTracingAccelerationContainerDescriptor): WGPURayTracingAccelerationContainer {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuDeviceCreateRayTracingPipeline*(device: WGPUDevice, descriptor: ptr WGPURayTracingPipelineDescriptor): WGPURaytracingPipeline {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(instance: WGPUInstance) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(adapter: WGPUAdapter) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(device: WGPUDevice) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(device: WGPUQueue) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(instance: WGPUInstance) {.importc: "wgpuInstanceAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(adapter: WGPUAdapter) {.importc: "wgpuAdapterAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(device: WGPUDevice) {.importc: "wgpuDeviceAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(device: WGPUQueue) {.importc: "wgpuQueueAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuRaytracingPassEncoderRelease*(rtenc: WGPURaytracingPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(texture: WGPUTexture) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(textureView: WGPUTextureView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(texture: WGPUSampler) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(buffer: WGPUBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(bindGroup: WGPUBindGroup) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(module: WGPUShaderModule) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(bindGroupLayout: WGPUBindGroupLayout) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc addRef*(pipelineLayout: WGPUPipelineLayout) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(commandBuffer: WGPUCommandEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(commandBuffer: WGPUCommandBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(instance: WGPUInstance) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(adapter: WGPUAdapter) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(device: WGPUDevice) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(device: WGPUQueue) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(rpenc: WGPUComputePassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(pipeline: WGPUComputePipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(pipeline: WGPURenderPipeline) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(buffer: WGPUBuffer) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(commandBuffer: WGPUBindGroup) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(commandBuffer: WGPUBindGroupLayout) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(bglayout: WGPUBindGroupLayout) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(layout: WGPUPipelineLayout) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(texture: WGPUTexture) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(view: WGPUTextureView) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(sampler: WGPUSampler) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
-proc release*(module: WGPUShaderModule) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(texture: WGPUTexture) {.importc: "wgpuTextureAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(textureView: WGPUTextureView) {.importc: "wgpuTextureViewAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(texture: WGPUSampler) {.importc: "wgpuSamplerAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(buffer: WGPUBuffer) {.importc: "wgpuBufferAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(bindGroup: WGPUBindGroup) {.importc: "wgpuBindGroupAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(module: WGPUShaderModule) {.importc: "wgpuShaderModuleAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(bindGroupLayout: WGPUBindGroupLayout) {.importc: "wgpuBindGroupLayoutAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc addRef*(pipelineLayout: WGPUPipelineLayout) {.importc: "wgpuPipelineLayoutAddRef", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(commandBuffer: WGPUCommandEncoder) {.importc: "wgpuCommandEncoderRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(commandBuffer: WGPUCommandBuffer) {.importc: "wgpuCommandBufferRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(instance: WGPUInstance) {.importc: "wgpuInstanceRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(adapter: WGPUAdapter) {.importc: "wgpuAdapterRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(device: WGPUDevice) {.importc: "wgpuDeviceRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(device: WGPUQueue) {.importc: "wgpuQueueRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(rpenc: WGPUComputePassEncoder) {.importc: "wgpuComputePassEncoderRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(pipeline: WGPUComputePipeline) {.importc: "wgpuComputePipelineRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(pipeline: WGPURenderPipeline) {.importc: "wgpuRenderPipelineRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(buffer: WGPUBuffer) {.importc: "wgpuBufferRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(commandBuffer: WGPUBindGroup) {.importc: "wgpuBindGroupRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(commandBuffer: WGPUBindGroupLayout) {.importc: "wgpuBindGroupLayoutRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(bglayout: WGPUBindGroupLayout) {.importc: "wgpuBindGroupLayoutRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(layout: WGPUPipelineLayout) {.importc: "wgpuPipelineLayoutRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(texture: WGPUTexture) {.importc: "wgpuTextureRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(view: WGPUTextureView) {.importc: "wgpuTextureViewRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(sampler: WGPUSampler) {.importc: "wgpuSamplerRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
+proc release*(module: WGPUShaderModule) {.importc: "wgpuShaderModuleRelease", cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuResetCommandBuffer*(commandEncoder: WGPUCommandBuffer): WGPUCommandEncoder {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
 proc wgpuCommandEncoderTraceRays*(encoder: WGPURenderPassEncoder) {.importc, cdecl, header: "src/wgpu/C/wgvk/include/wgvk.h".}
