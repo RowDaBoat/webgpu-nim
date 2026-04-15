@@ -71,9 +71,7 @@ template bindings (file :string) :void=
 taskRequires "generate", "https://github.com/RowDaBoat/henka#head"
 task generate, "Internal:  Generates the wgpu Nim bindings.":
   bindings "./gen/generator.nim"
-  cpFile "./gen/result.nim", "./src/wgpu/api.nim"
   bindings "./gen/generator_raw.nim"
-  cpFile "./gen/result_raw.nim", "./src/wgpu/raw.nim"
 #_____________________________
 # Unit Tests
 task tests, "Internal: Runs all unit tests.":

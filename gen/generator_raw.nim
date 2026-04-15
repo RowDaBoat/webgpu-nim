@@ -20,5 +20,6 @@ when isMainModule:
   let ast      = henka.generateAst(@[base.wgpuDir/"wgvk.h"])
   let bindings = henka.generateBindings(ast, rename)
   system.writeFile(base.thisDir/"result_raw.nim", bindings)
+  os.copyFile base.thisDir/"result_raw.nim", base.srcDir/"wgpu"/"raw.nim"
 #_____________________________
 
