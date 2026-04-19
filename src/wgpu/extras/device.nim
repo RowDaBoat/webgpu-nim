@@ -24,5 +24,5 @@ proc features *(device :wgpu.Device) :seq[wgpu.FeatureName]=
 proc limits *(device :wgpu.Device) :wgpu.Limits=
   ## @descr Returns the limits supported by the device as a wgpu.Limits object
   let status = wgpu.get(device, limits= result.addr)
-  if status != wgpu.Success: raise newException(extras.DeviceError, "Failed to get the limits of the device: " & $status)
+  if status != wgpu.Status.Success: raise newException(extras.DeviceError, "Failed to get the limits of the device: " & $status)
 

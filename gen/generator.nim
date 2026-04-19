@@ -2,7 +2,7 @@
 #  wgpu  |  Copyright (C) Nim wgpu Authors  |  MIT  :
 #:___________________________________________________
 # @deps std
-from std/strutils import startsWith, endsWith, toUpperAscii, replace
+from std/strutils import startsWith, endsWith, toUpperAscii, replace, removePrefix
 from std/os import parentDir, `/`
 # @deps external
 from henka import nil
@@ -18,6 +18,7 @@ proc rename (
   ) :henka.RenameResult=
   result = (name: name, pragmas: @[])
   if kind == henka.EnumType: result.pragmas = @["pure"]
+  if kind == henka.StructType: result.pragmas = @["pure", "inheritable"]
   # General Rename
   for entry in cfg.replaceList:
     result.name = result.name.replace( entry[0], entry[1] )
@@ -35,7 +36,9 @@ proc rename (
       result.name = result.name[0..^entry.len+1]
       if result.name in cfg.addT: result.name = result.name&"T"
   if result.name in ["type"]: result.name = "`" & result.name & "`"
-
+  result.name.removePrefix("struct_")
+  result.name.removePrefix("union_")
+  result.name.removePrefix("enum_")
 
 #_____________________________
 when isMainModule:

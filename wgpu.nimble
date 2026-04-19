@@ -20,6 +20,21 @@ requires "nim >= 2.0.0"
 # @section Task Helpers
 #_____________________________
 let examplesDir = "examples"
+
+proc copyVulkanLib () =
+  let vulkanSDK = getEnv("VULKAN_SDK")
+  if vulkanSDK.len == 0:
+    echo "[wgpu] WARNING: VULKAN_SDK not set, skipping libvulkan copy"
+    return
+  let src = vulkanSDK / "macOS" / "lib" / "libvulkan.1.dylib"
+  let dst = binDir / "libvulkan.1.dylib"
+  if not fileExists(src):
+    echo "[wgpu] WARNING: libvulkan.1.dylib not found at: " & src
+    return
+  if not fileExists(dst):
+    mkDir(binDir)
+    cpFile(src, dst)
+
 proc nimcr (args :varargs[string, `$`]) :void=
   selfExec &"c -r -d:wgpu --verbosity:2 --hints:off --path:{srcDir} --outDir:{binDir} " & args.join(" ")
 #___________________
@@ -29,6 +44,7 @@ template example (name :untyped; descr,file :static string)=
   taskRequires sname, "https://github.com/heysokam/nglfw#head"
   taskRequires sname, "https://github.com/treeform/vmath#head"
   task name, descr:
+    when defined(macosx): copyVulkanLib()
     nimcr examplesDir/file
 
 #_______________________________________

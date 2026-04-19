@@ -17,6 +17,19 @@ import wgpu
 # Example Extensions
 import ./extras  # In a real app, these should be coming from external libraries
 
+type LogLevel = enum
+  LogLevel_Off = 0x00000000
+  # Only error messages.
+  LogLevel_Error = 0x00000001
+  # Errors and warnings.
+  LogLevel_Warn = 0x00000002
+  # Errors, warnings, and informational messages.
+  LogLevel_Info = 0x00000003
+  # Errors, warnings, informational, and debug messages.
+  LogLevel_Debug = 0x00000004
+  # All messages, including very verbose trace-level output.
+  LogLevel_Trace = 0x00000005
+  LogLevel_Force32 = 0x7FFFFFFF
 
 #________________________________________________
 # window.nim
@@ -109,7 +122,7 @@ proc run=
 
   # 5. Create the Device
   var device :wgpu.Device= nil; discard adapter.request(
-    descriptor = vaddr DeviceDescriptor(
+    options = vaddr DeviceDescriptor(
       nextInChain            : nil,
       label                  : "Hello Device".toStringView(),
       requiredFeatureCount   : 0,
@@ -191,7 +204,8 @@ proc run=
         surface.configure(config.addr)
       # Skip this frame
       continue
-    of OutOfMemory, DeviceLost, Error, Force32:
+    #of OutOfMemory, DeviceLost, Error, Force32:
+    else:
       echo $surfaceTexture.status, ": surface.getCurrentTexture() failed"
       system.quit(surfaceTexture.status.ord)
     doAssert surfaceTexture != SurfaceTexture(), "ERR:: Cannot acquire next swap chain texture"
