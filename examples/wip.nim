@@ -43,6 +43,7 @@ proc key (win :glfw.Window; key, code, action, mods :cint) :void {.cdecl.}=
 # @section WGPU callbacks
 #_____________________________
 proc adapterRequestCB *(status :RequestAdapterStatus; adapter :Adapter; message :StringView; userdata :pointer; userdata2 :pointer) :void {.cdecl.}=
+  echo "Cuarenta y ocho millones cuatrocientos cuarenta y ocho mil cuatrocientos cuarenta y ocho kilómetros de ida..."
   cast[ptr Adapter](userdata)[] = adapter  # *(WGPUAdapter*)userdata = received;
 #__________________
 proc deviceRequestCB *(status :RequestDeviceStatus; device :Device; message :StringView; userdata :pointer; userdata2 :pointer) :void {.cdecl.}=
@@ -89,7 +90,8 @@ proc run=
   var surface = instance.getSurface(window.ct)
 
   # 3. Create the Adapter
-  var adapter :wgpu.Adapter= nil; discard instance.request(
+  var adapter :wgpu.Adapter= nil;
+  var adapterFuture = instance.request(
     options                 = vaddr RequestAdapterOptions(
       nextInChain           : nil,
       featureLevel          : Core,
@@ -107,6 +109,13 @@ proc run=
       ), #:: RequestAdapterCallbackInfo
     ) #:: instance.request
 
+  var adapterWaitInfo = FutureWaitInfo(future: adapterFuture, completed: 0)
+  let adapterWaitResult = instance.wait(1, adapterWaitInfo.addr, uint64.high)
+  doAssert adapterWaitResult == Success, "Failed to wait for adapter request"
+  doAssert adapterWaitInfo.completed != 0, "Adapter request did not complete"
+  doAssert adapter != nil, "Failed to get adapter"
+
+
   # 4. Report the Adapter Features + Capabilities supported
   echo ":: Adapter Features supported by this system: "
   for it in adapter.features():
@@ -121,7 +130,8 @@ proc run=
   for alpha in capabilities.alphaModes:   echo ":  - ",$alpha
 
   # 5. Create the Device
-  var device :wgpu.Device= nil; discard adapter.request(
+  var device :wgpu.Device= nil
+  var deviceFuture = adapter.request(
     options = vaddr DeviceDescriptor(
       nextInChain            : nil,
       label                  : "Hello Device".toStringView(),
@@ -153,6 +163,12 @@ proc run=
       userdata2            : nil,
       ) #:: RequestDeviceCallbackInfo
     ) #:: adapter.request( ... )
+
+  var deviceWaitInfo = FutureWaitInfo(future: deviceFuture, completed: 0)
+  let deviceWaitResult = instance.wait(1, deviceWaitInfo.addr, uint64.high)
+  doAssert deviceWaitResult == Success, "Failed to wait for device request"
+  doAssert deviceWaitInfo.completed != 0, "Device request did not complete"
+  doAssert device != nil, "Failed to get device"
 
   # 6. Get the device queue
   var queue = device.getQueue()
