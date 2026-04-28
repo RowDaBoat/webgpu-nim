@@ -80,6 +80,7 @@ func toStringView *(val :string) :StringView=  StringView(data: val.cstring, len
 func `$` *(val :StringView) :string=
   ## @descr Converts the given wgpu.StringView into a Nim.string
   if val.data == nil: return ""
+  if val.length == csize_t.high: return $val.data
   if val.length == 0: return ""
   val.data.toOpenArray(0, val.length.int-1).substr()
 #___________________

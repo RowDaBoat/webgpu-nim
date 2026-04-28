@@ -15,8 +15,8 @@ from ./types as extras import nil
 proc features *(device :wgpu.Device) :seq[wgpu.FeatureName]=
   ## @descr Returns the features supported by the device as a wgpu.SupportedFeatures object
   var data = wgpu.SupportedFeatures()
-  wgpu.get(device, features= data.addr)
-  result = newSeqWith(data.featureCount.int, wgpu.FeatureName 0)
+  wgpu.get(device, features = data.addr)
+  result = newSeqWith(data.featureCount.int, cast[wgpu.FeatureName](0))
   for id in 0..<data.featureCount:
     result[id] = cast[ptr UncheckedArray[wgpu.FeatureName]](data.features)[id]
   wgpu.freeMembers(data)

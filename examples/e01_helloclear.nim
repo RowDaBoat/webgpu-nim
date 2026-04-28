@@ -17,20 +17,6 @@ import wgpu
 # Example Extensions
 import ./extras  # In a real app, these should be coming from external libraries
 
-type LogLevel = enum
-  LogLevel_Off = 0x00000000
-  # Only error messages.
-  LogLevel_Error = 0x00000001
-  # Errors and warnings.
-  LogLevel_Warn = 0x00000002
-  # Errors, warnings, and informational messages.
-  LogLevel_Info = 0x00000003
-  # Errors, warnings, informational, and debug messages.
-  LogLevel_Debug = 0x00000004
-  # All messages, including very verbose trace-level output.
-  LogLevel_Trace = 0x00000005
-  LogLevel_Force32 = 0x7FFFFFFF
-
 #________________________________________________
 # window.nim
 #__________________
@@ -55,8 +41,9 @@ proc errorCB *(device :ptr Device; typ :ErrorType; message :StringView; userdata
 proc deviceLostCB *(device :ptr Device; reason :DeviceLostReason;  message :StringView; userdata :pointer; userdata2 :pointer) :void {.cdecl.}=
   echo &"DEVICE LOST: ({$reason}): {$message}"
 #__________________
-proc logCB *(level :LogLevel; message :StringView; userdata :pointer) :void {.cdecl.}=
-  echo &"[{$level}] {$message.data}"
+# TODO: Broken with wgvk
+# proc logCB *(level :LogLevel; message :StringView; userdata :pointer) :void {.cdecl.}=
+#   echo &"[{$level}] {$message.data}"
 
 
 #________________________________________________
@@ -271,9 +258,9 @@ proc run=
   #__________________
   # Terminate
   queue.release()
+  surface.release()
   device.release()
   adapter.release()
-  surface.release()
   instance.release()
   window.term()
 #__________________

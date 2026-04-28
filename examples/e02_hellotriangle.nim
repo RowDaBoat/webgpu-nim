@@ -60,8 +60,9 @@ proc errorCB *(device :ptr Device; typ :ErrorType; message :StringView; userdata
 proc deviceLostCB *(device :ptr Device; reason :DeviceLostReason;  message :StringView; userdata :pointer; userdata2 :pointer) :void {.cdecl.}=
   echo &"DEVICE LOST: ({$reason}): {$message}"
 #__________________
-proc logCB *(level :LogLevel; message :StringView; userdata :pointer) :void {.cdecl.}=
-  echo &"[{$level}] {$message.data}"
+# TODO: Borken with wgvk
+# proc logCB *(level :LogLevel; message :StringView; userdata :pointer) :void {.cdecl.}=
+#   echo &"[{$level}] {$message.data}"
 
 
 #_______________________________________
@@ -101,16 +102,18 @@ proc run=
   echo "Hello wgpu"
   window.init()
 
-  #__________________
-  # Set wgpu.Logging
-  wgpu.set(logCB, nil)
-  wgpu.set LogLevel.Warn
+  # TODO: Broken with wgvk
+  # #__________________
+  # # Set wgpu.Logging
+  # wgpu.set(logCB, nil)
+  # wgpu.set Warn
   #__________________
   # Init wgpu
-  var instanceDesc = InstanceDescriptor(nextInChain: nil)
-  var instance     = wgpu.create(instanceDesc.addr)
-  var surface      = instance.getSurface(window.ct)
-  var adapter      :wgpu.Adapter; discard instance.request(
+  var instance = wgpu.create(vaddr wgpu.InstanceDescriptor(nextInChain: nil))
+  doAssert instance != nil, "Could not initialize wgpu"
+  var surface  = instance.getSurface(window.ct)
+  var adapter  :wgpu.Adapter= nil;
+  var adapterFuture = instance.request(
     options                 = vaddr RequestAdapterOptions(
       nextInChain           : nil,
       featureLevel          : Core,
@@ -127,6 +130,13 @@ proc run=
       userdata2             : nil,
       ), #:: RequestAdapterCallbackInfo
     ) #:: instance.request
+
+  var adapterWaitInfo = FutureWaitInfo(future: adapterFuture, completed: 0)
+  let adapterWaitResult = instance.wait(1, adapterWaitInfo.addr, uint64.high)
+  doAssert adapterWaitResult == Success, "Failed to wait for adapter request"
+  doAssert adapterWaitInfo.completed != 0, "Adapter request did not complete"
+  doAssert adapter != nil, "Failed to get adapter"
+
   echo ":: Adapter Information for this system: "
   let info = adapter.info()
   echo ":  Vendor       : ",info.vendor
@@ -146,8 +156,9 @@ proc run=
   echo ":  Alpha Modes:"
   for alpha in caps.alphaModes:   echo ":  - ",$alpha
 
-  var device :wgpu.Device; discard adapter.request(
-    descriptor                    = vaddr DeviceDescriptor(
+  var device :wgpu.Device= nil
+  var deviceFuture = adapter.request(
+    options = vaddr DeviceDescriptor(
       nextInChain                 : nil,
       label                       : "Hello Device".toStringView(),
       requiredFeatureCount        : 0,
@@ -178,6 +189,13 @@ proc run=
       userdata2                   : nil,
       ) #:: callbackInfo
     ) #:: adapter.request( device )
+
+  var deviceWaitInfo = FutureWaitInfo(future: deviceFuture, completed: 0)
+  let deviceWaitResult = instance.wait(1, deviceWaitInfo.addr, uint64.high)
+  doAssert deviceWaitResult == Success, "Failed to wait for device request"
+  doAssert deviceWaitInfo.completed != 0, "Device request did not complete"
+  doAssert device != nil, "Failed to get device"
+
   echo ":: Device Limits for this system: "
   let limits = device.limits()
   echo ":  ", $limits.repr
@@ -186,12 +204,19 @@ proc run=
 
   var shaderDesc    = wgsl.toDescriptor(shaderCode, label= "TriangleShader")
   let shader        = device.create(shaderDesc.addr)
+  doAssert shader != nil, "Failed to create shader module"
   let surfaceFormat = caps.formats[0]
   let surfaceAlpha  = caps.alphaModes[0]
+  let pipelineLayout = device.create(vaddr PipelineLayoutDescriptor(
+    nextInChain               : nil,
+    label                     : "Empty Pipeline Layout".toStringView(),
+    bindGroupLayoutCount      : 0,
+    bindGroupLayouts          : nil,
+  ))
   let pipeline      = device.create(vaddr RenderPipelineDescriptor(
     nextInChain               : nil,
     label                     : "Render pipeline".toStringView(),
-    layout                    : nil,
+    layout                    : pipelineLayout,
     vertex                    : VertexState(
       module                  : shader,
       entryPoint              : "vs_main".toStringView(),
@@ -266,7 +291,7 @@ proc run=
     window.update()
 
     # Get the Surface Texture
-    var surfaceTexture :SurfaceTexture
+    var surfaceTexture = SurfaceTexture()
     surface.getCurrentTexture(surfaceTexture.addr)
     case surfaceTexture.status
     of SuccessOptimal, SuccessSuboptimal: discard  # All good, could handle suboptimal this frame
@@ -280,7 +305,7 @@ proc run=
         surface.configure(config.addr)
       # Skip this frame
       continue
-    of OutOfMemory, DeviceLost, Error, Force32:
+    else:
       echo $surfaceTexture.status, ": surface.getCurrentTexture() failed"
       system.quit(surfaceTexture.status.ord)
     doAssert surfaceTexture != SurfaceTexture(), "ERR:: Cannot acquire next swap chain texture"

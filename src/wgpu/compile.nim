@@ -39,6 +39,25 @@ when defined(wgvkRaytracing):
 # Optional features
 when defined(wgvkWGSL):
   {.passC: "-DSUPPORT_WGSL=1".}
+  const simpleWgslDir = thisDir/"C"/"simple_wgsl"
+  {.passC: "-I"&simpleWgslDir.}
+  {.compile: simpleWgslDir/"wgsl_parser.c".}
+  {.compile: simpleWgslDir/"wgsl_resolve.c".}
+  {.compile: simpleWgslDir/"wgsl_lower.c".}
+  {.compile: simpleWgslDir/"wgsl_raise.c".}
+  {.compile: simpleWgslDir/"glsl_parser.c".}
+  {.compile: simpleWgslDir/"ssir.c".}
+  {.compile: simpleWgslDir/"ssir_to_spirv.c".}
+  {.compile: simpleWgslDir/"ssir_to_wgsl.c".}
+  {.compile: simpleWgslDir/"ssir_to_glsl.c".}
+  {.compile: simpleWgslDir/"ssir_to_msl.c".}
+  {.compile: simpleWgslDir/"ssir_to_hlsl.c".}
+  {.compile: simpleWgslDir/"spirv_to_ssir.c".}
+  {.compile: simpleWgslDir/"msl_parser.c".}
+  {.compile: simpleWgslDir/"ptx_parser.c".}
+  {.compile: simpleWgslDir/"ptx_lower.c".}
+  {.compile: simpleWgslDir/"ssir_structurize.c".}
+  {.compile: srcDir/"simple_wgsl_c_api.c".}
 when defined(wgvkGLSL):
   {.passC: "-DSUPPORT_GLSL=1".}
 when defined(wgvkVMA):

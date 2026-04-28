@@ -36,7 +36,7 @@ proc copyVulkanLib () =
     cpFile(src, dst)
 
 proc nimcr (args :varargs[string, `$`]) :void=
-  selfExec &"c -r -d:wgpu --verbosity:2 --hints:off --path:{srcDir} --outDir:{binDir} " & args.join(" ")
+  selfExec &"c -r -d:wgpu -d:wgvkWGSL --verbosity:2 --hints:off --path:{srcDir} --outDir:{binDir} " & args.join(" ")
 #___________________
 template example (name :untyped; descr,file :static string)=
   ## @descr Generates a task to build+run the given example
