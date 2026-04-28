@@ -1,12 +1,15 @@
+echo "Hello WGVK Test"
+
 #:___________________________________________________
 #  wgpu  |  Copyright (C) Nim wgpu Authors  |  MIT  :
 #:___________________________________________________
-# Most minimal swapchain setup possible.          |
-# No shaders. Just clears the screen to a color.  |
+# . DELETE THIS.
+# Just for debugging wgvk
+# Copy of helloclear with fixes
+# This code should replace the example's code.
 #_________________________________________________|
 # std dependencies
 import std/strformat
-import std/os
 # External dependencies
 from nglfw as glfw import nil
 # Module dependencies
@@ -14,6 +17,19 @@ import wgpu
 # Example Extensions
 import ./extras  # In a real app, these should be coming from external libraries
 
+type LogLevel = enum
+  LogLevel_Off = 0x00000000
+  # Only error messages.
+  LogLevel_Error = 0x00000001
+  # Errors and warnings.
+  LogLevel_Warn = 0x00000002
+  # Errors, warnings, and informational messages.
+  LogLevel_Info = 0x00000003
+  # Errors, warnings, informational, and debug messages.
+  LogLevel_Debug = 0x00000004
+  # All messages, including very verbose trace-level output.
+  LogLevel_Trace = 0x00000005
+  LogLevel_Force32 = 0x7FFFFFFF
 
 #________________________________________________
 # window.nim
@@ -27,6 +43,7 @@ proc key (win :glfw.Window; key, code, action, mods :cint) :void {.cdecl.}=
 # @section WGPU callbacks
 #_____________________________
 proc adapterRequestCB *(status :RequestAdapterStatus; adapter :Adapter; message :StringView; userdata :pointer; userdata2 :pointer) :void {.cdecl.}=
+  echo "Cuarenta y ocho millones cuatrocientos cuarenta y ocho mil cuatrocientos cuarenta y ocho kilómetros de ida..."
   cast[ptr Adapter](userdata)[] = adapter  # *(WGPUAdapter*)userdata = received;
 #__________________
 proc deviceRequestCB *(status :RequestDeviceStatus; device :Device; message :StringView; userdata :pointer; userdata2 :pointer) :void {.cdecl.}=
@@ -43,29 +60,26 @@ proc logCB *(level :LogLevel; message :StringView; userdata :pointer) :void {.cd
 
 
 #________________________________________________
-# state.nim
-#__________________
-var window = Window(
-  ct: nil, title: "wgpu Tut",
-  w:960, h:540,
-  )
-
-# WGPU state
-var instance :wgpu.Instance= nil
-
-#________________________________________________
 # Entry Point
 #__________________
 proc run=
+  #________________________________________________
+  # state.nim
+  #__________________
+  var window = Window(ct: nil, title: "wgpu Tut", w:960, h:540)
+  var instance :wgpu.Instance= nil
+
+
   #__________________
   # Init Window
   echo "Hello wgpu"
   window.init(key)
 
-  #__________________
-  # Set wgpu.Logging
-  wgpu.set(logCB, nil)
-  wgpu.set Warn
+  # TODO: Broken with wgvk
+  # #__________________
+  # # Set wgpu.Logging
+  # wgpu.set(logCB, nil)
+  # wgpu.set Warn
   #__________________
   # Init wgpu
   # 1. Create the Instance
@@ -76,7 +90,8 @@ proc run=
   var surface = instance.getSurface(window.ct)
 
   # 3. Create the Adapter
-  var adapter :wgpu.Adapter; discard instance.request(
+  var adapter :wgpu.Adapter= nil;
+  var adapterFuture = instance.request(
     options                 = vaddr RequestAdapterOptions(
       nextInChain           : nil,
       featureLevel          : Core,
@@ -94,22 +109,30 @@ proc run=
       ), #:: RequestAdapterCallbackInfo
     ) #:: instance.request
 
+  var adapterWaitInfo = FutureWaitInfo(future: adapterFuture, completed: 0)
+  let adapterWaitResult = instance.wait(1, adapterWaitInfo.addr, uint64.high)
+  doAssert adapterWaitResult == Success, "Failed to wait for adapter request"
+  doAssert adapterWaitInfo.completed != 0, "Adapter request did not complete"
+  doAssert adapter != nil, "Failed to get adapter"
+
+
   # 4. Report the Adapter Features + Capabilities supported
   echo ":: Adapter Features supported by this system: "
   for it in adapter.features():
     echo $it.ord&":  ",$it
   echo ":: Capabilities of the Surface supported by this system: "
-  let (textureFormats, presentModes, alphaModes) = surface.capabilities(adapter)
+  let capabilities = surface.capabilities(adapter)
   echo ":  Texture Formats:"
-  for formt in textureFormats: echo ":  - ",$formt
+  for formt in capabilities.formats: echo ":  - ",$formt
   echo ":  Present Modes:"
-  for prsnt in presentModes:   echo ":  - ",$prsnt
+  for prsnt in capabilities.presentModes:   echo ":  - ",$prsnt
   echo ":  Alpha Modes:"
-  for alpha in presentModes:   echo ":  - ",$alpha
+  for alpha in capabilities.alphaModes:   echo ":  - ",$alpha
 
   # 5. Create the Device
-  var device :wgpu.Device; discard adapter.request(
-    descriptor = vaddr DeviceDescriptor(
+  var device :wgpu.Device= nil
+  var deviceFuture = adapter.request(
+    options = vaddr DeviceDescriptor(
       nextInChain            : nil,
       label                  : "Hello Device".toStringView(),
       requiredFeatureCount   : 0,
@@ -141,6 +164,12 @@ proc run=
       ) #:: RequestDeviceCallbackInfo
     ) #:: adapter.request( ... )
 
+  var deviceWaitInfo = FutureWaitInfo(future: deviceFuture, completed: 0)
+  let deviceWaitResult = instance.wait(1, deviceWaitInfo.addr, uint64.high)
+  doAssert deviceWaitResult == Success, "Failed to wait for device request"
+  doAssert deviceWaitInfo.completed != 0, "Device request did not complete"
+  doAssert device != nil, "Failed to get device"
+
   # 6. Get the device queue
   var queue = device.getQueue()
 
@@ -153,8 +182,8 @@ proc run=
   var config = SurfaceConfiguration(
     nextInChain     : nil,
     device          : device,
-    format          : caps.textureFormats[0],
-    usage           : TextureUsage 0x0000000000000010, # TextureUsage_RenderAttachment,  # TODO: Futhark does not give these variable a value
+    format          : caps.formats[0],
+    usage           : 0x0000000000000010, # TextureUsage_RenderAttachment,  # TODO: Futhark does not give these variable a value
     width           : 0,
     height          : 0,
     viewFormatCount : 0,
@@ -174,7 +203,7 @@ proc run=
     window.update()
 
     # 5. Get the swapChain TextureView.
-    var surfaceTexture :SurfaceTexture
+    var surfaceTexture = SurfaceTexture()
     surface.getCurrentTexture(surfaceTexture.addr)
     # Attempt to get the SurfaceTexture. It's a fallible operation by spec, so need to check for errors.
     case surfaceTexture.status
@@ -191,7 +220,8 @@ proc run=
         surface.configure(config.addr)
       # Skip this frame
       continue
-    of OutOfMemory, DeviceLost, Error, Force32:
+    #of OutOfMemory, DeviceLost, Error, Force32:
+    else:
       echo $surfaceTexture.status, ": surface.getCurrentTexture() failed"
       system.quit(surfaceTexture.status.ord)
     doAssert surfaceTexture != SurfaceTexture(), "ERR:: Cannot acquire next swap chain texture"
@@ -248,4 +278,6 @@ proc run=
   window.term()
 #__________________
 when isMainModule: run()
+
+
 

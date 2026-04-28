@@ -1,35 +1,27 @@
-echo "Hello WGVK Test"
-
 #:___________________________________________________
 #  wgpu  |  Copyright (C) Nim wgpu Authors  |  MIT  :
 #:___________________________________________________
-# . DELETE THIS.
-# Just for debugging wgvk
-# Copy of helloclear with fixes
-# This code should replace the example's code.
-#_________________________________________________|
-# std dependencies
+# Hello Triangle from wgpu-native/examples          |
+# No buffers. Vertices are harcoded in the shader.  |
+#___________________________________________________|
+# @deps std
 import std/strformat
-# External dependencies
-from nglfw as glfw import nil
-# Module dependencies
+import std/os
+# @deps wgpu
 import wgpu
-# Example Extensions
+# @deps external
+from nglfw as glfw import nil
+# @deps Example Extensions
 import ./extras  # In a real app, these should be coming from external libraries
 
-type LogLevel = enum
-  LogLevel_Off = 0x00000000
-  # Only error messages.
-  LogLevel_Error = 0x00000001
-  # Errors and warnings.
-  LogLevel_Warn = 0x00000002
-  # Errors, warnings, and informational messages.
-  LogLevel_Info = 0x00000003
-  # Errors, warnings, informational, and debug messages.
-  LogLevel_Debug = 0x00000004
-  # All messages, including very verbose trace-level output.
-  LogLevel_Trace = 0x00000005
-  LogLevel_Force32 = 0x7FFFFFFF
+
+#________________________________________________
+# types.nim
+#__________________
+type Window * = object
+  ct     *:glfw.Window
+  w,h    *:int32
+  title  *:string
 
 #________________________________________________
 # window.nim
@@ -38,12 +30,25 @@ proc key (win :glfw.Window; key, code, action, mods :cint) :void {.cdecl.}=
   ## GLFW Keyboard Input Callback
   if (key == glfw.KeyEscape and action == glfw.Press):
     glfw.setWindowShouldClose(win, true)
+#__________________
+proc close  (win :Window) :bool=  glfw.windowShouldClose(win.ct).bool
+  ## Returns true when the GLFW window has been marked to be closed.
+proc term   (win :Window) :void=  glfw.destroyWindow(win.ct); glfw.terminate()
+  ## Terminates the GLFW window.
+proc update (win :Window) :void=  glfw.pollEvents()
+  ## Updates the window. Needs to be called each frame.
+#__________________
+proc init(win :var Window) :void=
+  ## Initializes the window with GLFW.
+  doAssert glfw.init().bool, "Failed to Initialize GLFW"
+  glfw.windowHint(glfw.CLIENT_API, glfw.NO_API)
+  win.ct = glfw.createWindow(win.w, win.h, win.title.cstring, nil, nil)
+  doAssert win.ct != nil, "Failed to create GLFW window"
+  discard glfw.setKeyCallback(win.ct, key)
 
-#_______________________________________
-# @section WGPU callbacks
-#_____________________________
+#__________________
+# WGPU callbacks
 proc adapterRequestCB *(status :RequestAdapterStatus; adapter :Adapter; message :StringView; userdata :pointer; userdata2 :pointer) :void {.cdecl.}=
-  echo "Cuarenta y ocho millones cuatrocientos cuarenta y ocho mil cuatrocientos cuarenta y ocho kilómetros de ida..."
   cast[ptr Adapter](userdata)[] = adapter  # *(WGPUAdapter*)userdata = received;
 #__________________
 proc deviceRequestCB *(status :RequestDeviceStatus; device :Device; message :StringView; userdata :pointer; userdata2 :pointer) :void {.cdecl.}=
@@ -59,39 +64,53 @@ proc logCB *(level :LogLevel; message :StringView; userdata :pointer) :void {.cd
   echo &"[{$level}] {$message.data}"
 
 
+#_______________________________________
+# @section Triangle Shaders
+#_____________________________
+const shaderCode = """
+@vertex
+fn vs_main(
+    @builtin(vertex_index) aID :u32
+  ) ->@builtin(position) vec4<f32> {
+  let x = f32(i32(aID) - 1);
+  let y = f32(i32(aID & 1u) * 2 - 1);
+  return vec4<f32>(x, y, 0.0, 1.0);
+}
+
+@fragment
+fn fs_main() ->@location(0) vec4<f32> {
+  return vec4<f32>(1.0, 0.0, 0.0, 1.0);
+}
+"""
+
 #________________________________________________
-# Entry Point
+# @section state.nim
+#__________________
+var window = Window(
+  ct: nil, title: "wgpu Tut",
+  w:960, h:540,
+  )
+
+
+#________________________________________________
+# @section Entry Point
 #__________________
 proc run=
-  #________________________________________________
-  # state.nim
-  #__________________
-  var window = Window(ct: nil, title: "wgpu Tut", w:960, h:540)
-  var instance :wgpu.Instance= nil
-
-
   #__________________
   # Init Window
   echo "Hello wgpu"
-  window.init(key)
+  window.init()
 
-  # TODO: Broken with wgvk
-  # #__________________
-  # # Set wgpu.Logging
-  # wgpu.set(logCB, nil)
-  # wgpu.set Warn
+  #__________________
+  # Set wgpu.Logging
+  wgpu.set(logCB, nil)
+  wgpu.set LogLevel.Warn
   #__________________
   # Init wgpu
-  # 1. Create the Instance
-  instance = wgpu.create(vaddr wgpu.InstanceDescriptor(nextInChain: nil))
-  doAssert instance != nil, "Could not initialize wgpu"
-
-  # 2 Create the Surface
-  var surface = instance.getSurface(window.ct)
-
-  # 3. Create the Adapter
-  var adapter :wgpu.Adapter= nil;
-  var adapterFuture = instance.request(
+  var instanceDesc = InstanceDescriptor(nextInChain: nil)
+  var instance     = wgpu.create(instanceDesc.addr)
+  var surface      = instance.getSurface(window.ct)
+  var adapter      :wgpu.Adapter; discard instance.request(
     options                 = vaddr RequestAdapterOptions(
       nextInChain           : nil,
       featureLevel          : Core,
@@ -108,87 +127,131 @@ proc run=
       userdata2             : nil,
       ), #:: RequestAdapterCallbackInfo
     ) #:: instance.request
-
-  var adapterWaitInfo = FutureWaitInfo(future: adapterFuture, completed: 0)
-  let adapterWaitResult = instance.wait(1, adapterWaitInfo.addr, uint64.high)
-  doAssert adapterWaitResult == Success, "Failed to wait for adapter request"
-  doAssert adapterWaitInfo.completed != 0, "Adapter request did not complete"
-  doAssert adapter != nil, "Failed to get adapter"
-
-
-  # 4. Report the Adapter Features + Capabilities supported
+  echo ":: Adapter Information for this system: "
+  let info = adapter.info()
+  echo ":  Vendor       : ",info.vendor
+  echo ":  Architecture : ",info.architecture
+  echo ":  Device       : ",info.device
+  echo ":  Description  : ",info.description
+  echo ":  Backend      : ",$info.backendType
+  echo ":  Adapter Type : ",$info.adapterType
   echo ":: Adapter Features supported by this system: "
-  for it in adapter.features():
-    echo $it.ord&":  ",$it
-  echo ":: Capabilities of the Surface supported by this system: "
-  let capabilities = surface.capabilities(adapter)
+  for it in adapter.features(): echo ":  ",$it
+  echo ":: Surface Capabilities supported by this system: "
+  let caps = surface.capabilities(adapter)
   echo ":  Texture Formats:"
-  for formt in capabilities.formats: echo ":  - ",$formt
+  for formt in caps.formats:      echo ":  - ",$formt
   echo ":  Present Modes:"
-  for prsnt in capabilities.presentModes:   echo ":  - ",$prsnt
+  for prsnt in caps.presentModes: echo ":  - ",$prsnt
   echo ":  Alpha Modes:"
-  for alpha in capabilities.alphaModes:   echo ":  - ",$alpha
+  for alpha in caps.alphaModes:   echo ":  - ",$alpha
 
-  # 5. Create the Device
-  var device :wgpu.Device= nil
-  var deviceFuture = adapter.request(
-    options = vaddr DeviceDescriptor(
-      nextInChain            : nil,
-      label                  : "Hello Device".toStringView(),
-      requiredFeatureCount   : 0,
-      requiredFeatures       : nil,
-      requiredLimits         : nil,
-      defaultQueue           : QueueDescriptor(
-        nextInChain          : nil,
-        label                : "Hello Default Queue".toStringView()
+  var device :wgpu.Device; discard adapter.request(
+    descriptor                    = vaddr DeviceDescriptor(
+      nextInChain                 : nil,
+      label                       : "Hello Device".toStringView(),
+      requiredFeatureCount        : 0,
+      requiredFeatures            : nil,
+      requiredLimits              : nil,
+      defaultQueue                : QueueDescriptor(
+        nextInChain               : nil,
+        label                     : "Hello Default Queue".toStringView()
         ), #:: defaultQueue
-      deviceLostCallbackInfo : DeviceLostCallbackInfo(
-        nextInChain          : nil,
-        callback             : deviceLostCB,
-        userdata1            : device.addr,
-        userdata2            : nil,
+      deviceLostCallbackInfo      : DeviceLostCallbackInfo(
+        nextInChain               : nil,
+        callback                  : deviceLostCB,
+        userdata1                 : device.addr,
+        userdata2                 : nil,
         ), #:: deviceLostCallback
       uncapturedErrorCallbackInfo : UncapturedErrorCallbackInfo(
-        nextInChain          : nil,
-        callback             : errorCB,
-        userdata1            : device.addr,
-        userdata2            : nil,
-        ), #:: uncapturedErrorCallback
+        nextInChain               : nil,
+        callback                  : errorCB,
+        userdata1                 : device.addr,
+        userdata2                 : nil,
+        ), #:: uncapturedErrorCallbackInfo
       ), #:: DeviceDescriptor( ... )
-    callbackInfo = RequestDeviceCallbackInfo(
-      nextInChain          : nil,
-      mode                 : AllowSpontaneous,
-      callback             : deviceRequestCB,
-      userdata1            : device.addr,
-      userdata2            : nil,
-      ) #:: RequestDeviceCallbackInfo
-    ) #:: adapter.request( ... )
+    callbackInfo                  = RequestDeviceCallbackInfo(
+      nextInChain                 : nil,
+      mode                        : AllowSpontaneous,
+      callback                    : deviceRequestCB,
+      userdata1                   : device.addr,
+      userdata2                   : nil,
+      ) #:: callbackInfo
+    ) #:: adapter.request( device )
+  echo ":: Device Limits for this system: "
+  let limits = device.limits()
+  echo ":  ", $limits.repr
+  echo ":: Device Features for this system: "
+  for it in device.features(): echo ":  ",$it
 
-  var deviceWaitInfo = FutureWaitInfo(future: deviceFuture, completed: 0)
-  let deviceWaitResult = instance.wait(1, deviceWaitInfo.addr, uint64.high)
-  doAssert deviceWaitResult == Success, "Failed to wait for device request"
-  doAssert deviceWaitInfo.completed != 0, "Device request did not complete"
-  doAssert device != nil, "Failed to get device"
+  var shaderDesc    = wgsl.toDescriptor(shaderCode, label= "TriangleShader")
+  let shader        = device.create(shaderDesc.addr)
+  let surfaceFormat = caps.formats[0]
+  let surfaceAlpha  = caps.alphaModes[0]
+  let pipeline      = device.create(vaddr RenderPipelineDescriptor(
+    nextInChain               : nil,
+    label                     : "Render pipeline".toStringView(),
+    layout                    : nil,
+    vertex                    : VertexState(
+      module                  : shader,
+      entryPoint              : "vs_main".toStringView(),
+      constantCount           : 0,
+      constants               : nil,
+      bufferCount             : 0,
+      buffers                 : nil,
+      ), #:: vertex
+    primitive                 : PrimitiveState(
+      nextInChain             : nil,
+      topology                : PrimitiveTopology.TriangleList,
+      stripIndexFormat        : IndexFormat.Undefined,
+      frontFace               : FrontFace.CCW,
+      cullMode                : CullMode.None,
+      ), #:: primitive
+    depthStencil              : nil,
+    multisample               : MultisampleState(
+      nextInChain             : nil,
+      count                   : 1,
+      mask                    : uint32.high,
+      alphaToCoverageEnabled  : false.uint32,
+      ), #:: multisample
+    fragment                  : vaddr FragmentState(
+      nextInChain             : nil,
+      module                  : shader,
+      entryPoint              : "fs_main".toStringView(),
+      constantCount           : 0,
+      constants               : nil,
+      targetCount             : 1,
+      targets                 : vaddr ColorTargetState(
+        nextInChain           : nil,
+        format                : surfaceFormat,
+        blend                 : vaddr BlendState(
+          alpha               : BlendComponent(
+            operation         : BlendOperation.Add,
+            srcFactor         : BlendFactor.One,
+            dstFactor         : BlendFactor.Zero,
+            ), #:: alpha
+          color               : BlendComponent(
+            operation         : BlendOperation.Add,
+            srcFactor         : BlendFactor.One,
+            dstFactor         : BlendFactor.Zero,
+            ), #:: color
+          ), #:: blend
+        writeMask             : ColorWrite.All,
+        ), #:: targets
+      ), #:: fragment
+    )) #:: pipeline
 
-  # 6. Get the device queue
-  var queue = device.getQueue()
-
-
-  # 7. Configure the Surface  (replaces SwapChain creation entirely)
-  # 7.1 Get the SurfaceCapabilities
-  let caps = surface.capabilities(adapter)  # wgpuSurfaceGetCapabilities
-
-  # 7.2. Create the Surface Configuration (previously SwapChain Descriptor)
+  # Surface Configuration (previously SwapChain Descriptor)
   var config = SurfaceConfiguration(
     nextInChain     : nil,
     device          : device,
-    format          : caps.formats[0],
-    usage           : 0x0000000000000010, # TextureUsage_RenderAttachment,  # TODO: Futhark does not give these variable a value
+    format          : surfaceFormat,
+    usage           : wgpu.extras.TextureUsage.RenderAttachment,
     width           : 0,
     height          : 0,
     viewFormatCount : 0,
     viewFormats     : nil,
-    alphaMode       : caps.alphaModes[0],
+    alphaMode       : surfaceAlpha,
     presentMode     : Fifo,
     ) #:: SurfaceConfiguration
   # 7.3 Get the initial window size
@@ -202,16 +265,13 @@ proc run=
     # Input update from glfw
     window.update()
 
-    # 5. Get the swapChain TextureView.
-    var surfaceTexture = SurfaceTexture()
+    # Get the Surface Texture
+    var surfaceTexture :SurfaceTexture
     surface.getCurrentTexture(surfaceTexture.addr)
-    # Attempt to get the SurfaceTexture. It's a fallible operation by spec, so need to check for errors.
     case surfaceTexture.status
-    of SuccessOptimal, SuccessSuboptimal:
-      # All good, could handle suboptimal this frame
-      discard
+    of SuccessOptimal, SuccessSuboptimal: discard  # All good, could handle suboptimal this frame
     of Timeout, Outdated, Lost:
-      # 5.1 Re-configure the surface
+      # Re-configure the surface
       if surfaceTexture.texture != nil: surfaceTexture.texture.release()
       var prevWidth  = config.width
       var prevHeight = config.height
@@ -220,20 +280,17 @@ proc run=
         surface.configure(config.addr)
       # Skip this frame
       continue
-    #of OutOfMemory, DeviceLost, Error, Force32:
-    else:
+    of OutOfMemory, DeviceLost, Error, Force32:
       echo $surfaceTexture.status, ": surface.getCurrentTexture() failed"
       system.quit(surfaceTexture.status.ord)
     doAssert surfaceTexture != SurfaceTexture(), "ERR:: Cannot acquire next swap chain texture"
     let nextTexture :TextureView= surfaceTexture.texture.create(nil)
 
-    # 6. Create the Command Encoder
-    var encoderDesc = CommandEncoderDescriptor(
+    var encoder = device.create(vaddr CommandEncoderDescriptor(
       nextInChain  : nil,
-      label        : "Command Encoder".toStringView(),
-      )
-    var encoder = device.create(encoderDesc.addr)
-    # 7. Create the RenderPass
+      label        : "Hello Command Encoder".toStringView(),
+      ))
+
     var renderPassDesc = RenderPassDescriptor(
       nextInChain             : nil,
       label                   : "Hello Render Pass".toStringView(),
@@ -243,41 +300,30 @@ proc run=
         resolveTarget         : nil,
         loadOp                : Clear,
         storeOp               : Store,
-        clearValue            : Color(r:1.0, g:0.0, b:0.0, a:1.0),  # WGPU Color, but similar to chroma/color
+        clearValue            : Color(r:0.1, g:0.1, b:0.1, a:1.0),  # WGPU Color, but similar to chroma/color
         ), #:: colorAttachments
       depthStencilAttachment  : nil,
       occlusionQuerySet       : nil,
       timestampWrites         : nil,
       ) #:: renderPassDesc
     var renderPass = encoder.begin(renderPassDesc.addr)
-    # 8. Draw into the texture with the given settings, and finalize the pass.
+    # Draw into the texture with the given settings
+    renderPass.set(pipeline)
+    renderPass.draw(3,1,0,0)  # vertexCount, instanceCount, firstVertex, firstInstance
     renderPass.End()
-    # 9. Submit the Rendering Queue
-    var cmdBufferDesc = CommandBufferDescriptor(
-      nextInChain : nil,
-      label       : "Hello Command Buffer".toStringView(),
-      ) #:: cmdBufferDesc
-    var cmdBuffer = encoder.finish(cmdBufferDesc.addr)
-    queue.submit(1, cmdBuffer.addr)
-    # 10. Present the next surface texture on the screen.
-    discard surface.present()  # like gl.swapBuffers()
-    # 11. Release the resources
-    renderPass.release()
-    encoder.release()
     nextTexture.release()
-    cmdBuffer.release()
-    surfaceTexture.texture.release()
+    # Submit the Rendering Queue, and present it to the surface
+    var queue     = device.getQueue()
+    var cmdBuffer = encoder.finish(vaddr CommandBufferDescriptor(nextInChain: nil, label: "Hello Command Buffer".toStringView()))
+    queue.submit(1, cmdBuffer.addr)
+    let status = surface.present()  # like gl.swapBuffers()
+    if status != Success: echo "ERR:: Surface.present() failed with: ", $status
+    # Input update from glfw
+    window.update()
 
   #__________________
   # Terminate
-  queue.release()
-  device.release()
-  adapter.release()
-  surface.release()
-  instance.release()
   window.term()
 #__________________
 when isMainModule: run()
-
-
 
