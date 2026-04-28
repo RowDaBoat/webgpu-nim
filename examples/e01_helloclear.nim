@@ -1,12 +1,8 @@
-echo "Hello WGVK Test"
-
 #:___________________________________________________
 #  wgpu  |  Copyright (C) Nim wgpu Authors  |  MIT  :
 #:___________________________________________________
-# . DELETE THIS.
-# Just for debugging wgvk
-# Copy of helloclear with fixes
-# This code should replace the example's code.
+# Most minimal swapchain setup possible.          |
+# No shaders. Just clears the screen to a color.  |
 #_________________________________________________|
 # std dependencies
 import std/strformat

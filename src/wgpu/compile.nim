@@ -41,6 +41,7 @@ when defined(wgvkWGSL):
   {.passC: "-DSUPPORT_WGSL=1".}
   const simpleWgslDir = thisDir/"C"/"simple_wgsl"
   {.passC: "-I"&simpleWgslDir.}
+  {.compile: simpleWgslDir/"wgsl_diagnostics.c".}
   {.compile: simpleWgslDir/"wgsl_parser.c".}
   {.compile: simpleWgslDir/"wgsl_resolve.c".}
   {.compile: simpleWgslDir/"wgsl_lower.c".}
