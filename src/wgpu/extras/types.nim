@@ -57,6 +57,11 @@ converter toWGPU *(val :types.TextureUsage) :wgpu.TextureUsage= cast[wgpu.Textur
 converter toExtras *(val :types.TextureUsage) :TextureUsageFlags= {val}
 converter toTextureUsage *(val :wgpu.TextureUsage) :TextureUsageFlags= cast[TextureUsageFlags](val)
 
+#_______________________________________
+# @section Basic Types
+#_______________________________________
+converter toBool32 *(val: bool): wgpu.Bool32 = cast[wgpu.Bool32](val)
+converter toBool *(val: wgpu.Bool32): bool = cast[bool](val)
 
 #_______________________________________
 # @section Shader Modules
