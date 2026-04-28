@@ -1,7 +1,7 @@
 
-[submodule "src/wgpu/C/wgvk"]
-	path = src/wgpu/C/wgvk
-	url = https://github.com/manuel5975p/WGVK
 [submodule "src/wgpu/C/simple_wgsl"]
 	path = src/wgpu/C/simple_wgsl
 	url = https://github.com/manuel5975p/simple_wgsl.git
+[submodule "src/wgpu/C/wgvk"]
+	path = src/wgpu/C/wgvk
+	url = git@github.com:RowDaBoat/WGVK.git

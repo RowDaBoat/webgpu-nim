@@ -1100,13 +1100,13 @@ type
 
   WGPUDrmModeByGeometry* = struct_WGPUDrmModeByGeometry
 
-  union_WGPUDrmModeSelect_Unnamed0xb27a13460* {.union, importc: "union WGPUDrmModeSelect_Unnamed0xb27a13460", header: "wgvk.h".} = object
+  union_WGPUDrmModeSelect_Unnamed0x8a0e9bd30* {.union, importc: "union WGPUDrmModeSelect_Unnamed0x8a0e9bd30", header: "wgvk.h".} = object
     geometry*: WGPUDrmModeByGeometry
     index*: uint32
 
   struct_WGPUDrmModeSelect* {.bycopy, importc: "struct WGPUDrmModeSelect", header: "wgvk.h".} = object
-    `type`*: union_WGPUDrmModeSelect_Unnamed0xb27a13460
-    unnamed0*: union_WGPUDrmModeSelect_Unnamed0xb27a13460
+    `type`*: union_WGPUDrmModeSelect_Unnamed0x8a0e9bd30
+    unnamed0*: union_WGPUDrmModeSelect_Unnamed0x8a0e9bd30
 
   WGPUDrmModeSelect* = struct_WGPUDrmModeSelect
 
@@ -2152,7 +2152,6 @@ proc wgpuRaytracingPassEncoderSetPipeline*(cpe: WGPURaytracingPassEncoder, raytr
 proc wgpuRaytracingPassEncoderSetBindGroup*(cpe: WGPURaytracingPassEncoder, groupIndex: uint32, bindGroup: WGPUBindGroup, dynamicOffsetCount: uint32, dynamicOffsets: ptr uint32) {.importc, cdecl, header: "wgvk.h".}
 proc wgpuRaytracingPassEncoderTraceRays*(cpe: WGPURaytracingPassEncoder, rayGenerationOffset: uint32, rayHitOffset: uint32, rayMissOffset: uint32, width: uint32, height: uint32, depth: uint32) {.importc, cdecl, header: "wgvk.h".}
 proc wgpuComputePassEncoderDispatchWorkgroups*(cpe: WGPUComputePassEncoder, x: uint32, y: uint32, z: uint32) {.importc, cdecl, header: "wgvk.h".}
-proc wgpuComputePassEncoderRelease*(cpenc: WGPUComputePassEncoder) {.importc, cdecl, header: "wgvk.h".}
 proc wgpuSurfaceGetCurrentTexture*(surface: WGPUSurface, surfaceTexture: ptr WGPUSurfaceTexture) {.importc, cdecl, header: "wgvk.h".}
 proc wgpuSurfacePresent*(surface: WGPUSurface): WGPUStatus {.importc, cdecl, header: "wgvk.h".}
 proc wgpuCommandEncoderBeginRaytracingPass*(enc: WGPUCommandEncoder, rtDesc: ptr WGPURayTracingPassDescriptor): WGPURaytracingPassEncoder {.importc, cdecl, header: "wgvk.h".}
@@ -2291,8 +2290,7 @@ proc wgpuComputePassEncoderRelease*(rpenc: WGPUComputePassEncoder) {.importc, cd
 proc wgpuComputePipelineRelease*(pipeline: WGPUComputePipeline) {.importc, cdecl, header: "wgvk.h".}
 proc wgpuRenderPipelineRelease*(pipeline: WGPURenderPipeline) {.importc, cdecl, header: "wgvk.h".}
 proc wgpuBufferRelease*(buffer: WGPUBuffer) {.importc, cdecl, header: "wgvk.h".}
-proc wgpuBindGroupRelease*(commandBuffer: WGPUBindGroup) {.importc, cdecl, header: "wgvk.h".}
-proc wgpuBindGroupLayoutRelease*(commandBuffer: WGPUBindGroupLayout) {.importc, cdecl, header: "wgvk.h".}
+proc wgpuBindGroupRelease*(bindGroup: WGPUBindGroup) {.importc, cdecl, header: "wgvk.h".}
 proc wgpuBindGroupLayoutRelease*(bglayout: WGPUBindGroupLayout) {.importc, cdecl, header: "wgvk.h".}
 proc wgpuPipelineLayoutRelease*(layout: WGPUPipelineLayout) {.importc, cdecl, header: "wgvk.h".}
 proc wgpuTextureRelease*(texture: WGPUTexture) {.importc, cdecl, header: "wgvk.h".}
