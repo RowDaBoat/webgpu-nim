@@ -1,13 +1,13 @@
-#:___________________________________________________
-#  wgpu  |  Copyright (C) Nim wgpu Authors  |  MIT  :
-#:___________________________________________________
+#:___________________________________________________________
+#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:___________________________________________________________
 when not defined(nimscript):  import system/nimscript  # Silence nimsuggest errors
 import std/[ os, strformat, strutils, sequtils, algorithm ]
 # Package
-packageName   = "wgpu"
-version       = "24.0.3.8"  # First three numbers in sync with wgpu-native
+packageName   = "webgpu"
+version       = "25.0.0.0"
 author        = "heysokam, RowDaBoat"
-description   = "Native WebGPU for Nim | wgpu-native"
+description   = "WebGPU bindings for Nim using wgvk as backend."
 license       = "MIT"
 # Project Setup
 srcDir        = "src"
@@ -85,7 +85,7 @@ template bindings (file :string) :void=
   echo "[wgpu] Generating bindings from:  " & file
   selfExec &"c -r --verbosity:2 --hints:off --outDir:{binDir} " & file
 taskRequires "generate", "https://github.com/RowDaBoat/henka#head"
-task generate, "Internal:  Generates the wgpu Nim bindings.":
+task generate, "Internal:  Generates the WebGPU Nim bindings.":
   bindings "./gen/generator.nim"
   bindings "./gen/generator_raw.nim"
 #_____________________________
@@ -95,4 +95,3 @@ task tests, "Internal: Runs all unit tests.":
     if not file.fileExists(): continue
     if not file.splitFile.name.startsWith("t"): continue
     nimcr "--outDir:\"./bin/.tests/\"", file
-
