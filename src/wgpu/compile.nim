@@ -1,6 +1,6 @@
-#:___________________________________________________
-#  wgpu  |  Copyright (C) Nim wgpu Authors  |  MIT  :
-#:___________________________________________________
+#:___________________________________________________________
+#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:___________________________________________________________
 from std/os import `/`, parentDir
 
 const thisDir    = currentSourcePath().parentDir()

@@ -1,6 +1,6 @@
-#:___________________________________________________
-#  wgpu  |  Copyright (C) Nim wgpu Authors  |  MIT  :
-#:___________________________________________________
+#:___________________________________________________________
+#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:___________________________________________________________
 ## @fileoverview
 ## `@include` resolver implementation for wgsl shaders.
 ##  - Resolution is recursive, nested includes will work.

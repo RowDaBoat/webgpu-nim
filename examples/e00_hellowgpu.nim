@@ -1,6 +1,6 @@
-#:___________________________________________________
-#  wgpu  |  Copyright (C) Nim wgpu Authors  |  MIT  :
-#:___________________________________________________
+#:___________________________________________________________
+#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:___________________________________________________________
 # Tests that wgpu loaded correctly.                 |
 # Creates a wgpu.Instance and prints its address.   |
 # Creates a window that remains open until closed.  |

@@ -1,6 +1,6 @@
-#:___________________________________________________
-#  wgpu  |  Copyright (C) Nim wgpu Authors  |  MIT  :
-#:___________________________________________________
+#:___________________________________________________________
+#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:___________________________________________________________
 ## @fileoverview Cable connector to all of the extra utilities for wgpu
 #_______________________________________________________________________|
 import ./extras/types       as extras_types      ; export extras_types

@@ -1,6 +1,6 @@
-#:___________________________________________________
-#  wgpu  |  Copyright (C) Nim wgpu Authors  |  MIT  :
-#:___________________________________________________
+#:___________________________________________________________
+#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:___________________________________________________________
 # Multi-Mesh Example                                   |
 # Draws multiple meshes using one single pipeline.     |
 # Instanced Cubes, and a Pyramid with its own buffer.  |
