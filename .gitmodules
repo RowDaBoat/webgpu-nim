@@ -4,4 +4,4 @@
 	url = https://github.com/manuel5975p/simple_wgsl.git
 [submodule "src/wgpu/C/wgvk"]
 	path = src/wgpu/C/wgvk
-	url = git@github.com:RowDaBoat/WGVK.git
+	url = git@github.com:manuel5975p/wgvk.git
