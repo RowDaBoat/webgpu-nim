@@ -26,10 +26,16 @@ proc rename(kind: henka.LabelKind, name: string): string =
       result = result[0..^entry.len+1]
       if result in cfg.addT: result = result & "T"
 
+proc overridePragmas(kind: henka.LabelKind, name: string, defaults: seq[(string, string)]): seq[(string, string)] =
+  result = defaults
+  if kind == henka.StructType:
+    result.add ("inheritable", "")
+
 when isMainModule:
   let output = henka.generate(
     inputFile      = base.wgpuDir/"wgvk.h",
     renamer        = rename,
+    pragmaOverride = overridePragmas,
     linkMode       = henka.LinkMode.header,
   )
   system.writeFile(base.thisDir/"result.nim", output)
