@@ -28,8 +28,7 @@ proc rename(kind: henka.LabelKind, name: string): string =
 
 proc overridePragmas(kind: henka.LabelKind, name: string, defaults: seq[(string, string)]): seq[(string, string)] =
   result = defaults
-  if kind == henka.StructType:
-    result.add ("inheritable", "")
+  if kind in {henka.StructType}: result.add [("pure", ""), ("inheritable", "")]
 
 when isMainModule:
   let output = henka.generate(

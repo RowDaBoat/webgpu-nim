@@ -2,32 +2,32 @@ type
   Flags* = uint64
   Bool* = uint32
   Bool32* = uint32
-  TextureImpl* {.incompleteStruct, importc:"struct WGPUTextureImpl", header:"wgvk.h", inheritable.} = object
-  TextureViewImpl* {.incompleteStruct, importc:"struct WGPUTextureViewImpl", header:"wgvk.h", inheritable.} = object
-  BufferImpl* {.incompleteStruct, importc:"struct WGPUBufferImpl", header:"wgvk.h", inheritable.} = object
-  BindGroupImpl* {.incompleteStruct, importc:"struct WGPUBindGroupImpl", header:"wgvk.h", inheritable.} = object
-  BindGroupLayoutImpl* {.incompleteStruct, importc:"struct WGPUBindGroupLayoutImpl", header:"wgvk.h", inheritable.} = object
-  PipelineLayoutImpl* {.incompleteStruct, importc:"struct WGPUPipelineLayoutImpl", header:"wgvk.h", inheritable.} = object
-  FutureImpl* {.incompleteStruct, importc:"struct WGPUFutureImpl", header:"wgvk.h", inheritable.} = object
-  RenderPassEncoderImpl* {.incompleteStruct, importc:"struct WGPURenderPassEncoderImpl", header:"wgvk.h", inheritable.} = object
-  ComputePassEncoderImpl* {.incompleteStruct, importc:"struct WGPUComputePassEncoderImpl", header:"wgvk.h", inheritable.} = object
-  RenderBundleImpl* {.incompleteStruct, importc:"struct WGPURenderBundleImpl", header:"wgvk.h", inheritable.} = object
-  RenderBundleEncoderImpl* {.incompleteStruct, importc:"struct WGPURenderBundleEncoderImpl", header:"wgvk.h", inheritable.} = object
-  CommandEncoderImpl* {.incompleteStruct, importc:"struct WGPUCommandEncoderImpl", header:"wgvk.h", inheritable.} = object
-  CommandBufferImpl* {.incompleteStruct, importc:"struct WGPUCommandBufferImpl", header:"wgvk.h", inheritable.} = object
-  QueueImpl* {.incompleteStruct, importc:"struct WGPUQueueImpl", header:"wgvk.h", inheritable.} = object
-  QuerySetImpl* {.incompleteStruct, importc:"struct WGPUQuerySetImpl", header:"wgvk.h", inheritable.} = object
-  InstanceImpl* {.incompleteStruct, importc:"struct WGPUInstanceImpl", header:"wgvk.h", inheritable.} = object
-  AdapterImpl* {.incompleteStruct, importc:"struct WGPUAdapterImpl", header:"wgvk.h", inheritable.} = object
-  DeviceImpl* {.incompleteStruct, importc:"struct WGPUDeviceImpl", header:"wgvk.h", inheritable.} = object
-  SurfaceImpl* {.incompleteStruct, importc:"struct WGPUSurfaceImpl", header:"wgvk.h", inheritable.} = object
-  ShaderModuleImpl* {.incompleteStruct, importc:"struct WGPUShaderModuleImpl", header:"wgvk.h", inheritable.} = object
-  RenderPipelineImpl* {.incompleteStruct, importc:"struct WGPURenderPipelineImpl", header:"wgvk.h", inheritable.} = object
-  ComputePipelineImpl* {.incompleteStruct, importc:"struct WGPUComputePipelineImpl", header:"wgvk.h", inheritable.} = object
-  TopLevelAccelerationStructureImpl* {.incompleteStruct, importc:"struct WGPUTopLevelAccelerationStructureImpl", header:"wgvk.h", inheritable.} = object
-  BottomLevelAccelerationStructureImpl* {.incompleteStruct, importc:"struct WGPUBottomLevelAccelerationStructureImpl", header:"wgvk.h", inheritable.} = object
-  RaytracingPipelineImpl* {.incompleteStruct, importc:"struct WGPURaytracingPipelineImpl", header:"wgvk.h", inheritable.} = object
-  RaytracingPassEncoderImpl* {.incompleteStruct, importc:"struct WGPURaytracingPassEncoderImpl", header:"wgvk.h", inheritable.} = object
+  TextureImpl* {.incompleteStruct, importc:"struct WGPUTextureImpl", header:"wgvk.h", pure, inheritable.} = object
+  TextureViewImpl* {.incompleteStruct, importc:"struct WGPUTextureViewImpl", header:"wgvk.h", pure, inheritable.} = object
+  BufferImpl* {.incompleteStruct, importc:"struct WGPUBufferImpl", header:"wgvk.h", pure, inheritable.} = object
+  BindGroupImpl* {.incompleteStruct, importc:"struct WGPUBindGroupImpl", header:"wgvk.h", pure, inheritable.} = object
+  BindGroupLayoutImpl* {.incompleteStruct, importc:"struct WGPUBindGroupLayoutImpl", header:"wgvk.h", pure, inheritable.} = object
+  PipelineLayoutImpl* {.incompleteStruct, importc:"struct WGPUPipelineLayoutImpl", header:"wgvk.h", pure, inheritable.} = object
+  FutureImpl* {.incompleteStruct, importc:"struct WGPUFutureImpl", header:"wgvk.h", pure, inheritable.} = object
+  RenderPassEncoderImpl* {.incompleteStruct, importc:"struct WGPURenderPassEncoderImpl", header:"wgvk.h", pure, inheritable.} = object
+  ComputePassEncoderImpl* {.incompleteStruct, importc:"struct WGPUComputePassEncoderImpl", header:"wgvk.h", pure, inheritable.} = object
+  RenderBundleImpl* {.incompleteStruct, importc:"struct WGPURenderBundleImpl", header:"wgvk.h", pure, inheritable.} = object
+  RenderBundleEncoderImpl* {.incompleteStruct, importc:"struct WGPURenderBundleEncoderImpl", header:"wgvk.h", pure, inheritable.} = object
+  CommandEncoderImpl* {.incompleteStruct, importc:"struct WGPUCommandEncoderImpl", header:"wgvk.h", pure, inheritable.} = object
+  CommandBufferImpl* {.incompleteStruct, importc:"struct WGPUCommandBufferImpl", header:"wgvk.h", pure, inheritable.} = object
+  QueueImpl* {.incompleteStruct, importc:"struct WGPUQueueImpl", header:"wgvk.h", pure, inheritable.} = object
+  QuerySetImpl* {.incompleteStruct, importc:"struct WGPUQuerySetImpl", header:"wgvk.h", pure, inheritable.} = object
+  InstanceImpl* {.incompleteStruct, importc:"struct WGPUInstanceImpl", header:"wgvk.h", pure, inheritable.} = object
+  AdapterImpl* {.incompleteStruct, importc:"struct WGPUAdapterImpl", header:"wgvk.h", pure, inheritable.} = object
+  DeviceImpl* {.incompleteStruct, importc:"struct WGPUDeviceImpl", header:"wgvk.h", pure, inheritable.} = object
+  SurfaceImpl* {.incompleteStruct, importc:"struct WGPUSurfaceImpl", header:"wgvk.h", pure, inheritable.} = object
+  ShaderModuleImpl* {.incompleteStruct, importc:"struct WGPUShaderModuleImpl", header:"wgvk.h", pure, inheritable.} = object
+  RenderPipelineImpl* {.incompleteStruct, importc:"struct WGPURenderPipelineImpl", header:"wgvk.h", pure, inheritable.} = object
+  ComputePipelineImpl* {.incompleteStruct, importc:"struct WGPUComputePipelineImpl", header:"wgvk.h", pure, inheritable.} = object
+  TopLevelAccelerationStructureImpl* {.incompleteStruct, importc:"struct WGPUTopLevelAccelerationStructureImpl", header:"wgvk.h", pure, inheritable.} = object
+  BottomLevelAccelerationStructureImpl* {.incompleteStruct, importc:"struct WGPUBottomLevelAccelerationStructureImpl", header:"wgvk.h", pure, inheritable.} = object
+  RaytracingPipelineImpl* {.incompleteStruct, importc:"struct WGPURaytracingPipelineImpl", header:"wgvk.h", pure, inheritable.} = object
+  RaytracingPassEncoderImpl* {.incompleteStruct, importc:"struct WGPURaytracingPassEncoderImpl", header:"wgvk.h", pure, inheritable.} = object
   Surface* = ptr SurfaceImpl
   BindGroupLayout* = ptr BindGroupLayoutImpl
   PipelineLayout* = ptr PipelineLayoutImpl
@@ -46,16 +46,16 @@ type
   CommandEncoder* = ptr CommandEncoderImpl
   Texture* = ptr TextureImpl
   TextureView* = ptr TextureViewImpl
-  SamplerImpl* {.incompleteStruct, importc:"struct WGPUSamplerImpl", header:"wgvk.h", inheritable.} = object
+  SamplerImpl* {.incompleteStruct, importc:"struct WGPUSamplerImpl", header:"wgvk.h", pure, inheritable.} = object
   Sampler* = ptr SamplerImpl
-  FenceImpl* {.incompleteStruct, importc:"struct WGPUFenceImpl", header:"wgvk.h", inheritable.} = object
+  FenceImpl* {.incompleteStruct, importc:"struct WGPUFenceImpl", header:"wgvk.h", pure, inheritable.} = object
   Fence* = ptr FenceImpl
   RenderPipeline* = ptr RenderPipelineImpl
   ShaderModule* = ptr ShaderModuleImpl
   ComputePipeline* = ptr ComputePipelineImpl
-  RayTracingAccelerationContainerImpl* {.incompleteStruct, importc:"struct WGPURayTracingAccelerationContainerImpl", header:"wgvk.h", inheritable.} = object
+  RayTracingAccelerationContainerImpl* {.incompleteStruct, importc:"struct WGPURayTracingAccelerationContainerImpl", header:"wgvk.h", pure, inheritable.} = object
   RayTracingAccelerationContainer* = ptr RayTracingAccelerationContainerImpl
-  RayTracingShaderBindingTableImpl* {.incompleteStruct, importc:"struct WGPURayTracingShaderBindingTableImpl", header:"wgvk.h", inheritable.} = object
+  RayTracingShaderBindingTableImpl* {.incompleteStruct, importc:"struct WGPURayTracingShaderBindingTableImpl", header:"wgvk.h", pure, inheritable.} = object
   RayTracingShaderBindingTable* = ptr RayTracingShaderBindingTableImpl
   RaytracingPipeline* = ptr RaytracingPipelineImpl
   RaytracingPassEncoder* = ptr RaytracingPassEncoderImpl
@@ -71,10 +71,10 @@ type
   PrimitiveTopology* = cint
   SType* = cint
   CallbackMode* = cint
-  StringView* {.bycopy, importc:"struct WGPUStringView", header:"wgvk.h", inheritable.} = object
+  StringView* {.bycopy, importc:"struct WGPUStringView", header:"wgvk.h", pure, inheritable.} = object
     data* :cstring
     length* :csize_t
-  TexelCopyBufferLayout* {.bycopy, importc:"struct WGPUTexelCopyBufferLayout", header:"wgvk.h", inheritable.} = object
+  TexelCopyBufferLayout* {.bycopy, importc:"struct WGPUTexelCopyBufferLayout", header:"wgvk.h", pure, inheritable.} = object
     offset* :uint64
     bytesPerRow* :uint32
     rowsPerImage* :uint32
@@ -131,10 +131,10 @@ type
   RayTracingAccelerationGeometryUsage* = Flags
   RayTracingAccelerationInstanceUsage* = Flags
   RayTracingAccelerationContainerUsage* = Flags
-  ChainedStruct* {.bycopy, importc:"struct WGPUChainedStruct", header:"wgvk.h", inheritable.} = object
+  ChainedStruct* {.bycopy, importc:"struct WGPUChainedStruct", header:"wgvk.h", pure, inheritable.} = object
     next* :ptr ChainedStruct
     sType* :SType
-  CompilationInfo* {.bycopy, importc:"struct WGPUCompilationInfo", header:"wgvk.h", inheritable.} = object
+  CompilationInfo* {.bycopy, importc:"struct WGPUCompilationInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     messageCount* :csize_t
     messages* :ptr CompilationMessage
@@ -143,44 +143,44 @@ type
   CreateRenderPipelineAsyncCallback* = proc (a0 :CreatePipelineAsyncStatus; a1 :RenderPipeline; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   PopErrorScopeCallback* = proc (a0 :PopErrorScopeStatus; a1 :ErrorType; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   QueueWorkDoneCallback* = proc (a0 :QueueWorkDoneStatus; a1 :pointer; a2 :pointer) {.cdecl.}
-  CompilationInfoCallbackInfo* {.bycopy, importc:"struct WGPUCompilationInfoCallbackInfo", header:"wgvk.h", inheritable.} = object
+  CompilationInfoCallbackInfo* {.bycopy, importc:"struct WGPUCompilationInfoCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     mode* :CallbackMode
     callback* :CompilationInfoCallback
     userdata1* :pointer
     userdata2* :pointer
-  CreateComputePipelineAsyncCallbackInfo* {.bycopy, importc:"struct WGPUCreateComputePipelineAsyncCallbackInfo", header:"wgvk.h", inheritable.} = object
+  CreateComputePipelineAsyncCallbackInfo* {.bycopy, importc:"struct WGPUCreateComputePipelineAsyncCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     mode* :CallbackMode
     callback* :CreateComputePipelineAsyncCallback
     userdata1* :pointer
     userdata2* :pointer
-  CreateRenderPipelineAsyncCallbackInfo* {.bycopy, importc:"struct WGPUCreateRenderPipelineAsyncCallbackInfo", header:"wgvk.h", inheritable.} = object
+  CreateRenderPipelineAsyncCallbackInfo* {.bycopy, importc:"struct WGPUCreateRenderPipelineAsyncCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     mode* :CallbackMode
     callback* :CreateRenderPipelineAsyncCallback
     userdata1* :pointer
     userdata2* :pointer
-  PopErrorScopeCallbackInfo* {.bycopy, importc:"struct WGPUPopErrorScopeCallbackInfo", header:"wgvk.h", inheritable.} = object
+  PopErrorScopeCallbackInfo* {.bycopy, importc:"struct WGPUPopErrorScopeCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     mode* :CallbackMode
     callback* :PopErrorScopeCallback
     userdata1* :pointer
     userdata2* :pointer
-  QueueWorkDoneCallbackInfo* {.bycopy, importc:"struct WGPUQueueWorkDoneCallbackInfo", header:"wgvk.h", inheritable.} = object
+  QueueWorkDoneCallbackInfo* {.bycopy, importc:"struct WGPUQueueWorkDoneCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     mode* :CallbackMode
     callback* :QueueWorkDoneCallback
     userdata1* :pointer
     userdata2* :pointer
-  AdapterPropertiesSubgroups* {.bycopy, importc:"struct WGPUAdapterPropertiesSubgroups", header:"wgvk.h", inheritable.} = object
+  AdapterPropertiesSubgroups* {.bycopy, importc:"struct WGPUAdapterPropertiesSubgroups", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     subgroupMinSize* :uint32
     subgroupMaxSize* :uint32
-  BindGroupLayoutEntryArraySize* {.bycopy, importc:"struct WGPUBindGroupLayoutEntryArraySize", header:"wgvk.h", inheritable.} = object
+  BindGroupLayoutEntryArraySize* {.bycopy, importc:"struct WGPUBindGroupLayoutEntryArraySize", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     arraySize* :uint32
-  CompilationMessage* {.bycopy, importc:"struct WGPUCompilationMessage", header:"wgvk.h", inheritable.} = object
+  CompilationMessage* {.bycopy, importc:"struct WGPUCompilationMessage", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     message* :StringView
     `type`* :CompilationMessageType
@@ -188,98 +188,98 @@ type
     linePos* :uint64
     offset* :uint64
     length* :uint64
-  PassTimestampWrites* {.bycopy, importc:"struct WGPUPassTimestampWrites", header:"wgvk.h", inheritable.} = object
+  PassTimestampWrites* {.bycopy, importc:"struct WGPUPassTimestampWrites", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     querySet* :QuerySet
     beginningOfPassWriteIndex* :uint32
     endOfPassWriteIndex* :uint32
-  QuerySetDescriptor* {.bycopy, importc:"struct WGPUQuerySetDescriptor", header:"wgvk.h", inheritable.} = object
+  QuerySetDescriptor* {.bycopy, importc:"struct WGPUQuerySetDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     `type`* :QueryType
     count* :uint32
-  RenderPassMaxDrawCount* {.bycopy, importc:"struct WGPURenderPassMaxDrawCount", header:"wgvk.h", inheritable.} = object
+  RenderPassMaxDrawCount* {.bycopy, importc:"struct WGPURenderPassMaxDrawCount", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     maxDrawCount* :uint64
-  RequestAdapterWebXROptions* {.bycopy, importc:"struct WGPURequestAdapterWebXROptions", header:"wgvk.h", inheritable.} = object
+  RequestAdapterWebXROptions* {.bycopy, importc:"struct WGPURequestAdapterWebXROptions", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     xrCompatible* :Bool
-  SupportedFeatures* {.bycopy, importc:"struct WGPUSupportedFeatures", header:"wgvk.h", inheritable.} = object
+  SupportedFeatures* {.bycopy, importc:"struct WGPUSupportedFeatures", header:"wgvk.h", pure, inheritable.} = object
     featureCount* :csize_t
     features* :ptr FeatureName
-  SupportedWGSLLanguageFeatures* {.bycopy, importc:"struct WGPUSupportedWGSLLanguageFeatures", header:"wgvk.h", inheritable.} = object
+  SupportedWGSLLanguageFeatures* {.bycopy, importc:"struct WGPUSupportedWGSLLanguageFeatures", header:"wgvk.h", pure, inheritable.} = object
     featureCount* :csize_t
     features* :ptr WGSLLanguageFeatureName
-  SurfaceColorManagement* {.bycopy, importc:"struct WGPUSurfaceColorManagement", header:"wgvk.h", inheritable.} = object
+  SurfaceColorManagement* {.bycopy, importc:"struct WGPUSurfaceColorManagement", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     colorSpace* :PredefinedColorSpace
     toneMappingMode* :ToneMappingMode
-  TextureBindingViewDimensionDescriptor* {.bycopy, importc:"struct WGPUTextureBindingViewDimensionDescriptor", header:"wgvk.h", inheritable.} = object
+  TextureBindingViewDimensionDescriptor* {.bycopy, importc:"struct WGPUTextureBindingViewDimensionDescriptor", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     textureBindingViewDimension* :TextureViewDimension
-  ComputePassDescriptor* {.bycopy, importc:"struct WGPUComputePassDescriptor", header:"wgvk.h", inheritable.} = object
+  ComputePassDescriptor* {.bycopy, importc:"struct WGPUComputePassDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     timestampWrites* :ptr PassTimestampWrites
-  RayTracingPassDescriptor* {.bycopy, importc:"struct WGPURayTracingPassDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingPassDescriptor* {.bycopy, importc:"struct WGPURayTracingPassDescriptor", header:"wgvk.h", pure, inheritable.} = object
     shaderBindingTable* :RayTracingShaderBindingTable
     maxRecursionDepth* :uint32
     maxPayloadSize* :uint32
-  TexelCopyBufferInfo* {.bycopy, importc:"struct WGPUTexelCopyBufferInfo", header:"wgvk.h", inheritable.} = object
+  TexelCopyBufferInfo* {.bycopy, importc:"struct WGPUTexelCopyBufferInfo", header:"wgvk.h", pure, inheritable.} = object
     layout* :TexelCopyBufferLayout
     buffer* :Buffer
-  Origin3D* {.bycopy, importc:"struct WGPUOrigin3D", header:"wgvk.h", inheritable.} = object
+  Origin3D* {.bycopy, importc:"struct WGPUOrigin3D", header:"wgvk.h", pure, inheritable.} = object
     x* :uint32
     y* :uint32
     z* :uint32
-  Future* {.bycopy, importc:"struct WGPUFuture", header:"wgvk.h", inheritable.} = object
+  Future* {.bycopy, importc:"struct WGPUFuture", header:"wgvk.h", pure, inheritable.} = object
     id* :uint64
-  Extent3D* {.bycopy, importc:"struct WGPUExtent3D", header:"wgvk.h", inheritable.} = object
+  Extent3D* {.bycopy, importc:"struct WGPUExtent3D", header:"wgvk.h", pure, inheritable.} = object
     width* :uint32
     height* :uint32
     depthOrArrayLayers* :uint32
-  TexelCopyTextureInfo* {.bycopy, importc:"struct WGPUTexelCopyTextureInfo", header:"wgvk.h", inheritable.} = object
+  TexelCopyTextureInfo* {.bycopy, importc:"struct WGPUTexelCopyTextureInfo", header:"wgvk.h", pure, inheritable.} = object
     texture* :Texture
     mipLevel* :uint32
     origin* :Origin3D
     aspect* :TextureAspect
-  SurfaceSourceMetalLayer* {.bycopy, importc:"struct WGPUSurfaceSourceMetalLayer", header:"wgvk.h", inheritable.} = object
+  SurfaceSourceMetalLayer* {.bycopy, importc:"struct WGPUSurfaceSourceMetalLayer", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     layer* :pointer
-  SurfaceSourceWindowsHWND* {.bycopy, importc:"struct WGPUSurfaceSourceWindowsHWND", header:"wgvk.h", inheritable.} = object
+  SurfaceSourceWindowsHWND* {.bycopy, importc:"struct WGPUSurfaceSourceWindowsHWND", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     hinstance* :pointer
     hwnd* :pointer
-  SurfaceSourceXlibWindow* {.bycopy, importc:"struct WGPUSurfaceSourceXlibWindow", header:"wgvk.h", inheritable.} = object
+  SurfaceSourceXlibWindow* {.bycopy, importc:"struct WGPUSurfaceSourceXlibWindow", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     display* :pointer
     window* :uint64
-  SurfaceSourceXCBWindow* {.bycopy, importc:"struct WGPUSurfaceSourceXCBWindow", header:"wgvk.h", inheritable.} = object
+  SurfaceSourceXCBWindow* {.bycopy, importc:"struct WGPUSurfaceSourceXCBWindow", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     connection* :pointer
     window* :uint32
-  SurfaceSourceWaylandSurface* {.bycopy, importc:"struct WGPUSurfaceSourceWaylandSurface", header:"wgvk.h", inheritable.} = object
+  SurfaceSourceWaylandSurface* {.bycopy, importc:"struct WGPUSurfaceSourceWaylandSurface", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     display* :pointer
     surface* :pointer
-  SurfaceSourceAndroidNativeWindow* {.bycopy, importc:"struct WGPUSurfaceSourceAndroidNativeWindow", header:"wgvk.h", inheritable.} = object
+  SurfaceSourceAndroidNativeWindow* {.bycopy, importc:"struct WGPUSurfaceSourceAndroidNativeWindow", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     window* :pointer
-  EmscriptenSurfaceSourceCanvasHTMLSelector* {.bycopy, importc:"struct WGPUEmscriptenSurfaceSourceCanvasHTMLSelector", header:"wgvk.h", inheritable.} = object
+  EmscriptenSurfaceSourceCanvasHTMLSelector* {.bycopy, importc:"struct WGPUEmscriptenSurfaceSourceCanvasHTMLSelector", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     selector* :StringView
   DrmModeSelectType* = cint
-  DrmModeByGeometry* {.bycopy, importc:"struct WGPUDrmModeByGeometry", header:"wgvk.h", inheritable.} = object
+  DrmModeByGeometry* {.bycopy, importc:"struct WGPUDrmModeByGeometry", header:"wgvk.h", pure, inheritable.} = object
     width* :uint32
     height* :uint32
     refreshMilliHz* :uint32
   DrmModeSelect_unnamed1* {.union, bycopy, importc:"WGPUDrmModeSelect_unnamed1", header:"wgvk.h".} = object
     geometry* :DrmModeByGeometry
     index* :uint32
-  DrmModeSelect* {.bycopy, importc:"struct WGPUDrmModeSelect", header:"wgvk.h", inheritable.} = object
+  DrmModeSelect* {.bycopy, importc:"struct WGPUDrmModeSelect", header:"wgvk.h", pure, inheritable.} = object
     `type`* :DrmModeSelectType
     unnamed1* :DrmModeSelect_unnamed1
-  SurfaceSourceDrmPlane* {.bycopy, importc:"struct WGPUSurfaceSourceDrmPlane", header:"wgvk.h", inheritable.} = object
+  SurfaceSourceDrmPlane* {.bycopy, importc:"struct WGPUSurfaceSourceDrmPlane", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     adapter* :Adapter
     drmFd* :int32
@@ -288,10 +288,10 @@ type
     planeId* :uint32
     modeSelect* :DrmModeSelect
     acquireExclusive* :Bool
-  SurfaceDescriptor* {.bycopy, importc:"struct WGPUSurfaceDescriptor", header:"wgvk.h", inheritable.} = object
+  SurfaceDescriptor* {.bycopy, importc:"struct WGPUSurfaceDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
-  AdapterInfo* {.bycopy, importc:"struct WGPUAdapterInfo", header:"wgvk.h", inheritable.} = object
+  AdapterInfo* {.bycopy, importc:"struct WGPUAdapterInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     vendor* :StringView
     architecture* :StringView
@@ -303,30 +303,30 @@ type
     deviceID* :uint32
     subgroupMinSize* :uint32
     subgroupMaxSize* :uint32
-  RequestAdapterOptions* {.bycopy, importc:"struct WGPURequestAdapterOptions", header:"wgvk.h", inheritable.} = object
+  RequestAdapterOptions* {.bycopy, importc:"struct WGPURequestAdapterOptions", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     featureLevel* :FeatureLevel
     powerPreference* :PowerPreference
     forceFallbackAdapter* :Bool
     backendType* :BackendType
     compatibleSurface* :Surface
-  InstanceCapabilities* {.bycopy, importc:"struct WGPUInstanceCapabilities", header:"wgvk.h", inheritable.} = object
+  InstanceCapabilities* {.bycopy, importc:"struct WGPUInstanceCapabilities", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     timedWaitAnyEnable* :Bool
     timedWaitAnyMaxCount* :csize_t
-  InstanceLimits* {.bycopy, importc:"struct WGPUInstanceLimits", header:"wgvk.h", inheritable.} = object
+  InstanceLimits* {.bycopy, importc:"struct WGPUInstanceLimits", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     timedWaitAnyMaxCount* :csize_t
-  InstanceLayerSelection* {.bycopy, importc:"struct WGPUInstanceLayerSelection", header:"wgvk.h", inheritable.} = object
+  InstanceLayerSelection* {.bycopy, importc:"struct WGPUInstanceLayerSelection", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     instanceLayers* :ptr cstring
     instanceLayerCount* :uint32
-  InstanceDescriptor* {.bycopy, importc:"struct WGPUInstanceDescriptor", header:"wgvk.h", inheritable.} = object
+  InstanceDescriptor* {.bycopy, importc:"struct WGPUInstanceDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     requiredFeatureCount* :csize_t
     requiredFeatures* :ptr InstanceFeatureName
     requiredLimits* :ptr InstanceLimits
-  BindGroupEntry* {.bycopy, importc:"struct WGPUBindGroupEntry", header:"wgvk.h", inheritable.} = object
+  BindGroupEntry* {.bycopy, importc:"struct WGPUBindGroupEntry", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     binding* :uint32
     buffer* :Buffer
@@ -334,28 +334,28 @@ type
     size* :uint64
     sampler* :Sampler
     textureView* :TextureView
-  BindGroupEntryRayTracing* {.bycopy, importc:"struct WGPUBindGroupEntryRayTracing", header:"wgvk.h", inheritable.} = object
+  BindGroupEntryRayTracing* {.bycopy, importc:"struct WGPUBindGroupEntryRayTracing", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     accelerationStructure* :RayTracingAccelerationContainer
-  TextureBindingLayout* {.bycopy, importc:"struct WGPUTextureBindingLayout", header:"wgvk.h", inheritable.} = object
+  TextureBindingLayout* {.bycopy, importc:"struct WGPUTextureBindingLayout", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     sampleType* :TextureSampleType
     viewDimension* :TextureViewDimension
     multisampled* :Bool
-  SamplerBindingLayout* {.bycopy, importc:"struct WGPUSamplerBindingLayout", header:"wgvk.h", inheritable.} = object
+  SamplerBindingLayout* {.bycopy, importc:"struct WGPUSamplerBindingLayout", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     `type`* :SamplerBindingType
-  StorageTextureBindingLayout* {.bycopy, importc:"struct WGPUStorageTextureBindingLayout", header:"wgvk.h", inheritable.} = object
+  StorageTextureBindingLayout* {.bycopy, importc:"struct WGPUStorageTextureBindingLayout", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     access* :StorageTextureAccess
     format* :TextureFormat
     viewDimension* :TextureViewDimension
-  BufferBindingLayout* {.bycopy, importc:"struct WGPUBufferBindingLayout", header:"wgvk.h", inheritable.} = object
+  BufferBindingLayout* {.bycopy, importc:"struct WGPUBufferBindingLayout", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     `type`* :BufferBindingType
     hasDynamicOffset* :Bool
     minBindingSize* :uint64
-  BindGroupLayoutEntry* {.bycopy, importc:"struct WGPUBindGroupLayoutEntry", header:"wgvk.h", inheritable.} = object
+  BindGroupLayoutEntry* {.bycopy, importc:"struct WGPUBindGroupLayoutEntry", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     binding* :uint32
     visibility* :ShaderStage
@@ -364,10 +364,10 @@ type
     sampler* :SamplerBindingLayout
     texture* :TextureBindingLayout
     storageTexture* :StorageTextureBindingLayout
-  BindGroupLayoutEntryRayTracing* {.bycopy, importc:"struct WGPUBindGroupLayoutEntryRayTracing", header:"wgvk.h", inheritable.} = object
+  BindGroupLayoutEntryRayTracing* {.bycopy, importc:"struct WGPUBindGroupLayoutEntryRayTracing", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     accelerationStructure* :Bool
-  SamplerDescriptor* {.bycopy, importc:"struct WGPUSamplerDescriptor", header:"wgvk.h", inheritable.} = object
+  SamplerDescriptor* {.bycopy, importc:"struct WGPUSamplerDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     addressModeU* :AddressMode
@@ -380,16 +380,16 @@ type
     lodMaxClamp* :cfloat
     compare* :CompareFunction
     maxAnisotropy* :uint16
-  FutureWaitInfo* {.bycopy, importc:"struct WGPUFutureWaitInfo", header:"wgvk.h", inheritable.} = object
+  FutureWaitInfo* {.bycopy, importc:"struct WGPUFutureWaitInfo", header:"wgvk.h", pure, inheritable.} = object
     future* :Future
     completed* :Bool32
-  ExtrasLimits* {.bycopy, importc:"struct WGPUExtrasLimits", header:"wgvk.h", inheritable.} = object
+  ExtrasLimits* {.bycopy, importc:"struct WGPUExtrasLimits", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     maxStorageBuffersInVertexStage* :uint32
     maxStorageTexturesInVertexStage* :uint32
     maxStorageBuffersInFragmentStage* :uint32
     maxStorageTexturesInFragmentStage* :uint32
-  Limits* {.bycopy, importc:"struct WGPULimits", header:"wgvk.h", inheritable.} = object
+  Limits* {.bycopy, importc:"struct WGPULimits", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     maxTextureDimension1D* :uint32
     maxTextureDimension2D* :uint32
@@ -423,24 +423,24 @@ type
     maxComputeWorkgroupSizeZ* :uint32
     maxComputeWorkgroupsPerDimension* :uint32
     maxImmediateSize* :uint32
-  QueueDescriptor* {.bycopy, importc:"struct WGPUQueueDescriptor", header:"wgvk.h", inheritable.} = object
+  QueueDescriptor* {.bycopy, importc:"struct WGPUQueueDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
   Proc* = proc () {.cdecl.}
   DeviceLostCallback* = proc (a0 :ptr Device; a1 :DeviceLostReason; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   UncapturedErrorCallback* = proc (a0 :ptr Device; a1 :ErrorType; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  DeviceLostCallbackInfo* {.bycopy, importc:"struct WGPUDeviceLostCallbackInfo", header:"wgvk.h", inheritable.} = object
+  DeviceLostCallbackInfo* {.bycopy, importc:"struct WGPUDeviceLostCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     mode* :cint
     callback* :DeviceLostCallback
     userdata1* :pointer
     userdata2* :pointer
-  UncapturedErrorCallbackInfo* {.bycopy, importc:"struct WGPUUncapturedErrorCallbackInfo", header:"wgvk.h", inheritable.} = object
+  UncapturedErrorCallbackInfo* {.bycopy, importc:"struct WGPUUncapturedErrorCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     callback* :UncapturedErrorCallback
     userdata1* :pointer
     userdata2* :pointer
-  DeviceDescriptor* {.bycopy, importc:"struct WGPUDeviceDescriptor", header:"wgvk.h", inheritable.} = object
+  DeviceDescriptor* {.bycopy, importc:"struct WGPUDeviceDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     requiredFeatureCount* :csize_t
@@ -449,12 +449,12 @@ type
     defaultQueue* :QueueDescriptor
     deviceLostCallbackInfo* :DeviceLostCallbackInfo
     uncapturedErrorCallbackInfo* :UncapturedErrorCallbackInfo
-  Color* {.bycopy, importc:"struct WGPUColor", header:"wgvk.h", inheritable.} = object
+  Color* {.bycopy, importc:"struct WGPUColor", header:"wgvk.h", pure, inheritable.} = object
     r* :cdouble
     g* :cdouble
     b* :cdouble
     a* :cdouble
-  RenderPassColorAttachment* {.bycopy, importc:"struct WGPURenderPassColorAttachment", header:"wgvk.h", inheritable.} = object
+  RenderPassColorAttachment* {.bycopy, importc:"struct WGPURenderPassColorAttachment", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     view* :TextureView
     depthSlice* :uint32
@@ -462,7 +462,7 @@ type
     loadOp* :LoadOp
     storeOp* :StoreOp
     clearValue* :Color
-  RenderPassDepthStencilAttachment* {.bycopy, importc:"struct WGPURenderPassDepthStencilAttachment", header:"wgvk.h", inheritable.} = object
+  RenderPassDepthStencilAttachment* {.bycopy, importc:"struct WGPURenderPassDepthStencilAttachment", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     view* :TextureView
     depthLoadOp* :LoadOp
@@ -473,7 +473,7 @@ type
     stencilStoreOp* :StoreOp
     stencilClearValue* :uint32
     stencilReadOnly* :uint32
-  RenderPassDescriptor* {.bycopy, importc:"struct WGPURenderPassDescriptor", header:"wgvk.h", inheritable.} = object
+  RenderPassDescriptor* {.bycopy, importc:"struct WGPURenderPassDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     colorAttachmentCount* :csize_t
@@ -481,10 +481,10 @@ type
     depthStencilAttachment* :ptr RenderPassDepthStencilAttachment
     occlusionQuerySet* :QuerySet
     timestampWrites* :ptr PassTimestampWrites
-  RenderBundleDescriptor* {.bycopy, importc:"struct WGPURenderBundleDescriptor", header:"wgvk.h", inheritable.} = object
+  RenderBundleDescriptor* {.bycopy, importc:"struct WGPURenderBundleDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
-  RenderBundleEncoderDescriptor* {.bycopy, importc:"struct WGPURenderBundleEncoderDescriptor", header:"wgvk.h", inheritable.} = object
+  RenderBundleEncoderDescriptor* {.bycopy, importc:"struct WGPURenderBundleEncoderDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     colorFormatCount* :csize_t
@@ -493,10 +493,10 @@ type
     sampleCount* :uint32
     depthReadOnly* :Bool
     stencilReadOnly* :Bool
-  CommandEncoderDescriptor* {.bycopy, importc:"struct WGPUCommandEncoderDescriptor", header:"wgvk.h", inheritable.} = object
+  CommandEncoderDescriptor* {.bycopy, importc:"struct WGPUCommandEncoderDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
-  TextureDescriptor* {.bycopy, importc:"struct WGPUTextureDescriptor", header:"wgvk.h", inheritable.} = object
+  TextureDescriptor* {.bycopy, importc:"struct WGPUTextureDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     usage* :TextureUsage
@@ -507,7 +507,7 @@ type
     sampleCount* :uint32
     viewFormatCount* :csize_t
     viewFormats* :ptr TextureFormat
-  TextureViewDescriptor* {.bycopy, importc:"struct WGPUTextureViewDescriptor", header:"wgvk.h", inheritable.} = object
+  TextureViewDescriptor* {.bycopy, importc:"struct WGPUTextureViewDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     format* :TextureFormat
@@ -518,52 +518,52 @@ type
     arrayLayerCount* :uint32
     aspect* :TextureAspect
     usage* :TextureUsage
-  TextureComponentSwizzle* {.bycopy, importc:"struct WGPUTextureComponentSwizzle", header:"wgvk.h", inheritable.} = object
+  TextureComponentSwizzle* {.bycopy, importc:"struct WGPUTextureComponentSwizzle", header:"wgvk.h", pure, inheritable.} = object
     r* :ComponentSwizzle
     g* :ComponentSwizzle
     b* :ComponentSwizzle
     a* :ComponentSwizzle
-  TextureComponentSwizzleDescriptor* {.bycopy, importc:"struct WGPUTextureComponentSwizzleDescriptor", header:"wgvk.h", inheritable.} = object
+  TextureComponentSwizzleDescriptor* {.bycopy, importc:"struct WGPUTextureComponentSwizzleDescriptor", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     swizzle* :TextureComponentSwizzle
-  BufferAllocatorSelector* {.bycopy, importc:"struct WGPUBufferAllocatorSelector", header:"wgvk.h", inheritable.} = object
+  BufferAllocatorSelector* {.bycopy, importc:"struct WGPUBufferAllocatorSelector", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     forceBuiltin* :Bool
-  BufferDescriptor* {.bycopy, importc:"struct WGPUBufferDescriptor", header:"wgvk.h", inheritable.} = object
+  BufferDescriptor* {.bycopy, importc:"struct WGPUBufferDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     usage* :BufferUsage
     size* :uint64
     mappedAtCreation* :Bool
   BufferMapCallback* = proc (a0 :MapAsyncStatus; a1 :StringView; a2 :pointer; a3 :pointer) {.cdecl.}
-  BufferMapCallbackInfo* {.bycopy, importc:"struct WGPUBufferMapCallbackInfo", header:"wgvk.h", inheritable.} = object
+  BufferMapCallbackInfo* {.bycopy, importc:"struct WGPUBufferMapCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     mode* :CallbackMode
     callback* :BufferMapCallback
     userdata1* :pointer
     userdata2* :pointer
-  BindGroupDescriptor* {.bycopy, importc:"struct WGPUBindGroupDescriptor", header:"wgvk.h", inheritable.} = object
+  BindGroupDescriptor* {.bycopy, importc:"struct WGPUBindGroupDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     layout* :BindGroupLayout
     entryCount* :csize_t
     entries* :ptr BindGroupEntry
-  BindGroupLayoutDescriptor* {.bycopy, importc:"struct WGPUBindGroupLayoutDescriptor", header:"wgvk.h", inheritable.} = object
+  BindGroupLayoutDescriptor* {.bycopy, importc:"struct WGPUBindGroupLayoutDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     entryCount* :csize_t
     entries* :ptr BindGroupLayoutEntry
-  PipelineLayoutDescriptor* {.bycopy, importc:"struct WGPUPipelineLayoutDescriptor", header:"wgvk.h", inheritable.} = object
+  PipelineLayoutDescriptor* {.bycopy, importc:"struct WGPUPipelineLayoutDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     bindGroupLayoutCount* :csize_t
     bindGroupLayouts* :ptr BindGroupLayout
     immediateDataRangeByteSize* :uint32
-  SurfaceTexture* {.bycopy, importc:"struct WGPUSurfaceTexture", header:"wgvk.h", inheritable.} = object
+  SurfaceTexture* {.bycopy, importc:"struct WGPUSurfaceTexture", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     texture* :Texture
     status* :SurfaceGetCurrentTextureStatus
-  SurfaceCapabilities* {.bycopy, importc:"struct WGPUSurfaceCapabilities", header:"wgvk.h", inheritable.} = object
+  SurfaceCapabilities* {.bycopy, importc:"struct WGPUSurfaceCapabilities", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     usages* :TextureUsage
     formatCount* :csize_t
@@ -572,22 +572,22 @@ type
     presentModes* :ptr PresentMode
     alphaModeCount* :csize_t
     alphaModes* :ptr CompositeAlphaMode
-  ConstantEntry* {.bycopy, importc:"struct WGPUConstantEntry", header:"wgvk.h", inheritable.} = object
+  ConstantEntry* {.bycopy, importc:"struct WGPUConstantEntry", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     key* :StringView
     value* :cdouble
-  VertexAttribute* {.bycopy, importc:"struct WGPUVertexAttribute", header:"wgvk.h", inheritable.} = object
+  VertexAttribute* {.bycopy, importc:"struct WGPUVertexAttribute", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     format* :VertexFormat
     offset* :uint64
     shaderLocation* :uint32
-  VertexBufferLayout* {.bycopy, importc:"struct WGPUVertexBufferLayout", header:"wgvk.h", inheritable.} = object
+  VertexBufferLayout* {.bycopy, importc:"struct WGPUVertexBufferLayout", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     stepMode* :VertexStepMode
     arrayStride* :uint64
     attributeCount* :csize_t
     attributes* :ptr VertexAttribute
-  VertexState* {.bycopy, importc:"struct WGPUVertexState", header:"wgvk.h", inheritable.} = object
+  VertexState* {.bycopy, importc:"struct WGPUVertexState", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     module* :ShaderModule
     entryPoint* :StringView
@@ -597,33 +597,33 @@ type
     buffers* :ptr VertexBufferLayout
   BlendOperation* = cint
   BlendFactor* = cint
-  BlendComponent* {.bycopy, importc:"struct WGPUBlendComponent", header:"wgvk.h", inheritable.} = object
+  BlendComponent* {.bycopy, importc:"struct WGPUBlendComponent", header:"wgvk.h", pure, inheritable.} = object
     operation* :BlendOperation
     srcFactor* :BlendFactor
     dstFactor* :BlendFactor
-  BlendState* {.bycopy, importc:"struct WGPUBlendState", header:"wgvk.h", inheritable.} = object
+  BlendState* {.bycopy, importc:"struct WGPUBlendState", header:"wgvk.h", pure, inheritable.} = object
     color* :BlendComponent
     alpha* :BlendComponent
-  ShaderSourceSPIRV* {.bycopy, importc:"struct WGPUShaderSourceSPIRV", header:"wgvk.h", inheritable.} = object
+  ShaderSourceSPIRV* {.bycopy, importc:"struct WGPUShaderSourceSPIRV", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     codeSize* :uint32
     code* :ptr uint32
-  ShaderSourceWGSL* {.bycopy, importc:"struct WGPUShaderSourceWGSL", header:"wgvk.h", inheritable.} = object
+  ShaderSourceWGSL* {.bycopy, importc:"struct WGPUShaderSourceWGSL", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     code* :StringView
-  ShaderSourceGLSL* {.bycopy, importc:"struct WGPUShaderSourceGLSL", header:"wgvk.h", inheritable.} = object
+  ShaderSourceGLSL* {.bycopy, importc:"struct WGPUShaderSourceGLSL", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     stage* :ShaderStage
     code* :StringView
-  ShaderModuleDescriptor* {.bycopy, importc:"struct WGPUShaderModuleDescriptor", header:"wgvk.h", inheritable.} = object
+  ShaderModuleDescriptor* {.bycopy, importc:"struct WGPUShaderModuleDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
-  ColorTargetState* {.bycopy, importc:"struct WGPUColorTargetState", header:"wgvk.h", inheritable.} = object
+  ColorTargetState* {.bycopy, importc:"struct WGPUColorTargetState", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     format* :TextureFormat
     blend* :ptr BlendState
     writeMask* :ColorWriteMask
-  FragmentState* {.bycopy, importc:"struct WGPUFragmentState", header:"wgvk.h", inheritable.} = object
+  FragmentState* {.bycopy, importc:"struct WGPUFragmentState", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     module* :ShaderModule
     entryPoint* :StringView
@@ -631,13 +631,13 @@ type
     constants* :ptr ConstantEntry
     targetCount* :csize_t
     targets* :ptr ColorTargetState
-  CommandBufferDescriptor* {.bycopy, importc:"struct WGPUCommandBufferDescriptor", header:"wgvk.h", inheritable.} = object
+  CommandBufferDescriptor* {.bycopy, importc:"struct WGPUCommandBufferDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
-  PrimitiveLineWidthInfo* {.bycopy, importc:"struct WGPUPrimitiveLineWidthInfo", header:"wgvk.h", inheritable.} = object
+  PrimitiveLineWidthInfo* {.bycopy, importc:"struct WGPUPrimitiveLineWidthInfo", header:"wgvk.h", pure, inheritable.} = object
     chain* :ChainedStruct
     lineWidth* :uint32
-  PrimitiveState* {.bycopy, importc:"struct WGPUPrimitiveState", header:"wgvk.h", inheritable.} = object
+  PrimitiveState* {.bycopy, importc:"struct WGPUPrimitiveState", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     topology* :PrimitiveTopology
     stripIndexFormat* :IndexFormat
@@ -645,12 +645,12 @@ type
     cullMode* :CullMode
     unclippedDepth* :Bool32
   StencilOperation* = cint
-  StencilFaceState* {.bycopy, importc:"struct WGPUStencilFaceState", header:"wgvk.h", inheritable.} = object
+  StencilFaceState* {.bycopy, importc:"struct WGPUStencilFaceState", header:"wgvk.h", pure, inheritable.} = object
     compare* :CompareFunction
     failOp* :StencilOperation
     depthFailOp* :StencilOperation
     passOp* :StencilOperation
-  DepthStencilState* {.bycopy, importc:"struct WGPUDepthStencilState", header:"wgvk.h", inheritable.} = object
+  DepthStencilState* {.bycopy, importc:"struct WGPUDepthStencilState", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     format* :TextureFormat
     depthWriteEnabled* :Bool32
@@ -662,23 +662,23 @@ type
     depthBias* :int32
     depthBiasSlopeScale* :cfloat
     depthBiasClamp* :cfloat
-  BufferBindingInfo* {.bycopy, importc:"struct WGPUBufferBindingInfo", header:"wgvk.h", inheritable.} = object
+  BufferBindingInfo* {.bycopy, importc:"struct WGPUBufferBindingInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     `type`* :BufferBindingType
     minBindingSize* :uint64
-  SamplerBindingInfo* {.bycopy, importc:"struct WGPUSamplerBindingInfo", header:"wgvk.h", inheritable.} = object
+  SamplerBindingInfo* {.bycopy, importc:"struct WGPUSamplerBindingInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     `type`* :SamplerBindingType
-  TextureBindingInfo* {.bycopy, importc:"struct WGPUTextureBindingInfo", header:"wgvk.h", inheritable.} = object
+  TextureBindingInfo* {.bycopy, importc:"struct WGPUTextureBindingInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     sampleType* :TextureSampleType
     viewDimension* :TextureViewDimension
-  StorageTextureBindingInfo* {.bycopy, importc:"struct WGPUStorageTextureBindingInfo", header:"wgvk.h", inheritable.} = object
+  StorageTextureBindingInfo* {.bycopy, importc:"struct WGPUStorageTextureBindingInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     access* :StorageTextureAccess
     format* :TextureFormat
     viewDimension* :TextureViewDimension
-  GlobalReflectionInfo* {.bycopy, importc:"struct WGPUGlobalReflectionInfo", header:"wgvk.h", inheritable.} = object
+  GlobalReflectionInfo* {.bycopy, importc:"struct WGPUGlobalReflectionInfo", header:"wgvk.h", pure, inheritable.} = object
     name* :StringView
     bindGroup* :uint32
     binding* :uint32
@@ -689,39 +689,39 @@ type
     storageTexture* :StorageTextureBindingInfo
   ReflectionComponentType* = cint
   ReflectionCompositionType* = cint
-  ReflectionAttribute* {.bycopy, importc:"struct WGPUReflectionAttribute", header:"wgvk.h", inheritable.} = object
+  ReflectionAttribute* {.bycopy, importc:"struct WGPUReflectionAttribute", header:"wgvk.h", pure, inheritable.} = object
     location* :uint32
     componentType* :ReflectionComponentType
     compositionType* :ReflectionCompositionType
-  AttributeReflectionInfo* {.bycopy, importc:"struct WGPUAttributeReflectionInfo", header:"wgvk.h", inheritable.} = object
+  AttributeReflectionInfo* {.bycopy, importc:"struct WGPUAttributeReflectionInfo", header:"wgvk.h", pure, inheritable.} = object
     attributeCount* :uint32
     attributes* :ptr ReflectionAttribute
   ReflectionInfoRequestStatus* = cint
-  ReflectionInfo* {.bycopy, importc:"struct WGPUReflectionInfo", header:"wgvk.h", inheritable.} = object
+  ReflectionInfo* {.bycopy, importc:"struct WGPUReflectionInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     globalCount* :uint32
     globals* :ptr GlobalReflectionInfo
     inputAttributes* :ptr AttributeReflectionInfo
     outputAttributes* :ptr AttributeReflectionInfo
   ReflectionInfoCallback* = proc (a0 :ReflectionInfoRequestStatus; a1 :ptr ReflectionInfo; a2 :pointer; a3 :pointer) {.cdecl.}
-  ReflectionInfoCallbackInfo* {.bycopy, importc:"struct WGPUReflectionInfoCallbackInfo", header:"wgvk.h", inheritable.} = object
+  ReflectionInfoCallbackInfo* {.bycopy, importc:"struct WGPUReflectionInfoCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     mode* :CallbackMode
     callback* :ReflectionInfoCallback
     userdata1* :pointer
     userdata2* :pointer
-  MultisampleState* {.bycopy, importc:"struct WGPUMultisampleState", header:"wgvk.h", inheritable.} = object
+  MultisampleState* {.bycopy, importc:"struct WGPUMultisampleState", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     count* :uint32
     mask* :uint32
     alphaToCoverageEnabled* :Bool32
-  ComputeState* {.bycopy, importc:"struct WGPUComputeState", header:"wgvk.h", inheritable.} = object
+  ComputeState* {.bycopy, importc:"struct WGPUComputeState", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     module* :ShaderModule
     entryPoint* :StringView
     constantCount* :csize_t
     constants* :ptr ConstantEntry
-  RenderPipelineDescriptor* {.bycopy, importc:"struct WGPURenderPipelineDescriptor", header:"wgvk.h", inheritable.} = object
+  RenderPipelineDescriptor* {.bycopy, importc:"struct WGPURenderPipelineDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     layout* :PipelineLayout
@@ -730,12 +730,12 @@ type
     depthStencil* :ptr DepthStencilState
     multisample* :MultisampleState
     fragment* :ptr FragmentState
-  ComputePipelineDescriptor* {.bycopy, importc:"struct WGPUComputePipelineDescriptor", header:"wgvk.h", inheritable.} = object
+  ComputePipelineDescriptor* {.bycopy, importc:"struct WGPUComputePipelineDescriptor", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     label* :StringView
     layout* :PipelineLayout
     compute* :ComputeState
-  SurfaceConfiguration* {.bycopy, importc:"struct WGPUSurfaceConfiguration", header:"wgvk.h", inheritable.} = object
+  SurfaceConfiguration* {.bycopy, importc:"struct WGPUSurfaceConfiguration", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     device* :Device
     format* :TextureFormat
@@ -748,81 +748,81 @@ type
     presentMode* :PresentMode
   RequestAdapterCallback* = proc (a0 :RequestAdapterStatus; a1 :Adapter; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   RequestDeviceCallback* = proc (a0 :RequestDeviceStatus; a1 :Device; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  RequestAdapterCallbackInfo* {.bycopy, importc:"struct WGPURequestAdapterCallbackInfo", header:"wgvk.h", inheritable.} = object
+  RequestAdapterCallbackInfo* {.bycopy, importc:"struct WGPURequestAdapterCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     mode* :CallbackMode
     callback* :RequestAdapterCallback
     userdata1* :pointer
     userdata2* :pointer
-  RequestDeviceCallbackInfo* {.bycopy, importc:"struct WGPURequestDeviceCallbackInfo", header:"wgvk.h", inheritable.} = object
+  RequestDeviceCallbackInfo* {.bycopy, importc:"struct WGPURequestDeviceCallbackInfo", header:"wgvk.h", pure, inheritable.} = object
     nextInChain* :ptr ChainedStruct
     mode* :CallbackMode
     callback* :RequestDeviceCallback
     userdata1* :pointer
     userdata2* :pointer
-  Transform3DDescriptor* {.bycopy, importc:"struct WGPUTransform3DDescriptor", header:"wgvk.h", inheritable.} = object
+  Transform3DDescriptor* {.bycopy, importc:"struct WGPUTransform3DDescriptor", header:"wgvk.h", pure, inheritable.} = object
     x* :cfloat
     y* :cfloat
     z* :cfloat
-  RayTracingAccelerationInstanceTransformDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationInstanceTransformDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingAccelerationInstanceTransformDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationInstanceTransformDescriptor", header:"wgvk.h", pure, inheritable.} = object
     translation* :Transform3DDescriptor
     rotation* :Transform3DDescriptor
     scale* :Transform3DDescriptor
-  RayTracingAccelerationGeometryVertexDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationGeometryVertexDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingAccelerationGeometryVertexDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationGeometryVertexDescriptor", header:"wgvk.h", pure, inheritable.} = object
     buffer* :Buffer
     format* :VertexFormat
     stride* :uint32
     offset* :uint32
     count* :uint32
-  RayTracingAccelerationGeometryIndexDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationGeometryIndexDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingAccelerationGeometryIndexDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationGeometryIndexDescriptor", header:"wgvk.h", pure, inheritable.} = object
     buffer* :Buffer
     format* :IndexFormat
     offset* :uint32
     count* :uint32
-  RayTracingAccelerationGeometryAABBDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationGeometryAABBDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingAccelerationGeometryAABBDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationGeometryAABBDescriptor", header:"wgvk.h", pure, inheritable.} = object
     buffer* :Buffer
     stride* :uint32
     offset* :uint32
     count* :uint32
-  RayTracingAccelerationGeometryDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationGeometryDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingAccelerationGeometryDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationGeometryDescriptor", header:"wgvk.h", pure, inheritable.} = object
     usage* :RayTracingAccelerationGeometryUsage
     `type`* :RayTracingAccelerationGeometryType
     vertex* :RayTracingAccelerationGeometryVertexDescriptor
     index* :RayTracingAccelerationGeometryIndexDescriptor
     aabb* :RayTracingAccelerationGeometryAABBDescriptor
-  TransformMatrix* {.bycopy, importc:"struct WGPUTransformMatrix", header:"wgvk.h", inheritable.} = object
+  TransformMatrix* {.bycopy, importc:"struct WGPUTransformMatrix", header:"wgvk.h", pure, inheritable.} = object
     matrix* :array[3, array[4, cfloat]]
-  RayTracingAccelerationInstanceDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationInstanceDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingAccelerationInstanceDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationInstanceDescriptor", header:"wgvk.h", pure, inheritable.} = object
     usage* :RayTracingAccelerationInstanceUsage
     mask* :uint8
     instanceId* :uint32
     instanceOffset* :uint32
     transformMatrix* :TransformMatrix
     geometryContainer* :RayTracingAccelerationContainer
-  RayTracingAccelerationContainerDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationContainerDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingAccelerationContainerDescriptor* {.bycopy, importc:"struct WGPURayTracingAccelerationContainerDescriptor", header:"wgvk.h", pure, inheritable.} = object
     usage* :RayTracingAccelerationContainerUsage
     level* :RayTracingAccelerationContainerLevel
     geometryCount* :uint32
     instanceCount* :uint32
     geometries* :ptr RayTracingAccelerationGeometryDescriptor
     instances* :ptr RayTracingAccelerationInstanceDescriptor
-  RayTracingStateDescriptor* {.bycopy, importc:"struct WGPURayTracingStateDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingStateDescriptor* {.bycopy, importc:"struct WGPURayTracingStateDescriptor", header:"wgvk.h", pure, inheritable.} = object
     shaderBindingTable* :RayTracingShaderBindingTable
     maxRecursionDepth* :uint32
     maxPayloadSize* :uint32
-  RayTracingPipelineDescriptor* {.bycopy, importc:"struct WGPURayTracingPipelineDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingPipelineDescriptor* {.bycopy, importc:"struct WGPURayTracingPipelineDescriptor", header:"wgvk.h", pure, inheritable.} = object
     layout* :PipelineLayout
     rayTracingState* :RayTracingStateDescriptor
-  RayTracingShaderBindingTableStageDescriptor* {.bycopy, importc:"struct WGPURayTracingShaderBindingTableStageDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingShaderBindingTableStageDescriptor* {.bycopy, importc:"struct WGPURayTracingShaderBindingTableStageDescriptor", header:"wgvk.h", pure, inheritable.} = object
     stage* :ShaderStage
     module* :ShaderModule
-  RayTracingShaderBindingTableGroupDescriptor* {.bycopy, importc:"struct WGPURayTracingShaderBindingTableGroupDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingShaderBindingTableGroupDescriptor* {.bycopy, importc:"struct WGPURayTracingShaderBindingTableGroupDescriptor", header:"wgvk.h", pure, inheritable.} = object
     `type`* :RayTracingShaderBindingTableGroupType
     generalIndex* :uint32
     closestHitIndex* :uint32
     anyHitIndex* :uint32
     intersectionIndex* :uint32
-  RayTracingShaderBindingTableDescriptor* {.bycopy, importc:"struct WGPURayTracingShaderBindingTableDescriptor", header:"wgvk.h", inheritable.} = object
+  RayTracingShaderBindingTableDescriptor* {.bycopy, importc:"struct WGPURayTracingShaderBindingTableDescriptor", header:"wgvk.h", pure, inheritable.} = object
     stageCount* :uint32
     stages* :ptr RayTracingShaderBindingTableStageDescriptor
     groupCount* :uint32

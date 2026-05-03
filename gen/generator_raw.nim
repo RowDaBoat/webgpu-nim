@@ -9,10 +9,15 @@ from henka import nil
 import ./base
 
 #_____________________________
+proc overridePragmas(kind: henka.LabelKind, name: string, defaults: seq[(string, string)]): seq[(string, string)] =
+  result = defaults
+  if kind in {henka.StructType}: result.add [("pure", ""), ("inheritable", "")]
+#_____________________________
 when isMainModule:
   let output = henka.generate(
-    inputFile = base.wgpuDir/"wgvk.h",
-    linkMode  = henka.LinkMode.header,
+    inputFile      = base.wgpuDir/"wgvk.h",
+    pragmaOverride = overridePragmas,
+    linkMode       = henka.LinkMode.header,
   )
   system.writeFile(base.thisDir/"result_raw.nim", output)
   os.copyFile base.thisDir/"result_raw.nim", base.srcDir/"wgpu"/"raw.nim"
