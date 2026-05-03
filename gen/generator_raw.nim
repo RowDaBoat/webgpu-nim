@@ -9,17 +9,10 @@ from henka import nil
 import ./base
 
 #_____________________________
-proc rename (
-    kind : henka.LabelKind;
-    name : string
-  ) :henka.RenameResult=
-  result = (name: name, pragmas: @[])
-
-#_____________________________
 when isMainModule:
-  let ast      = henka.generateAst(@[base.wgpuDir/"wgvk.h"])
-  let bindings = henka.generateBindings(ast) #, rename)
-  system.writeFile(base.thisDir/"result_raw.nim", bindings)
+  let output = henka.generate(
+    inputFile = base.wgpuDir/"wgvk.h",
+    linkMode  = henka.LinkMode.header,
+  )
+  system.writeFile(base.thisDir/"result_raw.nim", output)
   os.copyFile base.thisDir/"result_raw.nim", base.srcDir/"wgpu"/"raw.nim"
-#_____________________________
-
