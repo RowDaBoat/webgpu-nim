@@ -2,7 +2,7 @@
 #  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
 #:___________________________________________________________
 # @deps std
-from std/strutils import startsWith, endsWith, toUpperAscii, replace, removePrefix
+from std/strutils import startsWith, endsWith, toUpperAscii, replace
 from std/os import parentDir, `/`
 # @deps external
 from henka import nil
@@ -10,41 +10,27 @@ from henka import nil
 from ./cfg import nil
 from ./base import nil
 
-
-#_____________________________
-proc rename (
-    kind : henka.LabelKind;
-    name : string
-  ) :henka.RenameResult=
-  result = (name: name, pragmas: @[])
-  if kind == henka.EnumType: result.pragmas = @["pure"]
-  if kind == henka.StructType: result.pragmas = @["pure", "inheritable"]
-  # General Rename
+proc rename(kind: henka.LabelKind, name: string): string =
+  result = name
   for entry in cfg.replaceList:
-    result.name = result.name.replace( entry[0], entry[1] )
-  # Start Rename
+    result = result.replace(entry[0], entry[1])
   for entry in cfg.stripPrefix:
-    if result.name.startsWith( entry ): result.name = result.name[entry.len .. ^1]
+    if result.startsWith(entry): result = result[entry.len .. ^1]
   for entry in cfg.stripStart:
-    if result.name.startsWith( entry ): result.name = result.name[entry.len .. ^1]
+    if result.startsWith(entry): result = result[entry.len .. ^1]
   for entry in cfg.replaceStart:
-    if result.name.startsWith( entry[0] ): result.name = entry[1] & result.name[entry[0].len .. ^1]
-  # End Rename
+    if result.startsWith(entry[0]): result = entry[1] & result[entry[0].len .. ^1]
   for entry in cfg.stripEnd:
-    if result.name.endsWith( entry ) :
-      if entry == "_t": result.name[0] = result.name[0].toUpperAscii()
-      result.name = result.name[0..^entry.len+1]
-      if result.name in cfg.addT: result.name = result.name&"T"
-  if result.name in ["type"]: result.name = "`" & result.name & "`"
-  result.name.removePrefix("struct_")
-  result.name.removePrefix("union_")
-  result.name.removePrefix("enum_")
+    if result.endsWith(entry):
+      if entry == "_t": result[0] = result[0].toUpperAscii()
+      result = result[0..^entry.len+1]
+      if result in cfg.addT: result = result & "T"
 
-#_____________________________
 when isMainModule:
-  let ast      = henka.generateAst(@[base.wgpuDir/"wgvk.h"])
-  let bindings = henka.generateBindings(ast, rename)
-  system.writeFile(base.thisDir/"result.nim", bindings)
+  let output = henka.generate(
+    inputFile      = base.wgpuDir/"wgvk.h",
+    renamer        = rename,
+    linkMode       = henka.LinkMode.header,
+  )
+  system.writeFile(base.thisDir/"result.nim", output)
   os.copyFile base.thisDir/"result.nim", base.srcDir/"wgpu"/"api.nim"
-#_____________________________
-

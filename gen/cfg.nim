@@ -5,70 +5,72 @@ const stripPrefix * = [
   "WGPU",
   ] #:: stripPrefix = [ ... ]
 const stripStart  * = [
-  # Enum Values Prefixes
-  "AdapterType_",
-  "AddressMode_",
-  "BackendType_",
-  "BlendFactor_",
-  "BlendOperation_",
-  "BufferBindingType_",
-  "BufferMapState_",
-  "CallbackMode_",
-  "CompareFunction_",
-  "CompilationInfoRequestStatus_",
-  "CompilationMessageType_",
-  "CompositeAlphaMode_",
-  "CreatePipelineAsyncStatus_",
-  "CullMode_",
-  "DeviceLostReason_",
-  "ErrorFilter_",
-  "ErrorType_",
-  "FeatureLevel_",
-  "FeatureName_",
-  "FilterMode_",
-  "FrontFace_",
-  "IndexFormat_",
-  "LoadOp_",
-  "MapAsyncStatus_",
-  "MipmapFilterMode_",
-  "OptionalBool_",
-  "PopErrorScopeStatus_",
-  "PowerPreference_",
-  "PresentMode_",
-  "PrimitiveTopology_",
-  "QueryType_",
-  "QueueWorkDoneStatus_",
-  "RequestAdapterStatus_",
-  "RequestDeviceStatus_",
-  "SamplerBindingType_",
-  "Status_",
-  "StencilOperation_",
-  "StencilOperation_",
-  "StorageTextureAccess_",
-  "StoreOp_",
-  "SurfaceGetCurrentTextureStatus_",
-  "TextureAspect_",
-  "TextureFormat_",
-  "TextureSampleType_",
-  "TextureViewDimension_",
-  "VertexFormat_",
-  # "VertexStepMode_",  # FIX: Creates a duplicate of Instance because enums are not marked .pure. in futhark. Uncomment when solved
-  "WGSLLanguageFeatureName_",
-  "WaitStatus_",
-  # FIX: Creates a duplicate of RenderPassMaxDrawCount because enums are not marked .pure. in futhark. Uncomment when solved
-  # "SType_",
-  # "NativeSType_",
-  "NativeFeature_",
-  "LogLevel_",
-  "Dx12Compiler_",
-  "Gles3MinorVersion_",
-  "PipelineStatisticName_",
-  "NativeQueryType_",
-  "NativeTextureFormat_",
-  # FIX: Creates a duplicate of All because enums are not marked .pure. in futhark. Uncomment when solved
-  # "InstanceBackend_",
-  # "WGPUInstanceBackend_",
-
+  "",  # Remove this line when any value is enabled
+  # # Enum Values Prefixes
+  # TODO: Henka needs these commented out,  to avoid cint collisions.
+  #       Revisit when cint ergonomics are implemented
+  # "AdapterType_",
+  # "AddressMode_",
+  # "BackendType_",
+  # "BlendFactor_",
+  # "BlendOperation_",
+  # "BufferBindingType_",
+  # "BufferMapState_",
+  # "CallbackMode_",
+  # "CompareFunction_",
+  # "CompilationInfoRequestStatus_",
+  # "CompilationMessageType_",
+  # "CompositeAlphaMode_",
+  # "CreatePipelineAsyncStatus_",
+  # "CullMode_",
+  # "DeviceLostReason_",
+  # "ErrorFilter_",
+  # "ErrorType_",
+  # "FeatureLevel_",
+  # "FeatureName_",
+  # "FilterMode_",
+  # "FrontFace_",
+  # "IndexFormat_",
+  # "LoadOp_",
+  # "MapAsyncStatus_",
+  # "MipmapFilterMode_",
+  # "OptionalBool_",
+  # "PopErrorScopeStatus_",
+  # "PowerPreference_",
+  # "PresentMode_",
+  # "PrimitiveTopology_",
+  # "QueryType_",
+  # "QueueWorkDoneStatus_",
+  # "RequestAdapterStatus_",
+  # "RequestDeviceStatus_",
+  # "SamplerBindingType_",
+  # "Status_",
+  # "StencilOperation_",
+  # "StencilOperation_",
+  # "StorageTextureAccess_",
+  # "StoreOp_",
+  # "SurfaceGetCurrentTextureStatus_",
+  # "TextureAspect_",
+  # "TextureFormat_",
+  # "TextureSampleType_",
+  # "TextureViewDimension_",
+  # "VertexFormat_",
+  # # "VertexStepMode_",  # FIX: Creates a duplicate of Instance, clashing with an enum.
+  # "WGSLLanguageFeatureName_",
+  # "WaitStatus_",
+  # # FIX: Creates a duplicate of RenderPassMaxDrawCount, clashing with an enum.
+  # # "SType_",
+  # # "NativeSType_",
+  # "NativeFeature_",
+  # "LogLevel_",
+  # "Dx12Compiler_",
+  # "Gles3MinorVersion_",
+  # "PipelineStatisticName_",
+  # "NativeQueryType_",
+  # "NativeTextureFormat_",
+  # # FIX: Creates a duplicate of All, clashing with an enum.
+  # # "InstanceBackend_",
+  # # "WGPUInstanceBackend_",
   ] #:: stripStart = [ ... ]
 const replaceStart * = [
   ("1D", "D1D"),
@@ -145,6 +147,12 @@ const replaceList * = [
   ("wgpuDeviceGetFeatures",                              "get"                           ),
   ("wgpuDevicePoll",                                     "poll"                          ), ## Returns true if the queue is empty, or false if there are more queue submissions still in flight.
   ("wgpuDeviceGetLostFuture",                            "getLostFuture"                 ),
+  ("wgpuWriteBindGroup",                                 "write"                         ),
+  ("wgpuDeviceTick",                                     "tick"                          ),
+  ("wgpuDeviceCreateFence",                              "createFence"                   ),
+  ("wgpuDeviceCreateRayTracingShaderBindingTable",       "create"                        ),
+  ("wgpuDeviceCreateRayTracingAccelerationContainer",    "create"                        ),
+  ("wgpuDeviceCreateRayTracingPipeline",                 "create"                        ),
 
   # Surface
   ("wgpuSurfaceConfigure",                               "configure"                     ),
@@ -187,6 +195,12 @@ const replaceList * = [
   ("wgpuRenderPassEncoderMultiDrawIndexedIndirectCount", "multiDrawIndexedIndirectCount" ),
   ("wgpuRenderPassEncoderWriteTimestamp",                "writeTimestamp"                ),
 
+  # RaytracingPass Encoder
+  ("wgpuRaytracingPassEncoderSetPipeline",               "set"                           ),
+  ("wgpuRaytracingPassEncoderSetBindGroup",              "set"                           ),
+  ("wgpuRaytracingPassEncoderTraceRays",                 "trace"                         ),
+  ("wgpuRaytracingPassEncoderEnd",                       "End"                           ),
+
   # Command Encoder
   ("wgpuCommandEncoderBeginRenderPass",                  "begin"                         ),
   ("wgpuCommandEncoderBeginComputePass",                 "begin"                         ),
@@ -201,6 +215,13 @@ const replaceList * = [
   ("wgpuCommandEncoderPushDebugGroup",                   "pushDebugGroup"                ),
   ("wgpuCommandEncoderResolveQuerySet",                  "resolve"                       ),
   ("wgpuCommandEncoderWriteTimestamp",                   "writeTimestamp"                ),
+  ("wgpuCommandEncoderSetLabel",                         "setLabel"                      ),
+  ("wgpuCommandEncoderTraceRays",                        "traceRays"                     ),
+  ("wgpuCommandEncoderBeginRaytracingPass",              "begin"                         ),
+  ("wgpuCommandEncoderBuildRayTracingAccelerationContainer",  "build"                    ),
+  ("wgpuCommandEncoderCopyRayTracingAccelerationContainer",   "copy"                     ),
+  ("wgpuCommandEncoderUpdateRayTracingAccelerationContainer", "update"                   ),
+
 
   # Queue
   ("wgpuQueueSubmit",                                    "submit"                        ),
@@ -210,17 +231,21 @@ const replaceList * = [
   ("wgpuQueueSetLabel",                                  "setLabel"                      ),
   ("wgpuQueueRelease",                                   "release"                       ),
   ("wgpuQueueSubmitForIndex",                            "submitForIndex"                ),
+  ("wgpuQueueWaitIdle",                                  "waitIdle"                      ),
 
   # Buffer
+  ("wgpuBufferMap",                                      "map"                           ),
+  ("wgpuBufferUnmap",                                    "unmap"                         ),
   ("wgpuBufferMapAsync",                                 "mapAsync"                      ),
   ("wgpuBufferGetMappedRange",                           "getMappedRange"                ),
   ("wgpuBufferGetConstMappedRange",                      "getConstMappedRange"           ),
+  ("wgpuBufferReadMappedRange",                          "readMappedRange"               ),
+  ("wgpuBufferWriteMappedRange",                         "writeMappedRange"              ),
+  ("wgpuBufferGetMapState",                              "getMapState"                   ),
   ("wgpuBufferGetSize",                                  "getSize"                       ),
   ("wgpuBufferGetUsage",                                 "getUsage"                      ),
-  ("wgpuBufferUnmap",                                    "unmap"                         ),
   ("wgpuBufferDestroy",                                  "destroy"                       ),
   ("wgpuBufferSetLabel",                                 "setLabel"                      ),
-  ("wgpuBufferGetMapState",                              "getMapState"                   ),
 
   # Pipeline
   ("wgpuPipelineLayoutSetLabel",                         "setLabel"                      ),
@@ -294,11 +319,17 @@ const replaceList * = [
 
   # CommandBuffer
   ("wgpuCommandBufferSetLabel",                          "setLabel"                      ),
-  ("wgpuCommandEncoderSetLabel",                         "setLabel"                      ),
+  ("wgpuResetCommandBuffer",                             "reset"                         ),
 
   # ShaderModule
-  ("wgpuShaderModuleGetCompilationInfo",                 "getCompilationInfo"            ),
   ("wgpuShaderModuleSetLabel",                           "setLabel"                      ),
+  ("wgpuShaderModuleGetCompilationInfo",                 "getCompilationInfo"            ),
+  ("wgpuShaderModuleGetReflectionInfo",                  "getReflectionInfo"             ),
+
+  # Fence
+  ("wgpuFenceWait",                                      "wait"                          ),
+  ("wgpuFencesWait",                                     "wait"                          ),
+  ("wgpuFenceAttachCallback",                            "attach"                        ),
 
   # Resources: Reference Counting
   ("wgpuDeviceAddRef",                                   "addRef"                        ),
@@ -324,6 +355,7 @@ const replaceList * = [
   ("wgpuSwapChainAddRef",                                "addRef"                        ),
   ("wgpuTextureAddRef",                                  "addRef"                        ),
   ("wgpuTextureViewAddRef",                              "addRef"                        ),
+  ("wgpuFenceAddRef",                                    "addRef"                        ),
   ("wgpuDeviceRelease",                                  "release"                       ),
   ("wgpuInstanceRelease",                                "release"                       ),
   ("wgpuAdapterRelease",                                 "release"                       ),
@@ -346,5 +378,7 @@ const replaceList * = [
   ("wgpuSwapChainRelease",                               "release"                       ),
   ("wgpuTextureRelease",                                 "release"                       ),
   ("wgpuTextureViewRelease",                             "release"                       ),
+  ("wgpuFenceRelease",                                   "release"                       ),
+  ("wgpuRaytracingPassEncoderRelease",                   "release"                       ),
   ] #:: replaceEnd = [ ... ]
 
