@@ -1,3 +1,5 @@
+{.passC: "-Wno-incompatible-function-pointer-types".}
+
 type
   Flags* = uint64
   Bool* = uint32

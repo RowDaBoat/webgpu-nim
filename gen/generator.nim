@@ -37,5 +37,6 @@ when isMainModule:
     pragmaOverride = overridePragmas,
     linkMode       = henka.LinkMode.header,
   )
-  system.writeFile(base.thisDir/"result.nim", output)
+  let pragmas = "{.passC: \"-Wno-incompatible-function-pointer-types\".}\n\n"
+  system.writeFile(base.thisDir/"result.nim", pragmas & output)
   os.copyFile base.thisDir/"result.nim", base.srcDir/"wgpu"/"api.nim"

@@ -86,7 +86,7 @@ elif defined(macosx):
       nextInChain : cast[ptr ChainedStruct](vaddr SurfaceSourceMetalLayer(
         chain     : ChainedStruct(
           next    : nil,
-          sType   : SType_SurfaceSourceMetalLayer,
+          sType   : SType.SurfaceSourceMetalLayer,
           ), #:: chain
         # Get metal layer with our nglfw/metal_glue.h extension
         layer     : glfw.getMetalLayer(win),

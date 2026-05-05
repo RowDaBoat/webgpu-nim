@@ -14,7 +14,7 @@ proc toDescriptor *(code, label :string) :extras.ShaderModuleDescriptor=
   ## @descr Reads the given wgsl shader code, and returns a ShaderModuleDescriptor for it.
   var descriptor         = new wgpu.ShaderSourceWGSL
   descriptor.chain.next  = nil
-  descriptor.chain.sType = wgpu.SType_ShaderSourceWGSL
+  descriptor.chain.sType = wgpu.SType.ShaderSourceWGSL
   descriptor.code        = code.toStringView()
   GC_ref(descriptor)
   result = extras.ShaderModuleDescriptor(
