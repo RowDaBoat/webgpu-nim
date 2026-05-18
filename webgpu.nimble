@@ -50,7 +50,6 @@ template example (name :untyped; descr,file :static string)=
 #_______________________________________
 # @section Examples
 #_____________________________
-example wip,       "Example WIP: Builds the current wip example.",  "wip"
 example hello,     "Example 00:  hellowgpu.",                       "e00_hellowgpu"
 example clear,     "Example 01:  helloclear.",                      "e01_helloclear"
 example triangle,  "Example 02:  hellotriangle.",                   "e02_hellotriangle"
