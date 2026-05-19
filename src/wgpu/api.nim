@@ -4,32 +4,32 @@ type
   Flags * = uint64
   Bool * = uint32
   Bool32 * = uint32
-  TextureImpl *{.incompleteStruct, importc:"struct WGPUTextureImpl", header:"wgvk.h", pure, inheritable.}= object
-  TextureViewImpl *{.incompleteStruct, importc:"struct WGPUTextureViewImpl", header:"wgvk.h", pure, inheritable.}= object
-  BufferImpl *{.incompleteStruct, importc:"struct WGPUBufferImpl", header:"wgvk.h", pure, inheritable.}= object
-  BindGroupImpl *{.incompleteStruct, importc:"struct WGPUBindGroupImpl", header:"wgvk.h", pure, inheritable.}= object
-  BindGroupLayoutImpl *{.incompleteStruct, importc:"struct WGPUBindGroupLayoutImpl", header:"wgvk.h", pure, inheritable.}= object
-  PipelineLayoutImpl *{.incompleteStruct, importc:"struct WGPUPipelineLayoutImpl", header:"wgvk.h", pure, inheritable.}= object
-  FutureImpl *{.incompleteStruct, importc:"struct WGPUFutureImpl", header:"wgvk.h", pure, inheritable.}= object
-  RenderPassEncoderImpl *{.incompleteStruct, importc:"struct WGPURenderPassEncoderImpl", header:"wgvk.h", pure, inheritable.}= object
-  ComputePassEncoderImpl *{.incompleteStruct, importc:"struct WGPUComputePassEncoderImpl", header:"wgvk.h", pure, inheritable.}= object
-  RenderBundleImpl *{.incompleteStruct, importc:"struct WGPURenderBundleImpl", header:"wgvk.h", pure, inheritable.}= object
-  RenderBundleEncoderImpl *{.incompleteStruct, importc:"struct WGPURenderBundleEncoderImpl", header:"wgvk.h", pure, inheritable.}= object
-  CommandEncoderImpl *{.incompleteStruct, importc:"struct WGPUCommandEncoderImpl", header:"wgvk.h", pure, inheritable.}= object
-  CommandBufferImpl *{.incompleteStruct, importc:"struct WGPUCommandBufferImpl", header:"wgvk.h", pure, inheritable.}= object
-  QueueImpl *{.incompleteStruct, importc:"struct WGPUQueueImpl", header:"wgvk.h", pure, inheritable.}= object
-  QuerySetImpl *{.incompleteStruct, importc:"struct WGPUQuerySetImpl", header:"wgvk.h", pure, inheritable.}= object
-  InstanceImpl *{.incompleteStruct, importc:"struct WGPUInstanceImpl", header:"wgvk.h", pure, inheritable.}= object
-  AdapterImpl *{.incompleteStruct, importc:"struct WGPUAdapterImpl", header:"wgvk.h", pure, inheritable.}= object
-  DeviceImpl *{.incompleteStruct, importc:"struct WGPUDeviceImpl", header:"wgvk.h", pure, inheritable.}= object
-  SurfaceImpl *{.incompleteStruct, importc:"struct WGPUSurfaceImpl", header:"wgvk.h", pure, inheritable.}= object
-  ShaderModuleImpl *{.incompleteStruct, importc:"struct WGPUShaderModuleImpl", header:"wgvk.h", pure, inheritable.}= object
-  RenderPipelineImpl *{.incompleteStruct, importc:"struct WGPURenderPipelineImpl", header:"wgvk.h", pure, inheritable.}= object
-  ComputePipelineImpl *{.incompleteStruct, importc:"struct WGPUComputePipelineImpl", header:"wgvk.h", pure, inheritable.}= object
-  TopLevelAccelerationStructureImpl *{.incompleteStruct, importc:"struct WGPUTopLevelAccelerationStructureImpl", header:"wgvk.h", pure, inheritable.}= object
-  BottomLevelAccelerationStructureImpl *{.incompleteStruct, importc:"struct WGPUBottomLevelAccelerationStructureImpl", header:"wgvk.h", pure, inheritable.}= object
-  RaytracingPipelineImpl *{.incompleteStruct, importc:"struct WGPURaytracingPipelineImpl", header:"wgvk.h", pure, inheritable.}= object
-  RaytracingPassEncoderImpl *{.incompleteStruct, importc:"struct WGPURaytracingPassEncoderImpl", header:"wgvk.h", pure, inheritable.}= object
+  TextureImpl *{.incompleteStruct, importc:"struct WGPUTextureImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  TextureViewImpl *{.incompleteStruct, importc:"struct WGPUTextureViewImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  BufferImpl *{.incompleteStruct, importc:"struct WGPUBufferImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  BindGroupImpl *{.incompleteStruct, importc:"struct WGPUBindGroupImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  BindGroupLayoutImpl *{.incompleteStruct, importc:"struct WGPUBindGroupLayoutImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  PipelineLayoutImpl *{.incompleteStruct, importc:"struct WGPUPipelineLayoutImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  FutureImpl *{.incompleteStruct, importc:"struct WGPUFutureImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  RenderPassEncoderImpl *{.incompleteStruct, importc:"struct WGPURenderPassEncoderImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  ComputePassEncoderImpl *{.incompleteStruct, importc:"struct WGPUComputePassEncoderImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  RenderBundleImpl *{.incompleteStruct, importc:"struct WGPURenderBundleImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  RenderBundleEncoderImpl *{.incompleteStruct, importc:"struct WGPURenderBundleEncoderImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  CommandEncoderImpl *{.incompleteStruct, importc:"struct WGPUCommandEncoderImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  CommandBufferImpl *{.incompleteStruct, importc:"struct WGPUCommandBufferImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  QueueImpl *{.incompleteStruct, importc:"struct WGPUQueueImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  QuerySetImpl *{.incompleteStruct, importc:"struct WGPUQuerySetImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  InstanceImpl *{.incompleteStruct, importc:"struct WGPUInstanceImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  AdapterImpl *{.incompleteStruct, importc:"struct WGPUAdapterImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  DeviceImpl *{.incompleteStruct, importc:"struct WGPUDeviceImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  SurfaceImpl *{.incompleteStruct, importc:"struct WGPUSurfaceImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  ShaderModuleImpl *{.incompleteStruct, importc:"struct WGPUShaderModuleImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  RenderPipelineImpl *{.incompleteStruct, importc:"struct WGPURenderPipelineImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  ComputePipelineImpl *{.incompleteStruct, importc:"struct WGPUComputePipelineImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  TopLevelAccelerationStructureImpl *{.incompleteStruct, importc:"struct WGPUTopLevelAccelerationStructureImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  BottomLevelAccelerationStructureImpl *{.incompleteStruct, importc:"struct WGPUBottomLevelAccelerationStructureImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  RaytracingPipelineImpl *{.incompleteStruct, importc:"struct WGPURaytracingPipelineImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
+  RaytracingPassEncoderImpl *{.incompleteStruct, importc:"struct WGPURaytracingPassEncoderImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
   Surface * = ptr SurfaceImpl
   BindGroupLayout * = ptr BindGroupLayoutImpl
   PipelineLayout * = ptr PipelineLayoutImpl
@@ -48,20 +48,20 @@ type
   CommandEncoder * = ptr CommandEncoderImpl
   Texture * = ptr TextureImpl
   TextureView * = ptr TextureViewImpl
-  SamplerImpl *{.incompleteStruct, importc:"struct WGPUSamplerImpl", header:"wgvk.h", pure, inheritable.}= object
+  SamplerImpl *{.incompleteStruct, importc:"struct WGPUSamplerImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
   Sampler * = ptr SamplerImpl
-  FenceImpl *{.incompleteStruct, importc:"struct WGPUFenceImpl", header:"wgvk.h", pure, inheritable.}= object
+  FenceImpl *{.incompleteStruct, importc:"struct WGPUFenceImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
   Fence * = ptr FenceImpl
   RenderPipeline * = ptr RenderPipelineImpl
   ShaderModule * = ptr ShaderModuleImpl
   ComputePipeline * = ptr ComputePipelineImpl
-  RayTracingAccelerationContainerImpl *{.incompleteStruct, importc:"struct WGPURayTracingAccelerationContainerImpl", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingAccelerationContainerImpl *{.incompleteStruct, importc:"struct WGPURayTracingAccelerationContainerImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
   RayTracingAccelerationContainer * = ptr RayTracingAccelerationContainerImpl
-  RayTracingShaderBindingTableImpl *{.incompleteStruct, importc:"struct WGPURayTracingShaderBindingTableImpl", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingShaderBindingTableImpl *{.incompleteStruct, importc:"struct WGPURayTracingShaderBindingTableImpl", header:"webgpu/webgpu.h", pure, inheritable.}= object
   RayTracingShaderBindingTable * = ptr RayTracingShaderBindingTableImpl
   RaytracingPipeline * = ptr RaytracingPipelineImpl
   RaytracingPassEncoder * = ptr RaytracingPassEncoderImpl
-  ShaderStageEnum *{.pure, size:sizeof(cint), importc:"enum WGPUShaderStageEnum", header:"wgvk.h".}= enum
+  ShaderStageEnum *{.pure, size:sizeof(cint), importc:"enum WGPUShaderStageEnum", header:"webgpu/webgpu.h".}= enum
     Vertex = 0,
     Fragment = 1,
     Compute = 2,
@@ -82,22 +82,22 @@ type
   TextureUsage * = Flags
   BufferUsage * = Flags
   ColorWriteMask * = Flags
-  Status *{.pure, size:sizeof(cint), importc:"enum WGPUStatus", header:"wgvk.h".}= enum
+  Status *{.pure, size:sizeof(cint), importc:"enum WGPUStatus", header:"webgpu/webgpu.h".}= enum
     Success = 1,
     Error = 2,
     Force32 = 2147483647
-  WaitStatus *{.pure, size:sizeof(cint), importc:"enum WGPUWaitStatus", header:"wgvk.h".}= enum
+  WaitStatus *{.pure, size:sizeof(cint), importc:"enum WGPUWaitStatus", header:"webgpu/webgpu.h".}= enum
     Success = 1,
     TimedOut = 2,
     Error = 3,
     Force32 = 2147483647
-  PresentMode *{.pure, size:sizeof(cint), importc:"enum WGPUPresentMode", header:"wgvk.h".}= enum
+  PresentMode *{.pure, size:sizeof(cint), importc:"enum WGPUPresentMode", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Fifo = 1,
     FifoRelaxed = 2,
     Immediate = 3,
     Mailbox = 4
-  TextureAspect *{.pure, size:sizeof(cint), importc:"enum WGPUTextureAspect", header:"wgvk.h".}= enum
+  TextureAspect *{.pure, size:sizeof(cint), importc:"enum WGPUTextureAspect", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     All = 1,
     StencilOnly = 2,
@@ -106,7 +106,7 @@ type
     Plane1Only = 327681,
     Plane2Only = 327682,
     Force32 = 2147483647
-  PrimitiveTopology *{.pure, size:sizeof(cint), importc:"enum WGPUPrimitiveTopology", header:"wgvk.h".}= enum
+  PrimitiveTopology *{.pure, size:sizeof(cint), importc:"enum WGPUPrimitiveTopology", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     PointList = 1,
     LineList = 2,
@@ -114,7 +114,7 @@ type
     TriangleList = 4,
     TriangleStrip = 5,
     Force32 = 2147483647
-  SType *{.pure, size:sizeof(cint), importc:"enum WGPUSType", header:"wgvk.h".}= enum
+  SType *{.pure, size:sizeof(cint), importc:"enum WGPUSType", header:"webgpu/webgpu.h".}= enum
     ShaderSourceSPIRV = 1,
     ShaderSourceWGSL = 2,
     SurfaceSourceMetalLayer = 4,
@@ -134,19 +134,19 @@ type
     ExtrasLimits = 268435462,
     BindGroupLayoutEntryRayTracing = 268435463,
     BindGroupEntryRayTracing = 268435464
-  CallbackMode *{.pure, size:sizeof(cint), importc:"enum WGPUCallbackMode", header:"wgvk.h".}= enum
+  CallbackMode *{.pure, size:sizeof(cint), importc:"enum WGPUCallbackMode", header:"webgpu/webgpu.h".}= enum
     WaitAnyOnly = 1,
     AllowProcessEvents = 2,
     AllowSpontaneous = 3,
     Force32 = 2147483647
-  StringView *{.bycopy, importc:"struct WGPUStringView", header:"wgvk.h", pure, inheritable.}= object
+  StringView *{.bycopy, importc:"struct WGPUStringView", header:"webgpu/webgpu.h", pure, inheritable.}= object
     data *:cstring
     length *:csize_t
-  TexelCopyBufferLayout *{.bycopy, importc:"struct WGPUTexelCopyBufferLayout", header:"wgvk.h", pure, inheritable.}= object
+  TexelCopyBufferLayout *{.bycopy, importc:"struct WGPUTexelCopyBufferLayout", header:"webgpu/webgpu.h", pure, inheritable.}= object
     offset *:uint64
     bytesPerRow *:uint32
     rowsPerImage *:uint32
-  CompareFunction *{.pure, size:sizeof(cint), importc:"enum WGPUCompareFunction", header:"wgvk.h".}= enum
+  CompareFunction *{.pure, size:sizeof(cint), importc:"enum WGPUCompareFunction", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Never = 1,
     Less = 2,
@@ -158,13 +158,13 @@ type
     Always = 8,
     Force32 = 2147483647
   MapMode * = Flags
-  TextureDimension *{.pure, size:sizeof(cint), importc:"enum WGPUTextureDimension", header:"wgvk.h".}= enum
+  TextureDimension *{.pure, size:sizeof(cint), importc:"enum WGPUTextureDimension", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     D1D = 1,
     D2D = 2,
     D3D = 3,
     Force32 = 2147483647
-  TextureViewDimension *{.pure, size:sizeof(cint), importc:"enum WGPUTextureViewDimension", header:"wgvk.h".}= enum
+  TextureViewDimension *{.pure, size:sizeof(cint), importc:"enum WGPUTextureViewDimension", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     D1D = 1,
     D2D = 2,
@@ -173,82 +173,82 @@ type
     CubeArray = 5,
     D3D = 6,
     Force32 = 2147483647
-  OptionalBool *{.pure, size:sizeof(cint), importc:"enum WGPUOptionalBool", header:"wgvk.h".}= enum
+  OptionalBool *{.pure, size:sizeof(cint), importc:"enum WGPUOptionalBool", header:"webgpu/webgpu.h".}= enum
     False = 0,
     True = 1,
     Undefined = 2,
     Force32 = 2147483647
-  CullMode *{.pure, size:sizeof(cint), importc:"enum WGPUCullMode", header:"wgvk.h".}= enum
+  CullMode *{.pure, size:sizeof(cint), importc:"enum WGPUCullMode", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     None = 1,
     Front = 2,
     Back = 3,
     Force32 = 2147483647
-  LoadOp *{.pure, size:sizeof(cint), importc:"enum WGPULoadOp", header:"wgvk.h".}= enum
+  LoadOp *{.pure, size:sizeof(cint), importc:"enum WGPULoadOp", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Load = 1,
     Clear = 2,
     ExpandResolveTexture = 327683,
     Force32 = 2147483647
-  StoreOp *{.pure, size:sizeof(cint), importc:"enum WGPUStoreOp", header:"wgvk.h".}= enum
+  StoreOp *{.pure, size:sizeof(cint), importc:"enum WGPUStoreOp", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Store = 1,
     Discard = 2,
     Force32 = 2147483647
-  FrontFace *{.pure, size:sizeof(cint), importc:"enum WGPUFrontFace", header:"wgvk.h".}= enum
+  FrontFace *{.pure, size:sizeof(cint), importc:"enum WGPUFrontFace", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     CCW = 1,
     CW = 2,
     Force32 = 2147483647
-  PolygonMode *{.pure, size:sizeof(cint), importc:"enum WGPUPolygonMode", header:"wgvk.h".}= enum
+  PolygonMode *{.pure, size:sizeof(cint), importc:"enum WGPUPolygonMode", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Fill = 1,
     Line = 2,
     Point = 3,
     Force32 = 2147483647
-  VertexStepMode *{.pure, size:sizeof(cint), importc:"enum WGPUVertexStepMode", header:"wgvk.h".}= enum
+  VertexStepMode *{.pure, size:sizeof(cint), importc:"enum WGPUVertexStepMode", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Vertex = 1,
     Instance = 2,
     Force32 = 2147483647
-  IndexFormat *{.pure, size:sizeof(cint), importc:"enum WGPUIndexFormat", header:"wgvk.h".}= enum
+  IndexFormat *{.pure, size:sizeof(cint), importc:"enum WGPUIndexFormat", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Uint16 = 1,
     Uint32 = 2,
     Force32 = 2147483647
-  RequestAdapterStatus *{.pure, size:sizeof(cint), importc:"enum WGPURequestAdapterStatus", header:"wgvk.h".}= enum
+  RequestAdapterStatus *{.pure, size:sizeof(cint), importc:"enum WGPURequestAdapterStatus", header:"webgpu/webgpu.h".}= enum
     Success = 1,
     CallbackCancelled = 2,
     Unavailable = 3,
     Error = 4,
     Force32 = 2147483647
-  RequestDeviceStatus *{.pure, size:sizeof(cint), importc:"enum WGPURequestDeviceStatus", header:"wgvk.h".}= enum
+  RequestDeviceStatus *{.pure, size:sizeof(cint), importc:"enum WGPURequestDeviceStatus", header:"webgpu/webgpu.h".}= enum
     Success = 1,
     CallbackCancelled = 2,
     Error = 3,
     Force32 = 2147483647
-  BufferBindingType *{.pure, size:sizeof(cint), importc:"enum WGPUBufferBindingType", header:"wgvk.h".}= enum
+  BufferBindingType *{.pure, size:sizeof(cint), importc:"enum WGPUBufferBindingType", header:"webgpu/webgpu.h".}= enum
     BindingNotUsed = 0,
     Undefined = 1,
     Uniform = 2,
     Storage = 3,
     ReadOnlyStorage = 4,
     Force32 = 2147483647
-  SamplerBindingType *{.pure, size:sizeof(cint), importc:"enum WGPUSamplerBindingType", header:"wgvk.h".}= enum
+  SamplerBindingType *{.pure, size:sizeof(cint), importc:"enum WGPUSamplerBindingType", header:"webgpu/webgpu.h".}= enum
     BindingNotUsed = 0,
     Undefined = 1,
     Filtering = 2,
     NonFiltering = 3,
     Comparison = 4,
     Force32 = 2147483647
-  StorageTextureAccess *{.pure, size:sizeof(cint), importc:"enum WGPUStorageTextureAccess", header:"wgvk.h".}= enum
+  StorageTextureAccess *{.pure, size:sizeof(cint), importc:"enum WGPUStorageTextureAccess", header:"webgpu/webgpu.h".}= enum
     BindingNotUsed = 0,
     Undefined = 1,
     WriteOnly = 2,
     ReadOnly = 3,
     ReadWrite = 4,
     Force32 = 2147483647
-  TextureFormat *{.pure, size:sizeof(cint), importc:"enum WGPUTextureFormat", header:"wgvk.h".}= enum
+  TextureFormat *{.pure, size:sizeof(cint), importc:"enum WGPUTextureFormat", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     R8Unorm = 1,
     R8Snorm = 2,
@@ -360,7 +360,7 @@ type
     R10X6BG10X6Biplanar444Unorm = 327692,
     External = 327693,
     Force32 = 2147483647
-  TextureSampleType *{.pure, size:sizeof(cint), importc:"enum WGPUTextureSampleType", header:"wgvk.h".}= enum
+  TextureSampleType *{.pure, size:sizeof(cint), importc:"enum WGPUTextureSampleType", header:"webgpu/webgpu.h".}= enum
     BindingNotUsed = 0,
     Undefined = 1,
     Float = 2,
@@ -369,23 +369,23 @@ type
     Sint = 5,
     Uint = 6,
     Force32 = 2147483647
-  FilterMode *{.pure, size:sizeof(cint), importc:"enum WGPUFilterMode", header:"wgvk.h".}= enum
+  FilterMode *{.pure, size:sizeof(cint), importc:"enum WGPUFilterMode", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Nearest = 1,
     Linear = 2,
     Force32 = 2147483647
-  MipmapFilterMode *{.pure, size:sizeof(cint), importc:"enum WGPUMipmapFilterMode", header:"wgvk.h".}= enum
+  MipmapFilterMode *{.pure, size:sizeof(cint), importc:"enum WGPUMipmapFilterMode", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Nearest = 1,
     Linear = 2,
     Force32 = 2147483647
-  AddressMode *{.pure, size:sizeof(cint), importc:"enum WGPUAddressMode", header:"wgvk.h".}= enum
+  AddressMode *{.pure, size:sizeof(cint), importc:"enum WGPUAddressMode", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     ClampToEdge = 1,
     Repeat = 2,
     MirrorRepeat = 3,
     Force32 = 2147483647
-  BackendType *{.pure, size:sizeof(cint), importc:"enum WGPUBackendType", header:"wgvk.h".}= enum
+  BackendType *{.pure, size:sizeof(cint), importc:"enum WGPUBackendType", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Null = 1,
     WebGPU = 2,
@@ -396,96 +396,96 @@ type
     OpenGL = 7,
     OpenGLES = 8,
     Force32 = 2147483647
-  AdapterType *{.pure, size:sizeof(cint), importc:"enum WGPUAdapterType", header:"wgvk.h".}= enum
+  AdapterType *{.pure, size:sizeof(cint), importc:"enum WGPUAdapterType", header:"webgpu/webgpu.h".}= enum
     DiscreteGPU = 1,
     IntegratedGPU = 2,
     CPU = 3,
     Unknown = 4,
     Force32 = 2147483647
-  PowerPreference *{.pure, size:sizeof(cint), importc:"enum WGPUPowerPreference", header:"wgvk.h".}= enum
+  PowerPreference *{.pure, size:sizeof(cint), importc:"enum WGPUPowerPreference", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     LowPower = 1,
     HighPerformance = 2,
     Force32 = 2147483647
-  FeatureLevel *{.pure, size:sizeof(cint), importc:"enum WGPUFeatureLevel", header:"wgvk.h".}= enum
+  FeatureLevel *{.pure, size:sizeof(cint), importc:"enum WGPUFeatureLevel", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Compatibility = 1,
     Core = 2,
     Force32 = 2147483647
-  ErrorFilter *{.pure, size:sizeof(cint), importc:"enum WGPUErrorFilter", header:"wgvk.h".}= enum
+  ErrorFilter *{.pure, size:sizeof(cint), importc:"enum WGPUErrorFilter", header:"webgpu/webgpu.h".}= enum
     Validation = 1,
     OutOfMemory = 2,
     Internal = 3,
     Force32 = 2147483647
-  BufferMapState *{.pure, size:sizeof(cint), importc:"enum WGPUBufferMapState", header:"wgvk.h".}= enum
+  BufferMapState *{.pure, size:sizeof(cint), importc:"enum WGPUBufferMapState", header:"webgpu/webgpu.h".}= enum
     Unmapped = 1,
     Pending = 2,
     Mapped = 3,
     Force32 = 2147483647
-  CompilationInfoRequestStatus *{.pure, size:sizeof(cint), importc:"enum WGPUCompilationInfoRequestStatus", header:"wgvk.h".}= enum
+  CompilationInfoRequestStatus *{.pure, size:sizeof(cint), importc:"enum WGPUCompilationInfoRequestStatus", header:"webgpu/webgpu.h".}= enum
     Success = 1,
     CallbackCancelled = 2,
     Force32 = 2147483647
-  CompilationMessageType *{.pure, size:sizeof(cint), importc:"enum WGPUCompilationMessageType", header:"wgvk.h".}= enum
+  CompilationMessageType *{.pure, size:sizeof(cint), importc:"enum WGPUCompilationMessageType", header:"webgpu/webgpu.h".}= enum
     Error = 1,
     Warning = 2,
     Info = 3,
     Force32 = 2147483647
-  CreatePipelineAsyncStatus *{.pure, size:sizeof(cint), importc:"enum WGPUCreatePipelineAsyncStatus", header:"wgvk.h".}= enum
+  CreatePipelineAsyncStatus *{.pure, size:sizeof(cint), importc:"enum WGPUCreatePipelineAsyncStatus", header:"webgpu/webgpu.h".}= enum
     Success = 1,
     CallbackCancelled = 2,
     ValidationError = 3,
     InternalError = 4,
     Force32 = 2147483647
-  PopErrorScopeStatus *{.pure, size:sizeof(cint), importc:"enum WGPUPopErrorScopeStatus", header:"wgvk.h".}= enum
+  PopErrorScopeStatus *{.pure, size:sizeof(cint), importc:"enum WGPUPopErrorScopeStatus", header:"webgpu/webgpu.h".}= enum
     Success = 1,
     CallbackCancelled = 2,
     Error = 3,
     Force32 = 2147483647
-  PredefinedColorSpace *{.pure, size:sizeof(cint), importc:"enum WGPUPredefinedColorSpace", header:"wgvk.h".}= enum
+  PredefinedColorSpace *{.pure, size:sizeof(cint), importc:"enum WGPUPredefinedColorSpace", header:"webgpu/webgpu.h".}= enum
     SRGB = 1,
     DisplayP3 = 2,
     Force32 = 2147483647
-  QueryType *{.pure, size:sizeof(cint), importc:"enum WGPUQueryType", header:"wgvk.h".}= enum
+  QueryType *{.pure, size:sizeof(cint), importc:"enum WGPUQueryType", header:"webgpu/webgpu.h".}= enum
     Occlusion = 1,
     Timestamp = 2,
     Force32 = 2147483647
-  QueueWorkDoneStatus *{.pure, size:sizeof(cint), importc:"enum WGPUQueueWorkDoneStatus", header:"wgvk.h".}= enum
+  QueueWorkDoneStatus *{.pure, size:sizeof(cint), importc:"enum WGPUQueueWorkDoneStatus", header:"webgpu/webgpu.h".}= enum
     Success = 1,
     CallbackCancelled = 2,
     Error = 3,
     Force32 = 2147483647
-  SubgroupMatrixComponentType *{.pure, size:sizeof(cint), importc:"enum WGPUSubgroupMatrixComponentType", header:"wgvk.h".}= enum
+  SubgroupMatrixComponentType *{.pure, size:sizeof(cint), importc:"enum WGPUSubgroupMatrixComponentType", header:"webgpu/webgpu.h".}= enum
     F32 = 1,
     F16 = 2,
     U32 = 3,
     I32 = 4,
     Force32 = 2147483647
-  ToneMappingMode *{.pure, size:sizeof(cint), importc:"enum WGPUToneMappingMode", header:"wgvk.h".}= enum
+  ToneMappingMode *{.pure, size:sizeof(cint), importc:"enum WGPUToneMappingMode", header:"webgpu/webgpu.h".}= enum
     Standard = 1,
     Extended = 2,
     Force32 = 2147483647
-  WGSLLanguageFeatureName *{.pure, size:sizeof(cint), importc:"enum WGPUWGSLLanguageFeatureName", header:"wgvk.h".}= enum
+  WGSLLanguageFeatureName *{.pure, size:sizeof(cint), importc:"enum WGPUWGSLLanguageFeatureName", header:"webgpu/webgpu.h".}= enum
     ReadonlyAndReadwriteStorageTextures = 1,
     Packed4x8IntegerDotProduct = 2,
     UnrestrictedPointerParameters = 3,
     PointerCompositeAccess = 4,
     SizedBindingArray = 5,
     Force32 = 2147483647
-  ErrorType *{.pure, size:sizeof(cint), importc:"enum WGPUErrorType", header:"wgvk.h".}= enum
+  ErrorType *{.pure, size:sizeof(cint), importc:"enum WGPUErrorType", header:"webgpu/webgpu.h".}= enum
     NoError = 1,
     Validation = 2,
     OutOfMemory = 3,
     Internal = 4,
     Unknown = 5,
     Force32 = 2147483647
-  DeviceLostReason *{.pure, size:sizeof(cint), importc:"enum WGPUDeviceLostReason", header:"wgvk.h".}= enum
+  DeviceLostReason *{.pure, size:sizeof(cint), importc:"enum WGPUDeviceLostReason", header:"webgpu/webgpu.h".}= enum
     Unknown = 1,
     Destroyed = 2,
     CallbackCancelled = 3,
     FailedCreation = 4,
     Force32 = 2147483647
-  VertexFormat *{.pure, size:sizeof(cint), importc:"enum WGPUVertexFormat", header:"wgvk.h".}= enum
+  VertexFormat *{.pure, size:sizeof(cint), importc:"enum WGPUVertexFormat", header:"webgpu/webgpu.h".}= enum
     Uint8 = 1,
     Uint8x2 = 2,
     Uint8x4 = 3,
@@ -528,7 +528,7 @@ type
     Unorm10_10_10_2 = 40,
     Unorm8x4BGRA = 41,
     Force32 = 2147483647
-  SurfaceGetCurrentTextureStatus *{.pure, size:sizeof(cint), importc:"enum WGPUSurfaceGetCurrentTextureStatus", header:"wgvk.h".}= enum
+  SurfaceGetCurrentTextureStatus *{.pure, size:sizeof(cint), importc:"enum WGPUSurfaceGetCurrentTextureStatus", header:"webgpu/webgpu.h".}= enum
     SuccessOptimal = 1,
     SuccessSuboptimal = 2,
     Timeout = 3,
@@ -536,12 +536,12 @@ type
     Lost = 5,
     Error = 6,
     Force32 = 2147483647
-  InstanceFeatureName *{.pure, size:sizeof(cint), importc:"enum WGPUInstanceFeatureName", header:"wgvk.h".}= enum
+  InstanceFeatureName *{.pure, size:sizeof(cint), importc:"enum WGPUInstanceFeatureName", header:"webgpu/webgpu.h".}= enum
     TimedWaitAny = 1,
     ShaderSourceSPIRV = 2,
     MultipleDevicesPerAdapter = 3,
     Force32 = 2147483647
-  FeatureName *{.pure, size:sizeof(cint), importc:"enum WGPUFeatureName", header:"wgvk.h".}= enum
+  FeatureName *{.pure, size:sizeof(cint), importc:"enum WGPUFeatureName", header:"webgpu/webgpu.h".}= enum
     DepthClipControl = 1,
     Depth32FloatStencil8 = 2,
     TimestampQuery = 3,
@@ -565,20 +565,20 @@ type
     PolygonModeLine = 21,
     PolygonModePoint = 22,
     Force32 = 2147483647
-  MapAsyncStatus *{.pure, size:sizeof(cint), importc:"enum WGPUMapAsyncStatus", header:"wgvk.h".}= enum
+  MapAsyncStatus *{.pure, size:sizeof(cint), importc:"enum WGPUMapAsyncStatus", header:"webgpu/webgpu.h".}= enum
     Success = 1,
     CallbackCancelled = 2,
     Error = 3,
     Aborted = 4,
     Force32 = 2147483647
-  CompositeAlphaMode *{.pure, size:sizeof(cint), importc:"enum WGPUCompositeAlphaMode", header:"wgvk.h".}= enum
+  CompositeAlphaMode *{.pure, size:sizeof(cint), importc:"enum WGPUCompositeAlphaMode", header:"webgpu/webgpu.h".}= enum
     Auto = 0,
     Opaque = 1,
     Premultiplied = 2,
     Unpremultiplied = 3,
     Inherit = 4,
     Force32 = 2147483647
-  ComponentSwizzle *{.pure, size:sizeof(cint), importc:"enum WGPUComponentSwizzle", header:"wgvk.h".}= enum
+  ComponentSwizzle *{.pure, size:sizeof(cint), importc:"enum WGPUComponentSwizzle", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Zero = 1,
     One = 2,
@@ -587,15 +587,15 @@ type
     B = 5,
     A = 6,
     Force32 = 2147483647
-  RayTracingAccelerationGeometryType *{.pure, size:sizeof(cint), importc:"enum WGPURayTracingAccelerationGeometryType", header:"wgvk.h".}= enum
+  RayTracingAccelerationGeometryType *{.pure, size:sizeof(cint), importc:"enum WGPURayTracingAccelerationGeometryType", header:"webgpu/webgpu.h".}= enum
     Triangles = 1,
     AABBs = 2,
     Force32 = 2147483647
-  RayTracingAccelerationContainerLevel *{.pure, size:sizeof(cint), importc:"enum WGPURayTracingAccelerationContainerLevel", header:"wgvk.h".}= enum
+  RayTracingAccelerationContainerLevel *{.pure, size:sizeof(cint), importc:"enum WGPURayTracingAccelerationContainerLevel", header:"webgpu/webgpu.h".}= enum
     Bottom = 1,
     Top = 2,
     Force32 = 2147483647
-  RayTracingShaderBindingTableGroupType *{.pure, size:sizeof(cint), importc:"enum WGPURayTracingShaderBindingTableGroupType", header:"wgvk.h".}= enum
+  RayTracingShaderBindingTableGroupType *{.pure, size:sizeof(cint), importc:"enum WGPURayTracingShaderBindingTableGroupType", header:"webgpu/webgpu.h".}= enum
     General = 1,
     TrianglesHitGroup = 2,
     ProceduralHitGroup = 3,
@@ -603,10 +603,10 @@ type
   RayTracingAccelerationGeometryUsage * = Flags
   RayTracingAccelerationInstanceUsage * = Flags
   RayTracingAccelerationContainerUsage * = Flags
-  ChainedStruct *{.bycopy, importc:"struct WGPUChainedStruct", header:"wgvk.h", pure, inheritable.}= object
+  ChainedStruct *{.bycopy, importc:"struct WGPUChainedStruct", header:"webgpu/webgpu.h", pure, inheritable.}= object
     next *:ptr ChainedStruct
     sType *:SType
-  CompilationInfo *{.bycopy, importc:"struct WGPUCompilationInfo", header:"wgvk.h", pure, inheritable.}= object
+  CompilationInfo *{.bycopy, importc:"struct WGPUCompilationInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     messageCount *:csize_t
     messages *:ptr CompilationMessage
@@ -615,44 +615,44 @@ type
   CreateRenderPipelineAsyncCallback * = proc (a0 :CreatePipelineAsyncStatus; a1 :RenderPipeline; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   PopErrorScopeCallback * = proc (a0 :PopErrorScopeStatus; a1 :ErrorType; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   QueueWorkDoneCallback * = proc (a0 :QueueWorkDoneStatus; a1 :pointer; a2 :pointer) {.cdecl.}
-  CompilationInfoCallbackInfo *{.bycopy, importc:"struct WGPUCompilationInfoCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  CompilationInfoCallbackInfo *{.bycopy, importc:"struct WGPUCompilationInfoCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:CallbackMode
     callback *:CompilationInfoCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  CreateComputePipelineAsyncCallbackInfo *{.bycopy, importc:"struct WGPUCreateComputePipelineAsyncCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  CreateComputePipelineAsyncCallbackInfo *{.bycopy, importc:"struct WGPUCreateComputePipelineAsyncCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:CallbackMode
     callback *:CreateComputePipelineAsyncCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  CreateRenderPipelineAsyncCallbackInfo *{.bycopy, importc:"struct WGPUCreateRenderPipelineAsyncCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  CreateRenderPipelineAsyncCallbackInfo *{.bycopy, importc:"struct WGPUCreateRenderPipelineAsyncCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:CallbackMode
     callback *:CreateRenderPipelineAsyncCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  PopErrorScopeCallbackInfo *{.bycopy, importc:"struct WGPUPopErrorScopeCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  PopErrorScopeCallbackInfo *{.bycopy, importc:"struct WGPUPopErrorScopeCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:CallbackMode
     callback *:PopErrorScopeCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  QueueWorkDoneCallbackInfo *{.bycopy, importc:"struct WGPUQueueWorkDoneCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  QueueWorkDoneCallbackInfo *{.bycopy, importc:"struct WGPUQueueWorkDoneCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:CallbackMode
     callback *:QueueWorkDoneCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  AdapterPropertiesSubgroups *{.bycopy, importc:"struct WGPUAdapterPropertiesSubgroups", header:"wgvk.h", pure, inheritable.}= object
+  AdapterPropertiesSubgroups *{.bycopy, importc:"struct WGPUAdapterPropertiesSubgroups", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     subgroupMinSize *:uint32
     subgroupMaxSize *:uint32
-  BindGroupLayoutEntryArraySize *{.bycopy, importc:"struct WGPUBindGroupLayoutEntryArraySize", header:"wgvk.h", pure, inheritable.}= object
+  BindGroupLayoutEntryArraySize *{.bycopy, importc:"struct WGPUBindGroupLayoutEntryArraySize", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     arraySize *:uint32
-  CompilationMessage *{.bycopy, importc:"struct WGPUCompilationMessage", header:"wgvk.h", pure, inheritable.}= object
+  CompilationMessage *{.bycopy, importc:"struct WGPUCompilationMessage", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     message *:StringView
     `type` *:CompilationMessageType
@@ -660,101 +660,101 @@ type
     linePos *:uint64
     offset *:uint64
     length *:uint64
-  PassTimestampWrites *{.bycopy, importc:"struct WGPUPassTimestampWrites", header:"wgvk.h", pure, inheritable.}= object
+  PassTimestampWrites *{.bycopy, importc:"struct WGPUPassTimestampWrites", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     querySet *:QuerySet
     beginningOfPassWriteIndex *:uint32
     endOfPassWriteIndex *:uint32
-  QuerySetDescriptor *{.bycopy, importc:"struct WGPUQuerySetDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  QuerySetDescriptor *{.bycopy, importc:"struct WGPUQuerySetDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     `type` *:QueryType
     count *:uint32
-  RenderPassMaxDrawCount *{.bycopy, importc:"struct WGPURenderPassMaxDrawCount", header:"wgvk.h", pure, inheritable.}= object
+  RenderPassMaxDrawCount *{.bycopy, importc:"struct WGPURenderPassMaxDrawCount", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     maxDrawCount *:uint64
-  RequestAdapterWebXROptions *{.bycopy, importc:"struct WGPURequestAdapterWebXROptions", header:"wgvk.h", pure, inheritable.}= object
+  RequestAdapterWebXROptions *{.bycopy, importc:"struct WGPURequestAdapterWebXROptions", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     xrCompatible *:Bool
-  SupportedFeatures *{.bycopy, importc:"struct WGPUSupportedFeatures", header:"wgvk.h", pure, inheritable.}= object
+  SupportedFeatures *{.bycopy, importc:"struct WGPUSupportedFeatures", header:"webgpu/webgpu.h", pure, inheritable.}= object
     featureCount *:csize_t
     features *:ptr FeatureName
-  SupportedWGSLLanguageFeatures *{.bycopy, importc:"struct WGPUSupportedWGSLLanguageFeatures", header:"wgvk.h", pure, inheritable.}= object
+  SupportedWGSLLanguageFeatures *{.bycopy, importc:"struct WGPUSupportedWGSLLanguageFeatures", header:"webgpu/webgpu.h", pure, inheritable.}= object
     featureCount *:csize_t
     features *:ptr WGSLLanguageFeatureName
-  SurfaceColorManagement *{.bycopy, importc:"struct WGPUSurfaceColorManagement", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceColorManagement *{.bycopy, importc:"struct WGPUSurfaceColorManagement", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     colorSpace *:PredefinedColorSpace
     toneMappingMode *:ToneMappingMode
-  TextureBindingViewDimensionDescriptor *{.bycopy, importc:"struct WGPUTextureBindingViewDimensionDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  TextureBindingViewDimensionDescriptor *{.bycopy, importc:"struct WGPUTextureBindingViewDimensionDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     textureBindingViewDimension *:TextureViewDimension
-  ComputePassDescriptor *{.bycopy, importc:"struct WGPUComputePassDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  ComputePassDescriptor *{.bycopy, importc:"struct WGPUComputePassDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     timestampWrites *:ptr PassTimestampWrites
-  RayTracingPassDescriptor *{.bycopy, importc:"struct WGPURayTracingPassDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingPassDescriptor *{.bycopy, importc:"struct WGPURayTracingPassDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     shaderBindingTable *:RayTracingShaderBindingTable
     maxRecursionDepth *:uint32
     maxPayloadSize *:uint32
-  TexelCopyBufferInfo *{.bycopy, importc:"struct WGPUTexelCopyBufferInfo", header:"wgvk.h", pure, inheritable.}= object
+  TexelCopyBufferInfo *{.bycopy, importc:"struct WGPUTexelCopyBufferInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     layout *:TexelCopyBufferLayout
     buffer *:Buffer
-  Origin3D *{.bycopy, importc:"struct WGPUOrigin3D", header:"wgvk.h", pure, inheritable.}= object
+  Origin3D *{.bycopy, importc:"struct WGPUOrigin3D", header:"webgpu/webgpu.h", pure, inheritable.}= object
     x *:uint32
     y *:uint32
     z *:uint32
-  Future *{.bycopy, importc:"struct WGPUFuture", header:"wgvk.h", pure, inheritable.}= object
+  Future *{.bycopy, importc:"struct WGPUFuture", header:"webgpu/webgpu.h", pure, inheritable.}= object
     id *:uint64
-  Extent3D *{.bycopy, importc:"struct WGPUExtent3D", header:"wgvk.h", pure, inheritable.}= object
+  Extent3D *{.bycopy, importc:"struct WGPUExtent3D", header:"webgpu/webgpu.h", pure, inheritable.}= object
     width *:uint32
     height *:uint32
     depthOrArrayLayers *:uint32
-  TexelCopyTextureInfo *{.bycopy, importc:"struct WGPUTexelCopyTextureInfo", header:"wgvk.h", pure, inheritable.}= object
+  TexelCopyTextureInfo *{.bycopy, importc:"struct WGPUTexelCopyTextureInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     texture *:Texture
     mipLevel *:uint32
     origin *:Origin3D
     aspect *:TextureAspect
-  SurfaceSourceMetalLayer *{.bycopy, importc:"struct WGPUSurfaceSourceMetalLayer", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceSourceMetalLayer *{.bycopy, importc:"struct WGPUSurfaceSourceMetalLayer", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     layer *:pointer
-  SurfaceSourceWindowsHWND *{.bycopy, importc:"struct WGPUSurfaceSourceWindowsHWND", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceSourceWindowsHWND *{.bycopy, importc:"struct WGPUSurfaceSourceWindowsHWND", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     hinstance *:pointer
     hwnd *:pointer
-  SurfaceSourceXlibWindow *{.bycopy, importc:"struct WGPUSurfaceSourceXlibWindow", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceSourceXlibWindow *{.bycopy, importc:"struct WGPUSurfaceSourceXlibWindow", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     display *:pointer
     window *:uint64
-  SurfaceSourceXCBWindow *{.bycopy, importc:"struct WGPUSurfaceSourceXCBWindow", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceSourceXCBWindow *{.bycopy, importc:"struct WGPUSurfaceSourceXCBWindow", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     connection *:pointer
     window *:uint32
-  SurfaceSourceWaylandSurface *{.bycopy, importc:"struct WGPUSurfaceSourceWaylandSurface", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceSourceWaylandSurface *{.bycopy, importc:"struct WGPUSurfaceSourceWaylandSurface", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     display *:pointer
     surface *:pointer
-  SurfaceSourceAndroidNativeWindow *{.bycopy, importc:"struct WGPUSurfaceSourceAndroidNativeWindow", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceSourceAndroidNativeWindow *{.bycopy, importc:"struct WGPUSurfaceSourceAndroidNativeWindow", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     window *:pointer
-  EmscriptenSurfaceSourceCanvasHTMLSelector *{.bycopy, importc:"struct WGPUEmscriptenSurfaceSourceCanvasHTMLSelector", header:"wgvk.h", pure, inheritable.}= object
+  EmscriptenSurfaceSourceCanvasHTMLSelector *{.bycopy, importc:"struct WGPUEmscriptenSurfaceSourceCanvasHTMLSelector", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     selector *:StringView
-  DrmModeSelectType *{.pure, size:sizeof(cint), importc:"enum WGPUDrmModeSelectType", header:"wgvk.h".}= enum
+  DrmModeSelectType *{.pure, size:sizeof(cint), importc:"enum WGPUDrmModeSelectType", header:"webgpu/webgpu.h".}= enum
     Default = 0,
     ByIndex = 1,
     ByGeometry = 2
-  DrmModeByGeometry *{.bycopy, importc:"struct WGPUDrmModeByGeometry", header:"wgvk.h", pure, inheritable.}= object
+  DrmModeByGeometry *{.bycopy, importc:"struct WGPUDrmModeByGeometry", header:"webgpu/webgpu.h", pure, inheritable.}= object
     width *:uint32
     height *:uint32
     refreshMilliHz *:uint32
-  unnamed1 *{.union, bycopy, importc:"WGPUDrmModeSelect_unnamed1", header:"wgvk.h".}= object
+  unnamed1 *{.union, bycopy, importc:"WGPUDrmModeSelect_unnamed1", header:"webgpu/webgpu.h".}= object
     geometry *:DrmModeByGeometry
     index *:uint32
-  DrmModeSelect *{.bycopy, importc:"struct WGPUDrmModeSelect", header:"wgvk.h", pure, inheritable.}= object
+  DrmModeSelect *{.bycopy, importc:"struct WGPUDrmModeSelect", header:"webgpu/webgpu.h", pure, inheritable.}= object
     `type` *:DrmModeSelectType
     unnamed1 *:unnamed1
-  SurfaceSourceDrmPlane *{.bycopy, importc:"struct WGPUSurfaceSourceDrmPlane", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceSourceDrmPlane *{.bycopy, importc:"struct WGPUSurfaceSourceDrmPlane", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     adapter *:Adapter
     drmFd *:int32
@@ -763,10 +763,10 @@ type
     planeId *:uint32
     modeSelect *:DrmModeSelect
     acquireExclusive *:Bool
-  SurfaceDescriptor *{.bycopy, importc:"struct WGPUSurfaceDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceDescriptor *{.bycopy, importc:"struct WGPUSurfaceDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
-  AdapterInfo *{.bycopy, importc:"struct WGPUAdapterInfo", header:"wgvk.h", pure, inheritable.}= object
+  AdapterInfo *{.bycopy, importc:"struct WGPUAdapterInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     vendor *:StringView
     architecture *:StringView
@@ -778,30 +778,30 @@ type
     deviceID *:uint32
     subgroupMinSize *:uint32
     subgroupMaxSize *:uint32
-  RequestAdapterOptions *{.bycopy, importc:"struct WGPURequestAdapterOptions", header:"wgvk.h", pure, inheritable.}= object
+  RequestAdapterOptions *{.bycopy, importc:"struct WGPURequestAdapterOptions", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     featureLevel *:FeatureLevel
     powerPreference *:PowerPreference
     forceFallbackAdapter *:Bool
     backendType *:BackendType
     compatibleSurface *:Surface
-  InstanceCapabilities *{.bycopy, importc:"struct WGPUInstanceCapabilities", header:"wgvk.h", pure, inheritable.}= object
+  InstanceCapabilities *{.bycopy, importc:"struct WGPUInstanceCapabilities", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     timedWaitAnyEnable *:Bool
     timedWaitAnyMaxCount *:csize_t
-  InstanceLimits *{.bycopy, importc:"struct WGPUInstanceLimits", header:"wgvk.h", pure, inheritable.}= object
+  InstanceLimits *{.bycopy, importc:"struct WGPUInstanceLimits", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     timedWaitAnyMaxCount *:csize_t
-  InstanceLayerSelection *{.bycopy, importc:"struct WGPUInstanceLayerSelection", header:"wgvk.h", pure, inheritable.}= object
+  InstanceLayerSelection *{.bycopy, importc:"struct WGPUInstanceLayerSelection", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     instanceLayers *:ptr cstring
     instanceLayerCount *:uint32
-  InstanceDescriptor *{.bycopy, importc:"struct WGPUInstanceDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  InstanceDescriptor *{.bycopy, importc:"struct WGPUInstanceDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     requiredFeatureCount *:csize_t
     requiredFeatures *:ptr InstanceFeatureName
     requiredLimits *:ptr InstanceLimits
-  BindGroupEntry *{.bycopy, importc:"struct WGPUBindGroupEntry", header:"wgvk.h", pure, inheritable.}= object
+  BindGroupEntry *{.bycopy, importc:"struct WGPUBindGroupEntry", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     binding *:uint32
     buffer *:Buffer
@@ -809,28 +809,28 @@ type
     size *:uint64
     sampler *:Sampler
     textureView *:TextureView
-  BindGroupEntryRayTracing *{.bycopy, importc:"struct WGPUBindGroupEntryRayTracing", header:"wgvk.h", pure, inheritable.}= object
+  BindGroupEntryRayTracing *{.bycopy, importc:"struct WGPUBindGroupEntryRayTracing", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     accelerationStructure *:RayTracingAccelerationContainer
-  TextureBindingLayout *{.bycopy, importc:"struct WGPUTextureBindingLayout", header:"wgvk.h", pure, inheritable.}= object
+  TextureBindingLayout *{.bycopy, importc:"struct WGPUTextureBindingLayout", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     sampleType *:TextureSampleType
     viewDimension *:TextureViewDimension
     multisampled *:Bool
-  SamplerBindingLayout *{.bycopy, importc:"struct WGPUSamplerBindingLayout", header:"wgvk.h", pure, inheritable.}= object
+  SamplerBindingLayout *{.bycopy, importc:"struct WGPUSamplerBindingLayout", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     `type` *:SamplerBindingType
-  StorageTextureBindingLayout *{.bycopy, importc:"struct WGPUStorageTextureBindingLayout", header:"wgvk.h", pure, inheritable.}= object
+  StorageTextureBindingLayout *{.bycopy, importc:"struct WGPUStorageTextureBindingLayout", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     access *:StorageTextureAccess
     format *:TextureFormat
     viewDimension *:TextureViewDimension
-  BufferBindingLayout *{.bycopy, importc:"struct WGPUBufferBindingLayout", header:"wgvk.h", pure, inheritable.}= object
+  BufferBindingLayout *{.bycopy, importc:"struct WGPUBufferBindingLayout", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     `type` *:BufferBindingType
     hasDynamicOffset *:Bool
     minBindingSize *:uint64
-  BindGroupLayoutEntry *{.bycopy, importc:"struct WGPUBindGroupLayoutEntry", header:"wgvk.h", pure, inheritable.}= object
+  BindGroupLayoutEntry *{.bycopy, importc:"struct WGPUBindGroupLayoutEntry", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     binding *:uint32
     visibility *:ShaderStage
@@ -839,10 +839,10 @@ type
     sampler *:SamplerBindingLayout
     texture *:TextureBindingLayout
     storageTexture *:StorageTextureBindingLayout
-  BindGroupLayoutEntryRayTracing *{.bycopy, importc:"struct WGPUBindGroupLayoutEntryRayTracing", header:"wgvk.h", pure, inheritable.}= object
+  BindGroupLayoutEntryRayTracing *{.bycopy, importc:"struct WGPUBindGroupLayoutEntryRayTracing", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     accelerationStructure *:Bool
-  SamplerDescriptor *{.bycopy, importc:"struct WGPUSamplerDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  SamplerDescriptor *{.bycopy, importc:"struct WGPUSamplerDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     addressModeU *:AddressMode
@@ -855,16 +855,16 @@ type
     lodMaxClamp *:cfloat
     compare *:CompareFunction
     maxAnisotropy *:uint16
-  FutureWaitInfo *{.bycopy, importc:"struct WGPUFutureWaitInfo", header:"wgvk.h", pure, inheritable.}= object
+  FutureWaitInfo *{.bycopy, importc:"struct WGPUFutureWaitInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     future *:Future
     completed *:Bool32
-  ExtrasLimits *{.bycopy, importc:"struct WGPUExtrasLimits", header:"wgvk.h", pure, inheritable.}= object
+  ExtrasLimits *{.bycopy, importc:"struct WGPUExtrasLimits", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     maxStorageBuffersInVertexStage *:uint32
     maxStorageTexturesInVertexStage *:uint32
     maxStorageBuffersInFragmentStage *:uint32
     maxStorageTexturesInFragmentStage *:uint32
-  Limits *{.bycopy, importc:"struct WGPULimits", header:"wgvk.h", pure, inheritable.}= object
+  Limits *{.bycopy, importc:"struct WGPULimits", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     maxTextureDimension1D *:uint32
     maxTextureDimension2D *:uint32
@@ -898,24 +898,24 @@ type
     maxComputeWorkgroupSizeZ *:uint32
     maxComputeWorkgroupsPerDimension *:uint32
     maxImmediateSize *:uint32
-  QueueDescriptor *{.bycopy, importc:"struct WGPUQueueDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  QueueDescriptor *{.bycopy, importc:"struct WGPUQueueDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
   Proc * = proc () {.cdecl.}
   DeviceLostCallback * = proc (a0 :ptr Device; a1 :DeviceLostReason; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   UncapturedErrorCallback * = proc (a0 :ptr Device; a1 :ErrorType; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  DeviceLostCallbackInfo *{.bycopy, importc:"struct WGPUDeviceLostCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  DeviceLostCallbackInfo *{.bycopy, importc:"struct WGPUDeviceLostCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:cint
     callback *:DeviceLostCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  UncapturedErrorCallbackInfo *{.bycopy, importc:"struct WGPUUncapturedErrorCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  UncapturedErrorCallbackInfo *{.bycopy, importc:"struct WGPUUncapturedErrorCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     callback *:UncapturedErrorCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  DeviceDescriptor *{.bycopy, importc:"struct WGPUDeviceDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  DeviceDescriptor *{.bycopy, importc:"struct WGPUDeviceDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     requiredFeatureCount *:csize_t
@@ -924,12 +924,12 @@ type
     defaultQueue *:QueueDescriptor
     deviceLostCallbackInfo *:DeviceLostCallbackInfo
     uncapturedErrorCallbackInfo *:UncapturedErrorCallbackInfo
-  Color *{.bycopy, importc:"struct WGPUColor", header:"wgvk.h", pure, inheritable.}= object
+  Color *{.bycopy, importc:"struct WGPUColor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     r *:cdouble
     g *:cdouble
     b *:cdouble
     a *:cdouble
-  RenderPassColorAttachment *{.bycopy, importc:"struct WGPURenderPassColorAttachment", header:"wgvk.h", pure, inheritable.}= object
+  RenderPassColorAttachment *{.bycopy, importc:"struct WGPURenderPassColorAttachment", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     view *:TextureView
     depthSlice *:uint32
@@ -937,7 +937,7 @@ type
     loadOp *:LoadOp
     storeOp *:StoreOp
     clearValue *:Color
-  RenderPassDepthStencilAttachment *{.bycopy, importc:"struct WGPURenderPassDepthStencilAttachment", header:"wgvk.h", pure, inheritable.}= object
+  RenderPassDepthStencilAttachment *{.bycopy, importc:"struct WGPURenderPassDepthStencilAttachment", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     view *:TextureView
     depthLoadOp *:LoadOp
@@ -948,7 +948,7 @@ type
     stencilStoreOp *:StoreOp
     stencilClearValue *:uint32
     stencilReadOnly *:uint32
-  RenderPassDescriptor *{.bycopy, importc:"struct WGPURenderPassDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RenderPassDescriptor *{.bycopy, importc:"struct WGPURenderPassDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     colorAttachmentCount *:csize_t
@@ -956,10 +956,10 @@ type
     depthStencilAttachment *:ptr RenderPassDepthStencilAttachment
     occlusionQuerySet *:QuerySet
     timestampWrites *:ptr PassTimestampWrites
-  RenderBundleDescriptor *{.bycopy, importc:"struct WGPURenderBundleDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RenderBundleDescriptor *{.bycopy, importc:"struct WGPURenderBundleDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
-  RenderBundleEncoderDescriptor *{.bycopy, importc:"struct WGPURenderBundleEncoderDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RenderBundleEncoderDescriptor *{.bycopy, importc:"struct WGPURenderBundleEncoderDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     colorFormatCount *:csize_t
@@ -968,10 +968,10 @@ type
     sampleCount *:uint32
     depthReadOnly *:Bool
     stencilReadOnly *:Bool
-  CommandEncoderDescriptor *{.bycopy, importc:"struct WGPUCommandEncoderDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  CommandEncoderDescriptor *{.bycopy, importc:"struct WGPUCommandEncoderDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
-  TextureDescriptor *{.bycopy, importc:"struct WGPUTextureDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  TextureDescriptor *{.bycopy, importc:"struct WGPUTextureDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     usage *:TextureUsage
@@ -982,7 +982,7 @@ type
     sampleCount *:uint32
     viewFormatCount *:csize_t
     viewFormats *:ptr TextureFormat
-  TextureViewDescriptor *{.bycopy, importc:"struct WGPUTextureViewDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  TextureViewDescriptor *{.bycopy, importc:"struct WGPUTextureViewDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     format *:TextureFormat
@@ -993,52 +993,52 @@ type
     arrayLayerCount *:uint32
     aspect *:TextureAspect
     usage *:TextureUsage
-  TextureComponentSwizzle *{.bycopy, importc:"struct WGPUTextureComponentSwizzle", header:"wgvk.h", pure, inheritable.}= object
+  TextureComponentSwizzle *{.bycopy, importc:"struct WGPUTextureComponentSwizzle", header:"webgpu/webgpu.h", pure, inheritable.}= object
     r *:ComponentSwizzle
     g *:ComponentSwizzle
     b *:ComponentSwizzle
     a *:ComponentSwizzle
-  TextureComponentSwizzleDescriptor *{.bycopy, importc:"struct WGPUTextureComponentSwizzleDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  TextureComponentSwizzleDescriptor *{.bycopy, importc:"struct WGPUTextureComponentSwizzleDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     swizzle *:TextureComponentSwizzle
-  BufferAllocatorSelector *{.bycopy, importc:"struct WGPUBufferAllocatorSelector", header:"wgvk.h", pure, inheritable.}= object
+  BufferAllocatorSelector *{.bycopy, importc:"struct WGPUBufferAllocatorSelector", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     forceBuiltin *:Bool
-  BufferDescriptor *{.bycopy, importc:"struct WGPUBufferDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  BufferDescriptor *{.bycopy, importc:"struct WGPUBufferDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     usage *:BufferUsage
     size *:uint64
     mappedAtCreation *:Bool
   BufferMapCallback * = proc (a0 :MapAsyncStatus; a1 :StringView; a2 :pointer; a3 :pointer) {.cdecl.}
-  BufferMapCallbackInfo *{.bycopy, importc:"struct WGPUBufferMapCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  BufferMapCallbackInfo *{.bycopy, importc:"struct WGPUBufferMapCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:CallbackMode
     callback *:BufferMapCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  BindGroupDescriptor *{.bycopy, importc:"struct WGPUBindGroupDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  BindGroupDescriptor *{.bycopy, importc:"struct WGPUBindGroupDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     layout *:BindGroupLayout
     entryCount *:csize_t
     entries *:ptr BindGroupEntry
-  BindGroupLayoutDescriptor *{.bycopy, importc:"struct WGPUBindGroupLayoutDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  BindGroupLayoutDescriptor *{.bycopy, importc:"struct WGPUBindGroupLayoutDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     entryCount *:csize_t
     entries *:ptr BindGroupLayoutEntry
-  PipelineLayoutDescriptor *{.bycopy, importc:"struct WGPUPipelineLayoutDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  PipelineLayoutDescriptor *{.bycopy, importc:"struct WGPUPipelineLayoutDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     bindGroupLayoutCount *:csize_t
     bindGroupLayouts *:ptr BindGroupLayout
     immediateDataRangeByteSize *:uint32
-  SurfaceTexture *{.bycopy, importc:"struct WGPUSurfaceTexture", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceTexture *{.bycopy, importc:"struct WGPUSurfaceTexture", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     texture *:Texture
     status *:SurfaceGetCurrentTextureStatus
-  SurfaceCapabilities *{.bycopy, importc:"struct WGPUSurfaceCapabilities", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceCapabilities *{.bycopy, importc:"struct WGPUSurfaceCapabilities", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     usages *:TextureUsage
     formatCount *:csize_t
@@ -1047,22 +1047,22 @@ type
     presentModes *:ptr PresentMode
     alphaModeCount *:csize_t
     alphaModes *:ptr CompositeAlphaMode
-  ConstantEntry *{.bycopy, importc:"struct WGPUConstantEntry", header:"wgvk.h", pure, inheritable.}= object
+  ConstantEntry *{.bycopy, importc:"struct WGPUConstantEntry", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     key *:StringView
     value *:cdouble
-  VertexAttribute *{.bycopy, importc:"struct WGPUVertexAttribute", header:"wgvk.h", pure, inheritable.}= object
+  VertexAttribute *{.bycopy, importc:"struct WGPUVertexAttribute", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     format *:VertexFormat
     offset *:uint64
     shaderLocation *:uint32
-  VertexBufferLayout *{.bycopy, importc:"struct WGPUVertexBufferLayout", header:"wgvk.h", pure, inheritable.}= object
+  VertexBufferLayout *{.bycopy, importc:"struct WGPUVertexBufferLayout", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     stepMode *:VertexStepMode
     arrayStride *:uint64
     attributeCount *:csize_t
     attributes *:ptr VertexAttribute
-  VertexState *{.bycopy, importc:"struct WGPUVertexState", header:"wgvk.h", pure, inheritable.}= object
+  VertexState *{.bycopy, importc:"struct WGPUVertexState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     module *:ShaderModule
     entryPoint *:StringView
@@ -1070,7 +1070,7 @@ type
     constants *:ptr ConstantEntry
     bufferCount *:csize_t
     buffers *:ptr VertexBufferLayout
-  BlendOperation *{.pure, size:sizeof(cint), importc:"enum WGPUBlendOperation", header:"wgvk.h".}= enum
+  BlendOperation *{.pure, size:sizeof(cint), importc:"enum WGPUBlendOperation", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Add = 1,
     Subtract = 2,
@@ -1078,7 +1078,7 @@ type
     Min = 4,
     Max = 5,
     Force32 = 2147483647
-  BlendFactor *{.pure, size:sizeof(cint), importc:"enum WGPUBlendFactor", header:"wgvk.h".}= enum
+  BlendFactor *{.pure, size:sizeof(cint), importc:"enum WGPUBlendFactor", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Zero = 1,
     One = 2,
@@ -1098,33 +1098,33 @@ type
     Src1Alpha = 16,
     OneMinusSrc1Alpha = 17,
     Force32 = 2147483647
-  BlendComponent *{.bycopy, importc:"struct WGPUBlendComponent", header:"wgvk.h", pure, inheritable.}= object
+  BlendComponent *{.bycopy, importc:"struct WGPUBlendComponent", header:"webgpu/webgpu.h", pure, inheritable.}= object
     operation *:BlendOperation
     srcFactor *:BlendFactor
     dstFactor *:BlendFactor
-  BlendState *{.bycopy, importc:"struct WGPUBlendState", header:"wgvk.h", pure, inheritable.}= object
+  BlendState *{.bycopy, importc:"struct WGPUBlendState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     color *:BlendComponent
     alpha *:BlendComponent
-  ShaderSourceSPIRV *{.bycopy, importc:"struct WGPUShaderSourceSPIRV", header:"wgvk.h", pure, inheritable.}= object
+  ShaderSourceSPIRV *{.bycopy, importc:"struct WGPUShaderSourceSPIRV", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     codeSize *:uint32
     code *:ptr uint32
-  ShaderSourceWGSL *{.bycopy, importc:"struct WGPUShaderSourceWGSL", header:"wgvk.h", pure, inheritable.}= object
+  ShaderSourceWGSL *{.bycopy, importc:"struct WGPUShaderSourceWGSL", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     code *:StringView
-  ShaderSourceGLSL *{.bycopy, importc:"struct WGPUShaderSourceGLSL", header:"wgvk.h", pure, inheritable.}= object
+  ShaderSourceGLSL *{.bycopy, importc:"struct WGPUShaderSourceGLSL", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     stage *:ShaderStage
     code *:StringView
-  ShaderModuleDescriptor *{.bycopy, importc:"struct WGPUShaderModuleDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  ShaderModuleDescriptor *{.bycopy, importc:"struct WGPUShaderModuleDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
-  ColorTargetState *{.bycopy, importc:"struct WGPUColorTargetState", header:"wgvk.h", pure, inheritable.}= object
+  ColorTargetState *{.bycopy, importc:"struct WGPUColorTargetState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     format *:TextureFormat
     blend *:ptr BlendState
     writeMask *:ColorWriteMask
-  FragmentState *{.bycopy, importc:"struct WGPUFragmentState", header:"wgvk.h", pure, inheritable.}= object
+  FragmentState *{.bycopy, importc:"struct WGPUFragmentState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     module *:ShaderModule
     entryPoint *:StringView
@@ -1132,20 +1132,20 @@ type
     constants *:ptr ConstantEntry
     targetCount *:csize_t
     targets *:ptr ColorTargetState
-  CommandBufferDescriptor *{.bycopy, importc:"struct WGPUCommandBufferDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  CommandBufferDescriptor *{.bycopy, importc:"struct WGPUCommandBufferDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
-  PrimitiveLineWidthInfo *{.bycopy, importc:"struct WGPUPrimitiveLineWidthInfo", header:"wgvk.h", pure, inheritable.}= object
+  PrimitiveLineWidthInfo *{.bycopy, importc:"struct WGPUPrimitiveLineWidthInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     lineWidth *:uint32
-  PrimitiveState *{.bycopy, importc:"struct WGPUPrimitiveState", header:"wgvk.h", pure, inheritable.}= object
+  PrimitiveState *{.bycopy, importc:"struct WGPUPrimitiveState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     topology *:PrimitiveTopology
     stripIndexFormat *:IndexFormat
     frontFace *:FrontFace
     cullMode *:CullMode
     unclippedDepth *:Bool32
-  StencilOperation *{.pure, size:sizeof(cint), importc:"enum WGPUStencilOperation", header:"wgvk.h".}= enum
+  StencilOperation *{.pure, size:sizeof(cint), importc:"enum WGPUStencilOperation", header:"webgpu/webgpu.h".}= enum
     Undefined = 0,
     Keep = 1,
     Zero = 2,
@@ -1156,12 +1156,12 @@ type
     IncrementWrap = 7,
     DecrementWrap = 8,
     Force32 = 2147483647
-  StencilFaceState *{.bycopy, importc:"struct WGPUStencilFaceState", header:"wgvk.h", pure, inheritable.}= object
+  StencilFaceState *{.bycopy, importc:"struct WGPUStencilFaceState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     compare *:CompareFunction
     failOp *:StencilOperation
     depthFailOp *:StencilOperation
     passOp *:StencilOperation
-  DepthStencilState *{.bycopy, importc:"struct WGPUDepthStencilState", header:"wgvk.h", pure, inheritable.}= object
+  DepthStencilState *{.bycopy, importc:"struct WGPUDepthStencilState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     format *:TextureFormat
     depthWriteEnabled *:Bool32
@@ -1173,23 +1173,23 @@ type
     depthBias *:int32
     depthBiasSlopeScale *:cfloat
     depthBiasClamp *:cfloat
-  BufferBindingInfo *{.bycopy, importc:"struct WGPUBufferBindingInfo", header:"wgvk.h", pure, inheritable.}= object
+  BufferBindingInfo *{.bycopy, importc:"struct WGPUBufferBindingInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     `type` *:BufferBindingType
     minBindingSize *:uint64
-  SamplerBindingInfo *{.bycopy, importc:"struct WGPUSamplerBindingInfo", header:"wgvk.h", pure, inheritable.}= object
+  SamplerBindingInfo *{.bycopy, importc:"struct WGPUSamplerBindingInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     `type` *:SamplerBindingType
-  TextureBindingInfo *{.bycopy, importc:"struct WGPUTextureBindingInfo", header:"wgvk.h", pure, inheritable.}= object
+  TextureBindingInfo *{.bycopy, importc:"struct WGPUTextureBindingInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     sampleType *:TextureSampleType
     viewDimension *:TextureViewDimension
-  StorageTextureBindingInfo *{.bycopy, importc:"struct WGPUStorageTextureBindingInfo", header:"wgvk.h", pure, inheritable.}= object
+  StorageTextureBindingInfo *{.bycopy, importc:"struct WGPUStorageTextureBindingInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     access *:StorageTextureAccess
     format *:TextureFormat
     viewDimension *:TextureViewDimension
-  GlobalReflectionInfo *{.bycopy, importc:"struct WGPUGlobalReflectionInfo", header:"wgvk.h", pure, inheritable.}= object
+  GlobalReflectionInfo *{.bycopy, importc:"struct WGPUGlobalReflectionInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     name *:StringView
     bindGroup *:uint32
     binding *:uint32
@@ -1198,55 +1198,55 @@ type
     sampler *:SamplerBindingInfo
     texture *:TextureBindingInfo
     storageTexture *:StorageTextureBindingInfo
-  ReflectionComponentType *{.pure, size:sizeof(cint), importc:"enum WGPUReflectionComponentType", header:"wgvk.h".}= enum
+  ReflectionComponentType *{.pure, size:sizeof(cint), importc:"enum WGPUReflectionComponentType", header:"webgpu/webgpu.h".}= enum
     Invalid = 0,
     Sint32 = 1,
     Uint32 = 2,
     Float32 = 3,
     Float16 = 4
-  ReflectionCompositionType *{.pure, size:sizeof(cint), importc:"enum WGPUReflectionCompositionType", header:"wgvk.h".}= enum
+  ReflectionCompositionType *{.pure, size:sizeof(cint), importc:"enum WGPUReflectionCompositionType", header:"webgpu/webgpu.h".}= enum
     Invalid = 0,
     Scalar = 1,
     Vec2 = 2,
     Vec3 = 3,
     Vec4 = 4
-  ReflectionAttribute *{.bycopy, importc:"struct WGPUReflectionAttribute", header:"wgvk.h", pure, inheritable.}= object
+  ReflectionAttribute *{.bycopy, importc:"struct WGPUReflectionAttribute", header:"webgpu/webgpu.h", pure, inheritable.}= object
     location *:uint32
     componentType *:ReflectionComponentType
     compositionType *:ReflectionCompositionType
-  AttributeReflectionInfo *{.bycopy, importc:"struct WGPUAttributeReflectionInfo", header:"wgvk.h", pure, inheritable.}= object
+  AttributeReflectionInfo *{.bycopy, importc:"struct WGPUAttributeReflectionInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     attributeCount *:uint32
     attributes *:ptr ReflectionAttribute
-  ReflectionInfoRequestStatus *{.pure, size:sizeof(cint), importc:"enum WGPUReflectionInfoRequestStatus", header:"wgvk.h".}= enum
+  ReflectionInfoRequestStatus *{.pure, size:sizeof(cint), importc:"enum WGPUReflectionInfoRequestStatus", header:"webgpu/webgpu.h".}= enum
     Unused = 0,
     Success = 1,
     CallbackCancelled = 2,
     Force32 = 2147483647
-  ReflectionInfo *{.bycopy, importc:"struct WGPUReflectionInfo", header:"wgvk.h", pure, inheritable.}= object
+  ReflectionInfo *{.bycopy, importc:"struct WGPUReflectionInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     globalCount *:uint32
     globals *:ptr GlobalReflectionInfo
     inputAttributes *:ptr AttributeReflectionInfo
     outputAttributes *:ptr AttributeReflectionInfo
   ReflectionInfoCallback * = proc (a0 :ReflectionInfoRequestStatus; a1 :ptr ReflectionInfo; a2 :pointer; a3 :pointer) {.cdecl.}
-  ReflectionInfoCallbackInfo *{.bycopy, importc:"struct WGPUReflectionInfoCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  ReflectionInfoCallbackInfo *{.bycopy, importc:"struct WGPUReflectionInfoCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:CallbackMode
     callback *:ReflectionInfoCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  MultisampleState *{.bycopy, importc:"struct WGPUMultisampleState", header:"wgvk.h", pure, inheritable.}= object
+  MultisampleState *{.bycopy, importc:"struct WGPUMultisampleState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     count *:uint32
     mask *:uint32
     alphaToCoverageEnabled *:Bool32
-  ComputeState *{.bycopy, importc:"struct WGPUComputeState", header:"wgvk.h", pure, inheritable.}= object
+  ComputeState *{.bycopy, importc:"struct WGPUComputeState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     module *:ShaderModule
     entryPoint *:StringView
     constantCount *:csize_t
     constants *:ptr ConstantEntry
-  RenderPipelineDescriptor *{.bycopy, importc:"struct WGPURenderPipelineDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RenderPipelineDescriptor *{.bycopy, importc:"struct WGPURenderPipelineDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     layout *:PipelineLayout
@@ -1255,12 +1255,12 @@ type
     depthStencil *:ptr DepthStencilState
     multisample *:MultisampleState
     fragment *:ptr FragmentState
-  ComputePipelineDescriptor *{.bycopy, importc:"struct WGPUComputePipelineDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  ComputePipelineDescriptor *{.bycopy, importc:"struct WGPUComputePipelineDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
     layout *:PipelineLayout
     compute *:ComputeState
-  SurfaceConfiguration *{.bycopy, importc:"struct WGPUSurfaceConfiguration", header:"wgvk.h", pure, inheritable.}= object
+  SurfaceConfiguration *{.bycopy, importc:"struct WGPUSurfaceConfiguration", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     device *:Device
     format *:TextureFormat
@@ -1273,81 +1273,81 @@ type
     presentMode *:PresentMode
   RequestAdapterCallback * = proc (a0 :RequestAdapterStatus; a1 :Adapter; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   RequestDeviceCallback * = proc (a0 :RequestDeviceStatus; a1 :Device; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  RequestAdapterCallbackInfo *{.bycopy, importc:"struct WGPURequestAdapterCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  RequestAdapterCallbackInfo *{.bycopy, importc:"struct WGPURequestAdapterCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:CallbackMode
     callback *:RequestAdapterCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  RequestDeviceCallbackInfo *{.bycopy, importc:"struct WGPURequestDeviceCallbackInfo", header:"wgvk.h", pure, inheritable.}= object
+  RequestDeviceCallbackInfo *{.bycopy, importc:"struct WGPURequestDeviceCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:CallbackMode
     callback *:RequestDeviceCallback
     userdata1 *:pointer
     userdata2 *:pointer
-  Transform3DDescriptor *{.bycopy, importc:"struct WGPUTransform3DDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  Transform3DDescriptor *{.bycopy, importc:"struct WGPUTransform3DDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     x *:cfloat
     y *:cfloat
     z *:cfloat
-  RayTracingAccelerationInstanceTransformDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationInstanceTransformDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingAccelerationInstanceTransformDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationInstanceTransformDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     translation *:Transform3DDescriptor
     rotation *:Transform3DDescriptor
     scale *:Transform3DDescriptor
-  RayTracingAccelerationGeometryVertexDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationGeometryVertexDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingAccelerationGeometryVertexDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationGeometryVertexDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     buffer *:Buffer
     format *:VertexFormat
     stride *:uint32
     offset *:uint32
     count *:uint32
-  RayTracingAccelerationGeometryIndexDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationGeometryIndexDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingAccelerationGeometryIndexDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationGeometryIndexDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     buffer *:Buffer
     format *:IndexFormat
     offset *:uint32
     count *:uint32
-  RayTracingAccelerationGeometryAABBDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationGeometryAABBDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingAccelerationGeometryAABBDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationGeometryAABBDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     buffer *:Buffer
     stride *:uint32
     offset *:uint32
     count *:uint32
-  RayTracingAccelerationGeometryDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationGeometryDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingAccelerationGeometryDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationGeometryDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     usage *:RayTracingAccelerationGeometryUsage
     `type` *:RayTracingAccelerationGeometryType
     vertex *:RayTracingAccelerationGeometryVertexDescriptor
     index *:RayTracingAccelerationGeometryIndexDescriptor
     aabb *:RayTracingAccelerationGeometryAABBDescriptor
-  TransformMatrix *{.bycopy, importc:"struct WGPUTransformMatrix", header:"wgvk.h", pure, inheritable.}= object
+  TransformMatrix *{.bycopy, importc:"struct WGPUTransformMatrix", header:"webgpu/webgpu.h", pure, inheritable.}= object
     matrix *:array[3, array[4, cfloat]]
-  RayTracingAccelerationInstanceDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationInstanceDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingAccelerationInstanceDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationInstanceDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     usage *:RayTracingAccelerationInstanceUsage
     mask *:uint8
     instanceId *:uint32
     instanceOffset *:uint32
     transformMatrix *:TransformMatrix
     geometryContainer *:RayTracingAccelerationContainer
-  RayTracingAccelerationContainerDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationContainerDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingAccelerationContainerDescriptor *{.bycopy, importc:"struct WGPURayTracingAccelerationContainerDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     usage *:RayTracingAccelerationContainerUsage
     level *:RayTracingAccelerationContainerLevel
     geometryCount *:uint32
     instanceCount *:uint32
     geometries *:ptr RayTracingAccelerationGeometryDescriptor
     instances *:ptr RayTracingAccelerationInstanceDescriptor
-  RayTracingStateDescriptor *{.bycopy, importc:"struct WGPURayTracingStateDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingStateDescriptor *{.bycopy, importc:"struct WGPURayTracingStateDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     shaderBindingTable *:RayTracingShaderBindingTable
     maxRecursionDepth *:uint32
     maxPayloadSize *:uint32
-  RayTracingPipelineDescriptor *{.bycopy, importc:"struct WGPURayTracingPipelineDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingPipelineDescriptor *{.bycopy, importc:"struct WGPURayTracingPipelineDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     layout *:PipelineLayout
     rayTracingState *:RayTracingStateDescriptor
-  RayTracingShaderBindingTableStageDescriptor *{.bycopy, importc:"struct WGPURayTracingShaderBindingTableStageDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingShaderBindingTableStageDescriptor *{.bycopy, importc:"struct WGPURayTracingShaderBindingTableStageDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     stage *:ShaderStage
     module *:ShaderModule
-  RayTracingShaderBindingTableGroupDescriptor *{.bycopy, importc:"struct WGPURayTracingShaderBindingTableGroupDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingShaderBindingTableGroupDescriptor *{.bycopy, importc:"struct WGPURayTracingShaderBindingTableGroupDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     `type` *:RayTracingShaderBindingTableGroupType
     generalIndex *:uint32
     closestHitIndex *:uint32
     anyHitIndex *:uint32
     intersectionIndex *:uint32
-  RayTracingShaderBindingTableDescriptor *{.bycopy, importc:"struct WGPURayTracingShaderBindingTableDescriptor", header:"wgvk.h", pure, inheritable.}= object
+  RayTracingShaderBindingTableDescriptor *{.bycopy, importc:"struct WGPURayTracingShaderBindingTableDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     stageCount *:uint32
     stages *:ptr RayTracingShaderBindingTableStageDescriptor
     groupCount *:uint32
@@ -1440,222 +1440,222 @@ const
   RayTracingAccelerationContainerUsage_PreferFastTrace *:RayTracingAccelerationContainerUsage= 2
   RayTracingAccelerationContainerUsage_PreferFastBuild *:RayTracingAccelerationContainerUsage= 4
   RayTracingAccelerationContainerUsage_LowMemory *:RayTracingAccelerationContainerUsage= 8
-proc create *(descriptor :ptr InstanceDescriptor) :Instance {.importc:"wgpuCreateInstance", cdecl, header:"wgvk.h".}
-proc wait *(instance :Instance; futureCount :csize_t; futures :ptr FutureWaitInfo; timeoutNS :uint64) :WaitStatus {.importc:"wgpuInstanceWaitAny", cdecl, header:"wgvk.h".}
-proc request *(instance :Instance; options :ptr RequestAdapterOptions; callbackInfo :RequestAdapterCallbackInfo) :Future {.importc:"wgpuInstanceRequestAdapter", cdecl, header:"wgvk.h".}
-proc create *(instance :Instance; descriptor :ptr SurfaceDescriptor) :Surface {.importc:"wgpuInstanceCreateSurface", cdecl, header:"wgvk.h".}
-proc getAdapterInfo *(device :Device; adapterInfo :ptr AdapterInfo) :Status {.importc:"wgpuDeviceGetAdapterInfo", cdecl, header:"wgvk.h".}
-proc get *(adapter :Adapter; limits :ptr Limits) :Status {.importc:"wgpuAdapterGetLimits", cdecl, header:"wgvk.h".}
-proc request *(adapter :Adapter; options :ptr DeviceDescriptor; callbackInfo :RequestDeviceCallbackInfo) :Future {.importc:"wgpuAdapterRequestDevice", cdecl, header:"wgvk.h".}
-proc getQueue *(device :Device) :Queue {.importc:"wgpuDeviceGetQueue", cdecl, header:"wgvk.h".}
-proc get *(wgpuSurface :Surface; adapter :Adapter; capabilities :ptr SurfaceCapabilities) :Status {.importc:"wgpuSurfaceGetCapabilities", cdecl, header:"wgvk.h".}
-proc configure *(surface :Surface; config :ptr SurfaceConfiguration) {.importc:"wgpuSurfaceConfigure", cdecl, header:"wgvk.h".}
-proc release *(surface :Surface) {.importc:"wgpuSurfaceRelease", cdecl, header:"wgvk.h".}
-proc create *(device :Device; descriptor :ptr TextureDescriptor) :Texture {.importc:"wgpuDeviceCreateTexture", cdecl, header:"wgvk.h".}
-proc create *(texture :Texture; descriptor :ptr TextureViewDescriptor) :TextureView {.importc:"wgpuTextureCreateView", cdecl, header:"wgvk.h".}
-proc getDepthOrArrayLayers *(texture :Texture) :uint32 {.importc:"wgpuTextureGetDepthOrArrayLayers", cdecl, header:"wgvk.h".}
-proc getDimension *(texture :Texture) :TextureDimension {.importc:"wgpuTextureGetDimension", cdecl, header:"wgvk.h".}
-proc getFormat *(texture :Texture) :TextureFormat {.importc:"wgpuTextureGetFormat", cdecl, header:"wgvk.h".}
-proc getHeight *(texture :Texture) :uint32 {.importc:"wgpuTextureGetHeight", cdecl, header:"wgvk.h".}
-proc getMipLevelCount *(texture :Texture) :uint32 {.importc:"wgpuTextureGetMipLevelCount", cdecl, header:"wgvk.h".}
-proc getSampleCount *(texture :Texture) :uint32 {.importc:"wgpuTextureGetSampleCount", cdecl, header:"wgvk.h".}
-proc getUsage *(texture :Texture) :TextureUsage {.importc:"wgpuTextureGetUsage", cdecl, header:"wgvk.h".}
-proc getWidth *(texture :Texture) :uint32 {.importc:"wgpuTextureGetWidth", cdecl, header:"wgvk.h".}
-proc create *(device :Device; descriptor :ptr SamplerDescriptor) :Sampler {.importc:"wgpuDeviceCreateSampler", cdecl, header:"wgvk.h".}
-proc create *(device :Device; desc :ptr BufferDescriptor) :Buffer {.importc:"wgpuDeviceCreateBuffer", cdecl, header:"wgvk.h".}
-proc write *(cSelf :Queue; buffer :Buffer; bufferOffset :uint64; data :pointer; size :csize_t) {.importc:"wgpuQueueWriteBuffer", cdecl, header:"wgvk.h".}
-proc map *(buffer :Buffer; mapmode :MapMode; offset :csize_t; size :csize_t; data :ptr pointer) {.importc:"wgpuBufferMap", cdecl, header:"wgvk.h".}
-proc unmap *(buffer :Buffer) {.importc:"wgpuBufferUnmap", cdecl, header:"wgvk.h".}
-proc mapAsync *(buffer :Buffer; mode :MapMode; offset :csize_t; size :csize_t; callbackInfo :BufferMapCallbackInfo) :Future {.importc:"wgpuBufferMapAsync", cdecl, header:"wgvk.h".}
-proc getSize *(buffer :Buffer) :uint64 {.importc:"wgpuBufferGetSize", cdecl, header:"wgvk.h".}
-proc write *(queue :Queue; destination :ptr TexelCopyTextureInfo; data :pointer; dataSize :csize_t; dataLayout :ptr TexelCopyBufferLayout; writeSize :ptr Extent3D) {.importc:"wgpuQueueWriteTexture", cdecl, header:"wgvk.h".}
-proc createFence *(device :Device) :Fence {.importc:"wgpuDeviceCreateFence", cdecl, header:"wgvk.h".}
-proc wait *(fence :Fence; timeoutNS :uint64) {.importc:"wgpuFenceWait", cdecl, header:"wgvk.h".}
-proc wait *(fences :ptr Fence; fenceCount :uint32; timeoutNS :uint64) {.importc:"wgpuFencesWait", cdecl, header:"wgvk.h".}
-proc attach *(fence :Fence; callback :proc (a0 :pointer) {.cdecl.}; userdata :pointer) {.importc:"wgpuFenceAttachCallback", cdecl, header:"wgvk.h".}
-proc addRef *(fence :Fence) {.importc:"wgpuFenceAddRef", cdecl, header:"wgvk.h".}
-proc release *(fence :Fence) {.importc:"wgpuFenceRelease", cdecl, header:"wgvk.h".}
-proc createLayout *(device :Device; bindGroupLayoutDescriptor :ptr BindGroupLayoutDescriptor) :BindGroupLayout {.importc:"wgpuDeviceCreateBindGroupLayout", cdecl, header:"wgvk.h".}
-proc create *(device :Device; descriptor :ptr ShaderModuleDescriptor) :ShaderModule {.importc:"wgpuDeviceCreateShaderModule", cdecl, header:"wgvk.h".}
-proc create *(device :Device; pldesc :ptr PipelineLayoutDescriptor) :PipelineLayout {.importc:"wgpuDeviceCreatePipelineLayout", cdecl, header:"wgvk.h".}
-proc create *(device :Device; descriptor :ptr RenderPipelineDescriptor) :RenderPipeline {.importc:"wgpuDeviceCreateRenderPipeline", cdecl, header:"wgvk.h".}
-proc create *(device :Device; descriptor :ptr ComputePipelineDescriptor) :ComputePipeline {.importc:"wgpuDeviceCreateComputePipeline", cdecl, header:"wgvk.h".}
-proc getReflectionInfo *(shaderModule :ShaderModule; callbackInfo :ReflectionInfoCallbackInfo) :Future {.importc:"wgpuShaderModuleGetReflectionInfo", cdecl, header:"wgvk.h".}
-proc create *(device :Device; bgdesc :ptr BindGroupDescriptor) :BindGroup {.importc:"wgpuDeviceCreateBindGroup", cdecl, header:"wgvk.h".}
-proc write *(device :Device; a1 :BindGroup; bgdesc :ptr BindGroupDescriptor) {.importc:"wgpuWriteBindGroup", cdecl, header:"wgvk.h".}
-proc create *(device :Device; cdesc :ptr CommandEncoderDescriptor) :CommandEncoder {.importc:"wgpuDeviceCreateCommandEncoder", cdecl, header:"wgvk.h".}
-proc finish *(commandEncoder :CommandEncoder; descriptor :ptr CommandBufferDescriptor) :CommandBuffer {.importc:"wgpuCommandEncoderFinish", cdecl, header:"wgvk.h".}
-proc tick *(device :Device) {.importc:"wgpuDeviceTick", cdecl, header:"wgvk.h".}
-proc submit *(queue :Queue; commandCount :csize_t; buffers :ptr CommandBuffer) {.importc:"wgpuQueueSubmit", cdecl, header:"wgvk.h".}
-proc waitIdle *(queue :Queue) {.importc:"wgpuQueueWaitIdle", cdecl, header:"wgvk.h".}
-proc copy *(commandEncoder :CommandEncoder; source :Buffer; sourceOffset :uint64; destination :Buffer; destinationOffset :uint64; size :uint64) {.importc:"wgpuCommandEncoderCopyBufferToBuffer", cdecl, header:"wgvk.h".}
-proc copy *(commandEncoder :CommandEncoder; source :ptr TexelCopyBufferInfo; destination :ptr TexelCopyTextureInfo; copySize :ptr Extent3D) {.importc:"wgpuCommandEncoderCopyBufferToTexture", cdecl, header:"wgvk.h".}
-proc copy *(commandEncoder :CommandEncoder; source :ptr TexelCopyTextureInfo; destination :ptr TexelCopyBufferInfo; copySize :ptr Extent3D) {.importc:"wgpuCommandEncoderCopyTextureToBuffer", cdecl, header:"wgvk.h".}
-proc copy *(commandEncoder :CommandEncoder; source :ptr TexelCopyTextureInfo; destination :ptr TexelCopyTextureInfo; copySize :ptr Extent3D) {.importc:"wgpuCommandEncoderCopyTextureToTexture", cdecl, header:"wgvk.h".}
-proc draw *(rpenc :RenderPassEncoder; vertices :uint32; instances :uint32; firstvertex :uint32; firstinstance :uint32) {.importc:"wgpuRenderPassEncoderDraw", cdecl, header:"wgvk.h".}
-proc drawIndexed *(rpenc :RenderPassEncoder; indices :uint32; instances :uint32; firstindex :uint32; basevertex :int32; firstinstance :uint32) {.importc:"wgpuRenderPassEncoderDrawIndexed", cdecl, header:"wgvk.h".}
-proc set *(rpenc :RenderPassEncoder; groupIndex :uint32; group :BindGroup; dynamicOffsetCount :csize_t; dynamicOffsets :ptr uint32) {.importc:"wgpuRenderPassEncoderSetBindGroup", cdecl, header:"wgvk.h".}
-proc set *(rpenc :RenderPassEncoder; renderPipeline :RenderPipeline) {.importc:"wgpuRenderPassEncoderSetPipeline", cdecl, header:"wgvk.h".}
-proc End *(rrpenc :RenderPassEncoder) {.importc:"wgpuRenderPassEncoderEnd", cdecl, header:"wgvk.h".}
-proc release *(rpenc :RenderPassEncoder) {.importc:"wgpuRenderPassEncoderRelease", cdecl, header:"wgvk.h".}
-proc addRef *(rpenc :RenderPassEncoder) {.importc:"wgpuRenderPassEncoderAddRef", cdecl, header:"wgvk.h".}
-proc setIndexBuffer *(renderPassEncoder :RenderPassEncoder; buffer :Buffer; format :IndexFormat; offset :uint64; size :uint64) {.importc:"wgpuRenderPassEncoderSetIndexBuffer", cdecl, header:"wgvk.h".}
-proc setVertexBuffer *(rpe :RenderPassEncoder; binding :uint32; buffer :Buffer; offset :uint64; size :uint64) {.importc:"wgpuRenderPassEncoderSetVertexBuffer", cdecl, header:"wgvk.h".}
-proc drawIndexedIndirect *(renderPassEncoder :RenderPassEncoder; indirectBuffer :Buffer; indirectOffset :uint64) {.importc:"wgpuRenderPassEncoderDrawIndexedIndirect", cdecl, header:"wgvk.h".}
-proc drawIndirect *(renderPassEncoder :RenderPassEncoder; indirectBuffer :Buffer; indirectOffset :uint64) {.importc:"wgpuRenderPassEncoderDrawIndirect", cdecl, header:"wgvk.h".}
-proc setBlendConstant *(renderPassEncoder :RenderPassEncoder; color :ptr Color) {.importc:"wgpuRenderPassEncoderSetBlendConstant", cdecl, header:"wgvk.h".}
-proc setViewport *(renderPassEncoder :RenderPassEncoder; x :cfloat; y :cfloat; width :cfloat; height :cfloat; minDepth :cfloat; maxDepth :cfloat) {.importc:"wgpuRenderPassEncoderSetViewport", cdecl, header:"wgvk.h".}
-proc setScissorRect *(renderPassEncoder :RenderPassEncoder; x :uint32; y :uint32; width :uint32; height :uint32) {.importc:"wgpuRenderPassEncoderSetScissorRect", cdecl, header:"wgvk.h".}
-proc set *(cpe :ComputePassEncoder; computePipeline :ComputePipeline) {.importc:"wgpuComputePassEncoderSetPipeline", cdecl, header:"wgvk.h".}
-proc set *(cpe :ComputePassEncoder; groupIndex :uint32; group :BindGroup; dynamicOffsetCount :csize_t; dynamicOffsets :ptr uint32) {.importc:"wgpuComputePassEncoderSetBindGroup", cdecl, header:"wgvk.h".}
-proc set *(cpe :RaytracingPassEncoder; raytracingPipeline :RaytracingPipeline) {.importc:"wgpuRaytracingPassEncoderSetPipeline", cdecl, header:"wgvk.h".}
-proc set *(cpe :RaytracingPassEncoder; groupIndex :uint32; bindGroup :BindGroup; dynamicOffsetCount :uint32; dynamicOffsets :ptr uint32) {.importc:"wgpuRaytracingPassEncoderSetBindGroup", cdecl, header:"wgvk.h".}
-proc trace *(cpe :RaytracingPassEncoder; rayGenerationOffset :uint32; rayHitOffset :uint32; rayMissOffset :uint32; width :uint32; height :uint32; depth :uint32) {.importc:"wgpuRaytracingPassEncoderTraceRays", cdecl, header:"wgvk.h".}
-proc dispatchWorkgroups *(cpe :ComputePassEncoder; x :uint32; y :uint32; z :uint32) {.importc:"wgpuComputePassEncoderDispatchWorkgroups", cdecl, header:"wgvk.h".}
-proc getCurrentTexture *(surface :Surface; surfaceTexture :ptr SurfaceTexture) {.importc:"wgpuSurfaceGetCurrentTexture", cdecl, header:"wgvk.h".}
-proc present *(surface :Surface) :Status {.importc:"wgpuSurfacePresent", cdecl, header:"wgvk.h".}
-proc begin *(enc :CommandEncoder; rtDesc :ptr RayTracingPassDescriptor) :RaytracingPassEncoder {.importc:"wgpuCommandEncoderBeginRaytracingPass", cdecl, header:"wgvk.h".}
-proc End *(commandEncoder :RaytracingPassEncoder) {.importc:"wgpuRaytracingPassEncoderEnd", cdecl, header:"wgvk.h".}
-proc begin *(enc :CommandEncoder; cpdesc :ptr ComputePassDescriptor) :ComputePassEncoder {.importc:"wgpuCommandEncoderBeginComputePass", cdecl, header:"wgvk.h".}
-proc End *(commandEncoder :ComputePassEncoder) {.importc:"wgpuComputePassEncoderEnd", cdecl, header:"wgvk.h".}
-proc begin *(enc :CommandEncoder; rpdesc :ptr RenderPassDescriptor) :RenderPassEncoder {.importc:"wgpuCommandEncoderBeginRenderPass", cdecl, header:"wgvk.h".}
-proc build *(encoder :CommandEncoder; container :RayTracingAccelerationContainer) {.importc:"wgpuCommandEncoderBuildRayTracingAccelerationContainer", cdecl, header:"wgvk.h".}
-proc copy *(encoder :CommandEncoder; source :RayTracingAccelerationContainer; dest :RayTracingAccelerationContainer) {.importc:"wgpuCommandEncoderCopyRayTracingAccelerationContainer", cdecl, header:"wgvk.h".}
-proc update *(encoder :CommandEncoder; container :RayTracingAccelerationContainer) {.importc:"wgpuCommandEncoderUpdateRayTracingAccelerationContainer", cdecl, header:"wgvk.h".}
-proc create *(device :Device; descriptor :ptr RenderBundleEncoderDescriptor) :RenderBundleEncoder {.importc:"wgpuDeviceCreateRenderBundleEncoder", cdecl, header:"wgvk.h".}
-proc finish *(renderBundleEncoder :RenderBundleEncoder; descriptor :ptr RenderBundleDescriptor) :RenderBundle {.importc:"wgpuRenderBundleEncoderFinish", cdecl, header:"wgvk.h".}
-proc draw *(renderBundleEncoder :RenderBundleEncoder; vertexCount :uint32; instanceCount :uint32; firstVertex :uint32; firstInstance :uint32) {.importc:"wgpuRenderBundleEncoderDraw", cdecl, header:"wgvk.h".}
-proc drawIndexed *(renderBundleEncoder :RenderBundleEncoder; indexCount :uint32; instanceCount :uint32; firstIndex :uint32; baseVertex :int32; firstInstance :uint32) {.importc:"wgpuRenderBundleEncoderDrawIndexed", cdecl, header:"wgvk.h".}
-proc drawIndexedIndirect *(renderBundleEncoder :RenderBundleEncoder; indirectBuffer :Buffer; indirectOffset :uint64) {.importc:"wgpuRenderBundleEncoderDrawIndexedIndirect", cdecl, header:"wgvk.h".}
-proc drawIndirect *(renderBundleEncoder :RenderBundleEncoder; indirectBuffer :Buffer; indirectOffset :uint64) {.importc:"wgpuRenderBundleEncoderDrawIndirect", cdecl, header:"wgvk.h".}
-proc set *(renderBundleEncoder :RenderBundleEncoder; groupIndex :uint32; group :BindGroup; dynamicOffsetCount :csize_t; dynamicOffsets :ptr uint32) {.importc:"wgpuRenderBundleEncoderSetBindGroup", cdecl, header:"wgvk.h".}
-proc setIndexBuffer *(renderBundleEncoder :RenderBundleEncoder; buffer :Buffer; format :IndexFormat; offset :uint64; size :uint64) {.importc:"wgpuRenderBundleEncoderSetIndexBuffer", cdecl, header:"wgvk.h".}
-proc set *(renderBundleEncoder :RenderBundleEncoder; pipeline :RenderPipeline) {.importc:"wgpuRenderBundleEncoderSetPipeline", cdecl, header:"wgvk.h".}
-proc setVertexBuffer *(renderBundleEncoder :RenderBundleEncoder; slot :uint32; buffer :Buffer; offset :uint64; size :uint64) {.importc:"wgpuRenderBundleEncoderSetVertexBuffer", cdecl, header:"wgvk.h".}
-proc addRef *(renderBundleEncoder :RenderBundleEncoder) {.importc:"wgpuRenderBundleEncoderAddRef", cdecl, header:"wgvk.h".}
-proc release *(renderBundleEncoder :RenderBundleEncoder) {.importc:"wgpuRenderBundleEncoderRelease", cdecl, header:"wgvk.h".}
-proc execute *(renderPassEncoder :RenderPassEncoder; bundleCount :csize_t; bundles :ptr RenderBundle) {.importc:"wgpuRenderPassEncoderExecuteBundles", cdecl, header:"wgvk.h".}
-proc freeMembers *(value :AdapterInfo) {.importc:"wgpuAdapterInfoFreeMembers", cdecl, header:"wgvk.h".}
-proc get *(capabilities :ptr InstanceCapabilities) :Status {.importc:"wgpuGetInstanceCapabilities", cdecl, header:"wgvk.h".}
-proc getProcAddress *(procName :StringView) :Proc {.importc:"wgpuGetProcAddress", cdecl, header:"wgvk.h".}
-proc freeMembers *(value :SupportedFeatures) {.importc:"wgpuSupportedFeaturesFreeMembers", cdecl, header:"wgvk.h".}
-proc freeMembers *(value :SupportedWGSLLanguageFeatures) {.importc:"wgpuSupportedWGSLLanguageFeaturesFreeMembers", cdecl, header:"wgvk.h".}
-proc freeMembers *(value :SurfaceCapabilities) {.importc:"wgpuSurfaceCapabilitiesFreeMembers", cdecl, header:"wgvk.h".}
-proc get *(adapter :Adapter; features :ptr SupportedFeatures) {.importc:"wgpuAdapterGetFeatures", cdecl, header:"wgvk.h".}
-proc get *(adapter :Adapter; info :ptr AdapterInfo) :Status {.importc:"wgpuAdapterGetInfo", cdecl, header:"wgvk.h".}
-proc has *(adapter :Adapter; feature :FeatureName) :Bool {.importc:"wgpuAdapterHasFeature", cdecl, header:"wgvk.h".}
-proc setLabel *(bindGroup :BindGroup; label :StringView) {.importc:"wgpuBindGroupSetLabel", cdecl, header:"wgvk.h".}
-proc layoutSetLabel *(bindGroupLayout :BindGroupLayout; label :StringView) {.importc:"wgpuBindGroupLayoutSetLabel", cdecl, header:"wgvk.h".}
-proc destroy *(buffer :Buffer) {.importc:"wgpuBufferDestroy", cdecl, header:"wgvk.h".}
-proc getConstMappedRange *(buffer :Buffer; offset :csize_t; size :csize_t) :pointer {.importc:"wgpuBufferGetConstMappedRange", cdecl, header:"wgvk.h".}
-proc getMappedRange *(buffer :Buffer; offset :csize_t; size :csize_t) :pointer {.importc:"wgpuBufferGetMappedRange", cdecl, header:"wgvk.h".}
-proc getMapState *(buffer :Buffer) :BufferMapState {.importc:"wgpuBufferGetMapState", cdecl, header:"wgvk.h".}
-proc getUsage *(buffer :Buffer) :BufferUsage {.importc:"wgpuBufferGetUsage", cdecl, header:"wgvk.h".}
-proc readMappedRange *(buffer :Buffer; offset :csize_t; data :pointer; size :csize_t) :Status {.importc:"wgpuBufferReadMappedRange", cdecl, header:"wgvk.h".}
-proc setLabel *(buffer :Buffer; label :StringView) {.importc:"wgpuBufferSetLabel", cdecl, header:"wgvk.h".}
-proc writeMappedRange *(buffer :Buffer; offset :csize_t; data :pointer; size :csize_t) :Status {.importc:"wgpuBufferWriteMappedRange", cdecl, header:"wgvk.h".}
-proc setLabel *(commandBuffer :CommandBuffer; label :StringView) {.importc:"wgpuCommandBufferSetLabel", cdecl, header:"wgvk.h".}
-proc addRef *(commandBuffer :CommandBuffer) {.importc:"wgpuCommandBufferAddRef", cdecl, header:"wgvk.h".}
-proc clear *(commandEncoder :CommandEncoder; buffer :Buffer; offset :uint64; size :uint64) {.importc:"wgpuCommandEncoderClearBuffer", cdecl, header:"wgvk.h".}
-proc insertDebugMarker *(commandEncoder :CommandEncoder; markerLabel :StringView) {.importc:"wgpuCommandEncoderInsertDebugMarker", cdecl, header:"wgvk.h".}
-proc popDebugGroup *(commandEncoder :CommandEncoder) {.importc:"wgpuCommandEncoderPopDebugGroup", cdecl, header:"wgvk.h".}
-proc pushDebugGroup *(commandEncoder :CommandEncoder; groupLabel :StringView) {.importc:"wgpuCommandEncoderPushDebugGroup", cdecl, header:"wgvk.h".}
-proc resolve *(commandEncoder :CommandEncoder; querySet :QuerySet; firstQuery :uint32; queryCount :uint32; destination :Buffer; destinationOffset :uint64) {.importc:"wgpuCommandEncoderResolveQuerySet", cdecl, header:"wgvk.h".}
-proc setLabel *(commandEncoder :CommandEncoder; label :StringView) {.importc:"wgpuCommandEncoderSetLabel", cdecl, header:"wgvk.h".}
-proc writeTimestamp *(commandEncoder :CommandEncoder; querySet :QuerySet; queryIndex :uint32) {.importc:"wgpuCommandEncoderWriteTimestamp", cdecl, header:"wgvk.h".}
-proc addRef *(commandEncoder :CommandEncoder) {.importc:"wgpuCommandEncoderAddRef", cdecl, header:"wgvk.h".}
-proc dispatchWorkgroupsIndirect *(computePassEncoder :ComputePassEncoder; indirectBuffer :Buffer; indirectOffset :uint64) {.importc:"wgpuComputePassEncoderDispatchWorkgroupsIndirect", cdecl, header:"wgvk.h".}
-proc insertDebugMarker *(computePassEncoder :ComputePassEncoder; markerLabel :StringView) {.importc:"wgpuComputePassEncoderInsertDebugMarker", cdecl, header:"wgvk.h".}
-proc popDebugGroup *(computePassEncoder :ComputePassEncoder) {.importc:"wgpuComputePassEncoderPopDebugGroup", cdecl, header:"wgvk.h".}
-proc pushDebugGroup *(computePassEncoder :ComputePassEncoder; groupLabel :StringView) {.importc:"wgpuComputePassEncoderPushDebugGroup", cdecl, header:"wgvk.h".}
-proc setLabel *(computePassEncoder :ComputePassEncoder; label :StringView) {.importc:"wgpuComputePassEncoderSetLabel", cdecl, header:"wgvk.h".}
-proc addRef *(computePassEncoder :ComputePassEncoder) {.importc:"wgpuComputePassEncoderAddRef", cdecl, header:"wgvk.h".}
-proc getBindGroupLayout *(computePipeline :ComputePipeline; groupIndex :uint32) :BindGroupLayout {.importc:"wgpuComputePipelineGetBindGroupLayout", cdecl, header:"wgvk.h".}
-proc setLabel *(computePipeline :ComputePipeline; label :StringView) {.importc:"wgpuComputePipelineSetLabel", cdecl, header:"wgvk.h".}
-proc addRef *(computePipeline :ComputePipeline) {.importc:"wgpuComputePipelineAddRef", cdecl, header:"wgvk.h".}
-proc createAsync *(device :Device; descriptor :ptr ComputePipelineDescriptor; callbackInfo :CreateComputePipelineAsyncCallbackInfo) :Future {.importc:"wgpuDeviceCreateComputePipelineAsync", cdecl, header:"wgvk.h".}
-proc create *(device :Device; descriptor :ptr QuerySetDescriptor) :QuerySet {.importc:"wgpuDeviceCreateQuerySet", cdecl, header:"wgvk.h".}
-proc createAsync *(device :Device; descriptor :ptr RenderPipelineDescriptor; callbackInfo :CreateRenderPipelineAsyncCallbackInfo) :Future {.importc:"wgpuDeviceCreateRenderPipelineAsync", cdecl, header:"wgvk.h".}
-proc destroy *(device :Device) {.importc:"wgpuDeviceDestroy", cdecl, header:"wgvk.h".}
-proc get *(device :Device; features :ptr SupportedFeatures) {.importc:"wgpuDeviceGetFeatures", cdecl, header:"wgvk.h".}
-proc get *(device :Device; limits :ptr Limits) :Status {.importc:"wgpuDeviceGetLimits", cdecl, header:"wgvk.h".}
-proc getLostFuture *(device :Device) :Future {.importc:"wgpuDeviceGetLostFuture", cdecl, header:"wgvk.h".}
-proc has *(device :Device; feature :FeatureName) :Bool {.importc:"wgpuDeviceHasFeature", cdecl, header:"wgvk.h".}
-proc popErrorScope *(device :Device; callbackInfo :PopErrorScopeCallbackInfo) :Future {.importc:"wgpuDevicePopErrorScope", cdecl, header:"wgvk.h".}
-proc pushErrorScope *(device :Device; filter :ErrorFilter) {.importc:"wgpuDevicePushErrorScope", cdecl, header:"wgvk.h".}
-proc setLabel *(device :Device; label :StringView) {.importc:"wgpuDeviceSetLabel", cdecl, header:"wgvk.h".}
-proc get *(instance :Instance; features :ptr SupportedWGSLLanguageFeatures) {.importc:"wgpuInstanceGetWGSLLanguageFeatures", cdecl, header:"wgvk.h".}
-proc has *(instance :Instance; feature :WGSLLanguageFeatureName) :Bool {.importc:"wgpuInstanceHasWGSLLanguageFeature", cdecl, header:"wgvk.h".}
-proc processEvents *(instance :Instance) {.importc:"wgpuInstanceProcessEvents", cdecl, header:"wgvk.h".}
-proc setLabel *(pipelineLayout :PipelineLayout; label :StringView) {.importc:"wgpuPipelineLayoutSetLabel", cdecl, header:"wgvk.h".}
-proc destroy *(querySet :QuerySet) {.importc:"wgpuQuerySetDestroy", cdecl, header:"wgvk.h".}
-proc getCount *(querySet :QuerySet) :uint32 {.importc:"wgpuQuerySetGetCount", cdecl, header:"wgvk.h".}
-proc getType *(querySet :QuerySet) :QueryType {.importc:"wgpuQuerySetGetType", cdecl, header:"wgvk.h".}
-proc setLabel *(querySet :QuerySet; label :StringView) {.importc:"wgpuQuerySetSetLabel", cdecl, header:"wgvk.h".}
-proc addRef *(querySet :QuerySet) {.importc:"wgpuQuerySetAddRef", cdecl, header:"wgvk.h".}
-proc release *(querySet :QuerySet) {.importc:"wgpuQuerySetRelease", cdecl, header:"wgvk.h".}
-proc onSubmittedWorkDone *(queue :Queue; callbackInfo :QueueWorkDoneCallbackInfo) :Future {.importc:"wgpuQueueOnSubmittedWorkDone", cdecl, header:"wgvk.h".}
-proc setLabel *(queue :Queue; label :StringView) {.importc:"wgpuQueueSetLabel", cdecl, header:"wgvk.h".}
-proc setLabel *(renderBundle :RenderBundle; label :StringView) {.importc:"wgpuRenderBundleSetLabel", cdecl, header:"wgvk.h".}
-proc addRef *(renderBundle :RenderBundle) {.importc:"wgpuRenderBundleAddRef", cdecl, header:"wgvk.h".}
-proc release *(renderBundle :RenderBundle) {.importc:"wgpuRenderBundleRelease", cdecl, header:"wgvk.h".}
-proc insertDebugMarker *(renderBundleEncoder :RenderBundleEncoder; markerLabel :StringView) {.importc:"wgpuRenderBundleEncoderInsertDebugMarker", cdecl, header:"wgvk.h".}
-proc popDebugGroup *(renderBundleEncoder :RenderBundleEncoder) {.importc:"wgpuRenderBundleEncoderPopDebugGroup", cdecl, header:"wgvk.h".}
-proc pushDebugGroup *(renderBundleEncoder :RenderBundleEncoder; groupLabel :StringView) {.importc:"wgpuRenderBundleEncoderPushDebugGroup", cdecl, header:"wgvk.h".}
-proc setLabel *(renderBundleEncoder :RenderBundleEncoder; label :StringView) {.importc:"wgpuRenderBundleEncoderSetLabel", cdecl, header:"wgvk.h".}
-proc beginOcclusionQuery *(renderPassEncoder :RenderPassEncoder; queryIndex :uint32) {.importc:"wgpuRenderPassEncoderBeginOcclusionQuery", cdecl, header:"wgvk.h".}
-proc EndOcclusionQuery *(renderPassEncoder :RenderPassEncoder) {.importc:"wgpuRenderPassEncoderEndOcclusionQuery", cdecl, header:"wgvk.h".}
-proc insertDebugMarker *(renderPassEncoder :RenderPassEncoder; markerLabel :StringView) {.importc:"wgpuRenderPassEncoderInsertDebugMarker", cdecl, header:"wgvk.h".}
-proc multiDrawIndexedIndirect *(renderPassEncoder :RenderPassEncoder; indirectBuffer :Buffer; indirectOffset :uint64; maxDrawCount :uint32; drawCountBuffer :Buffer; drawCountBufferOffset :uint64) {.importc:"wgpuRenderPassEncoderMultiDrawIndexedIndirect", cdecl, header:"wgvk.h".}
-proc multiDrawIndirect *(renderPassEncoder :RenderPassEncoder; indirectBuffer :Buffer; indirectOffset :uint64; maxDrawCount :uint32; drawCountBuffer :Buffer; drawCountBufferOffset :uint64) {.importc:"wgpuRenderPassEncoderMultiDrawIndirect", cdecl, header:"wgvk.h".}
-proc popDebugGroup *(renderPassEncoder :RenderPassEncoder) {.importc:"wgpuRenderPassEncoderPopDebugGroup", cdecl, header:"wgvk.h".}
-proc pushDebugGroup *(renderPassEncoder :RenderPassEncoder; groupLabel :StringView) {.importc:"wgpuRenderPassEncoderPushDebugGroup", cdecl, header:"wgvk.h".}
-proc setLabel *(renderPassEncoder :RenderPassEncoder; label :StringView) {.importc:"wgpuRenderPassEncoderSetLabel", cdecl, header:"wgvk.h".}
-proc setStencilReference *(renderPassEncoder :RenderPassEncoder; reference :uint32) {.importc:"wgpuRenderPassEncoderSetStencilReference", cdecl, header:"wgvk.h".}
-proc getBindGroupLayout *(renderPipeline :RenderPipeline; groupIndex :uint32) :BindGroupLayout {.importc:"wgpuRenderPipelineGetBindGroupLayout", cdecl, header:"wgvk.h".}
-proc setLabel *(renderPipeline :RenderPipeline; label :StringView) {.importc:"wgpuRenderPipelineSetLabel", cdecl, header:"wgvk.h".}
-proc addRef *(renderPipeline :RenderPipeline) {.importc:"wgpuRenderPipelineAddRef", cdecl, header:"wgvk.h".}
-proc setLabel *(sampler :Sampler; label :StringView) {.importc:"wgpuSamplerSetLabel", cdecl, header:"wgvk.h".}
-proc getCompilationInfo *(shaderModule :ShaderModule; callbackInfo :CompilationInfoCallbackInfo) :Future {.importc:"wgpuShaderModuleGetCompilationInfo", cdecl, header:"wgvk.h".}
-proc setLabel *(shaderModule :ShaderModule; label :StringView) {.importc:"wgpuShaderModuleSetLabel", cdecl, header:"wgvk.h".}
-proc setLabel *(surface :Surface; label :StringView) {.importc:"wgpuSurfaceSetLabel", cdecl, header:"wgvk.h".}
-proc unconfigure *(surface :Surface) {.importc:"wgpuSurfaceUnconfigure", cdecl, header:"wgvk.h".}
-proc addRef *(surface :Surface) {.importc:"wgpuSurfaceAddRef", cdecl, header:"wgvk.h".}
-proc destroy *(texture :Texture) {.importc:"wgpuTextureDestroy", cdecl, header:"wgvk.h".}
-proc setLabel *(texture :Texture; label :StringView) {.importc:"wgpuTextureSetLabel", cdecl, header:"wgvk.h".}
-proc setLabel *(textureView :TextureView; label :StringView) {.importc:"wgpuTextureViewSetLabel", cdecl, header:"wgvk.h".}
-proc create *(device :Device; descriptor :ptr RayTracingShaderBindingTableDescriptor) :RayTracingShaderBindingTable {.importc:"wgpuDeviceCreateRayTracingShaderBindingTable", cdecl, header:"wgvk.h".}
-proc create *(device :Device; descriptor :ptr RayTracingAccelerationContainerDescriptor) :RayTracingAccelerationContainer {.importc:"wgpuDeviceCreateRayTracingAccelerationContainer", cdecl, header:"wgvk.h".}
-proc create *(device :Device; descriptor :ptr RayTracingPipelineDescriptor) :RaytracingPipeline {.importc:"wgpuDeviceCreateRayTracingPipeline", cdecl, header:"wgvk.h".}
-proc addRef *(instance :Instance) {.importc:"wgpuInstanceAddRef", cdecl, header:"wgvk.h".}
-proc addRef *(adapter :Adapter) {.importc:"wgpuAdapterAddRef", cdecl, header:"wgvk.h".}
-proc addRef *(device :Device) {.importc:"wgpuDeviceAddRef", cdecl, header:"wgvk.h".}
-proc addRef *(device :Queue) {.importc:"wgpuQueueAddRef", cdecl, header:"wgvk.h".}
-proc release *(rtenc :RaytracingPassEncoder) {.importc:"wgpuRaytracingPassEncoderRelease", cdecl, header:"wgvk.h".}
-proc addRef *(texture :Texture) {.importc:"wgpuTextureAddRef", cdecl, header:"wgvk.h".}
-proc addRef *(textureView :TextureView) {.importc:"wgpuTextureViewAddRef", cdecl, header:"wgvk.h".}
-proc addRef *(texture :Sampler) {.importc:"wgpuSamplerAddRef", cdecl, header:"wgvk.h".}
-proc addRef *(buffer :Buffer) {.importc:"wgpuBufferAddRef", cdecl, header:"wgvk.h".}
-proc addRef *(bindGroup :BindGroup) {.importc:"wgpuBindGroupAddRef", cdecl, header:"wgvk.h".}
-proc addRef *(module :ShaderModule) {.importc:"wgpuShaderModuleAddRef", cdecl, header:"wgvk.h".}
-proc addRef *(bindGroupLayout :BindGroupLayout) {.importc:"wgpuBindGroupLayoutAddRef", cdecl, header:"wgvk.h".}
-proc addRef *(pipelineLayout :PipelineLayout) {.importc:"wgpuPipelineLayoutAddRef", cdecl, header:"wgvk.h".}
-proc release *(commandBuffer :CommandEncoder) {.importc:"wgpuCommandEncoderRelease", cdecl, header:"wgvk.h".}
-proc release *(commandBuffer :CommandBuffer) {.importc:"wgpuCommandBufferRelease", cdecl, header:"wgvk.h".}
-proc release *(instance :Instance) {.importc:"wgpuInstanceRelease", cdecl, header:"wgvk.h".}
-proc release *(adapter :Adapter) {.importc:"wgpuAdapterRelease", cdecl, header:"wgvk.h".}
-proc release *(device :Device) {.importc:"wgpuDeviceRelease", cdecl, header:"wgvk.h".}
-proc release *(device :Queue) {.importc:"wgpuQueueRelease", cdecl, header:"wgvk.h".}
-proc release *(rpenc :ComputePassEncoder) {.importc:"wgpuComputePassEncoderRelease", cdecl, header:"wgvk.h".}
-proc release *(pipeline :ComputePipeline) {.importc:"wgpuComputePipelineRelease", cdecl, header:"wgvk.h".}
-proc release *(pipeline :RenderPipeline) {.importc:"wgpuRenderPipelineRelease", cdecl, header:"wgvk.h".}
-proc release *(buffer :Buffer) {.importc:"wgpuBufferRelease", cdecl, header:"wgvk.h".}
-proc release *(bindGroup :BindGroup) {.importc:"wgpuBindGroupRelease", cdecl, header:"wgvk.h".}
-proc release *(bglayout :BindGroupLayout) {.importc:"wgpuBindGroupLayoutRelease", cdecl, header:"wgvk.h".}
-proc release *(layout :PipelineLayout) {.importc:"wgpuPipelineLayoutRelease", cdecl, header:"wgvk.h".}
-proc release *(texture :Texture) {.importc:"wgpuTextureRelease", cdecl, header:"wgvk.h".}
-proc release *(view :TextureView) {.importc:"wgpuTextureViewRelease", cdecl, header:"wgvk.h".}
-proc release *(sampler :Sampler) {.importc:"wgpuSamplerRelease", cdecl, header:"wgvk.h".}
-proc release *(module :ShaderModule) {.importc:"wgpuShaderModuleRelease", cdecl, header:"wgvk.h".}
-proc reset *(commandEncoder :CommandBuffer) :CommandEncoder {.importc:"wgpuResetCommandBuffer", cdecl, header:"wgvk.h".}
-proc traceRays *(encoder :RenderPassEncoder) {.importc:"wgpuCommandEncoderTraceRays", cdecl, header:"wgvk.h".}
+proc create *(descriptor :ptr InstanceDescriptor) :Instance {.importc:"wgpuCreateInstance", cdecl, header:"webgpu/webgpu.h".}
+proc wait *(instance :Instance; futureCount :csize_t; futures :ptr FutureWaitInfo; timeoutNS :uint64) :WaitStatus {.importc:"wgpuInstanceWaitAny", cdecl, header:"webgpu/webgpu.h".}
+proc request *(instance :Instance; options :ptr RequestAdapterOptions; callbackInfo :RequestAdapterCallbackInfo) :Future {.importc:"wgpuInstanceRequestAdapter", cdecl, header:"webgpu/webgpu.h".}
+proc create *(instance :Instance; descriptor :ptr SurfaceDescriptor) :Surface {.importc:"wgpuInstanceCreateSurface", cdecl, header:"webgpu/webgpu.h".}
+proc getAdapterInfo *(device :Device; adapterInfo :ptr AdapterInfo) :Status {.importc:"wgpuDeviceGetAdapterInfo", cdecl, header:"webgpu/webgpu.h".}
+proc get *(adapter :Adapter; limits :ptr Limits) :Status {.importc:"wgpuAdapterGetLimits", cdecl, header:"webgpu/webgpu.h".}
+proc request *(adapter :Adapter; options :ptr DeviceDescriptor; callbackInfo :RequestDeviceCallbackInfo) :Future {.importc:"wgpuAdapterRequestDevice", cdecl, header:"webgpu/webgpu.h".}
+proc getQueue *(device :Device) :Queue {.importc:"wgpuDeviceGetQueue", cdecl, header:"webgpu/webgpu.h".}
+proc get *(wgpuSurface :Surface; adapter :Adapter; capabilities :ptr SurfaceCapabilities) :Status {.importc:"wgpuSurfaceGetCapabilities", cdecl, header:"webgpu/webgpu.h".}
+proc configure *(surface :Surface; config :ptr SurfaceConfiguration) {.importc:"wgpuSurfaceConfigure", cdecl, header:"webgpu/webgpu.h".}
+proc release *(surface :Surface) {.importc:"wgpuSurfaceRelease", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; descriptor :ptr TextureDescriptor) :Texture {.importc:"wgpuDeviceCreateTexture", cdecl, header:"webgpu/webgpu.h".}
+proc create *(texture :Texture; descriptor :ptr TextureViewDescriptor) :TextureView {.importc:"wgpuTextureCreateView", cdecl, header:"webgpu/webgpu.h".}
+proc getDepthOrArrayLayers *(texture :Texture) :uint32 {.importc:"wgpuTextureGetDepthOrArrayLayers", cdecl, header:"webgpu/webgpu.h".}
+proc getDimension *(texture :Texture) :TextureDimension {.importc:"wgpuTextureGetDimension", cdecl, header:"webgpu/webgpu.h".}
+proc getFormat *(texture :Texture) :TextureFormat {.importc:"wgpuTextureGetFormat", cdecl, header:"webgpu/webgpu.h".}
+proc getHeight *(texture :Texture) :uint32 {.importc:"wgpuTextureGetHeight", cdecl, header:"webgpu/webgpu.h".}
+proc getMipLevelCount *(texture :Texture) :uint32 {.importc:"wgpuTextureGetMipLevelCount", cdecl, header:"webgpu/webgpu.h".}
+proc getSampleCount *(texture :Texture) :uint32 {.importc:"wgpuTextureGetSampleCount", cdecl, header:"webgpu/webgpu.h".}
+proc getUsage *(texture :Texture) :TextureUsage {.importc:"wgpuTextureGetUsage", cdecl, header:"webgpu/webgpu.h".}
+proc getWidth *(texture :Texture) :uint32 {.importc:"wgpuTextureGetWidth", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; descriptor :ptr SamplerDescriptor) :Sampler {.importc:"wgpuDeviceCreateSampler", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; desc :ptr BufferDescriptor) :Buffer {.importc:"wgpuDeviceCreateBuffer", cdecl, header:"webgpu/webgpu.h".}
+proc write *(cSelf :Queue; buffer :Buffer; bufferOffset :uint64; data :pointer; size :csize_t) {.importc:"wgpuQueueWriteBuffer", cdecl, header:"webgpu/webgpu.h".}
+proc map *(buffer :Buffer; mapmode :MapMode; offset :csize_t; size :csize_t; data :ptr pointer) {.importc:"wgpuBufferMap", cdecl, header:"webgpu/webgpu.h".}
+proc unmap *(buffer :Buffer) {.importc:"wgpuBufferUnmap", cdecl, header:"webgpu/webgpu.h".}
+proc mapAsync *(buffer :Buffer; mode :MapMode; offset :csize_t; size :csize_t; callbackInfo :BufferMapCallbackInfo) :Future {.importc:"wgpuBufferMapAsync", cdecl, header:"webgpu/webgpu.h".}
+proc getSize *(buffer :Buffer) :uint64 {.importc:"wgpuBufferGetSize", cdecl, header:"webgpu/webgpu.h".}
+proc write *(queue :Queue; destination :ptr TexelCopyTextureInfo; data :pointer; dataSize :csize_t; dataLayout :ptr TexelCopyBufferLayout; writeSize :ptr Extent3D) {.importc:"wgpuQueueWriteTexture", cdecl, header:"webgpu/webgpu.h".}
+proc createFence *(device :Device) :Fence {.importc:"wgpuDeviceCreateFence", cdecl, header:"webgpu/webgpu.h".}
+proc wait *(fence :Fence; timeoutNS :uint64) {.importc:"wgpuFenceWait", cdecl, header:"webgpu/webgpu.h".}
+proc wait *(fences :ptr Fence; fenceCount :uint32; timeoutNS :uint64) {.importc:"wgpuFencesWait", cdecl, header:"webgpu/webgpu.h".}
+proc attach *(fence :Fence; callback :proc (a0 :pointer) {.cdecl.}; userdata :pointer) {.importc:"wgpuFenceAttachCallback", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(fence :Fence) {.importc:"wgpuFenceAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc release *(fence :Fence) {.importc:"wgpuFenceRelease", cdecl, header:"webgpu/webgpu.h".}
+proc createLayout *(device :Device; bindGroupLayoutDescriptor :ptr BindGroupLayoutDescriptor) :BindGroupLayout {.importc:"wgpuDeviceCreateBindGroupLayout", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; descriptor :ptr ShaderModuleDescriptor) :ShaderModule {.importc:"wgpuDeviceCreateShaderModule", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; pldesc :ptr PipelineLayoutDescriptor) :PipelineLayout {.importc:"wgpuDeviceCreatePipelineLayout", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; descriptor :ptr RenderPipelineDescriptor) :RenderPipeline {.importc:"wgpuDeviceCreateRenderPipeline", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; descriptor :ptr ComputePipelineDescriptor) :ComputePipeline {.importc:"wgpuDeviceCreateComputePipeline", cdecl, header:"webgpu/webgpu.h".}
+proc getReflectionInfo *(shaderModule :ShaderModule; callbackInfo :ReflectionInfoCallbackInfo) :Future {.importc:"wgpuShaderModuleGetReflectionInfo", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; bgdesc :ptr BindGroupDescriptor) :BindGroup {.importc:"wgpuDeviceCreateBindGroup", cdecl, header:"webgpu/webgpu.h".}
+proc write *(device :Device; a1 :BindGroup; bgdesc :ptr BindGroupDescriptor) {.importc:"wgpuWriteBindGroup", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; cdesc :ptr CommandEncoderDescriptor) :CommandEncoder {.importc:"wgpuDeviceCreateCommandEncoder", cdecl, header:"webgpu/webgpu.h".}
+proc finish *(commandEncoder :CommandEncoder; descriptor :ptr CommandBufferDescriptor) :CommandBuffer {.importc:"wgpuCommandEncoderFinish", cdecl, header:"webgpu/webgpu.h".}
+proc tick *(device :Device) {.importc:"wgpuDeviceTick", cdecl, header:"webgpu/webgpu.h".}
+proc submit *(queue :Queue; commandCount :csize_t; buffers :ptr CommandBuffer) {.importc:"wgpuQueueSubmit", cdecl, header:"webgpu/webgpu.h".}
+proc waitIdle *(queue :Queue) {.importc:"wgpuQueueWaitIdle", cdecl, header:"webgpu/webgpu.h".}
+proc copy *(commandEncoder :CommandEncoder; source :Buffer; sourceOffset :uint64; destination :Buffer; destinationOffset :uint64; size :uint64) {.importc:"wgpuCommandEncoderCopyBufferToBuffer", cdecl, header:"webgpu/webgpu.h".}
+proc copy *(commandEncoder :CommandEncoder; source :ptr TexelCopyBufferInfo; destination :ptr TexelCopyTextureInfo; copySize :ptr Extent3D) {.importc:"wgpuCommandEncoderCopyBufferToTexture", cdecl, header:"webgpu/webgpu.h".}
+proc copy *(commandEncoder :CommandEncoder; source :ptr TexelCopyTextureInfo; destination :ptr TexelCopyBufferInfo; copySize :ptr Extent3D) {.importc:"wgpuCommandEncoderCopyTextureToBuffer", cdecl, header:"webgpu/webgpu.h".}
+proc copy *(commandEncoder :CommandEncoder; source :ptr TexelCopyTextureInfo; destination :ptr TexelCopyTextureInfo; copySize :ptr Extent3D) {.importc:"wgpuCommandEncoderCopyTextureToTexture", cdecl, header:"webgpu/webgpu.h".}
+proc draw *(rpenc :RenderPassEncoder; vertices :uint32; instances :uint32; firstvertex :uint32; firstinstance :uint32) {.importc:"wgpuRenderPassEncoderDraw", cdecl, header:"webgpu/webgpu.h".}
+proc drawIndexed *(rpenc :RenderPassEncoder; indices :uint32; instances :uint32; firstindex :uint32; basevertex :int32; firstinstance :uint32) {.importc:"wgpuRenderPassEncoderDrawIndexed", cdecl, header:"webgpu/webgpu.h".}
+proc set *(rpenc :RenderPassEncoder; groupIndex :uint32; group :BindGroup; dynamicOffsetCount :csize_t; dynamicOffsets :ptr uint32) {.importc:"wgpuRenderPassEncoderSetBindGroup", cdecl, header:"webgpu/webgpu.h".}
+proc set *(rpenc :RenderPassEncoder; renderPipeline :RenderPipeline) {.importc:"wgpuRenderPassEncoderSetPipeline", cdecl, header:"webgpu/webgpu.h".}
+proc End *(rrpenc :RenderPassEncoder) {.importc:"wgpuRenderPassEncoderEnd", cdecl, header:"webgpu/webgpu.h".}
+proc release *(rpenc :RenderPassEncoder) {.importc:"wgpuRenderPassEncoderRelease", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(rpenc :RenderPassEncoder) {.importc:"wgpuRenderPassEncoderAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc setIndexBuffer *(renderPassEncoder :RenderPassEncoder; buffer :Buffer; format :IndexFormat; offset :uint64; size :uint64) {.importc:"wgpuRenderPassEncoderSetIndexBuffer", cdecl, header:"webgpu/webgpu.h".}
+proc setVertexBuffer *(rpe :RenderPassEncoder; binding :uint32; buffer :Buffer; offset :uint64; size :uint64) {.importc:"wgpuRenderPassEncoderSetVertexBuffer", cdecl, header:"webgpu/webgpu.h".}
+proc drawIndexedIndirect *(renderPassEncoder :RenderPassEncoder; indirectBuffer :Buffer; indirectOffset :uint64) {.importc:"wgpuRenderPassEncoderDrawIndexedIndirect", cdecl, header:"webgpu/webgpu.h".}
+proc drawIndirect *(renderPassEncoder :RenderPassEncoder; indirectBuffer :Buffer; indirectOffset :uint64) {.importc:"wgpuRenderPassEncoderDrawIndirect", cdecl, header:"webgpu/webgpu.h".}
+proc setBlendConstant *(renderPassEncoder :RenderPassEncoder; color :ptr Color) {.importc:"wgpuRenderPassEncoderSetBlendConstant", cdecl, header:"webgpu/webgpu.h".}
+proc setViewport *(renderPassEncoder :RenderPassEncoder; x :cfloat; y :cfloat; width :cfloat; height :cfloat; minDepth :cfloat; maxDepth :cfloat) {.importc:"wgpuRenderPassEncoderSetViewport", cdecl, header:"webgpu/webgpu.h".}
+proc setScissorRect *(renderPassEncoder :RenderPassEncoder; x :uint32; y :uint32; width :uint32; height :uint32) {.importc:"wgpuRenderPassEncoderSetScissorRect", cdecl, header:"webgpu/webgpu.h".}
+proc set *(cpe :ComputePassEncoder; computePipeline :ComputePipeline) {.importc:"wgpuComputePassEncoderSetPipeline", cdecl, header:"webgpu/webgpu.h".}
+proc set *(cpe :ComputePassEncoder; groupIndex :uint32; group :BindGroup; dynamicOffsetCount :csize_t; dynamicOffsets :ptr uint32) {.importc:"wgpuComputePassEncoderSetBindGroup", cdecl, header:"webgpu/webgpu.h".}
+proc set *(cpe :RaytracingPassEncoder; raytracingPipeline :RaytracingPipeline) {.importc:"wgpuRaytracingPassEncoderSetPipeline", cdecl, header:"webgpu/webgpu.h".}
+proc set *(cpe :RaytracingPassEncoder; groupIndex :uint32; bindGroup :BindGroup; dynamicOffsetCount :uint32; dynamicOffsets :ptr uint32) {.importc:"wgpuRaytracingPassEncoderSetBindGroup", cdecl, header:"webgpu/webgpu.h".}
+proc trace *(cpe :RaytracingPassEncoder; rayGenerationOffset :uint32; rayHitOffset :uint32; rayMissOffset :uint32; width :uint32; height :uint32; depth :uint32) {.importc:"wgpuRaytracingPassEncoderTraceRays", cdecl, header:"webgpu/webgpu.h".}
+proc dispatchWorkgroups *(cpe :ComputePassEncoder; x :uint32; y :uint32; z :uint32) {.importc:"wgpuComputePassEncoderDispatchWorkgroups", cdecl, header:"webgpu/webgpu.h".}
+proc getCurrentTexture *(surface :Surface; surfaceTexture :ptr SurfaceTexture) {.importc:"wgpuSurfaceGetCurrentTexture", cdecl, header:"webgpu/webgpu.h".}
+proc present *(surface :Surface) :Status {.importc:"wgpuSurfacePresent", cdecl, header:"webgpu/webgpu.h".}
+proc begin *(enc :CommandEncoder; rtDesc :ptr RayTracingPassDescriptor) :RaytracingPassEncoder {.importc:"wgpuCommandEncoderBeginRaytracingPass", cdecl, header:"webgpu/webgpu.h".}
+proc End *(commandEncoder :RaytracingPassEncoder) {.importc:"wgpuRaytracingPassEncoderEnd", cdecl, header:"webgpu/webgpu.h".}
+proc begin *(enc :CommandEncoder; cpdesc :ptr ComputePassDescriptor) :ComputePassEncoder {.importc:"wgpuCommandEncoderBeginComputePass", cdecl, header:"webgpu/webgpu.h".}
+proc End *(commandEncoder :ComputePassEncoder) {.importc:"wgpuComputePassEncoderEnd", cdecl, header:"webgpu/webgpu.h".}
+proc begin *(enc :CommandEncoder; rpdesc :ptr RenderPassDescriptor) :RenderPassEncoder {.importc:"wgpuCommandEncoderBeginRenderPass", cdecl, header:"webgpu/webgpu.h".}
+proc build *(encoder :CommandEncoder; container :RayTracingAccelerationContainer) {.importc:"wgpuCommandEncoderBuildRayTracingAccelerationContainer", cdecl, header:"webgpu/webgpu.h".}
+proc copy *(encoder :CommandEncoder; source :RayTracingAccelerationContainer; dest :RayTracingAccelerationContainer) {.importc:"wgpuCommandEncoderCopyRayTracingAccelerationContainer", cdecl, header:"webgpu/webgpu.h".}
+proc update *(encoder :CommandEncoder; container :RayTracingAccelerationContainer) {.importc:"wgpuCommandEncoderUpdateRayTracingAccelerationContainer", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; descriptor :ptr RenderBundleEncoderDescriptor) :RenderBundleEncoder {.importc:"wgpuDeviceCreateRenderBundleEncoder", cdecl, header:"webgpu/webgpu.h".}
+proc finish *(renderBundleEncoder :RenderBundleEncoder; descriptor :ptr RenderBundleDescriptor) :RenderBundle {.importc:"wgpuRenderBundleEncoderFinish", cdecl, header:"webgpu/webgpu.h".}
+proc draw *(renderBundleEncoder :RenderBundleEncoder; vertexCount :uint32; instanceCount :uint32; firstVertex :uint32; firstInstance :uint32) {.importc:"wgpuRenderBundleEncoderDraw", cdecl, header:"webgpu/webgpu.h".}
+proc drawIndexed *(renderBundleEncoder :RenderBundleEncoder; indexCount :uint32; instanceCount :uint32; firstIndex :uint32; baseVertex :int32; firstInstance :uint32) {.importc:"wgpuRenderBundleEncoderDrawIndexed", cdecl, header:"webgpu/webgpu.h".}
+proc drawIndexedIndirect *(renderBundleEncoder :RenderBundleEncoder; indirectBuffer :Buffer; indirectOffset :uint64) {.importc:"wgpuRenderBundleEncoderDrawIndexedIndirect", cdecl, header:"webgpu/webgpu.h".}
+proc drawIndirect *(renderBundleEncoder :RenderBundleEncoder; indirectBuffer :Buffer; indirectOffset :uint64) {.importc:"wgpuRenderBundleEncoderDrawIndirect", cdecl, header:"webgpu/webgpu.h".}
+proc set *(renderBundleEncoder :RenderBundleEncoder; groupIndex :uint32; group :BindGroup; dynamicOffsetCount :csize_t; dynamicOffsets :ptr uint32) {.importc:"wgpuRenderBundleEncoderSetBindGroup", cdecl, header:"webgpu/webgpu.h".}
+proc setIndexBuffer *(renderBundleEncoder :RenderBundleEncoder; buffer :Buffer; format :IndexFormat; offset :uint64; size :uint64) {.importc:"wgpuRenderBundleEncoderSetIndexBuffer", cdecl, header:"webgpu/webgpu.h".}
+proc set *(renderBundleEncoder :RenderBundleEncoder; pipeline :RenderPipeline) {.importc:"wgpuRenderBundleEncoderSetPipeline", cdecl, header:"webgpu/webgpu.h".}
+proc setVertexBuffer *(renderBundleEncoder :RenderBundleEncoder; slot :uint32; buffer :Buffer; offset :uint64; size :uint64) {.importc:"wgpuRenderBundleEncoderSetVertexBuffer", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(renderBundleEncoder :RenderBundleEncoder) {.importc:"wgpuRenderBundleEncoderAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc release *(renderBundleEncoder :RenderBundleEncoder) {.importc:"wgpuRenderBundleEncoderRelease", cdecl, header:"webgpu/webgpu.h".}
+proc execute *(renderPassEncoder :RenderPassEncoder; bundleCount :csize_t; bundles :ptr RenderBundle) {.importc:"wgpuRenderPassEncoderExecuteBundles", cdecl, header:"webgpu/webgpu.h".}
+proc freeMembers *(value :AdapterInfo) {.importc:"wgpuAdapterInfoFreeMembers", cdecl, header:"webgpu/webgpu.h".}
+proc get *(capabilities :ptr InstanceCapabilities) :Status {.importc:"wgpuGetInstanceCapabilities", cdecl, header:"webgpu/webgpu.h".}
+proc getProcAddress *(procName :StringView) :Proc {.importc:"wgpuGetProcAddress", cdecl, header:"webgpu/webgpu.h".}
+proc freeMembers *(value :SupportedFeatures) {.importc:"wgpuSupportedFeaturesFreeMembers", cdecl, header:"webgpu/webgpu.h".}
+proc freeMembers *(value :SupportedWGSLLanguageFeatures) {.importc:"wgpuSupportedWGSLLanguageFeaturesFreeMembers", cdecl, header:"webgpu/webgpu.h".}
+proc freeMembers *(value :SurfaceCapabilities) {.importc:"wgpuSurfaceCapabilitiesFreeMembers", cdecl, header:"webgpu/webgpu.h".}
+proc get *(adapter :Adapter; features :ptr SupportedFeatures) {.importc:"wgpuAdapterGetFeatures", cdecl, header:"webgpu/webgpu.h".}
+proc get *(adapter :Adapter; info :ptr AdapterInfo) :Status {.importc:"wgpuAdapterGetInfo", cdecl, header:"webgpu/webgpu.h".}
+proc has *(adapter :Adapter; feature :FeatureName) :Bool {.importc:"wgpuAdapterHasFeature", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(bindGroup :BindGroup; label :StringView) {.importc:"wgpuBindGroupSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc layoutSetLabel *(bindGroupLayout :BindGroupLayout; label :StringView) {.importc:"wgpuBindGroupLayoutSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc destroy *(buffer :Buffer) {.importc:"wgpuBufferDestroy", cdecl, header:"webgpu/webgpu.h".}
+proc getConstMappedRange *(buffer :Buffer; offset :csize_t; size :csize_t) :pointer {.importc:"wgpuBufferGetConstMappedRange", cdecl, header:"webgpu/webgpu.h".}
+proc getMappedRange *(buffer :Buffer; offset :csize_t; size :csize_t) :pointer {.importc:"wgpuBufferGetMappedRange", cdecl, header:"webgpu/webgpu.h".}
+proc getMapState *(buffer :Buffer) :BufferMapState {.importc:"wgpuBufferGetMapState", cdecl, header:"webgpu/webgpu.h".}
+proc getUsage *(buffer :Buffer) :BufferUsage {.importc:"wgpuBufferGetUsage", cdecl, header:"webgpu/webgpu.h".}
+proc readMappedRange *(buffer :Buffer; offset :csize_t; data :pointer; size :csize_t) :Status {.importc:"wgpuBufferReadMappedRange", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(buffer :Buffer; label :StringView) {.importc:"wgpuBufferSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc writeMappedRange *(buffer :Buffer; offset :csize_t; data :pointer; size :csize_t) :Status {.importc:"wgpuBufferWriteMappedRange", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(commandBuffer :CommandBuffer; label :StringView) {.importc:"wgpuCommandBufferSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(commandBuffer :CommandBuffer) {.importc:"wgpuCommandBufferAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc clear *(commandEncoder :CommandEncoder; buffer :Buffer; offset :uint64; size :uint64) {.importc:"wgpuCommandEncoderClearBuffer", cdecl, header:"webgpu/webgpu.h".}
+proc insertDebugMarker *(commandEncoder :CommandEncoder; markerLabel :StringView) {.importc:"wgpuCommandEncoderInsertDebugMarker", cdecl, header:"webgpu/webgpu.h".}
+proc popDebugGroup *(commandEncoder :CommandEncoder) {.importc:"wgpuCommandEncoderPopDebugGroup", cdecl, header:"webgpu/webgpu.h".}
+proc pushDebugGroup *(commandEncoder :CommandEncoder; groupLabel :StringView) {.importc:"wgpuCommandEncoderPushDebugGroup", cdecl, header:"webgpu/webgpu.h".}
+proc resolve *(commandEncoder :CommandEncoder; querySet :QuerySet; firstQuery :uint32; queryCount :uint32; destination :Buffer; destinationOffset :uint64) {.importc:"wgpuCommandEncoderResolveQuerySet", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(commandEncoder :CommandEncoder; label :StringView) {.importc:"wgpuCommandEncoderSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc writeTimestamp *(commandEncoder :CommandEncoder; querySet :QuerySet; queryIndex :uint32) {.importc:"wgpuCommandEncoderWriteTimestamp", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(commandEncoder :CommandEncoder) {.importc:"wgpuCommandEncoderAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc dispatchWorkgroupsIndirect *(computePassEncoder :ComputePassEncoder; indirectBuffer :Buffer; indirectOffset :uint64) {.importc:"wgpuComputePassEncoderDispatchWorkgroupsIndirect", cdecl, header:"webgpu/webgpu.h".}
+proc insertDebugMarker *(computePassEncoder :ComputePassEncoder; markerLabel :StringView) {.importc:"wgpuComputePassEncoderInsertDebugMarker", cdecl, header:"webgpu/webgpu.h".}
+proc popDebugGroup *(computePassEncoder :ComputePassEncoder) {.importc:"wgpuComputePassEncoderPopDebugGroup", cdecl, header:"webgpu/webgpu.h".}
+proc pushDebugGroup *(computePassEncoder :ComputePassEncoder; groupLabel :StringView) {.importc:"wgpuComputePassEncoderPushDebugGroup", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(computePassEncoder :ComputePassEncoder; label :StringView) {.importc:"wgpuComputePassEncoderSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(computePassEncoder :ComputePassEncoder) {.importc:"wgpuComputePassEncoderAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc getBindGroupLayout *(computePipeline :ComputePipeline; groupIndex :uint32) :BindGroupLayout {.importc:"wgpuComputePipelineGetBindGroupLayout", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(computePipeline :ComputePipeline; label :StringView) {.importc:"wgpuComputePipelineSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(computePipeline :ComputePipeline) {.importc:"wgpuComputePipelineAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc createAsync *(device :Device; descriptor :ptr ComputePipelineDescriptor; callbackInfo :CreateComputePipelineAsyncCallbackInfo) :Future {.importc:"wgpuDeviceCreateComputePipelineAsync", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; descriptor :ptr QuerySetDescriptor) :QuerySet {.importc:"wgpuDeviceCreateQuerySet", cdecl, header:"webgpu/webgpu.h".}
+proc createAsync *(device :Device; descriptor :ptr RenderPipelineDescriptor; callbackInfo :CreateRenderPipelineAsyncCallbackInfo) :Future {.importc:"wgpuDeviceCreateRenderPipelineAsync", cdecl, header:"webgpu/webgpu.h".}
+proc destroy *(device :Device) {.importc:"wgpuDeviceDestroy", cdecl, header:"webgpu/webgpu.h".}
+proc get *(device :Device; features :ptr SupportedFeatures) {.importc:"wgpuDeviceGetFeatures", cdecl, header:"webgpu/webgpu.h".}
+proc get *(device :Device; limits :ptr Limits) :Status {.importc:"wgpuDeviceGetLimits", cdecl, header:"webgpu/webgpu.h".}
+proc getLostFuture *(device :Device) :Future {.importc:"wgpuDeviceGetLostFuture", cdecl, header:"webgpu/webgpu.h".}
+proc has *(device :Device; feature :FeatureName) :Bool {.importc:"wgpuDeviceHasFeature", cdecl, header:"webgpu/webgpu.h".}
+proc popErrorScope *(device :Device; callbackInfo :PopErrorScopeCallbackInfo) :Future {.importc:"wgpuDevicePopErrorScope", cdecl, header:"webgpu/webgpu.h".}
+proc pushErrorScope *(device :Device; filter :ErrorFilter) {.importc:"wgpuDevicePushErrorScope", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(device :Device; label :StringView) {.importc:"wgpuDeviceSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc get *(instance :Instance; features :ptr SupportedWGSLLanguageFeatures) {.importc:"wgpuInstanceGetWGSLLanguageFeatures", cdecl, header:"webgpu/webgpu.h".}
+proc has *(instance :Instance; feature :WGSLLanguageFeatureName) :Bool {.importc:"wgpuInstanceHasWGSLLanguageFeature", cdecl, header:"webgpu/webgpu.h".}
+proc processEvents *(instance :Instance) {.importc:"wgpuInstanceProcessEvents", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(pipelineLayout :PipelineLayout; label :StringView) {.importc:"wgpuPipelineLayoutSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc destroy *(querySet :QuerySet) {.importc:"wgpuQuerySetDestroy", cdecl, header:"webgpu/webgpu.h".}
+proc getCount *(querySet :QuerySet) :uint32 {.importc:"wgpuQuerySetGetCount", cdecl, header:"webgpu/webgpu.h".}
+proc getType *(querySet :QuerySet) :QueryType {.importc:"wgpuQuerySetGetType", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(querySet :QuerySet; label :StringView) {.importc:"wgpuQuerySetSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(querySet :QuerySet) {.importc:"wgpuQuerySetAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc release *(querySet :QuerySet) {.importc:"wgpuQuerySetRelease", cdecl, header:"webgpu/webgpu.h".}
+proc onSubmittedWorkDone *(queue :Queue; callbackInfo :QueueWorkDoneCallbackInfo) :Future {.importc:"wgpuQueueOnSubmittedWorkDone", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(queue :Queue; label :StringView) {.importc:"wgpuQueueSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(renderBundle :RenderBundle; label :StringView) {.importc:"wgpuRenderBundleSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(renderBundle :RenderBundle) {.importc:"wgpuRenderBundleAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc release *(renderBundle :RenderBundle) {.importc:"wgpuRenderBundleRelease", cdecl, header:"webgpu/webgpu.h".}
+proc insertDebugMarker *(renderBundleEncoder :RenderBundleEncoder; markerLabel :StringView) {.importc:"wgpuRenderBundleEncoderInsertDebugMarker", cdecl, header:"webgpu/webgpu.h".}
+proc popDebugGroup *(renderBundleEncoder :RenderBundleEncoder) {.importc:"wgpuRenderBundleEncoderPopDebugGroup", cdecl, header:"webgpu/webgpu.h".}
+proc pushDebugGroup *(renderBundleEncoder :RenderBundleEncoder; groupLabel :StringView) {.importc:"wgpuRenderBundleEncoderPushDebugGroup", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(renderBundleEncoder :RenderBundleEncoder; label :StringView) {.importc:"wgpuRenderBundleEncoderSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc beginOcclusionQuery *(renderPassEncoder :RenderPassEncoder; queryIndex :uint32) {.importc:"wgpuRenderPassEncoderBeginOcclusionQuery", cdecl, header:"webgpu/webgpu.h".}
+proc EndOcclusionQuery *(renderPassEncoder :RenderPassEncoder) {.importc:"wgpuRenderPassEncoderEndOcclusionQuery", cdecl, header:"webgpu/webgpu.h".}
+proc insertDebugMarker *(renderPassEncoder :RenderPassEncoder; markerLabel :StringView) {.importc:"wgpuRenderPassEncoderInsertDebugMarker", cdecl, header:"webgpu/webgpu.h".}
+proc multiDrawIndexedIndirect *(renderPassEncoder :RenderPassEncoder; indirectBuffer :Buffer; indirectOffset :uint64; maxDrawCount :uint32; drawCountBuffer :Buffer; drawCountBufferOffset :uint64) {.importc:"wgpuRenderPassEncoderMultiDrawIndexedIndirect", cdecl, header:"webgpu/webgpu.h".}
+proc multiDrawIndirect *(renderPassEncoder :RenderPassEncoder; indirectBuffer :Buffer; indirectOffset :uint64; maxDrawCount :uint32; drawCountBuffer :Buffer; drawCountBufferOffset :uint64) {.importc:"wgpuRenderPassEncoderMultiDrawIndirect", cdecl, header:"webgpu/webgpu.h".}
+proc popDebugGroup *(renderPassEncoder :RenderPassEncoder) {.importc:"wgpuRenderPassEncoderPopDebugGroup", cdecl, header:"webgpu/webgpu.h".}
+proc pushDebugGroup *(renderPassEncoder :RenderPassEncoder; groupLabel :StringView) {.importc:"wgpuRenderPassEncoderPushDebugGroup", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(renderPassEncoder :RenderPassEncoder; label :StringView) {.importc:"wgpuRenderPassEncoderSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc setStencilReference *(renderPassEncoder :RenderPassEncoder; reference :uint32) {.importc:"wgpuRenderPassEncoderSetStencilReference", cdecl, header:"webgpu/webgpu.h".}
+proc getBindGroupLayout *(renderPipeline :RenderPipeline; groupIndex :uint32) :BindGroupLayout {.importc:"wgpuRenderPipelineGetBindGroupLayout", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(renderPipeline :RenderPipeline; label :StringView) {.importc:"wgpuRenderPipelineSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(renderPipeline :RenderPipeline) {.importc:"wgpuRenderPipelineAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(sampler :Sampler; label :StringView) {.importc:"wgpuSamplerSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc getCompilationInfo *(shaderModule :ShaderModule; callbackInfo :CompilationInfoCallbackInfo) :Future {.importc:"wgpuShaderModuleGetCompilationInfo", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(shaderModule :ShaderModule; label :StringView) {.importc:"wgpuShaderModuleSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(surface :Surface; label :StringView) {.importc:"wgpuSurfaceSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc unconfigure *(surface :Surface) {.importc:"wgpuSurfaceUnconfigure", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(surface :Surface) {.importc:"wgpuSurfaceAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc destroy *(texture :Texture) {.importc:"wgpuTextureDestroy", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(texture :Texture; label :StringView) {.importc:"wgpuTextureSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc setLabel *(textureView :TextureView; label :StringView) {.importc:"wgpuTextureViewSetLabel", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; descriptor :ptr RayTracingShaderBindingTableDescriptor) :RayTracingShaderBindingTable {.importc:"wgpuDeviceCreateRayTracingShaderBindingTable", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; descriptor :ptr RayTracingAccelerationContainerDescriptor) :RayTracingAccelerationContainer {.importc:"wgpuDeviceCreateRayTracingAccelerationContainer", cdecl, header:"webgpu/webgpu.h".}
+proc create *(device :Device; descriptor :ptr RayTracingPipelineDescriptor) :RaytracingPipeline {.importc:"wgpuDeviceCreateRayTracingPipeline", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(instance :Instance) {.importc:"wgpuInstanceAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(adapter :Adapter) {.importc:"wgpuAdapterAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(device :Device) {.importc:"wgpuDeviceAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(device :Queue) {.importc:"wgpuQueueAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc release *(rtenc :RaytracingPassEncoder) {.importc:"wgpuRaytracingPassEncoderRelease", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(texture :Texture) {.importc:"wgpuTextureAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(textureView :TextureView) {.importc:"wgpuTextureViewAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(texture :Sampler) {.importc:"wgpuSamplerAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(buffer :Buffer) {.importc:"wgpuBufferAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(bindGroup :BindGroup) {.importc:"wgpuBindGroupAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(module :ShaderModule) {.importc:"wgpuShaderModuleAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(bindGroupLayout :BindGroupLayout) {.importc:"wgpuBindGroupLayoutAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(pipelineLayout :PipelineLayout) {.importc:"wgpuPipelineLayoutAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc release *(commandBuffer :CommandEncoder) {.importc:"wgpuCommandEncoderRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(commandBuffer :CommandBuffer) {.importc:"wgpuCommandBufferRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(instance :Instance) {.importc:"wgpuInstanceRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(adapter :Adapter) {.importc:"wgpuAdapterRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(device :Device) {.importc:"wgpuDeviceRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(device :Queue) {.importc:"wgpuQueueRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(rpenc :ComputePassEncoder) {.importc:"wgpuComputePassEncoderRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(pipeline :ComputePipeline) {.importc:"wgpuComputePipelineRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(pipeline :RenderPipeline) {.importc:"wgpuRenderPipelineRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(buffer :Buffer) {.importc:"wgpuBufferRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(bindGroup :BindGroup) {.importc:"wgpuBindGroupRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(bglayout :BindGroupLayout) {.importc:"wgpuBindGroupLayoutRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(layout :PipelineLayout) {.importc:"wgpuPipelineLayoutRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(texture :Texture) {.importc:"wgpuTextureRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(view :TextureView) {.importc:"wgpuTextureViewRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(sampler :Sampler) {.importc:"wgpuSamplerRelease", cdecl, header:"webgpu/webgpu.h".}
+proc release *(module :ShaderModule) {.importc:"wgpuShaderModuleRelease", cdecl, header:"webgpu/webgpu.h".}
+proc reset *(commandEncoder :CommandBuffer) :CommandEncoder {.importc:"wgpuResetCommandBuffer", cdecl, header:"webgpu/webgpu.h".}
+proc traceRays *(encoder :RenderPassEncoder) {.importc:"wgpuCommandEncoderTraceRays", cdecl, header:"webgpu/webgpu.h".}

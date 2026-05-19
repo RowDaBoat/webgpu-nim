@@ -8,14 +8,23 @@ const includeDir = thisDir/"C"/"wgvk"/"include"
 const srcDir     = thisDir/"C"/"wgvk"/"src"
 
 #_____________________________
+# WASM: the browser/Emscripten provides WebGPU, skip wgvk entirely
+when defined(wasm):
+  {.passC: "--use-port=emdawnwebgpu".}
+  {.passL: "--use-port=emdawnwebgpu".}
+
+#_____________________________
 # Default flags
-{.passL:"-lvulkan".}
-{.passC:"-I"&includeDir.}
+when not defined(wasm):
+  {.passL:"-lvulkan".}
+  {.passC:"-I"&includeDir.}
 
 
 #_____________________________
 # Platform surfaces
-when defined(windows):
+when defined(wasm):
+  discard
+elif defined(windows):
   {.passC: "-DSUPPORT_WIN32_SURFACE=1".}
   {.passL: "-luser32 -lgdi32".}
 elif defined(macosx):
@@ -69,5 +78,6 @@ when defined(wgvkDRM):
 
 #_____________________________
 # Compile wgvk
-{.compile:srcDir/"wgvk.c".}
+when not defined(wasm):
+  {.compile:srcDir/"wgvk.c".}
 

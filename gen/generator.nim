@@ -3,7 +3,7 @@
 #:___________________________________________________________
 # @deps std
 from std/strutils import startsWith, endsWith, toUpperAscii, replace
-from std/os import parentDir, `/`
+from std/os import parentDir, `/`, normalizedPath
 # @deps external
 from henka import nil
 # @deps generator
@@ -32,7 +32,9 @@ proc overridePragmas(kind: henka.LabelKind, name: string, defaults: seq[(string,
 
 when isMainModule:
   let output = henka.generate(
-    inputFile      = base.wgpuDir/"wgvk.h",
+    inputFile      = base.webgpuDir/"webgpu.h",
+    rootPath       = base.wgpuDir.normalizedPath,
+    clangArgs      = @["-I" & base.wgpuDir.normalizedPath],
     renamer        = rename,
     pragmaOverride = overridePragmas,
     linkMode       = henka.LinkMode.header,

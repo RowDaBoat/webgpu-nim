@@ -18,7 +18,7 @@ _As a reference, it is easier to follow than the infamous Learn OpenGL, in my op
 - [x] Mac support
 - [x] Windows support
 - [x] WebGPU implementation via wgvk (Vulkan)
-- [ ] Web support (wasm with emscripten)
+- [x] Web support (wasm with emscripten)
 
 ## Build Info
 ### Requirements  (manually installed by the user)

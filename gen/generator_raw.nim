@@ -2,7 +2,7 @@
 #  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
 #:___________________________________________________________
 # @deps std
-from std/os import parentDir, `/`
+from std/os import parentDir, `/`, normalizedPath
 # @deps external
 from henka import nil
 # @deps generator
@@ -15,7 +15,9 @@ proc overridePragmas(kind: henka.LabelKind, name: string, defaults: seq[(string,
 #_____________________________
 when isMainModule:
   let output = henka.generate(
-    inputFile      = base.wgpuDir/"wgvk.h",
+    inputFile      = base.webgpuDir/"webgpu.h",
+    rootPath       = base.wgpuDir.normalizedPath,
+    clangArgs      = @["-I" & base.wgpuDir.normalizedPath],
     pragmaOverride = overridePragmas,
     linkMode       = henka.LinkMode.header,
   )
