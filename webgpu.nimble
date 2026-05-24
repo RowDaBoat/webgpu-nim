@@ -83,7 +83,7 @@ task git, "Internal:  Updates the dependencies submodules.":
 template bindings (file :string) :void=
   echo "[wgpu] Generating bindings from:  " & file
   selfExec &"c -r --verbosity:2 --hints:off --outDir:{binDir} " & file
-taskRequires "generate", "https://github.com/RowDaBoat/henka#v2"
+taskRequires "generate", "https://github.com/RowDaBoat/henka"
 task generate, "Internal:  Generates the WebGPU Nim bindings.":
   bindings "./gen/generator.nim"
   bindings "./gen/generator_raw.nim"
