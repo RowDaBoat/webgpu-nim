@@ -15,46 +15,44 @@ from ./types as extras import nil
 #  These callback constructors and types are used to bypasses C++'s strict function-pointer-type
 #  check when compiling with --backend:cpp.
 #_____________________________
-type
-  DeviceLostCallback * = proc (device :ptr wgpu.Device; reason :wgpu.DeviceLostReason; message :wgpu.StringView; userdata1 :pointer; userdata2 :pointer) {.cdecl.}
-  UncapturedErrorCallback * = proc (device :ptr wgpu.Device; typ :wgpu.ErrorType; message :wgpu.StringView; userdata1 :pointer; userdata2 :pointer) {.cdecl.}
-#___________________
-proc deviceLostCallbackInfoRaw (
+proc deviceLostCallbackInfoImpl (
     callback  :pointer;
-    mode      :wgpu.CallbackMode;
+    mode      :cint;
     userdata1 :pointer;
     userdata2 :pointer;
-  ) :wgpu.DeviceLostCallbackInfo=
-  result.mode      = mode.cint
-  result.userdata1 = userdata1
-  result.userdata2 = userdata2
-  var cb = callback
-  copyMem(addr result.callback, addr cb, sizeof(pointer))
+  ) :wgpu.DeviceLostCallbackInfo {.inline.}=
+  wgpu.DeviceLostCallbackInfo(
+    callback  : cast[wgpu.DeviceLostCallback](callback),
+    mode      : mode,
+    userdata1 : userdata1,
+    userdata2 : userdata2,
+  )
 #___________________
-proc uncapturedErrorCallbackInfoRaw (
+proc uncapturedErrorCallbackInfoImpl (
     callback  :pointer;
     userdata1 :pointer;
     userdata2 :pointer;
-  ) :wgpu.UncapturedErrorCallbackInfo=
-  result.userdata1 = userdata1
-  result.userdata2 = userdata2
-  var cb = callback
-  copyMem(addr result.callback, addr cb, sizeof(pointer))
+  ) :wgpu.UncapturedErrorCallbackInfo {.inline.}=
+  wgpu.UncapturedErrorCallbackInfo(
+    callback  : cast[wgpu.UncapturedErrorCallback](callback),
+    userdata1 : userdata1,
+    userdata2 : userdata2,
+  )
 #___________________
 template deviceLostCallbackInfo *(
-    callback  :DeviceLostCallback;
+    callback  :wgpu.DeviceLostCallback;
     mode      :wgpu.CallbackMode = wgpu.CallbackMode.AllowSpontaneous;
     userdata1 :pointer = nil;
     userdata2 :pointer = nil;
   ) :wgpu.DeviceLostCallbackInfo=
-  deviceLostCallbackInfoRaw(cast[pointer](callback), mode, userdata1, userdata2)
+  deviceLostCallbackInfoImpl(cast[pointer](callback), mode.cint, userdata1, userdata2)
 #___________________
 template uncapturedErrorCallbackInfo *(
-    callback  :UncapturedErrorCallback;
+    callback  :wgpu.UncapturedErrorCallback;
     userdata1 :pointer = nil;
     userdata2 :pointer = nil;
   ) :wgpu.UncapturedErrorCallbackInfo=
-  uncapturedErrorCallbackInfoRaw(cast[pointer](callback), userdata1, userdata2)
+  uncapturedErrorCallbackInfoImpl(cast[pointer](callback), userdata1, userdata2)
 
 
 #_______________________________________
