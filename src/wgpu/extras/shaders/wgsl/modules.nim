@@ -22,6 +22,6 @@ proc toDescriptor *(code, label :string) :extras.ShaderModuleDescriptor=
     label       : label.toStringView(),
     ) #:: ShaderModuleDescriptor( ... )
 #___________________
-proc read *(file :string) :wgpu.ShaderModuleDescriptor=  file.readFile.toDescriptor(label = file)
-  ## Reads the given `.wgsl` shader file, and returns a wgpu.ShaderModuleDescriptor for it.
+proc read *(file :string) :extras.ShaderModuleDescriptor=  file.readFile.toDescriptor(label = file)
+  ## Reads the given `.wgsl` shader file, and returns an extras.ShaderModuleDescriptor for it.
 
