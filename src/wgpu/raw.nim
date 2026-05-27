@@ -699,11 +699,11 @@ type
     messageCount *:csize_t
     messages *:ptr WGPUCompilationMessage
   WGPUCompilationInfo * = struct_WGPUCompilationInfo
-  WGPUCompilationInfoCallback * = proc (a0 :WGPUCompilationInfoRequestStatus; a1 :ptr struct_WGPUCompilationInfo; a2 :pointer; a3 :pointer) {.cdecl.}
-  WGPUCreateComputePipelineAsyncCallback * = proc (a0 :WGPUCreatePipelineAsyncStatus; a1 :WGPUComputePipeline; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  WGPUCreateRenderPipelineAsyncCallback * = proc (a0 :WGPUCreatePipelineAsyncStatus; a1 :WGPURenderPipeline; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  WGPUPopErrorScopeCallback * = proc (a0 :WGPUPopErrorScopeStatus; a1 :WGPUErrorType; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  WGPUQueueWorkDoneCallback * = proc (a0 :WGPUQueueWorkDoneStatus; a1 :pointer; a2 :pointer) {.cdecl.}
+  WGPUCompilationInfoCallback *{.importc:"WGPUCompilationInfoCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUCompilationInfoRequestStatus; a1 :ptr struct_WGPUCompilationInfo; a2 :pointer; a3 :pointer) {.cdecl.}
+  WGPUCreateComputePipelineAsyncCallback *{.importc:"WGPUCreateComputePipelineAsyncCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUCreatePipelineAsyncStatus; a1 :WGPUComputePipeline; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
+  WGPUCreateRenderPipelineAsyncCallback *{.importc:"WGPUCreateRenderPipelineAsyncCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUCreatePipelineAsyncStatus; a1 :WGPURenderPipeline; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
+  WGPUPopErrorScopeCallback *{.importc:"WGPUPopErrorScopeCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUPopErrorScopeStatus; a1 :WGPUErrorType; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
+  WGPUQueueWorkDoneCallback *{.importc:"WGPUQueueWorkDoneCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUQueueWorkDoneStatus; a1 :pointer; a2 :pointer) {.cdecl.}
   struct_WGPUCompilationInfoCallbackInfo *{.bycopy, importc:"struct WGPUCompilationInfoCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr WGPUChainedStruct
     mode *:WGPUCallbackMode
@@ -1044,9 +1044,9 @@ type
     nextInChain *:ptr WGPUChainedStruct
     label *:WGPUStringView
   WGPUQueueDescriptor * = struct_WGPUQueueDescriptor
-  WGPUProc * = proc () {.cdecl.}
-  WGPUDeviceLostCallback * = proc (a0 :ptr WGPUDevice; a1 :WGPUDeviceLostReason; a2 :struct_WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  WGPUUncapturedErrorCallback * = proc (a0 :ptr WGPUDevice; a1 :WGPUErrorType; a2 :struct_WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
+  WGPUProc *{.importc:"WGPUProc", header:"webgpu/webgpu.h".}= proc () {.cdecl.}
+  WGPUDeviceLostCallback *{.importc:"WGPUDeviceLostCallback", header:"webgpu/webgpu.h".}= proc (a0 :ptr WGPUDevice; a1 :WGPUDeviceLostReason; a2 :struct_WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
+  WGPUUncapturedErrorCallback *{.importc:"WGPUUncapturedErrorCallback", header:"webgpu/webgpu.h".}= proc (a0 :ptr WGPUDevice; a1 :WGPUErrorType; a2 :struct_WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
   struct_WGPUDeviceLostCallbackInfo *{.bycopy, importc:"struct WGPUDeviceLostCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr WGPUChainedStruct
     mode *:cint
@@ -1169,7 +1169,7 @@ type
     size *:uint64
     mappedAtCreation *:WGPUBool
   WGPUBufferDescriptor * = struct_WGPUBufferDescriptor
-  WGPUBufferMapCallback * = proc (a0 :WGPUMapAsyncStatus; a1 :WGPUStringView; a2 :pointer; a3 :pointer) {.cdecl.}
+  WGPUBufferMapCallback *{.importc:"WGPUBufferMapCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUMapAsyncStatus; a1 :WGPUStringView; a2 :pointer; a3 :pointer) {.cdecl.}
   struct_WGPUBufferMapCallbackInfo *{.bycopy, importc:"struct WGPUBufferMapCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr WGPUChainedStruct
     mode *:WGPUCallbackMode
@@ -1424,7 +1424,7 @@ type
     inputAttributes *:ptr WGPUAttributeReflectionInfo
     outputAttributes *:ptr WGPUAttributeReflectionInfo
   WGPUReflectionInfo * = struct_WGPUReflectionInfo
-  WGPUReflectionInfoCallback * = proc (a0 :WGPUReflectionInfoRequestStatus; a1 :ptr WGPUReflectionInfo; a2 :pointer; a3 :pointer) {.cdecl.}
+  WGPUReflectionInfoCallback *{.importc:"WGPUReflectionInfoCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUReflectionInfoRequestStatus; a1 :ptr WGPUReflectionInfo; a2 :pointer; a3 :pointer) {.cdecl.}
   struct_WGPUReflectionInfoCallbackInfo *{.bycopy, importc:"struct WGPUReflectionInfoCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr WGPUChainedStruct
     mode *:WGPUCallbackMode
@@ -1473,8 +1473,8 @@ type
     alphaMode *:WGPUCompositeAlphaMode
     presentMode *:WGPUPresentMode
   WGPUSurfaceConfiguration * = struct_WGPUSurfaceConfiguration
-  WGPURequestAdapterCallback * = proc (a0 :WGPURequestAdapterStatus; a1 :WGPUAdapter; a2 :struct_WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  WGPURequestDeviceCallback * = proc (a0 :WGPURequestDeviceStatus; a1 :WGPUDevice; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
+  WGPURequestAdapterCallback *{.importc:"WGPURequestAdapterCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPURequestAdapterStatus; a1 :WGPUAdapter; a2 :struct_WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
+  WGPURequestDeviceCallback *{.importc:"WGPURequestDeviceCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPURequestDeviceStatus; a1 :WGPUDevice; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
   struct_WGPURequestAdapterCallbackInfo *{.bycopy, importc:"struct WGPURequestAdapterCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr WGPUChainedStruct
     mode *:WGPUCallbackMode
