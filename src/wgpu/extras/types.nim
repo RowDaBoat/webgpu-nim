@@ -66,10 +66,22 @@ converter toBool *(val: wgpu.Bool32): bool = cast[bool](val)
 #_______________________________________
 # @section Shader Modules
 #_____________________________
-type ShaderModuleDescriptor * = object of wgpu.ShaderModuleDescriptor
+#type ShaderModuleDescriptor * = object of wgpu.ShaderModuleDescriptor
+#  TODO: The original version of this used inheritance to hook into `=destroy` and properly call `GC_unref` on `nextInChain`.
+#  However, when using the C++ backend the Nim-generated code uses `struct WGPUShaderModuleDescriptor` as a base for this type,
+#  causing an error, since inheriting from a struct in C++ is not allowed.
+#_____________________________
+type ShaderModuleDescriptor *{.bycopy.}= object
   ## @descr Alias for wgpu.ShaderModuleDescriptor for calling unref inside its `=destroy` hook
+  nextInChain *:ptr wgpu.ChainedStruct
+  label *:wgpu.StringView
 proc `=destroy`*(desc :types.ShaderModuleDescriptor) :void=
-  GC_unref(cast[ref wgpu.ShaderSourceWGSL](desc.nextInChain))
+  if desc.nextInChain != nil:
+    GC_unref(cast[ref wgpu.ShaderSourceWGSL](desc.nextInChain))
+#___________________
+proc create *(device :wgpu.Device; descriptor :ptr types.ShaderModuleDescriptor) :wgpu.ShaderModule=
+  ## @descr Forwards to wgpu.create after casting our wrapper to the underlying wgpu.ShaderModuleDescriptor
+  wgpu.create(device, cast[ptr wgpu.ShaderModuleDescriptor](descriptor))
 
 #_______________________________________
 # @section Features

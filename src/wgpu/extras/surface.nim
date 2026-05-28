@@ -15,16 +15,34 @@ import ./helpers
 
 
 #_______________________________________
+# @section Emscripten (HTML canvas) context creation
+#_____________________________
+when defined(emscripten):
+  proc getSurfaceEmscripten *(instance :Instance; selector :cstring) :Surface=
+    ## Creates a wgpu Surface bound to the HTML canvas matched by `selector` (e.g. "#vexel-canvas").
+    result = instance.create(vaddr SurfaceDescriptor(
+      label       : StringView(),
+      nextInChain : cast[ptr ChainedStruct](vaddr EmscriptenSurfaceSourceCanvasHTMLSelector(
+        chain     : ChainedStruct(
+          next    : nil,
+          sType   : SType.EmscriptenSurfaceSourceCanvasHTMLSelector,
+          ), #:: chain
+        selector  : StringView(data: selector, length: selector.len.csize_t),
+        )), #:: nextInChain
+      )) #:: instance.createSurface()
+
+
+#_______________________________________
 # @section X11 context creation
 #_____________________________
-when defined(linux) and not defined(wayland):
+elif defined(linux) and not defined(wayland):
   proc getSurfaceX11 *(instance :Instance; win :glfw.Window) :Surface=
     result = instance.create(vaddr SurfaceDescriptor(
       label       : StringView(),
       nextInChain : cast[ptr ChainedStruct](vaddr SurfaceSourceXlibWindow(
         chain     : ChainedStruct(
           next    : nil,
-          sType   : SType_SurfaceSourceXlibWindow,
+          sType   : SType.SurfaceSourceXlibWindow,
           ), #:: chain
         display   : glfw.getX11Display(),
         window    : glfw.getX11Window(win).uint32,
@@ -42,7 +60,7 @@ elif defined(linux) and defined(wayland):
       nextInChain : cast[ptr ChainedStruct](vaddr SurfaceSourceWaylandSurface(
         chain     : ChainedStruct(
           next    : nil,
-          sType   : SType_SurfaceSourceWaylandSurface,
+          sType   : SType.SurfaceSourceWaylandSurface,
           ), #:: chain
         display   : glfw.getWaylandDisplay(),
         surface   : glfw.getWaylandWindow(win),
@@ -63,7 +81,7 @@ elif defined(windows):
       nextInChain : cast[ptr ChainedStruct](vaddr SurfaceSourceWindowsHWND(
         chain     : ChainedStruct(
           next    : nil,
-          sType   : SType_SurfaceSourceWindowsHWND,
+          sType   : SType.SurfaceSourceWindowsHWND,
           ), #:: chain
         hinstance : hinstance,
         hwnd      : hwnd,
@@ -88,7 +106,6 @@ elif defined(macosx):
           next    : nil,
           sType   : SType.SurfaceSourceMetalLayer,
           ), #:: chain
-        # Get metal layer with our nglfw/metal_glue.h extension
         layer     : glfw.getMetalLayer(win),
         )), #:: nextInChain
       )) #:: instance.createSurface()
@@ -97,21 +114,22 @@ elif defined(macosx):
 #_______________________________________
 # @section Native Surface: Any system
 #_____________________________
-proc getSurface *(instance :Instance; win :glfw.Window) :Surface=
-  ## Gets the surface of the window for the given wgpu instance.
-  ## Returns the appropriate native surface based on the system.
-  when defined(linux) and not defined(wayland):
-    result = instance.getSurfaceX11(win)
-  elif defined(linux) and defined(wayland):
-    {.warning: "Wayland Surface support has not been tested yet".}
-    result = instance.getSurfaceWayland(win)
-  elif defined(windows):
-    {.warning: "Windows Surface support has not been tested yet".}
-    result = instance.getSurfaceWin(win)
-  elif defined(macosx):
-    result = instance.getSurfaceMac(win)
-  else:
-    {.error: "Surface creation for this platform is currently not supported".}
+when not defined(emscripten):
+  proc getSurface *(instance :Instance; win :glfw.Window) :Surface=
+    ## Gets the surface of the window for the given wgpu instance.
+    ## Returns the appropriate native surface based on the system.
+    when defined(linux) and not defined(wayland):
+      result = instance.getSurfaceX11(win)
+    elif defined(linux) and defined(wayland):
+      {.warning: "Wayland Surface support has not been tested yet".}
+      result = instance.getSurfaceWayland(win)
+    elif defined(windows):
+      {.warning: "Windows Surface support has not been tested yet".}
+      result = instance.getSurfaceWin(win)
+    elif defined(macosx):
+      result = instance.getSurfaceMac(win)
+    else:
+      {.error: "Surface creation for this platform is currently not supported".}
 
 
 #_______________________________________
@@ -145,4 +163,3 @@ proc capabilities *(
   result.presentModes = caps.presentModes()
   result.alphaModes   = caps.alphaModes()
   caps.freeMembers()
-

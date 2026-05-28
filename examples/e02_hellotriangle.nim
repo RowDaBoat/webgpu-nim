@@ -168,17 +168,13 @@ proc run=
         nextInChain               : nil,
         label                     : "Hello Default Queue".toStringView()
         ), #:: defaultQueue
-      deviceLostCallbackInfo      : DeviceLostCallbackInfo(
-        nextInChain               : nil,
-        callback                  : deviceLostCB,
-        userdata1                 : device.addr,
-        userdata2                 : nil,
+      deviceLostCallbackInfo      : deviceLostCallbackInfo(
+        callback  = deviceLostCB,
+        userdata1 = device.addr,
         ), #:: deviceLostCallback
-      uncapturedErrorCallbackInfo : UncapturedErrorCallbackInfo(
-        nextInChain               : nil,
-        callback                  : errorCB,
-        userdata1                 : device.addr,
-        userdata2                 : nil,
+      uncapturedErrorCallbackInfo : uncapturedErrorCallbackInfo(
+        callback  = errorCB,
+        userdata1 = device.addr,
         ), #:: uncapturedErrorCallbackInfo
       ), #:: DeviceDescriptor( ... )
     callbackInfo                  = RequestDeviceCallbackInfo(
@@ -351,4 +347,3 @@ proc run=
   window.term()
 #__________________
 when isMainModule: run()
-
