@@ -703,7 +703,7 @@ type
   WGPUCreateComputePipelineAsyncCallback *{.importc:"WGPUCreateComputePipelineAsyncCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUCreatePipelineAsyncStatus; a1 :WGPUComputePipeline; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
   WGPUCreateRenderPipelineAsyncCallback *{.importc:"WGPUCreateRenderPipelineAsyncCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUCreatePipelineAsyncStatus; a1 :WGPURenderPipeline; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
   WGPUPopErrorScopeCallback *{.importc:"WGPUPopErrorScopeCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUPopErrorScopeStatus; a1 :WGPUErrorType; a2 :WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  WGPUQueueWorkDoneCallback *{.importc:"WGPUQueueWorkDoneCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUQueueWorkDoneStatus; a1 :pointer; a2 :pointer) {.cdecl.}
+  WGPUQueueWorkDoneCallback *{.importc:"WGPUQueueWorkDoneCallback", header:"webgpu/webgpu.h".}= proc (a0 :WGPUQueueWorkDoneStatus; a1 :WGPUStringView; a2 :pointer; a3 :pointer) {.cdecl.}
   struct_WGPUCompilationInfoCallbackInfo *{.bycopy, importc:"struct WGPUCompilationInfoCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr WGPUChainedStruct
     mode *:WGPUCallbackMode
@@ -1049,7 +1049,7 @@ type
   WGPUUncapturedErrorCallback *{.importc:"WGPUUncapturedErrorCallback", header:"webgpu/webgpu.h".}= proc (a0 :ptr WGPUDevice; a1 :WGPUErrorType; a2 :struct_WGPUStringView; a3 :pointer; a4 :pointer) {.cdecl.}
   struct_WGPUDeviceLostCallbackInfo *{.bycopy, importc:"struct WGPUDeviceLostCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr WGPUChainedStruct
-    mode *:cint
+    mode *:WGPUCallbackMode
     callback *:WGPUDeviceLostCallback
     userdata1 *:pointer
     userdata2 *:pointer
@@ -1348,7 +1348,7 @@ type
   struct_WGPUDepthStencilState *{.bycopy, importc:"struct WGPUDepthStencilState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr WGPUChainedStruct
     format *:WGPUTextureFormat
-    depthWriteEnabled *:WGPUBool32
+    depthWriteEnabled *:WGPUOptionalBool
     depthCompare *:WGPUCompareFunction
     stencilFront *:WGPUStencilFaceState
     stencilBack *:WGPUStencilFaceState

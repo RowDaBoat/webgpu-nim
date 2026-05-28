@@ -614,7 +614,7 @@ type
   CreateComputePipelineAsyncCallback *{.importc:"WGPUCreateComputePipelineAsyncCallback", header:"webgpu/webgpu.h".}= proc (a0 :CreatePipelineAsyncStatus; a1 :ComputePipeline; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   CreateRenderPipelineAsyncCallback *{.importc:"WGPUCreateRenderPipelineAsyncCallback", header:"webgpu/webgpu.h".}= proc (a0 :CreatePipelineAsyncStatus; a1 :RenderPipeline; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   PopErrorScopeCallback *{.importc:"WGPUPopErrorScopeCallback", header:"webgpu/webgpu.h".}= proc (a0 :PopErrorScopeStatus; a1 :ErrorType; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
-  QueueWorkDoneCallback *{.importc:"WGPUQueueWorkDoneCallback", header:"webgpu/webgpu.h".}= proc (a0 :QueueWorkDoneStatus; a1 :pointer; a2 :pointer) {.cdecl.}
+  QueueWorkDoneCallback *{.importc:"WGPUQueueWorkDoneCallback", header:"webgpu/webgpu.h".}= proc (a0 :QueueWorkDoneStatus; a1 :StringView; a2 :pointer; a3 :pointer) {.cdecl.}
   CompilationInfoCallbackInfo *{.bycopy, importc:"struct WGPUCompilationInfoCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     mode *:CallbackMode
@@ -906,7 +906,7 @@ type
   UncapturedErrorCallback *{.importc:"WGPUUncapturedErrorCallback", header:"webgpu/webgpu.h".}= proc (a0 :ptr Device; a1 :ErrorType; a2 :StringView; a3 :pointer; a4 :pointer) {.cdecl.}
   DeviceLostCallbackInfo *{.bycopy, importc:"struct WGPUDeviceLostCallbackInfo", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
-    mode *:cint
+    mode *:CallbackMode
     callback *:DeviceLostCallback
     userdata1 *:pointer
     userdata2 *:pointer
@@ -1164,7 +1164,7 @@ type
   DepthStencilState *{.bycopy, importc:"struct WGPUDepthStencilState", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     format *:TextureFormat
-    depthWriteEnabled *:Bool32
+    depthWriteEnabled *:OptionalBool
     depthCompare *:CompareFunction
     stencilFront *:StencilFaceState
     stencilBack *:StencilFaceState

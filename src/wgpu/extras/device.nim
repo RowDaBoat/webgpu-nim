@@ -16,7 +16,7 @@ from ./types as extras import nil
 #_____________________________
 proc deviceLostCallbackInfoImpl (
     callback  :pointer;
-    mode      :cint;
+    mode      :wgpu.CallbackMode;
     userdata1 :pointer;
     userdata2 :pointer;
   ) :wgpu.DeviceLostCallbackInfo {.inline.}=
@@ -44,7 +44,7 @@ template deviceLostCallbackInfo *(
     userdata1 :pointer = nil;
     userdata2 :pointer = nil;
   ) :wgpu.DeviceLostCallbackInfo=
-  deviceLostCallbackInfoImpl(cast[pointer](callback), mode.cint, userdata1, userdata2)
+  deviceLostCallbackInfoImpl(cast[pointer](callback), mode, userdata1, userdata2)
 #___________________
 template uncapturedErrorCallbackInfo *(
     callback  :wgpu.UncapturedErrorCallback;
