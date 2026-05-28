@@ -11,7 +11,6 @@ from ./types as extras import nil
 
 #_______________________________________
 # @section Callback Info Constructors
-# @descr
 #  These callback constructors and types are used to bypasses C++'s strict function-pointer-type
 #  check when compiling with --backend:cpp.
 #_____________________________
