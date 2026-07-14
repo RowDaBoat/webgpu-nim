@@ -1,11 +1,12 @@
 #:___________________________________________________________
 #  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
 #:___________________________________________________________
-from std/os import `/`, parentDir
+from std/os import `/`, parentDir, getEnv
 
-const thisDir    = currentSourcePath().parentDir()
-const includeDir = thisDir/"C"/"wgvk"/"include"
-const srcDir     = thisDir/"C"/"wgvk"/"src"
+const thisDir      = currentSourcePath().parentDir()
+const includeDir   = thisDir/"C"/"wgvk"/"include"
+const srcDir       = thisDir/"C"/"wgvk"/"src"
+const vulkanSdkDir = getEnv("VULKAN_SDK")
 
 #_____________________________
 # WASM: the browser/Emscripten provides WebGPU, skip wgvk entirely
@@ -18,6 +19,8 @@ when defined(wasm):
 when not defined(wasm):
   {.passL:"-lvulkan".}
   {.passC:"-I"&includeDir.}
+when defined(vcc):
+  {.passC: "/std:c11 /experimental:c11atomics".}
 
 
 #_____________________________
@@ -50,6 +53,7 @@ when defined(wgvkWGSL):
   {.passC: "-DSUPPORT_WGSL=1".}
   const simpleWgslDir = thisDir/"C"/"simple_wgsl"
   {.passC: "-I"&simpleWgslDir.}
+  {.passC: "-I"&(vulkanSdkDir/"include").}
   {.compile: simpleWgslDir/"wgsl_diagnostics.c".}
   {.compile: simpleWgslDir/"wgsl_parser.c".}
   {.compile: simpleWgslDir/"wgsl_resolve.c".}

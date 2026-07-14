@@ -1,4 +1,5 @@
-{.passC: "-Wno-incompatible-function-pointer-types".}
+when not defined(vcc):
+  {.passC: "-Wno-incompatible-function-pointer-types".}
 
 type
   Flags * = uint64
