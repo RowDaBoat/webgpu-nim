@@ -1528,6 +1528,8 @@ proc begin *(enc :CommandEncoder; rpdesc :ptr RenderPassDescriptor) :RenderPassE
 proc build *(encoder :CommandEncoder; container :RayTracingAccelerationContainer) {.importc:"wgpuCommandEncoderBuildRayTracingAccelerationContainer", cdecl, header:"webgpu/webgpu.h".}
 proc copy *(encoder :CommandEncoder; source :RayTracingAccelerationContainer; dest :RayTracingAccelerationContainer) {.importc:"wgpuCommandEncoderCopyRayTracingAccelerationContainer", cdecl, header:"webgpu/webgpu.h".}
 proc update *(encoder :CommandEncoder; container :RayTracingAccelerationContainer) {.importc:"wgpuCommandEncoderUpdateRayTracingAccelerationContainer", cdecl, header:"webgpu/webgpu.h".}
+proc addRef *(container :RayTracingAccelerationContainer) {.importc:"wgpuRayTracingAccelerationContainerAddRef", cdecl, header:"webgpu/webgpu.h".}
+proc release *(container :RayTracingAccelerationContainer) {.importc:"wgpuRayTracingAccelerationContainerRelease", cdecl, header:"webgpu/webgpu.h".}
 proc create *(device :Device; descriptor :ptr RenderBundleEncoderDescriptor) :RenderBundleEncoder {.importc:"wgpuDeviceCreateRenderBundleEncoder", cdecl, header:"webgpu/webgpu.h".}
 proc finish *(renderBundleEncoder :RenderBundleEncoder; descriptor :ptr RenderBundleDescriptor) :RenderBundle {.importc:"wgpuRenderBundleEncoderFinish", cdecl, header:"webgpu/webgpu.h".}
 proc draw *(renderBundleEncoder :RenderBundleEncoder; vertexCount :uint32; instanceCount :uint32; firstVertex :uint32; firstInstance :uint32) {.importc:"wgpuRenderBundleEncoderDraw", cdecl, header:"webgpu/webgpu.h".}

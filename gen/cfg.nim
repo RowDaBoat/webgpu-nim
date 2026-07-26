@@ -400,5 +400,7 @@ const replaceList * = [
   ("wgpuTextureViewRelease",                             "release"                       ),
   ("wgpuFenceRelease",                                   "release"                       ),
   ("wgpuRaytracingPassEncoderRelease",                   "release"                       ),
+  ("wgpuRayTracingAccelerationContainerAddRef",          "addRef"                        ),
+  ("wgpuRayTracingAccelerationContainerRelease",         "release"                       ),
   ] #:: replaceEnd = [ ... ]
 
