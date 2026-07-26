@@ -334,6 +334,8 @@ const replaceList * = [
   # BindGroup
   ("wgpuBindGroupSetLabel",                              "setLabel"                      ),
   ("wgpuBindGroupLayoutSetLabel",                        "layoutSetLabel"                ),
+  ("wgpuBindGroupUpdateEntry",                           "updateEntry"                   ),
+  ("wgpuBindGroupClearEntry",                            "clearEntry"                    ),
 
   # CommandBuffer
   ("wgpuCommandBufferSetLabel",                          "setLabel"                      ),

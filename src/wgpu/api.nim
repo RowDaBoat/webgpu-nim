@@ -125,8 +125,8 @@ type
     SurfaceSourceAndroidNativeWindow = 8,
     SurfaceSourceXCBWindow = 9,
     SurfaceColorManagement = 10,
+    TextureComponentSwizzleDescriptor = 12,
     EmscriptenSurfaceSourceCanvasHTMLSelector = 262144,
-    TextureComponentSwizzleDescriptor = 327751,
     InstanceLayerSelection = 268435457,
     BufferAllocatorSelector = 268435458,
     ShaderSourceGLSL = 268435459,
@@ -134,7 +134,8 @@ type
     SurfaceSourceDrmPlane = 268435461,
     ExtrasLimits = 268435462,
     BindGroupLayoutEntryRayTracing = 268435463,
-    BindGroupEntryRayTracing = 268435464
+    BindGroupEntryRayTracing = 268435464,
+    BindGroupLayoutDescriptorBindless = 268435465
   CallbackMode *{.pure, size:sizeof(cint), importc:"enum WGPUCallbackMode", header:"webgpu/webgpu.h".}= enum
     WaitAnyOnly = 1,
     AllowProcessEvents = 2,
@@ -352,13 +353,13 @@ type
     ASTC12x10UnormSrgb = 99,
     ASTC12x12Unorm = 100,
     ASTC12x12UnormSrgb = 101,
-    R8BG8Biplanar420Unorm = 327686,
-    R10X6BG10X6Biplanar420Unorm = 327687,
-    R8BG8A8Triplanar420Unorm = 327688,
-    R8BG8Biplanar422Unorm = 327689,
-    R8BG8Biplanar444Unorm = 327690,
-    R10X6BG10X6Biplanar422Unorm = 327691,
-    R10X6BG10X6Biplanar444Unorm = 327692,
+    R8BG8Biplanar420Unorm = 327680,
+    R10X6BG10X6Biplanar420Unorm = 327681,
+    R8BG8A8Triplanar420Unorm = 327682,
+    R8BG8Biplanar422Unorm = 327683,
+    R8BG8Biplanar444Unorm = 327684,
+    R10X6BG10X6Biplanar422Unorm = 327685,
+    R10X6BG10X6Biplanar444Unorm = 327686,
     External = 327693,
     Force32 = 2147483647
   TextureSampleType *{.pure, size:sizeof(cint), importc:"enum WGPUTextureSampleType", header:"webgpu/webgpu.h".}= enum
@@ -543,28 +544,28 @@ type
     MultipleDevicesPerAdapter = 3,
     Force32 = 2147483647
   FeatureName *{.pure, size:sizeof(cint), importc:"enum WGPUFeatureName", header:"webgpu/webgpu.h".}= enum
-    DepthClipControl = 1,
-    Depth32FloatStencil8 = 2,
-    TimestampQuery = 3,
+    CoreFeaturesAndLimits = 1,
+    DepthClipControl = 2,
+    Depth32FloatStencil8 = 3,
     TextureCompressionBC = 4,
     TextureCompressionBCSliced3D = 5,
     TextureCompressionETC2 = 6,
     TextureCompressionASTC = 7,
     TextureCompressionASTCSliced3D = 8,
-    IndirectFirstInstance = 9,
-    ShaderF16 = 10,
-    RG11B10UfloatRenderable = 11,
-    BGRA8UnormStorage = 12,
-    Float32Filterable = 13,
-    Float32Blendable = 14,
-    ClipDistances = 15,
-    DualSourceBlending = 16,
-    Subgroups = 17,
-    CoreFeaturesAndLimits = 18,
-    TextureFormatNV12 = 19,
-    TextureFormatP010 = 20,
-    PolygonModeLine = 21,
-    PolygonModePoint = 22,
+    TimestampQuery = 9,
+    IndirectFirstInstance = 10,
+    ShaderF16 = 11,
+    RG11B10UfloatRenderable = 12,
+    BGRA8UnormStorage = 13,
+    Float32Filterable = 14,
+    Float32Blendable = 15,
+    ClipDistances = 16,
+    DualSourceBlending = 17,
+    Subgroups = 18,
+    TextureFormatNV12 = 327681,
+    TextureFormatP010 = 327682,
+    PolygonModeLine = 327683,
+    PolygonModePoint = 327684,
     Force32 = 2147483647
   MapAsyncStatus *{.pure, size:sizeof(cint), importc:"enum WGPUMapAsyncStatus", header:"webgpu/webgpu.h".}= enum
     Success = 1,
@@ -843,6 +844,8 @@ type
   BindGroupLayoutEntryRayTracing *{.bycopy, importc:"struct WGPUBindGroupLayoutEntryRayTracing", header:"webgpu/webgpu.h", pure, inheritable.}= object
     chain *:ChainedStruct
     accelerationStructure *:Bool
+  BindGroupLayoutDescriptorBindless *{.bycopy, importc:"struct WGPUBindGroupLayoutDescriptorBindless", header:"webgpu/webgpu.h", pure, inheritable.}= object
+    chain *:ChainedStruct
   SamplerDescriptor *{.bycopy, importc:"struct WGPUSamplerDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr ChainedStruct
     label *:StringView
@@ -1484,6 +1487,8 @@ proc create *(device :Device; descriptor :ptr ComputePipelineDescriptor) :Comput
 proc getReflectionInfo *(shaderModule :ShaderModule; callbackInfo :ReflectionInfoCallbackInfo) :Future {.importc:"wgpuShaderModuleGetReflectionInfo", cdecl, header:"webgpu/webgpu.h".}
 proc create *(device :Device; bgdesc :ptr BindGroupDescriptor) :BindGroup {.importc:"wgpuDeviceCreateBindGroup", cdecl, header:"webgpu/webgpu.h".}
 proc write *(device :Device; a1 :BindGroup; bgdesc :ptr BindGroupDescriptor) {.importc:"wgpuWriteBindGroup", cdecl, header:"webgpu/webgpu.h".}
+proc updateEntry *(bindGroup :BindGroup; binding :uint32; arrayIndex :uint32; entry :ptr BindGroupEntry) {.importc:"wgpuBindGroupUpdateEntry", cdecl, header:"webgpu/webgpu.h".}
+proc clearEntry *(bindGroup :BindGroup; binding :uint32; arrayIndex :uint32) {.importc:"wgpuBindGroupClearEntry", cdecl, header:"webgpu/webgpu.h".}
 proc create *(device :Device; cdesc :ptr CommandEncoderDescriptor) :CommandEncoder {.importc:"wgpuDeviceCreateCommandEncoder", cdecl, header:"webgpu/webgpu.h".}
 proc finish *(commandEncoder :CommandEncoder; descriptor :ptr CommandBufferDescriptor) :CommandBuffer {.importc:"wgpuCommandEncoderFinish", cdecl, header:"webgpu/webgpu.h".}
 proc tick *(device :Device) {.importc:"wgpuDeviceTick", cdecl, header:"webgpu/webgpu.h".}

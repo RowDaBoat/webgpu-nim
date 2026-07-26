@@ -158,8 +158,8 @@ type
     WGPUSType_SurfaceSourceAndroidNativeWindow = 8,
     WGPUSType_SurfaceSourceXCBWindow = 9,
     WGPUSType_SurfaceColorManagement = 10,
+    WGPUSType_TextureComponentSwizzleDescriptor = 12,
     WGPUSType_EmscriptenSurfaceSourceCanvasHTMLSelector = 262144,
-    WGPUSType_TextureComponentSwizzleDescriptor = 327751,
     WGPUSType_InstanceLayerSelection = 268435457,
     WGPUSType_BufferAllocatorSelector = 268435458,
     WGPUSType_ShaderSourceGLSL = 268435459,
@@ -167,7 +167,8 @@ type
     WGPUSType_SurfaceSourceDrmPlane = 268435461,
     WGPUSType_ExtrasLimits = 268435462,
     WGPUSType_BindGroupLayoutEntryRayTracing = 268435463,
-    WGPUSType_BindGroupEntryRayTracing = 268435464
+    WGPUSType_BindGroupEntryRayTracing = 268435464,
+    WGPUSType_BindGroupLayoutDescriptorBindless = 268435465
   WGPUSType * = enum_WGPUSType
   enum_WGPUCallbackMode *{.pure, size:sizeof(cint), importc:"enum WGPUCallbackMode", header:"webgpu/webgpu.h".}= enum
     WGPUCallbackMode_WaitAnyOnly = 1,
@@ -405,13 +406,13 @@ type
     WGPUTextureFormat_ASTC12x10UnormSrgb = 99,
     WGPUTextureFormat_ASTC12x12Unorm = 100,
     WGPUTextureFormat_ASTC12x12UnormSrgb = 101,
-    WGPUTextureFormat_R8BG8Biplanar420Unorm = 327686,
-    WGPUTextureFormat_R10X6BG10X6Biplanar420Unorm = 327687,
-    WGPUTextureFormat_R8BG8A8Triplanar420Unorm = 327688,
-    WGPUTextureFormat_R8BG8Biplanar422Unorm = 327689,
-    WGPUTextureFormat_R8BG8Biplanar444Unorm = 327690,
-    WGPUTextureFormat_R10X6BG10X6Biplanar422Unorm = 327691,
-    WGPUTextureFormat_R10X6BG10X6Biplanar444Unorm = 327692,
+    WGPUTextureFormat_R8BG8Biplanar420Unorm = 327680,
+    WGPUTextureFormat_R10X6BG10X6Biplanar420Unorm = 327681,
+    WGPUTextureFormat_R8BG8A8Triplanar420Unorm = 327682,
+    WGPUTextureFormat_R8BG8Biplanar422Unorm = 327683,
+    WGPUTextureFormat_R8BG8Biplanar444Unorm = 327684,
+    WGPUTextureFormat_R10X6BG10X6Biplanar422Unorm = 327685,
+    WGPUTextureFormat_R10X6BG10X6Biplanar444Unorm = 327686,
     WGPUTextureFormat_External = 327693,
     WGPUTextureFormat_Force32 = 2147483647
   WGPUTextureFormat * = enum_WGPUTextureFormat
@@ -622,28 +623,28 @@ type
     WGPUInstanceFeatureName_Force32 = 2147483647
   WGPUInstanceFeatureName * = enum_WGPUInstanceFeatureName
   enum_WGPUFeatureName *{.pure, size:sizeof(cint), importc:"enum WGPUFeatureName", header:"webgpu/webgpu.h".}= enum
-    WGPUFeatureName_DepthClipControl = 1,
-    WGPUFeatureName_Depth32FloatStencil8 = 2,
-    WGPUFeatureName_TimestampQuery = 3,
+    WGPUFeatureName_CoreFeaturesAndLimits = 1,
+    WGPUFeatureName_DepthClipControl = 2,
+    WGPUFeatureName_Depth32FloatStencil8 = 3,
     WGPUFeatureName_TextureCompressionBC = 4,
     WGPUFeatureName_TextureCompressionBCSliced3D = 5,
     WGPUFeatureName_TextureCompressionETC2 = 6,
     WGPUFeatureName_TextureCompressionASTC = 7,
     WGPUFeatureName_TextureCompressionASTCSliced3D = 8,
-    WGPUFeatureName_IndirectFirstInstance = 9,
-    WGPUFeatureName_ShaderF16 = 10,
-    WGPUFeatureName_RG11B10UfloatRenderable = 11,
-    WGPUFeatureName_BGRA8UnormStorage = 12,
-    WGPUFeatureName_Float32Filterable = 13,
-    WGPUFeatureName_Float32Blendable = 14,
-    WGPUFeatureName_ClipDistances = 15,
-    WGPUFeatureName_DualSourceBlending = 16,
-    WGPUFeatureName_Subgroups = 17,
-    WGPUFeatureName_CoreFeaturesAndLimits = 18,
-    WGPUFeatureName_TextureFormatNV12 = 19,
-    WGPUFeatureName_TextureFormatP010 = 20,
-    WGPUFeatureName_PolygonModeLine = 21,
-    WGPUFeatureName_PolygonModePoint = 22,
+    WGPUFeatureName_TimestampQuery = 9,
+    WGPUFeatureName_IndirectFirstInstance = 10,
+    WGPUFeatureName_ShaderF16 = 11,
+    WGPUFeatureName_RG11B10UfloatRenderable = 12,
+    WGPUFeatureName_BGRA8UnormStorage = 13,
+    WGPUFeatureName_Float32Filterable = 14,
+    WGPUFeatureName_Float32Blendable = 15,
+    WGPUFeatureName_ClipDistances = 16,
+    WGPUFeatureName_DualSourceBlending = 17,
+    WGPUFeatureName_Subgroups = 18,
+    WGPUFeatureName_TextureFormatNV12 = 327681,
+    WGPUFeatureName_TextureFormatP010 = 327682,
+    WGPUFeatureName_PolygonModeLine = 327683,
+    WGPUFeatureName_PolygonModePoint = 327684,
     WGPUFeatureName_Force32 = 2147483647
   WGPUFeatureName * = enum_WGPUFeatureName
   enum_WGPUMapAsyncStatus *{.pure, size:sizeof(cint), importc:"enum WGPUMapAsyncStatus", header:"webgpu/webgpu.h".}= enum
@@ -980,6 +981,9 @@ type
     chain *:WGPUChainedStruct
     accelerationStructure *:WGPUBool
   WGPUBindGroupLayoutEntryRayTracing * = struct_WGPUBindGroupLayoutEntryRayTracing
+  struct_WGPUBindGroupLayoutDescriptorBindless *{.bycopy, importc:"struct WGPUBindGroupLayoutDescriptorBindless", header:"webgpu/webgpu.h", pure, inheritable.}= object
+    chain *:WGPUChainedStruct
+  WGPUBindGroupLayoutDescriptorBindless * = struct_WGPUBindGroupLayoutDescriptorBindless
   struct_WGPUSamplerDescriptor *{.bycopy, importc:"struct WGPUSamplerDescriptor", header:"webgpu/webgpu.h", pure, inheritable.}= object
     nextInChain *:ptr WGPUChainedStruct
     label *:WGPUStringView
@@ -1701,6 +1705,8 @@ proc wgpuDeviceCreateComputePipeline *(device :WGPUDevice; descriptor :ptr WGPUC
 proc wgpuShaderModuleGetReflectionInfo *(shaderModule :WGPUShaderModule; callbackInfo :WGPUReflectionInfoCallbackInfo) :WGPUFuture {.importc:"wgpuShaderModuleGetReflectionInfo", cdecl, header:"webgpu/webgpu.h".}
 proc wgpuDeviceCreateBindGroup *(device :WGPUDevice; bgdesc :ptr WGPUBindGroupDescriptor) :WGPUBindGroup {.importc:"wgpuDeviceCreateBindGroup", cdecl, header:"webgpu/webgpu.h".}
 proc wgpuWriteBindGroup *(device :WGPUDevice; a1 :WGPUBindGroup; bgdesc :ptr WGPUBindGroupDescriptor) {.importc:"wgpuWriteBindGroup", cdecl, header:"webgpu/webgpu.h".}
+proc wgpuBindGroupUpdateEntry *(bindGroup :WGPUBindGroup; binding :uint32; arrayIndex :uint32; entry :ptr WGPUBindGroupEntry) {.importc:"wgpuBindGroupUpdateEntry", cdecl, header:"webgpu/webgpu.h".}
+proc wgpuBindGroupClearEntry *(bindGroup :WGPUBindGroup; binding :uint32; arrayIndex :uint32) {.importc:"wgpuBindGroupClearEntry", cdecl, header:"webgpu/webgpu.h".}
 proc wgpuDeviceCreateCommandEncoder *(device :WGPUDevice; cdesc :ptr WGPUCommandEncoderDescriptor) :WGPUCommandEncoder {.importc:"wgpuDeviceCreateCommandEncoder", cdecl, header:"webgpu/webgpu.h".}
 proc wgpuCommandEncoderFinish *(commandEncoder :WGPUCommandEncoder; descriptor :ptr WGPUCommandBufferDescriptor) :WGPUCommandBuffer {.importc:"wgpuCommandEncoderFinish", cdecl, header:"webgpu/webgpu.h".}
 proc wgpuDeviceTick *(device :WGPUDevice) {.importc:"wgpuDeviceTick", cdecl, header:"webgpu/webgpu.h".}
