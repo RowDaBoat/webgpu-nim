@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # @deps wgpu
 from ../../../api as wgpu import nil
 from ../../types as extras import nil
@@ -24,4 +24,3 @@ proc toDescriptor *(code, label :string) :extras.ShaderModuleDescriptor=
 #___________________
 proc read *(file :string) :extras.ShaderModuleDescriptor=  file.readFile.toDescriptor(label = file)
   ## Reads the given `.wgsl` shader file, and returns an extras.ShaderModuleDescriptor for it.
-

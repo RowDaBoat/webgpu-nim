@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # Single Texture example                              |
 # Our byte array can be accessed from the shader.     |
 # The position is fixed to the topleft of the screen  |
@@ -185,8 +185,8 @@ var triangle = Mesh(
   inds: @[uvec3(0,1,2)]
   ) # << Mesh()
 let vertc = triangle.vertCount.int
-doAssert vertc == triangle.color.len and 
-         vertc == triangle.uv.len and 
+doAssert vertc == triangle.color.len and
+         vertc == triangle.uv.len and
          vertc == triangle.norm.len,
          "All attributes must contain the same amount of vertex"
 # NEW:
@@ -577,7 +577,7 @@ proc run=
     nextInChain  : nil,
     offset       : 0,
     bytesPerRow  : sizeof(Color8).uint32 * width,
-    rowsPerImage : height, 
+    rowsPerImage : height,
     )
   # 7.4. Upload the texture to the GPU
   queue.write(destination.addr, pixels[0].addr, pixels.size, source.addr, texSize.addr)
@@ -697,4 +697,3 @@ proc run=
 
 #__________________
 when isMainModule: run()
-

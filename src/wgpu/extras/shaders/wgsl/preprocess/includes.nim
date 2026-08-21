@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 ## @fileoverview
 ## `@include` resolver implementation for wgsl shaders.
 ##  - Resolution is recursive, nested includes will work.
@@ -143,4 +143,3 @@ proc remapErrors *(
   result = error
     .remapError_headers(mappings)
     .remapError_lineNumbers(mappings)
-

@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # Runs a compute shader that adds 7 to each element    |
 # of an array, then reads the results back to the CPU  |
 #______________________________________________________|

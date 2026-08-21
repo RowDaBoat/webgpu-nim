@@ -1,10 +1,10 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 when not defined(nimscript):  import system/nimscript  # Silence nimsuggest errors
 import std/[ os, strformat, strutils, sequtils, algorithm ]
 # Package
-packageName   = "webgpu"
+packageName   = "webgpunim"
 version       = "25.0.0.0"
 author        = "heysokam, RowDaBoat"
 description   = "WebGPU bindings for Nim using wgvk as backend."

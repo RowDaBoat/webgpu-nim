@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # @deps wgpu
 from ../../api as wgpu import nil
 from ../types as extras import nil
@@ -17,4 +17,3 @@ proc toDescriptor *(code, label :string) :extras.ShaderModuleDescriptor=
     nextInChain : cast[ptr wgpu.ChainedStruct](descriptor), # descriptor is a ref, so we cast that pointer into a ChainedStruct
     label       : label.toStringView(),
     ) #:: ShaderModuleDescriptor( ... )
-

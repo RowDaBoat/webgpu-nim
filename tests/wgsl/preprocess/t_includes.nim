@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # @deps std
 import std/strutils
 import std/os
@@ -136,4 +136,3 @@ describe "wgsl.preprocess.includes":
     except CatchableError: fail()
 
   it "dummy":discard  # FIX: Why is this nonsense required? :puzzled:
-

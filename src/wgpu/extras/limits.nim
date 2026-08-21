@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # @deps wgpu
 from ../api as wgpu import nil
 
@@ -159,4 +159,3 @@ proc downlevel_webgl2_defaults *(_ :typedesc[wgpu.Limits]) :wgpu.Limits=
   result.maxComputeWorkgroupSize_y                 = 0
   result.maxComputeWorkgroupSize_z                 = 0
   result.maxComputeWorkgroupsPerDimension          = 0
-

@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # Note:                                      |
 #   This file is just a reference !!         |
 # In a real app, everything in this file     |
@@ -100,8 +100,8 @@ func size *(m :Mesh) :uint64=
 template check (m :Mesh) :void=
   ## Checks that the mesh has the correct number of vertex for each attribute
   let vertc = m.vertCount.int
-  doAssert vertc == m.color.len and 
-           vertc == m.uv.len and 
+  doAssert vertc == m.color.len and
+           vertc == m.uv.len and
            vertc == m.norm.len,
            "All attributes of the mesh must contain the same amount of vertex"
 #__________________
@@ -221,7 +221,7 @@ proc genPyramid *() :Mesh=
 # Matrices:                           Column major storage, you specify columns in matrix constructors
 #_______________________________________
 # Differences from OpenGL:
-# 1. 3x3 matrices are padded to 4x4 
+# 1. 3x3 matrices are padded to 4x4
 # 2. +Z is forward, instead of backwards (away from the screen)
 # 3. Depth range of NDC is 0..1, instead of -1..1
 #_______________________________________
@@ -345,7 +345,7 @@ proc new *(_ :typedesc[Camera]; origin, target, up :DVec3; fov, near, far :float
   result.up   = up
   result.fov  = fov
   result.near = near
-  result.far  = far 
+  result.far  = far
 #____________________
 proc init *(cam :var Camera; origin, target, up :DVec3; fov, near, far :float64) :void=
   cam = Camera.new(origin, target, up, fov, near, far)
@@ -374,4 +374,3 @@ proc rotate *(cam :var Camera; chg :DVec2) :void=
   cam.rot.x += chg.y * -scale  # Y movement = Rotation around X
   cam.rot.y += chg.x * -scale  # X movement = Rotation around Y
   cam.rot.x.clamp(-SafePitch, SafePitch) # Clamp vertical rotation to never reach the top or bottom
-

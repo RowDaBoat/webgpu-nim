@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 ## @fileoverview General Purpose Helpers
 #________________________________________|
 
@@ -22,4 +22,3 @@ template iaddr *(num :uint32) :ptr int32=  cast[ptr int32](num.addr)
   ##  Explicit instantiation of iaddr[T] for uint32-to-int32.
   ##  Returns the int32 `addr` of an uint32.
   ##  Useful for C interop. Equivalent to `(int32_t*)&someUint32`
-

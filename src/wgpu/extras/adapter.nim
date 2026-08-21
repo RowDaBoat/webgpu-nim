@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # @deps std
 import std/sequtils
 # @deps wgpu
@@ -35,4 +35,3 @@ proc info *(adapter :wgpu.Adapter) :extras.AdapterInfo=
   result.vendorID     = data.vendorID
   result.deviceID     = data.deviceID
   wgpu.freeMembers(data)
-

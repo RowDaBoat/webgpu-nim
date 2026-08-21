@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # Simplest framebuffer possible          |
 # Takes an array of bytes                |
 # and draws it to a fullscreen triangle  |
@@ -461,4 +461,3 @@ proc run=
   window.term()
 #__________________
 when isMainModule: run()
-

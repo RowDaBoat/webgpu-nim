@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 
 const  # Not Used, reference only : Undefined Limits are set with `type.high`
   MaxVertexAttributes      * = 16
@@ -11,4 +11,3 @@ const  # Not Used, reference only : Undefined Limits are set with `type.high`
   UndefinedMipLevelCount   * = 0xffffffff          # define WGPU_MIP_LEVEL_COUNT_UNDEFINED   (0xffffffffUL)
   WholeMapSize             * = csize_t.high        # define WGPU_WHOLE_MAP_SIZE              SIZE_MAX
   WholeSize                * = 0xffffffffffffffff  # define WGPU_WHOLE_SIZE                  (0xffffffffffffffffULL)
-

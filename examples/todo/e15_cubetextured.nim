@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # Textured Cube Example
 # Applies a generated texture to the cube, using its UVs
 #_________________________________________________________|
@@ -197,8 +197,8 @@ var cube = Mesh(
     ] # << inds
   ) # << Mesh()
 let vertc = cube.vertCount.int
-doAssert vertc == cube.color.len and 
-         vertc == cube.uv.len and 
+doAssert vertc == cube.color.len and
+         vertc == cube.uv.len and
          vertc == cube.norm.len,
          "All attributes must contain the same amount of vertex"
 
@@ -665,7 +665,7 @@ proc run=
     nextInChain  : nil,
     offset       : 0,
     bytesPerRow  : sizeof(Color8).uint32 * width,
-    rowsPerImage : height, 
+    rowsPerImage : height,
     )
   # Upload the texture to the GPU
   queue.write(destination.addr, pixels[0].addr, pixels.size, source.addr, texSize.addr)
@@ -867,4 +867,3 @@ proc run=
 
 #__________________
 when isMainModule: run()
-

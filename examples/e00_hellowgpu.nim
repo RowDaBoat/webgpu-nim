@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # Tests that wgpu loaded correctly.                 |
 # Creates a wgpu.Instance and prints its address.   |
 # Creates a window that remains open until closed.  |
@@ -53,4 +53,3 @@ proc run=
   window.term()
 #__________________
 when isMainModule: run()
-

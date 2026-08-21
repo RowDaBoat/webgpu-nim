@@ -2,7 +2,7 @@
 # wgpu bindings for Nim
 ## How to
 1. Install requirements: `git`, `nim`
-2. Install the bindings with `nimble install https://github.com/RowDaBoat/webgpu-nim`, or add them to your project's nimble file
+2. Install the bindings with `nimble install https://github.com/RowDaBoat/webgpunim`, or add them to your project's nimble file
 3. Use `import wgpu` to access the wgpu bindings.
 
 I highly recommend to follow [Learn WebGPU C++](https://eliemichel.github.io/LearnWebGPU/) for learning the API.

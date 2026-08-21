@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # @deps wgpu
 from ../api as wgpu import nil
 
@@ -13,4 +13,3 @@ proc setIndexBuffer *(
     size       : uint64;
   ) :void= wgpu.setIndexBuffer(renderPass, buffer, format, offset, size)
   ## @descr Overload for wgpu.setIndexBuffer
-

@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # Buffer-based Indexed Triangle                   |
 # with a deinterleaved attributes+indices buffer  |
 # Attributes:  pos, color, uv, normal             |
@@ -161,8 +161,8 @@ var triangle = Mesh(
   inds: @[uvec3(0,1,2)]
   ) # << Mesh()
 let vertc = triangle.vertCount.int
-doAssert vertc == triangle.color.len and 
-         vertc == triangle.uv.len and 
+doAssert vertc == triangle.color.len and
+         vertc == triangle.uv.len and
          vertc == triangle.norm.len,
          "All attributes must contain the same amount of vertex"
 
@@ -481,4 +481,3 @@ proc run=
 
 #__________________
 when isMainModule: run()
-

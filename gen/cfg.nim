@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 const stripPrefix * = [
   "WGPU",
   ] #:: stripPrefix = [ ... ]
@@ -403,4 +403,3 @@ const replaceList * = [
   ("wgpuRayTracingAccelerationContainerAddRef",          "addRef"                        ),
   ("wgpuRayTracingAccelerationContainerRelease",         "release"                       ),
   ] #:: replaceEnd = [ ... ]
-

@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 from std/os import `/`, parentDir, getEnv
 
 const thisDir      = currentSourcePath().parentDir()
@@ -84,4 +84,3 @@ when defined(wgvkDRM):
 # Compile wgvk
 when not defined(wasm):
   {.compile:srcDir/"wgvk.c".}
-

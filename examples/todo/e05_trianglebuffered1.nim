@@ -1,6 +1,6 @@
-#:___________________________________________________________
-#  webgpu-nim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
-#:___________________________________________________________
+#:__________________________________________________________
+#  webgpunim  |  Copyright (C) WebGPU Nim Authors  |  MIT  :
+#:__________________________________________________________
 # Simplest Buffer-based Triangle possible  |
 # Uses only one buffer for the position.   |
 #__________________________________________|
@@ -341,4 +341,3 @@ proc run=
 
 #__________________
 when isMainModule: run()
-
